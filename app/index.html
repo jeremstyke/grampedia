@@ -51,6 +51,9 @@ h2{font:700 19px Fraunces,Georgia,serif;margin:22px 0 10px}
 .row.feat{background:#fffaf0}.spons{display:inline-block;font-size:12px;font-weight:700;color:#7c4a03;background:#fdf0d5;border-radius:999px;padding:1px 8px;margin-right:4px}
 .fopt{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:16px;margin-bottom:12px}.fopt b{font-size:19px}.fopt p{margin:6px 0 10px;color:#3a4558}.fopt .hint{font-weight:700;color:var(--ink)}
 .btn.gold{background:#f2b632;color:var(--ink)}
+.tiers{display:grid;gap:6px;margin:0 0 12px}.tier{display:flex;gap:10px;align-items:center;background:#f3f5f9;border-radius:10px;padding:8px 10px;font-size:14px}.tier b{width:28px;height:28px;border-radius:50%;background:#e1e7f0;display:flex;align-items:center;justify-content:center;flex:none}.tier.on{background:#dcf2e7}
+.bdot{position:absolute;top:-4px;right:-4px;background:#e11d48;color:#fff;font:700 11px 'DM Sans',sans-serif;min-width:18px;height:18px;border-radius:9px;display:flex;align-items:center;justify-content:center;padding:0 4px}.bdot[hidden]{display:none}
+.nrow{padding:12px 14px;border-bottom:1px solid var(--line)}.nrow:last-child{border-bottom:0}.nrow p{margin:4px 0 0;white-space:pre-wrap}
 .more{display:block;width:100%;margin:14px 0;border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:12px;font-weight:700;cursor:pointer}
 .empty{text-align:center;color:var(--muted);padding:34px 10px}
 .empty b{display:block;color:var(--ink);font:700 19px Fraunces,Georgia,serif;margin-bottom:6px}
@@ -104,7 +107,7 @@ body.typing nav.bar{display:none}
 .faq details{border-bottom:1px solid var(--line);padding:12px 0}.faq summary{font-weight:700;cursor:pointer}.faq p{margin:8px 0 0;color:#3a4558}
 </style></head>
 <body>
-<header><div class="r"><div class="logo">GramPedia<small id="count"></small></div><button class="iconb" id="helpb" aria-label="Help">?</button></div>
+<header><div class="r"><div class="logo">GramPedia<small id="count"></small></div><button class="iconb" id="bellb" aria-label="Notifications" style="position:relative">🔔<span id="bdot" class="bdot" hidden></span></button><button class="iconb" id="helpb" aria-label="Help">?</button></div>
 <div class="search" id="sbox"><span aria-hidden="true">🔍</span><input id="q" type="search" autocomplete="off" enterkeyhint="search"></div></header>
 <main id="app"><div class="load"><i></i></div></main>
 <nav class="bar" id="bar" aria-label="Sections"></nav>
@@ -116,7 +119,7 @@ const EN = {
  explore: 'Explore', add: 'Add', mine: 'My listings', search_ph: 'Search channels, groups, bots and mini apps', listings: '{n} listings',
  tp_crypto: 'Crypto & finance', tp_earn: 'Earn money', tp_games: 'Games', tp_fun: 'Fun & memes', tp_news: 'News', tp_edu: 'Education', tp_tech: 'Tech & AI', tp_biz: 'Business & marketing', tp_deals: 'Deals & shopping', tp_sport: 'Sports', tp_media: 'Music, movies & series', tp_life: 'Lifestyle & health', tp_other: 'Other',
  ty_all: 'All', ty_channel: 'Channels', ty_group: 'Groups', ty_bot: 'Bots', ty_app: 'Mini apps', one_channel: 'Channel', one_group: 'Group', one_bot: 'Bot', one_app: 'Mini app',
- l_all: '🌐 All languages', f_langs: 'Languages (up to 3)', e_langs: 'Choose at least one language.', ai_btn: '✨ Write it with AI', ai_wait: 'Writing…', ai_note: 'You can edit the text before sending.', e_ailimit: 'You used the AI a lot today. Try again tomorrow.',
+ l_all: '🌐 All languages', f_langs: 'Languages (choose all that apply)', e_langs: 'Choose at least one language.', ai_btn: '✨ Write it with AI', ai_wait: 'Writing…', ai_note: 'You can edit the text before sending.', e_ailimit: 'You used the AI a lot today. Try again tomorrow.',
  lg_en: 'English', lg_fr: 'French', lg_es: 'Spanish', lg_pt: 'Portuguese', lg_ru: 'Russian', lg_ar: 'Arabic', lg_hi: 'Hindi', lg_id: 'Indonesian', lg_tr: 'Turkish', lg_de: 'German', lg_it: 'Italian', lg_fa: 'Persian', lg_uk: 'Ukrainian', lg_zh: 'Chinese',
  sort_top: 'Most popular', sort_new: 'Newest', sorted_top: 'Sorted by audience', sorted_new: 'Newest first', members: '{n} subscribers', more: 'Show more',
  none_title: 'Nothing here yet', none_text: 'Be the first: add your channel, group, bot or mini app.', none_btn: 'Add mine', open: 'Open', see_post: 'See it on the channel',
@@ -132,7 +135,7 @@ const EN = {
  feat_topic: 'Top of its topic', feat_topic_d: 'At the top of {topic} in the app and on its page of the website.',
  feat_now: 'Starts now', feat_from: 'Starts on {d}', feat_pay: 'Pay {n} ⭐', feat_done: 'Done! Your listing is featured.', feat_free: 'Use my {n} free day(s) at the top of its topic', feat_on_home: '⭐ Home page until {d}', feat_on_topic: '⭐ Top of its topic until {d}', feat_soon: '⭐ Featured from {d}',
  stats7: '{v} views, {c} clicks in 7 days', statsAll: '{v} views, {c} clicks in total',
- inv_title: '👥 Invite your friends', inv_text: 'Each friend who publishes their first listing gives you 1 free day at the top of your topic.', inv_btn: 'Invite friends', inv_share: 'Discover GramPedia, the directory of Telegram channels, groups, bots and mini apps, and add yours for free!', inv_days: 'You have {n} free day(s) of featuring.', mod_stars: '{n} ⭐ of featuring in 30 days', mod: 'Moderation', mod_users: 'users', mod_live: 'published', mod_wait: 'waiting', mod_none: 'Nothing to review', mod_none_t: 'Every listing has been handled.', mod_ok: 'Publish', mod_no: 'Refuse', mod_by: 'Sent by {who}', edit: 'Edit', edit_title: 'Edit the listing', edit_save: 'Save the changes', edit_sent: 'Changes sent: they will be online after review.', edit_live: 'Changes saved.', editing: 'Changes in review', mod_edit: 'Change', photo_keep: 'Current picture', photo_new: 'New picture'
+ inv_title: '👥 Invite your friends', inv_text: 'Each friend who publishes their first listing gives you 1 free day at the top of your topic.', inv_btn: 'Invite friends', share: 'Share', share_app: 'Share GramPedia', notifs: 'Notifications', notifs_none: 'No notification yet', bc_title: 'Message to everyone', bc_sub: 'Sent by the bot to every user and shown in their notifications, translated into English and French.', bc_ph: 'Your message', bc_send: 'Send to everyone', bc_done: 'Sending to {n} users.', bc_confirm: 'Send this message to every GramPedia user?', lg_ja: 'Japanese', lg_ko: 'Korean', lg_vi: 'Vietnamese', lg_th: 'Thai', lg_pl: 'Polish', lg_nl: 'Dutch', lg_ro: 'Romanian', lg_bn: 'Bengali', lg_ur: 'Urdu', lg_ms: 'Malay', lg_he: 'Hebrew', lg_el: 'Greek', lg_sv: 'Swedish', lg_cs: 'Czech', lg_hu: 'Hungarian', lg_kk: 'Kazakh', lg_uz: 'Uzbek', lg_az: 'Azerbaijani', lg_sw: 'Swahili', lg_tl: 'Filipino', inv_share: 'Discover GramPedia, the directory of Telegram channels, groups, bots and mini apps, and add yours for free!', inv_days: 'You have {n} free day(s) of featuring.', mod_stars: '{n} ⭐ of featuring in 30 days', mod: 'Moderation', mod_users: 'users', mod_live: 'published', mod_wait: 'waiting', mod_none: 'Nothing to review', mod_none_t: 'Every listing has been handled.', mod_ok: 'Publish', mod_no: 'Refuse', mod_by: 'Sent by {who}', edit: 'Edit', edit_title: 'Edit the listing', edit_save: 'Save the changes', edit_sent: 'Changes sent: they will be online after review.', edit_live: 'Changes saved.', editing: 'Changes in review', mod_edit: 'Change', photo_keep: 'Current picture', photo_new: 'New picture'
 };
 let T = EN, ME = null, TAB = 'explore';
 const S = { lang: '', type: '', topic: '', sort: 'top', q: '', items: [], total: 0, off: 0, byTopic: {}, byType: {} };
@@ -158,7 +161,7 @@ function bar() {
   $('bar').querySelectorAll('button').forEach((b) => b.onclick = () => { haptic(); go(b.dataset.tab); });
   $('sbox').style.display = TAB === 'explore' ? '' : 'none';
 }
-function go(tab) { TAB = tab; bar(); window.scrollTo(0, 0); ({ explore, add, mine, help, mod })[tab](); }
+function go(tab) { TAB = tab; bar(); window.scrollTo(0, 0); ({ explore, add, mine, help, mod, notifs })[tab](); }
 
 // ---------- Explore ----------
 async function fetchList(append) {
@@ -182,16 +185,19 @@ async function explore(keep) {
   $('sortb').onclick = async () => { S.sort = S.sort === 'top' ? 'new' : 'top'; await fetchList(); explore(true); };
   if ($('more')) $('more').onclick = async () => { $('more').disabled = true; await fetchList(true); explore(true); };
   if ($('addm')) $('addm').onclick = () => go('add');
+  $('app').insertAdjacentHTML('beforeend', `<button class="btn dark" id="shareg" style="width:100%;margin-top:14px">📤 ${esc(t('share_app'))}</button>`);
+  $('shareg').onclick = shareApp;
   $('app').querySelectorAll('[data-id]').forEach((b) => b.onclick = () => detail(S.items.concat(S.featured || []).find((x) => String(x.id) === b.dataset.id)));
 }
 function detail(x) {
   if (!x) return; haptic();
   const bg = document.createElement('div'); bg.className = 'sheet-bg';
   bg.innerHTML = `<div class="sheet" role="dialog" aria-modal="true" aria-label="${esc(x.name)}"><div class="grab"></div>${x.img ? `<img class="hero" src="${API + x.img}" alt="">` : ''}<h3>${esc(x.name)}</h3><div class="m">${esc(metaOf(x))}${x.uname ? ' · @' + esc(x.uname) : ''}</div><p>${esc(x.descr || '')}</p>
-    <button class="btn main" id="dopen">${esc(t('open'))} ${x.uname ? '@' + esc(x.uname) : ''}</button>${ME.admin ? `<button class="btn" id="dedit" style="width:100%;margin-top:8px">✏️ ${esc(t('edit'))}</button>` : ''}${x.post ? `<button class="btn" id="dpost" style="width:100%;margin-top:8px">${esc(t('see_post'))}</button>` : ''}</div>`;
+    <button class="btn main" id="dopen">${esc(t('open'))} ${x.uname ? '@' + esc(x.uname) : ''}</button><button class="btn" id="dshare" style="width:100%;margin-top:8px">📤 ${esc(t('share'))}</button>${ME.admin ? `<button class="btn" id="dedit" style="width:100%;margin-top:8px">✏️ ${esc(t('edit'))}</button>` : ''}${x.post ? `<button class="btn" id="dpost" style="width:100%;margin-top:8px">${esc(t('see_post'))}</button>` : ''}</div>`;
   document.body.appendChild(bg);
   bg.onclick = (e) => { if (e.target === bg) bg.remove(); };
   bg.querySelector('#dopen').onclick = () => { api('click', { id: x.id }).catch(() => {}); openLink(x.link); };
+  bg.querySelector('#dshare').onclick = () => shareListing(x);
   if (bg.querySelector('#dedit')) bg.querySelector('#dedit').onclick = () => editForm(x, 'explore');
   if (bg.querySelector('#dpost')) bg.querySelector('#dpost').onclick = () => openLink(x.post);
 }
@@ -219,7 +225,7 @@ function add(msg) {
   if (!f) return;
   $('app').querySelectorAll('[data-aty]').forEach((b) => b.onclick = () => { haptic(); A.type = b.dataset.aty; add(); });
   $('app').querySelectorAll('[data-atp]').forEach((b) => b.onclick = () => { haptic(); A.topic = b.dataset.atp; $('app').querySelectorAll('[data-atp]').forEach((x) => x.setAttribute('aria-pressed', x === b)); });
-  $('app').querySelectorAll('[data-alg]').forEach((b) => b.onclick = () => { const k = b.dataset.alg; if (A.langs.includes(k)) A.langs = A.langs.filter((x) => x !== k); else if (A.langs.length < 3) A.langs.push(k); else return toast(t('f_langs')); haptic(); b.setAttribute('aria-pressed', A.langs.includes(k)); });
+  $('app').querySelectorAll('[data-alg]').forEach((b) => b.onclick = () => { const k = b.dataset.alg; if (A.langs.includes(k)) A.langs = A.langs.filter((x) => x !== k); else A.langs.push(k); haptic(); b.setAttribute('aria-pressed', A.langs.includes(k)); });
   $('aai').onclick = () => aiWrite(A, 'adesc', 'acount', 'aai');
   $('aname').oninput = (e) => { A.name = e.target.value; };
   $('adesc').oninput = (e) => { A.descr = e.target.value; $('acount').textContent = dcount(A.descr); };
@@ -294,7 +300,7 @@ function editForm(x, back, msg) {
   <div id="eout">${msg || ''}</div><div style="margin-top:20px"><button class="btn main" id="esave">${esc(t('edit_save'))}</button></div>`;
   $('app').querySelectorAll('[data-ety]').forEach((b) => b.onclick = () => { f.type = b.dataset.ety; $('app').querySelectorAll('[data-ety]').forEach((n) => n.setAttribute('aria-pressed', n === b)); });
   $('app').querySelectorAll('[data-etp]').forEach((b) => b.onclick = () => { f.topic = b.dataset.etp; $('app').querySelectorAll('[data-etp]').forEach((n) => n.setAttribute('aria-pressed', n === b)); });
-  $('app').querySelectorAll('[data-elg]').forEach((b) => b.onclick = () => { const k = b.dataset.elg; if (f.langs.includes(k)) f.langs = f.langs.filter((x) => x !== k); else if (f.langs.length < 3) f.langs.push(k); else return toast(t('f_langs')); b.setAttribute('aria-pressed', f.langs.includes(k)); });
+  $('app').querySelectorAll('[data-elg]').forEach((b) => b.onclick = () => { const k = b.dataset.elg; if (f.langs.includes(k)) f.langs = f.langs.filter((x) => x !== k); else f.langs.push(k); b.setAttribute('aria-pressed', f.langs.includes(k)); });
   $('eai').onclick = () => aiWrite(f, 'edesc', 'ecount', 'eai');
   $('ename').oninput = (e) => { f.name = e.target.value; };
   $('edesc').oninput = (e) => { f.descr = e.target.value; $('ecount').textContent = dcount(f.descr); };
@@ -328,16 +334,29 @@ async function feature(x) {
   if ($('ffree')) $('ffree').onclick = async () => { $('ffree').disabled = true; const z = await api('feat_free', { id: x.id }); if (z.ok) { toast(t('feat_done')); go('mine'); } else { $('ffree').disabled = false; toast(t('e_server')); } };
 }
 
+// ---------- Sharing and notifications ----------
+const BOTU = () => 'https://t.me/' + ((ME && ME.bot) || 'Grampedia_bot');
+function shareListing(x) { if (!x) return; haptic(); openLink('https://t.me/share/url?url=' + encodeURIComponent(BOTU() + '?start=l_' + x.id) + '&text=' + encodeURIComponent('📚 ' + x.name + (x.descr ? '\n' + String(x.descr).slice(0, 140) : ''))); }
+function shareApp() { haptic(); openLink('https://t.me/share/url?url=' + encodeURIComponent(BOTU() + '?start=src_share') + '&text=' + encodeURIComponent(t('inv_share'))); }
+async function notifs() {
+  TAB = 'notifs'; bar(); $('sbox').style.display = 'none'; load();
+  const r = await api('notifs'); const xs = r.items || [];
+  $('bdot').hidden = true; api('notifs_seen').catch(() => {});
+  const when = (iso) => new Date(iso).toLocaleString(ME.lang === 'fr' ? 'fr-FR' : 'en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+  $('app').innerHTML = `<h1>${esc(t('notifs'))}</h1>` + (xs.length ? `<div class="idx">${xs.map((n) => `<div class="nrow"><span class="hint">${n.all ? '📣 ' : ''}${esc(when(n.at))}</span><p>${esc(n.text)}</p></div>`).join('')}</div>` : `<div class="empty"><b>${esc(t('notifs_none'))}</b></div>`);
+}
+
 // ---------- My listings ----------
 async function mine() {
   load(); $('sbox').style.display = 'none'; const r = await api('mine'); const xs = r.items || [];
-  $('app').innerHTML = `<h1>${esc(t('mine'))}</h1>` + (xs.length ? `<div class="idx">${xs.map((x) => `<div class="row" style="cursor:default">${thumb(x)}<span class="t"><b>${esc(x.name)}</b><span class="m">${esc(metaOf(x))}</span>${x.status === 'approved' && x.stats ? `<span class="m" style="display:block;margin-top:4px">📊 ${esc(t('stats7', { v: nf(x.stats.v7), c: nf(x.stats.c7) }))}</span>` : ''}${(x.feats || []).map((f) => `<span class="spons" style="display:inline-block;margin-top:4px">${esc(f.status === 'active' ? t(f.slot === 'home' ? 'feat_on_home' : 'feat_on_topic', { d: dfmt(f.ends_at) }) : t('feat_soon', { d: dfmt(f.starts_at) }))}</span>`).join(' ')}<div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap;align-items:center"><span class="pill ${x.status}">${esc(t('st_' + x.status))}</span>${x.editing ? `<span class="pill pending">${esc(t('editing'))}</span>` : ''}${['approved', 'pending'].includes(x.status) && !x.editing ? `<button class="btn small" data-ed="${x.id}">✏️ ${esc(t('edit'))}</button>` : ''}${x.status === 'approved' ? `<button class="btn small gold" data-ft="${x.id}">⭐ ${esc(t('feat_btn'))}</button>` : ''}${x.post ? `<button class="btn small" data-open="${esc(x.post)}">${esc(t('see_post'))}</button>` : ''}${['approved', 'pending'].includes(x.status) ? `<button class="btn small" data-rm="${x.id}">${esc(t('remove'))}</button>` : ''}</div></span></div>`).join('')}</div>`
+  $('app').innerHTML = `<h1>${esc(t('mine'))}</h1>` + (xs.length ? `<div class="idx">${xs.map((x) => `<div class="row" style="cursor:default">${thumb(x)}<span class="t"><b>${esc(x.name)}</b><span class="m">${esc(metaOf(x))}</span>${x.status === 'approved' && x.stats ? `<span class="m" style="display:block;margin-top:4px">📊 ${esc(t('stats7', { v: nf(x.stats.v7), c: nf(x.stats.c7) }))}</span>` : ''}${(x.feats || []).map((f) => `<span class="spons" style="display:inline-block;margin-top:4px">${esc(f.status === 'active' ? t(f.slot === 'home' ? 'feat_on_home' : 'feat_on_topic', { d: dfmt(f.ends_at) }) : t('feat_soon', { d: dfmt(f.starts_at) }))}</span>`).join(' ')}<div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap;align-items:center"><span class="pill ${x.status}">${esc(t('st_' + x.status))}</span>${x.editing ? `<span class="pill pending">${esc(t('editing'))}</span>` : ''}${['approved', 'pending'].includes(x.status) && !x.editing ? `<button class="btn small" data-ed="${x.id}">✏️ ${esc(t('edit'))}</button>` : ''}${x.post ? `<button class="btn small" data-open="${esc(x.post)}">${esc(t('see_post'))}</button>` : ''}${x.status === 'approved' ? `<button class="btn small" data-sh="${x.id}">📤 ${esc(t('share'))}</button>` : ''}${['approved', 'pending'].includes(x.status) ? `<button class="btn small" data-rm="${x.id}">${esc(t('remove'))}</button>` : ''}</div></span></div>`).join('')}</div>`
     : `<div class="empty"><b>${esc(t('mine_empty_t'))}</b>${esc(t('mine_empty'))}<div style="margin-top:14px"><button class="btn dark" id="madd">${esc(t('none_btn'))}</button></div></div>`);
   if ($('madd')) $('madd').onclick = () => go('add');
   $('app').querySelectorAll('[data-ed]').forEach((b) => b.onclick = () => editForm(xs.find((x) => String(x.id) === b.dataset.ed), 'mine'));
+  $('app').querySelectorAll('[data-sh]').forEach((b) => b.onclick = () => shareListing(xs.find((x) => String(x.id) === b.dataset.sh)));
   $('app').querySelectorAll('[data-ft]').forEach((b) => b.onclick = () => feature(xs.find((x) => String(x.id) === b.dataset.ft)));
-  $('app').insertAdjacentHTML('beforeend', `<div class="idx" style="margin-top:16px;padding:16px"><b class="serif" style="font-size:18px">${esc(t('inv_title'))}</b><p class="hint" style="margin:6px 0 10px">${esc(t('inv_text'))}</p>${r.freeDays ? `<p style="margin:0 0 10px;font-weight:700">${esc(t('inv_days', { n: r.freeDays }))}</p>` : ''}<button class="btn dark" id="invb">${esc(t('inv_btn'))}</button></div>`);
-  $('invb').onclick = () => openLink('https://t.me/share/url?url=' + encodeURIComponent(r.refLink || '') + '&text=' + encodeURIComponent(t('inv_share')));
+
+  if ($('invb')) $('invb').onclick = () => openLink('https://t.me/share/url?url=' + encodeURIComponent(r.refLink || '') + '&text=' + encodeURIComponent(t('inv_share')));
   $('app').querySelectorAll('[data-open]').forEach((b) => b.onclick = () => openLink(b.dataset.open));
   $('app').querySelectorAll('[data-rm]').forEach((b) => b.onclick = () => { const doIt = async (ok) => { if (!ok) return; await api('remove', { id: b.dataset.rm }); mine(); }; if (tgw && tgw.showConfirm) tgw.showConfirm(t('remove_q'), doIt); else doIt(confirm(t('remove_q'))); });
 }
@@ -345,10 +364,12 @@ async function mine() {
 // ---------- Moderation (owner only) ----------
 async function mod() {
   load(); const r = await api('mod'); const xs = r.items || [];
-  $('app').innerHTML = `<h1>${esc(t('mod'))}</h1><p class="sub">${nf(r.users)} ${esc(t('mod_users'))}, ${nf(r.live)} ${esc(t('mod_live'))}, ${nf(r.wait)} ${esc(t('mod_wait'))}<br>${esc(t('mod_stars', { n: nf(r.stars30 || 0) }))}</p>`
+  $('app').innerHTML = `<h1>${esc(t('mod'))}</h1><p class="sub">${nf(r.users)} ${esc(t('mod_users'))}, ${nf(r.live)} ${esc(t('mod_live'))}, ${nf(r.wait)} ${esc(t('mod_wait'))}</p>`
     + (xs.length ? xs.map((x) => `<div class="idx" style="margin-bottom:14px" id="m${x.id}">${x.img ? `<img src="${API + x.img}" alt="" style="width:100%;aspect-ratio:16/9;object-fit:contain;background:#e7ecf3;display:block">` : ''}<div style="padding:14px">${x.edit ? `<span class="pill pending" style="margin-bottom:8px">✏️ ${esc(t('mod_edit'))}</span><br>` : ''}<b class="serif" style="font-size:20px">${esc(x.edit ? x.edit.name : x.name)}</b><div class="hint" style="margin:4px 0 8px">${esc(metaOf(x.edit ? { ...x, ...x.edit } : x))}${x.uname ? ' · @' + esc(x.uname) : ''}${x.edit && x.edit.photo ? ' · 🖼️' : ''}</div><p style="margin:0 0 8px">${esc(x.edit ? x.edit.descr : x.descr || '')}</p>${x.edit && (x.edit.name !== x.name || x.edit.descr !== x.descr) ? `<p class="hint" style="margin:0 0 8px;text-decoration:line-through">${esc(x.name)}: ${esc(x.descr || '')}</p>` : ''}<p class="hint" style="margin:0 0 12px">${esc(t('mod_by', { who: x.by }))}</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><button class="btn main" data-ok="${x.id}" data-kind="${x.edit ? 'edit' : ''}">✅ ${esc(t('mod_ok'))}</button><button class="btn" data-no="${x.id}" data-kind="${x.edit ? 'edit' : ''}">❌ ${esc(t('mod_no'))}</button></div><button class="btn small" data-open="${esc(x.link)}" style="width:100%;margin-top:8px">🔗 ${esc(t('open'))} ${x.uname ? '@' + esc(x.uname) : ''}</button></div></div>`).join('')
       : `<div class="empty"><b>${esc(t('mod_none'))}</b>${esc(t('mod_none_t'))}</div>`);
+  $('app').insertAdjacentHTML('beforeend', `<div class="idx" style="margin-top:16px;padding:16px"><b class="serif" style="font-size:18px">📣 ${esc(t('bc_title'))}</b><p class="hint" style="margin:6px 0 10px">${esc(t('bc_sub'))}</p><textarea class="inp" id="bct" maxlength="1500" placeholder="${esc(t('bc_ph'))}"></textarea><button class="btn main" id="bcs" style="margin-top:10px">${esc(t('bc_send'))}</button></div>`);
+  $('bcs').onclick = () => { const v = $('bct').value.trim(); if (v.length < 5) return; const send2 = async (ok) => { if (!ok) return; $('bcs').disabled = true; const z = await api('broadcast', { text: v }); $('bcs').disabled = false; if (z.ok) { $('bct').value = ''; toast(t('bc_done', { n: nf(z.n) })); } else toast(t('e_server')); }; if (tgw && tgw.showConfirm) tgw.showConfirm(t('bc_confirm'), send2); else send2(confirm(t('bc_confirm'))); };
   const act = async (id, ok, b) => { b.disabled = true; const r2 = await api('decide', { id, ok, kind: b.dataset.kind || '' }); haptic('medium'); toast(r2.msg || ''); const card = $('m' + id); if (card) card.remove(); if (!$('app').querySelector('[data-ok]')) mod(); };
   $('app').querySelectorAll('[data-ok]').forEach((b) => b.onclick = () => act(Number(b.dataset.ok), true, b));
   $('app').querySelectorAll('[data-no]').forEach((b) => b.onclick = () => act(Number(b.dataset.no), false, b));
@@ -362,6 +383,7 @@ function help() {
   $('sup').onclick = () => openLink(ME.support);
 }
 $('helpb').onclick = () => { haptic(); help(); };
+$('bellb').onclick = () => { haptic(); notifs(); };
 function gate() {
   $('bar').style.display = 'none'; $('sbox').style.display = 'none';
   $('app').innerHTML = `<div class="center"><div class="big" aria-hidden="true">📚</div><h1>${esc(t('gate_title'))}</h1><p class="sub">${esc(t('gate_text'))}</p><div style="display:grid;gap:8px"><button class="btn main" id="gj">${esc(t('gate_join'))}</button><button class="btn" id="gc">${esc(t('gate_check'))}</button></div></div>`;
@@ -380,10 +402,12 @@ document.addEventListener('focusout', () => setTimeout(() => { if (!/^(INPUT|TEX
     ME = await api('me', { src: src || 'app' }); if (ME.error) throw new Error(ME.error);
     T = { ...EN, ...(ME.t || {}) }; document.documentElement.lang = ME.lang || 'en'; if (ME.lang === 'ar') document.documentElement.dir = 'rtl';
     $('q').placeholder = t('search_ph');
+    if (ME.unread) { $('bdot').hidden = false; $('bdot').textContent = ME.unread > 9 ? '9+' : String(ME.unread); }
     if (ME.member === false) { bar(); return gate(); }
     const qs = new URLSearchParams(location.search), want = qs.get('tab');
+    if (qs.get('id')) { go('explore'); const one = await api('one', { id: qs.get('id') }); if (one.item) detail(one.item); return; }
     if (want === 'add' && qs.get('link')) { A.link = qs.get('link'); go('add'); return find(); }
-    go(['add', 'mine', 'help'].includes(want) || (want === 'mod' && ME.admin) ? want : 'explore');
+    go(['add', 'mine', 'help', 'notifs'].includes(want) || (want === 'mod' && ME.admin) ? want : 'explore');
   } catch (e) { $('app').innerHTML = `<div class="empty"><b>${esc(t('e_server'))}</b></div>`; }
 })();
 </script>
