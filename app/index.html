@@ -251,7 +251,7 @@ document.addEventListener('focusout', () => setTimeout(() => { if (!/^(INPUT|TEX
 
 (async () => {
   if (tgw) { try { tgw.ready(); tgw.expand(); tgw.disableVerticalSwipes && tgw.disableVerticalSwipes(); tgw.setHeaderColor && tgw.setHeaderColor('#13213a'); tgw.setBackgroundColor && tgw.setBackgroundColor('#f3f5f9'); } catch (e) {} }
-  if (!INIT) { $('sbox').style.display = 'none'; $('app').innerHTML = `<div class="center"><div class="big">📚</div><h1>GramPedia</h1><p class="sub">${esc(t('open_tg'))}</p><a class="btn main" href="https://t.me/GramPediaBot">Telegram</a></div>`; return; }
+  if (!INIT) { $('sbox').style.display = 'none'; $('app').innerHTML = `<div class="center"><div class="big">📚</div><h1>GramPedia</h1><p class="sub">${esc(t('open_tg'))}</p><a class="btn main" href="https://t.me/Grampedia_bot">Telegram</a></div>`; return; }
   try {
     const src = (tgw.initDataUnsafe && tgw.initDataUnsafe.start_param) || '';
     ME = await api('me', { src: src || 'app' }); if (ME.error) throw new Error(ME.error);
