@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>GramPedia</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#13213a;--paper:#f3f5f9;--card:#fff;--line:#dde3ec;--muted:#627089;--blue:#2a8bd8;--blue-ink:#1b6fb3;--ok:#1f8a5b;--warn:#b7791f;--bad:#c2410c}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.5 'DM Sans',system-ui,-apple-system,sans-serif}
+button,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.serif{font-family:Fraunces,Georgia,serif}
+header{position:sticky;top:0;z-index:5;background:var(--ink);color:#fff;padding:calc(12px + env(safe-area-inset-top)) 16px 12px}
+header .r{display:flex;align-items:center;gap:10px}
+header .logo{font:800 22px Fraunces,Georgia,serif;letter-spacing:-.01em;flex:1}
+header .logo small{font:500 12px 'DM Sans',sans-serif;opacity:.65;margin-left:6px;letter-spacing:0}
+.iconb{border:0;background:rgba(255,255,255,.12);color:#fff;width:36px;height:36px;border-radius:50%;font-size:16px;cursor:pointer}
+.search{margin-top:12px;display:flex;align-items:center;gap:8px;background:#fff;border-radius:12px;padding:0 12px}
+.search input{border:0;outline:0;flex:1;padding:12px 0;background:transparent;color:var(--ink);min-width:0}
+.search span{opacity:.5}
+main{padding:16px 16px calc(92px + env(safe-area-inset-bottom));max-width:620px;margin:0 auto}
+h1{font:800 28px/1.15 Fraunces,Georgia,serif;margin:6px 0 8px;letter-spacing:-.01em}
+h2{font:700 19px Fraunces,Georgia,serif;margin:22px 0 10px}
+.sub{color:var(--muted);margin:0 0 16px}
+/* the shelf: topics as book spines */
+.shelf{display:flex;gap:6px;overflow-x:auto;padding:4px 2px 14px;margin:0 -16px;padding-left:16px;padding-right:16px;scrollbar-width:none;align-items:flex-end;border-bottom:3px solid #c9d2df}
+.shelf::-webkit-scrollbar{display:none}
+.spine{flex:none;width:52px;border:0;border-radius:5px 5px 2px 2px;color:#fff;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:8px 0 7px;box-shadow:inset -4px 0 0 rgba(0,0,0,.14),inset 3px 0 0 rgba(255,255,255,.12);transition:transform .15s}
+.spine .e{font-size:18px}
+.spine .n{writing-mode:vertical-rl;transform:rotate(180deg);font:600 13px Fraunces,Georgia,serif;white-space:nowrap;max-height:150px;overflow:hidden;text-overflow:ellipsis;margin:6px 0}
+.spine .c{font:700 11px 'DM Sans',sans-serif;opacity:.85}
+.spine[aria-pressed=true]{transform:translateY(-10px);outline:3px solid var(--ink);outline-offset:1px}
+.types{display:flex;gap:6px;margin:14px 0 4px}
+.types button{flex:1;border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:8px 4px;font-weight:700;font-size:14px;cursor:pointer}
+.types button[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.sortr{display:flex;justify-content:space-between;align-items:center;margin:12px 0 6px;color:var(--muted);font-size:14px}
+.sortr button{border:0;background:none;color:var(--blue-ink);font-weight:700;cursor:pointer;padding:4px}
+/* the index */
+.idx{background:#fff;border:1.5px solid var(--line);border-radius:14px;overflow:hidden}
+.row{display:flex;gap:12px;align-items:center;padding:12px;border-bottom:1px solid var(--line);cursor:pointer;width:100%;background:none;border-left:0;border-right:0;border-top:0;text-align:left}
+.row:last-child{border-bottom:0}
+.thumb{width:54px;height:54px;border-radius:12px;object-fit:cover;flex:none;background:#e7ecf3;display:flex;align-items:center;justify-content:center;font-size:24px}
+.row .t{flex:1;min-width:0}
+.row .t b{display:block;font:700 16.5px Fraunces,Georgia,serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .t .m{font-size:13px;color:var(--muted);font-weight:500}
+.row .t p{margin:2px 0 0;font-size:14px;color:#3a4558;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.rank{font:800 15px Fraunces,Georgia,serif;color:var(--muted);width:20px;text-align:center;flex:none}
+.more{display:block;width:100%;margin:14px 0;border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:12px;font-weight:700;cursor:pointer}
+.empty{text-align:center;color:var(--muted);padding:34px 10px}
+.empty b{display:block;color:var(--ink);font:700 19px Fraunces,Georgia,serif;margin-bottom:6px}
+/* buttons and forms */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:0;border-radius:12px;padding:13px 18px;font-weight:700;cursor:pointer;background:#e7ecf3;color:var(--ink);text-decoration:none}
+.btn.main{background:var(--blue);color:#fff;width:100%;font-size:16.5px;padding:15px}
+.btn.main:disabled{opacity:.55}
+.btn.dark{background:var(--ink);color:#fff}
+.btn.small{padding:8px 12px;font-size:14px}
+label.f{display:block;font-weight:700;margin:18px 0 7px}
+.inp{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;background:#fff;outline:none}
+.inp:focus{border-color:var(--blue)}
+textarea.inp{min-height:110px;resize:vertical}
+.hint{font-size:13px;color:var(--muted);margin:6px 0 0}
+.err{color:var(--bad);font-weight:700;margin:10px 0 0}
+.pickrow{display:flex;gap:8px}
+.pickrow .inp{flex:1;min-width:0}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tgrid button{border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:10px 4px;font-size:13px;font-weight:700;cursor:pointer;line-height:1.25}
+.tgrid button span{display:block;font-size:20px}
+.tgrid button[aria-pressed=true]{border-color:var(--ink);background:var(--ink);color:#fff}
+.found{display:flex;gap:12px;align-items:center;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:12px;margin-top:12px}
+.photo{display:flex;align-items:center;gap:12px}
+.photo img{width:64px;height:64px;border-radius:12px;object-fit:cover}
+/* mine */
+.pill{display:inline-block;font-size:12.5px;font-weight:700;padding:2px 9px;border-radius:999px;background:#e7ecf3}
+.pill.approved{background:#dcf2e7;color:#14532d}.pill.pending{background:#fdf0d5;color:#7c4a03}.pill.refused,.pill.unsub{background:#fde3d7;color:#7c2d12}
+/* detail sheet */
+.sheet-bg{position:fixed;inset:0;background:rgba(19,33,58,.45);z-index:20;display:flex;align-items:flex-end;justify-content:center}
+.sheet{background:#fff;width:100%;max-width:620px;border-radius:20px 20px 0 0;padding:10px 18px calc(18px + env(safe-area-inset-bottom));max-height:88vh;overflow:auto;animation:up .22s ease-out}
+@keyframes up{from{transform:translateY(40px);opacity:.4}}
+.grab{width:42px;height:5px;border-radius:3px;background:#d3dae5;margin:0 auto 12px}
+.sheet .hero{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:14px;background:#e7ecf3}
+.sheet h3{font:800 24px/1.2 Fraunces,Georgia,serif;margin:14px 0 4px}
+.sheet .m{color:var(--muted);font-size:14px;font-weight:500}
+.sheet p{white-space:pre-wrap;color:#2b3547}
+.toast{position:fixed;left:50%;top:calc(80px + env(safe-area-inset-top));transform:translateX(-50%);background:var(--ink);color:#fff;font-weight:700;padding:10px 18px;border-radius:999px;z-index:30;max-width:90vw;text-align:center}
+nav.bar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(3,1fr);padding:6px 8px calc(6px + env(safe-area-inset-bottom));z-index:6}
+nav.bar button{border:0;background:none;padding:7px 2px;font-size:12.5px;font-weight:700;color:var(--muted);cursor:pointer;border-radius:12px}
+nav.bar button span{display:block;font-size:21px;line-height:1.2}
+nav.bar button[aria-current=page]{color:var(--ink);background:#e9eef6}
+body.typing nav.bar{display:none}
+.center{text-align:center;padding:30px 6px}
+.center .big{font-size:58px}
+.load{display:flex;justify-content:center;padding:40px}.load i{width:26px;height:26px;border:3px solid var(--line);border-top-color:var(--blue);border-radius:50%;animation:sp 1s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.sheet,.load i,.spine{animation:none;transition:none}}
+.faq details{border-bottom:1px solid var(--line);padding:12px 0}.faq summary{font-weight:700;cursor:pointer}.faq p{margin:8px 0 0;color:#3a4558}
+</style></head>
+<body>
+<header><div class="r"><div class="logo">GramPedia<small id="count"></small></div><button class="iconb" id="helpb" aria-label="Help">?</button></div>
+<div class="search" id="sbox"><span aria-hidden="true">🔍</span><input id="q" type="search" autocomplete="off" enterkeyhint="search"></div></header>
+<main id="app"><div class="load"><i></i></div></main>
+<nav class="bar" id="bar" aria-label="Sections"></nav>
+<script>
+const API = 'https://pote-ia-bot-en-production.up.railway.app';
+const tgw = window.Telegram && Telegram.WebApp, INIT = tgw ? tgw.initData : '';
+const SPINE = { crypto: '#9a6a12', earn: '#2e7d4f', games: '#6b3fa0', fun: '#c2410c', news: '#334155', edu: '#1e5aa8', tech: '#0f766e', biz: '#7c2d12', deals: '#be185d', sport: '#15803d', media: '#7e22ce', life: '#4d7c0f', other: '#64748b' };
+const EN = {
+ explore: 'Explore', add: 'Add', mine: 'My listings', search_ph: 'Search channels, groups and bots', listings: '{n} listings',
+ tp_crypto: 'Crypto & finance', tp_earn: 'Earn money', tp_games: 'Games', tp_fun: 'Fun & memes', tp_news: 'News', tp_edu: 'Education', tp_tech: 'Tech & AI', tp_biz: 'Business & marketing', tp_deals: 'Deals & shopping', tp_sport: 'Sports', tp_media: 'Music, movies & series', tp_life: 'Lifestyle & health', tp_other: 'Other',
+ ty_all: 'All', ty_channel: 'Channels', ty_group: 'Groups', ty_bot: 'Bots', one_channel: 'Channel', one_group: 'Group', one_bot: 'Bot',
+ sort_top: 'Most popular', sort_new: 'Newest', sorted_top: 'Sorted by audience', sorted_new: 'Newest first', members: '{n} subscribers', more: 'Show more',
+ none_title: 'Nothing here yet', none_text: 'Be the first: add your channel, group or bot.', none_btn: 'Add mine', open: 'Open', see_post: 'See it on the channel',
+ add_title: 'Add your channel, group or bot', add_sub: 'Free. Every listing is reviewed by a human before it appears in GramPedia, on our website and on our channel.',
+ f_link: 'Its @username or t.me link', f_link_ph: '@yourchannel', check: 'Find', checking: 'Searching…', f_type: 'It is a', f_topic: 'Topic', f_name: 'Name', f_desc: 'Description', f_desc_ph: 'What will people find there? (10 to 300 characters)', f_photo: 'Picture', photo_auto: 'Its Telegram profile picture will be used.', photo_pick: 'Choose another picture', photo_need: 'Choose a picture', send: 'Send my listing', sending: 'Sending…',
+ e_link: 'Enter a valid @username, for example @yourchannel.', e_notfound: 'We could not find it. Check that it is public and spelled correctly.', e_already: 'This one is already in GramPedia.', e_type: 'Choose what it is.', e_topic: 'Choose a topic.', e_name: 'Enter a name.', e_short: 'The description is too short.', e_image: 'Choose a picture.', e_toomany: 'You already have 5 listings waiting for review.', e_server: 'Something went wrong. Try again.',
+ sent_title: 'Listing sent', sent_text: 'We review it soon. You will get a message from the bot as soon as it is published.', sent_btn: 'See my listings', add_another: 'Add another one',
+ mine_empty_t: 'No listing yet', mine_empty: 'Add your channel, group or bot to GramPedia.', st_pending: 'In review', st_approved: 'Published', st_refused: 'Not accepted', st_unsub: 'Removed (left the channel)', remove: 'Remove', remove_q: 'Remove this listing from GramPedia?',
+ gate_title: 'Join our channel to continue', gate_text: 'GramPedia is free for the subscribers of our channel, where new listings are published every day.', gate_join: 'Join the channel', gate_check: 'I joined', gate_not: 'Not yet: join the channel, then tap again.',
+ help: 'Help', q1: 'Is it free?', a1: 'Yes. Adding a channel, group or bot to GramPedia is free.', q2: 'What can I add?', a2: 'Public Telegram channels, groups and bots. Each one is reviewed by a human before it appears.', q3: 'Where does my listing appear?', a3: 'In the GramPedia app, on our website (visible on Google) and on our Telegram channel.', q4: 'Why must I join the channel?', a4: 'GramPedia is reserved for its subscribers. If you leave the channel, your listings are removed.', q5: 'How are listings sorted?', a5: 'By topic, then by audience: the channels and groups with the most subscribers come first.', contact: 'Contact us', open_tg: 'Open GramPedia in Telegram'
+};
+let T = EN, ME = null, TAB = 'explore';
+const S = { type: '', topic: '', sort: 'top', q: '', items: [], total: 0, off: 0, byTopic: {}, byType: {} };
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s == null ? '' : s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const t = (k, v) => { let s = T[k] || EN[k] || k; if (v) for (const [a, b] of Object.entries(v)) s = s.split('{' + a + '}').join(b); return s; };
+const nf = (n) => Number(n || 0).toLocaleString(ME && ME.lang ? ME.lang : 'en');
+const haptic = (k) => { try { tgw.HapticFeedback.impactOccurred(k || 'light'); } catch (e) {} };
+const openLink = (u) => { if (!u) return; if (tgw && /^https:\/\/t\.me\//.test(u)) tgw.openTelegramLink(u); else if (tgw) tgw.openLink(u); else window.open(u, '_blank'); };
+const toast = (m) => { const d = document.createElement('div'); d.className = 'toast'; d.textContent = m; document.body.appendChild(d); setTimeout(() => d.remove(), 2600); };
+async function api(action, data) {
+  const r = await fetch(API + '/gp/api', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ initData: INIT, action, ...(data || {}) }) });
+  const j = await r.json(); if (j && j.need === 'join' && ME) { ME.member = false; setTimeout(gate, 0); } return j;
+}
+const load = () => { $('app').innerHTML = '<div class="load"><i></i></div>'; };
+const thumb = (x, cls) => x.img ? `<img class="${cls || 'thumb'}" src="${API + x.img}" alt="" loading="lazy">` : `<div class="${cls || 'thumb'}">${(ME.topics.find((p) => p.k === x.topic) || { e: '✨' }).e}</div>`;
+const metaOf = (x) => [t('one_' + x.type), t('tp_' + x.topic), x.members ? t('members', { n: nf(x.members) }) : ''].filter(Boolean).join(', ');
+function bar() {
+  const tabs = [['explore', '🔍'], ['add', '➕'], ['mine', '📋']];
+  $('bar').innerHTML = tabs.map(([k, e]) => `<button data-tab="${k}"${k === TAB ? ' aria-current="page"' : ''}><span aria-hidden="true">${e}</span>${esc(t(k))}</button>`).join('');
+  $('bar').querySelectorAll('button').forEach((b) => b.onclick = () => { haptic(); go(b.dataset.tab); });
+  $('sbox').style.display = TAB === 'explore' ? '' : 'none';
+}
+function go(tab) { TAB = tab; bar(); window.scrollTo(0, 0); ({ explore, add, mine, help })[tab](); }
+
+// ---------- Explore ----------
+async function fetchList(append) {
+  const r = await api('list', { type: S.type, topic: S.topic, sort: S.sort, q: S.q, offset: append ? S.off : 0 });
+  S.items = append ? S.items.concat(r.items || []) : (r.items || []); S.total = r.total || 0; S.off = S.items.length; S.byTopic = r.byTopic || {}; S.byType = r.byType || {};
+  if (!S.type && !S.topic && !S.q) $('count').textContent = t('listings', { n: nf(S.total) });
+}
+async function explore(keep) {
+  if (!keep) { load(); await fetchList(); }
+  const shelf = ME.topics.map((p) => `<button class="spine" style="background:${SPINE[p.k]};height:${190 + Math.min(30, (S.byTopic[p.k] || 0) * 3)}px" data-tp="${p.k}" aria-pressed="${S.topic === p.k}" aria-label="${esc(t('tp_' + p.k))}"><span class="e" aria-hidden="true">${p.e}</span><span class="n">${esc(t('tp_' + p.k))}</span><span class="c">${S.byTopic[p.k] || 0}</span></button>`).join('');
+  const types = ['', 'channel', 'group', 'bot'].map((k) => `<button data-ty="${k}" aria-pressed="${S.type === k}">${esc(t(k ? 'ty_' + k : 'ty_all'))}</button>`).join('');
+  const rows = S.items.map((x, i) => `<button class="row" data-id="${x.id}">${S.sort === 'top' && !S.q ? `<span class="rank">${i + 1}</span>` : ''}${thumb(x)}<span class="t"><b>${esc(x.name)}</b><span class="m">${esc(metaOf(x))}</span><p>${esc(x.descr || '')}</p></span></button>`).join('');
+  $('app').innerHTML = `<div class="shelf" role="group" aria-label="${esc(t('f_topic'))}">${shelf}</div><div class="types">${types}</div>
+    <div class="sortr"><span>${esc(t(S.sort === 'top' ? 'sorted_top' : 'sorted_new'))}</span><button id="sortb">${esc(t(S.sort === 'top' ? 'sort_new' : 'sort_top'))}</button></div>
+    ${S.items.length ? `<div class="idx">${rows}</div>${S.items.length < S.total ? `<button class="more" id="more">${esc(t('more'))}</button>` : ''}` : `<div class="empty"><b>${esc(t('none_title'))}</b>${esc(t('none_text'))}<div style="margin-top:14px"><button class="btn dark" id="addm">${esc(t('none_btn'))}</button></div></div>`}`;
+  $('app').querySelectorAll('[data-tp]').forEach((b) => b.onclick = async () => { haptic(); S.topic = S.topic === b.dataset.tp ? '' : b.dataset.tp; await fetchList(); explore(true); });
+  $('app').querySelectorAll('[data-ty]').forEach((b) => b.onclick = async () => { haptic(); S.type = b.dataset.ty; await fetchList(); explore(true); });
+  $('sortb').onclick = async () => { S.sort = S.sort === 'top' ? 'new' : 'top'; await fetchList(); explore(true); };
+  if ($('more')) $('more').onclick = async () => { $('more').disabled = true; await fetchList(true); explore(true); };
+  if ($('addm')) $('addm').onclick = () => go('add');
+  $('app').querySelectorAll('[data-id]').forEach((b) => b.onclick = () => detail(S.items.find((x) => String(x.id) === b.dataset.id)));
+}
+function detail(x) {
+  if (!x) return; haptic();
+  const bg = document.createElement('div'); bg.className = 'sheet-bg';
+  bg.innerHTML = `<div class="sheet" role="dialog" aria-modal="true" aria-label="${esc(x.name)}"><div class="grab"></div>${x.img ? `<img class="hero" src="${API + x.img}" alt="">` : ''}<h3>${esc(x.name)}</h3><div class="m">${esc(metaOf(x))}${x.uname ? ' · @' + esc(x.uname) : ''}</div><p>${esc(x.descr || '')}</p>
+    <button class="btn main" id="dopen">${esc(t('open'))} ${x.uname ? '@' + esc(x.uname) : ''}</button>${x.post ? `<button class="btn" id="dpost" style="width:100%;margin-top:8px">${esc(t('see_post'))}</button>` : ''}</div>`;
+  document.body.appendChild(bg);
+  bg.onclick = (e) => { if (e.target === bg) bg.remove(); };
+  bg.querySelector('#dopen').onclick = () => openLink(x.link);
+  if (bg.querySelector('#dpost')) bg.querySelector('#dpost').onclick = () => openLink(x.post);
+}
+let sT = null;
+$('q').addEventListener('input', (e) => { clearTimeout(sT); sT = setTimeout(async () => { S.q = e.target.value.trim(); await fetchList(); explore(true); }, 350); });
+
+// ---------- Add ----------
+const A = { link: '', found: null, type: '', topic: '', name: '', descr: '', image: null };
+function add(msg) {
+  const f = A.found;
+  $('app').innerHTML = `<h1>${esc(t('add_title'))}</h1><p class="sub">${esc(t('add_sub'))}</p>
+  <label class="f" for="alink">${esc(t('f_link'))}</label><div class="pickrow"><input class="inp" id="alink" autocomplete="off" autocapitalize="off" placeholder="${esc(t('f_link_ph'))}" value="${esc(A.link)}"><button class="btn dark" id="afind">${esc(t('check'))}</button></div><div id="aerr"></div>
+  ${f ? `
+  <label class="f">${esc(t('f_type'))}</label><div class="types" style="margin:0">${['channel', 'group', 'bot'].map((k) => `<button data-aty="${k}" aria-pressed="${A.type === k}">${esc(t('one_' + k))}</button>`).join('')}</div>
+  <label class="f">${esc(t('f_topic'))}</label><div class="tgrid">${ME.topics.map((p) => `<button data-atp="${p.k}" aria-pressed="${A.topic === p.k}"><span aria-hidden="true">${p.e}</span>${esc(t('tp_' + p.k))}</button>`).join('')}</div>
+  <label class="f" for="aname">${esc(t('f_name'))}</label><input class="inp" id="aname" maxlength="60" value="${esc(A.name)}">
+  <label class="f" for="adesc">${esc(t('f_desc'))}</label><textarea class="inp" id="adesc" maxlength="300" placeholder="${esc(t('f_desc_ph'))}">${esc(A.descr)}</textarea><p class="hint" id="acount">${A.descr.length}/300</p>
+  <label class="f">${esc(t('f_photo'))}</label><div class="photo">${A.image ? `<img src="${A.image}" alt="">` : ''}<div>${!A.image && f.photo ? `<p class="hint" style="margin:0 0 8px">${esc(t('photo_auto'))}</p>` : ''}<label class="btn small">${esc(A.image || f.photo ? t('photo_pick') : t('photo_need'))}<input type="file" accept="image/*" id="afile" hidden></label></div></div>
+  <div id="aout">${msg || ''}</div><div style="margin-top:20px"><button class="btn main" id="asend">${esc(t('send'))}</button></div>` : ''}`;
+  $('alink').oninput = (e) => { A.link = e.target.value; };
+  $('afind').onclick = find;
+  $('alink').onkeydown = (e) => { if (e.key === 'Enter') find(); };
+  if (!f) return;
+  $('app').querySelectorAll('[data-aty]').forEach((b) => b.onclick = () => { haptic(); A.type = b.dataset.aty; add(); });
+  $('app').querySelectorAll('[data-atp]').forEach((b) => b.onclick = () => { haptic(); A.topic = b.dataset.atp; $('app').querySelectorAll('[data-atp]').forEach((x) => x.setAttribute('aria-pressed', x === b)); });
+  $('aname').oninput = (e) => { A.name = e.target.value; };
+  $('adesc').oninput = (e) => { A.descr = e.target.value; $('acount').textContent = A.descr.length + '/300'; };
+  $('afile').onchange = (e) => { const fl = e.target.files[0]; if (fl) shrink(fl).then((d) => { A.image = d; add(); }); };
+  $('asend').onclick = send;
+}
+async function find() {
+  if (!A.link.trim()) return;
+  $('afind').disabled = true; $('afind').textContent = t('checking');
+  const r = await api('check', { link: A.link });
+  if (r.ok) { haptic('medium'); Object.assign(A, { link: '@' + r.uname, found: r, type: r.type, name: A.name || r.name || '', descr: A.descr || String(r.descr || '').slice(0, 300) }); return add(); }
+  $('afind').disabled = false; $('afind').textContent = t('check');
+  $('aerr').innerHTML = `<p class="err">${esc(t('e_' + (r.error || 'server')))}</p>`;
+}
+function shrink(file) { return new Promise((ok) => { const img = new Image(), u = URL.createObjectURL(file); img.onload = () => { const k = Math.min(1, 1280 / Math.max(img.width, img.height)); const c = document.createElement('canvas'); c.width = Math.round(img.width * k); c.height = Math.round(img.height * k); c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); URL.revokeObjectURL(u); ok(c.toDataURL('image/jpeg', .85)); }; img.src = u; }); }
+async function send() {
+  const out = $('aout');
+  for (const [ok, e] of [[A.type, 'e_type'], [A.topic, 'e_topic'], [A.name.trim().length >= 2, 'e_name'], [A.descr.trim().length >= 10, 'e_short'], [A.image || A.found.photo, 'e_image']]) if (!ok) return out.innerHTML = `<p class="err">${esc(t(e))}</p>`;
+  $('asend').disabled = true; $('asend').textContent = t('sending');
+  let r; try { r = await api('add', { link: A.link, type: A.type, topic: A.topic, name: A.name, descr: A.descr, image: A.image, lang: ME.lang }); } catch (e) { r = { error: 'server' }; }
+  if (r.ok) { try { tgw.HapticFeedback.notificationOccurred('success'); } catch (e) {} Object.assign(A, { link: '', found: null, type: '', topic: '', name: '', descr: '', image: null });
+    $('app').innerHTML = `<div class="center"><div class="big" aria-hidden="true">📚</div><h1>${esc(t('sent_title'))}</h1><p class="sub">${esc(t('sent_text'))}</p><div style="display:grid;gap:8px"><button class="btn main" id="smine">${esc(t('sent_btn'))}</button><button class="btn" id="sagain">${esc(t('add_another'))}</button></div></div>`;
+    $('smine').onclick = () => go('mine'); $('sagain').onclick = () => add(); return; }
+  $('asend').disabled = false; $('asend').textContent = t('send');
+  out.innerHTML = `<p class="err">${esc(t('e_' + (r.error || 'server')))}</p>`;
+}
+
+// ---------- My listings ----------
+async function mine() {
+  load(); const r = await api('mine'); const xs = r.items || [];
+  $('app').innerHTML = `<h1>${esc(t('mine'))}</h1>` + (xs.length ? `<div class="idx">${xs.map((x) => `<div class="row" style="cursor:default">${thumb(x)}<span class="t"><b>${esc(x.name)}</b><span class="m">${esc(metaOf(x))}</span><div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap;align-items:center"><span class="pill ${x.status}">${esc(t('st_' + x.status))}</span>${x.post ? `<button class="btn small" data-open="${esc(x.post)}">${esc(t('see_post'))}</button>` : ''}${['approved', 'pending'].includes(x.status) ? `<button class="btn small" data-rm="${x.id}">${esc(t('remove'))}</button>` : ''}</div></span></div>`).join('')}</div>`
+    : `<div class="empty"><b>${esc(t('mine_empty_t'))}</b>${esc(t('mine_empty'))}<div style="margin-top:14px"><button class="btn dark" id="madd">${esc(t('none_btn'))}</button></div></div>`);
+  if ($('madd')) $('madd').onclick = () => go('add');
+  $('app').querySelectorAll('[data-open]').forEach((b) => b.onclick = () => openLink(b.dataset.open));
+  $('app').querySelectorAll('[data-rm]').forEach((b) => b.onclick = () => { const doIt = async (ok) => { if (!ok) return; await api('remove', { id: b.dataset.rm }); mine(); }; if (tgw && tgw.showConfirm) tgw.showConfirm(t('remove_q'), doIt); else doIt(confirm(t('remove_q'))); });
+}
+
+// ---------- Help, subscription ----------
+function help() {
+  TAB = 'help'; bar(); $('sbox').style.display = 'none';
+  $('app').innerHTML = `<h1>${esc(t('help'))}</h1><div class="faq">${[1, 2, 3, 4, 5].map((i) => `<details><summary>${esc(t('q' + i))}</summary><p>${esc(t('a' + i))}</p></details>`).join('')}</div><div style="margin-top:20px"><button class="btn main" id="sup">${esc(t('contact'))}</button></div>`;
+  $('sup').onclick = () => openLink(ME.support);
+}
+$('helpb').onclick = () => { haptic(); help(); };
+function gate() {
+  $('bar').style.display = 'none'; $('sbox').style.display = 'none';
+  $('app').innerHTML = `<div class="center"><div class="big" aria-hidden="true">📚</div><h1>${esc(t('gate_title'))}</h1><p class="sub">${esc(t('gate_text'))}</p><div style="display:grid;gap:8px"><button class="btn main" id="gj">${esc(t('gate_join'))}</button><button class="btn" id="gc">${esc(t('gate_check'))}</button></div></div>`;
+  $('gj').onclick = () => openLink(ME.channel);
+  $('gc').onclick = async () => { $('gc').disabled = true; const m = await api('me', { src: 'app' }); $('gc').disabled = false; if (m.member) { ME = { ...ME, ...m }; $('bar').style.display = ''; haptic('medium'); return go('explore'); } toast(t('gate_not')); };
+}
+// phones: hide the tab bar while typing
+document.addEventListener('focusin', (e) => { if (/^(INPUT|TEXTAREA)$/.test(e.target.tagName) && e.target.type !== 'file') { document.body.classList.add('typing'); setTimeout(() => { try { e.target.scrollIntoView({ block: 'center', behavior: 'smooth' }); } catch (x) {} }, 300); } });
+document.addEventListener('focusout', () => setTimeout(() => { if (!/^(INPUT|TEXTAREA)$/.test((document.activeElement || {}).tagName || '')) document.body.classList.remove('typing'); }, 120));
+
+(async () => {
+  if (tgw) { try { tgw.ready(); tgw.expand(); tgw.disableVerticalSwipes && tgw.disableVerticalSwipes(); tgw.setHeaderColor && tgw.setHeaderColor('#13213a'); tgw.setBackgroundColor && tgw.setBackgroundColor('#f3f5f9'); } catch (e) {} }
+  if (!INIT) { $('sbox').style.display = 'none'; $('app').innerHTML = `<div class="center"><div class="big">📚</div><h1>GramPedia</h1><p class="sub">${esc(t('open_tg'))}</p><a class="btn main" href="https://t.me/GramPediaBot">Telegram</a></div>`; return; }
+  try {
+    const src = (tgw.initDataUnsafe && tgw.initDataUnsafe.start_param) || '';
+    ME = await api('me', { src: src || 'app' }); if (ME.error) throw new Error(ME.error);
+    T = { ...EN, ...(ME.t || {}) }; document.documentElement.lang = ME.lang || 'en'; if (ME.lang === 'ar') document.documentElement.dir = 'rtl';
+    $('q').placeholder = t('search_ph');
+    if (ME.member === false) { bar(); return gate(); }
+    const want = new URLSearchParams(location.search).get('tab'); go(['add', 'mine', 'help'].includes(want) ? want : 'explore');
+  } catch (e) { $('app').innerHTML = `<div class="empty"><b>${esc(t('e_server'))}</b></div>`; }
+})();
+</script>
+</body></html>
