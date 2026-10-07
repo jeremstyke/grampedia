@@ -127,7 +127,7 @@ const EN = {
  mine_empty_t: 'No listing yet', mine_empty: 'Add your channel, group, bot or mini app to GramPedia.', st_pending: 'In review', st_approved: 'Published', st_refused: 'Not accepted', st_unsub: 'Removed (left the channel)', remove: 'Remove', remove_q: 'Remove this listing from GramPedia?',
  gate_title: 'Join our channel to continue', gate_text: 'GramPedia is free for the subscribers of our channel, where new listings are published every day.', gate_join: 'Join the channel', gate_check: 'I joined', gate_not: 'Not yet: join the channel, then tap again.',
  help: 'Help', q1: 'Is it free?', a1: 'Yes. Adding a channel, group or bot to GramPedia is free.', q2: 'What can I add?', a2: 'Public Telegram channels, groups, bots and mini apps. Each one is reviewed by a human before it appears.', q3: 'Where does my listing appear?', a3: 'In the GramPedia app, on our website (visible on Google) and on our Telegram channel.', q4: 'Why must I join the channel?', a4: 'GramPedia is reserved for its subscribers. If you leave the channel, your listings are removed.', q5: 'How are listings sorted?', a5: 'By topic, then by audience: the channels and groups with the most subscribers come first.', contact: 'Contact us', open_tg: 'Open GramPedia in Telegram',
- sponsored: 'Sponsored', feat_btn: 'Feature it', feat_title: 'Feature {name}', feat_sub: 'Put your listing in front of every visitor for 7 days. A Sponsored badge is shown on it.',
+ sponsored: 'Sponsored', feat_btn: 'Feature it', feat_title: 'Feature {name}', feat_sub: 'Invite your friends: each friend who publishes their first listing gives you 1 free day at the top of your topic.',
  feat_home: 'Home page', feat_home_d: 'At the top of GramPedia for everyone, at the top of the website home page, and posted again on our channel.',
  feat_topic: 'Top of its topic', feat_topic_d: 'At the top of {topic} in the app and on its page of the website.',
  feat_now: 'Starts now', feat_from: 'Starts on {d}', feat_pay: 'Pay {n} ⭐', feat_done: 'Done! Your listing is featured.', feat_free: 'Use my {n} free day(s) at the top of its topic', feat_on_home: '⭐ Home page until {d}', feat_on_topic: '⭐ Top of its topic until {d}', feat_soon: '⭐ Featured from {d}',
@@ -317,13 +317,14 @@ async function feature(x) {
   const r = await api('feat_info', { id: x.id }); if (r.error) { toast(t('e_server')); return mine(); }
   const startTxt = (ts) => (ts <= Date.now() + 120000 ? t('feat_now') : t('feat_from', { d: dfmt(new Date(ts).toISOString()) }));
   $('app').innerHTML = `<h1>${esc(t('feat_title', { name: x.name }))}</h1><p class="sub">${esc(t('feat_sub'))}</p>
-    <div class="fopt"><b class="serif">⭐ ${esc(t('feat_home'))}</b><p>${esc(t('feat_home_d'))}</p><p class="hint">${esc(startTxt(r.home.start))}</p><button class="btn main" data-slot="home">${esc(t('feat_pay', { n: r.home.stars }))}</button></div>
-    <div class="fopt"><b class="serif">⭐ ${esc(t('feat_topic'))}</b><p>${esc(t('feat_topic_d', { topic: t('tp_' + r.topic.topic) }))}</p><p class="hint">${esc(startTxt(r.topic.start))}</p><button class="btn main" data-slot="topic">${esc(t('feat_pay', { n: r.topic.stars }))}</button>${r.freeDays ? `<button class="btn" id="ffree" style="width:100%;margin-top:8px">🎁 ${esc(t('feat_free', { n: Math.min(r.freeDays, r.days) }))}</button>` : ''}</div>`;
+    
+    <div class="fopt"><b class="serif">⭐ ${esc(t('feat_topic'))}</b><p>${esc(t('feat_topic_d', { topic: t('tp_' + r.topic.topic) }))}</p><p class="hint">${esc(startTxt(r.topic.start))}</p>${r.freeDays ? `<button class="btn main" id="ffree">🎁 ${esc(t('feat_free', { n: Math.min(r.freeDays, r.days) }))}</button>` : `<p class="hint" style="font-weight:600">${esc(t('inv_text'))}</p><button class="btn dark" id="finv">${esc(t('inv_btn'))}</button>`}</div>`;
   $('app').querySelectorAll('[data-slot]').forEach((b) => b.onclick = async () => {
     b.disabled = true; const inv = await api('feat_buy', { id: x.id, slot: b.dataset.slot }); b.disabled = false; if (!inv.url) return toast(t('e_server'));
     if (tgw && tgw.openInvoice) tgw.openInvoice(inv.url, (st) => { if (st === 'paid') { try { tgw.HapticFeedback.notificationOccurred('success'); } catch (e) {} toast(t('feat_done')); setTimeout(() => go('mine'), 1500); } });
     else openLink(inv.url);
   });
+  if ($('finv')) $('finv').onclick = () => openLink('https://t.me/share/url?url=' + encodeURIComponent(ME.refLink || '') + '&text=' + encodeURIComponent(t('inv_share')));
   if ($('ffree')) $('ffree').onclick = async () => { $('ffree').disabled = true; const z = await api('feat_free', { id: x.id }); if (z.ok) { toast(t('feat_done')); go('mine'); } else { $('ffree').disabled = false; toast(t('e_server')); } };
 }
 
