@@ -324,7 +324,9 @@ document.addEventListener('focusout', () => setTimeout(() => { if (!/^(INPUT|TEX
     T = { ...EN, ...(ME.t || {}) }; document.documentElement.lang = ME.lang || 'en'; if (ME.lang === 'ar') document.documentElement.dir = 'rtl';
     $('q').placeholder = t('search_ph');
     if (ME.member === false) { bar(); return gate(); }
-    const want = new URLSearchParams(location.search).get('tab'); go(['add', 'mine', 'help'].includes(want) || (want === 'mod' && ME.admin) ? want : 'explore');
+    const qs = new URLSearchParams(location.search), want = qs.get('tab');
+    if (want === 'add' && qs.get('link')) { A.link = qs.get('link'); go('add'); return find(); }
+    go(['add', 'mine', 'help'].includes(want) || (want === 'mod' && ME.admin) ? want : 'explore');
   } catch (e) { $('app').innerHTML = `<div class="empty"><b>${esc(t('e_server'))}</b></div>`; }
 })();
 </script>
