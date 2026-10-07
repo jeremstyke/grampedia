@@ -48,6 +48,9 @@ h2{font:700 19px Fraunces,Georgia,serif;margin:22px 0 10px}
 .row .t .m{font-size:13px;color:var(--muted);font-weight:500}
 .row .t p{margin:2px 0 0;font-size:14px;color:#3a4558;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .rank{font:800 15px Fraunces,Georgia,serif;color:var(--muted);width:20px;text-align:center;flex:none}
+.row.feat{background:#fffaf0}.spons{display:inline-block;font-size:12px;font-weight:700;color:#7c4a03;background:#fdf0d5;border-radius:999px;padding:1px 8px;margin-right:4px}
+.fopt{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:16px;margin-bottom:12px}.fopt b{font-size:19px}.fopt p{margin:6px 0 10px;color:#3a4558}.fopt .hint{font-weight:700;color:var(--ink)}
+.btn.gold{background:#f2b632;color:var(--ink)}
 .more{display:block;width:100%;margin:14px 0;border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:12px;font-weight:700;cursor:pointer}
 .empty{text-align:center;color:var(--muted);padding:34px 10px}
 .empty b{display:block;color:var(--ink);font:700 19px Fraunces,Georgia,serif;margin-bottom:6px}
@@ -123,7 +126,13 @@ const EN = {
  sent_title: 'Listing sent', sent_text: 'We review it soon. Once published, it appears in the app, on our website (visible on Google) and on our channel, and the bot lets you know.', sent_btn: 'See my listings', add_another: 'Add another one',
  mine_empty_t: 'No listing yet', mine_empty: 'Add your channel, group, bot or mini app to GramPedia.', st_pending: 'In review', st_approved: 'Published', st_refused: 'Not accepted', st_unsub: 'Removed (left the channel)', remove: 'Remove', remove_q: 'Remove this listing from GramPedia?',
  gate_title: 'Join our channel to continue', gate_text: 'GramPedia is free for the subscribers of our channel, where new listings are published every day.', gate_join: 'Join the channel', gate_check: 'I joined', gate_not: 'Not yet: join the channel, then tap again.',
- help: 'Help', q1: 'Is it free?', a1: 'Yes. Adding a channel, group or bot to GramPedia is free.', q2: 'What can I add?', a2: 'Public Telegram channels, groups, bots and mini apps. Each one is reviewed by a human before it appears.', q3: 'Where does my listing appear?', a3: 'In the GramPedia app, on our website (visible on Google) and on our Telegram channel.', q4: 'Why must I join the channel?', a4: 'GramPedia is reserved for its subscribers. If you leave the channel, your listings are removed.', q5: 'How are listings sorted?', a5: 'By topic, then by audience: the channels and groups with the most subscribers come first.', contact: 'Contact us', open_tg: 'Open GramPedia in Telegram', mod: 'Moderation', mod_users: 'users', mod_live: 'published', mod_wait: 'waiting', mod_none: 'Nothing to review', mod_none_t: 'Every listing has been handled.', mod_ok: 'Publish', mod_no: 'Refuse', mod_by: 'Sent by {who}', edit: 'Edit', edit_title: 'Edit the listing', edit_save: 'Save the changes', edit_sent: 'Changes sent: they will be online after review.', edit_live: 'Changes saved.', editing: 'Changes in review', mod_edit: 'Change', photo_keep: 'Current picture', photo_new: 'New picture'
+ help: 'Help', q1: 'Is it free?', a1: 'Yes. Adding a channel, group or bot to GramPedia is free.', q2: 'What can I add?', a2: 'Public Telegram channels, groups, bots and mini apps. Each one is reviewed by a human before it appears.', q3: 'Where does my listing appear?', a3: 'In the GramPedia app, on our website (visible on Google) and on our Telegram channel.', q4: 'Why must I join the channel?', a4: 'GramPedia is reserved for its subscribers. If you leave the channel, your listings are removed.', q5: 'How are listings sorted?', a5: 'By topic, then by audience: the channels and groups with the most subscribers come first.', contact: 'Contact us', open_tg: 'Open GramPedia in Telegram',
+ sponsored: 'Sponsored', feat_btn: 'Feature it', feat_title: 'Feature {name}', feat_sub: 'Put your listing in front of every visitor for 7 days. A Sponsored badge is shown on it.',
+ feat_home: 'Home page', feat_home_d: 'At the top of GramPedia for everyone, at the top of the website home page, and posted again on our channel.',
+ feat_topic: 'Top of its topic', feat_topic_d: 'At the top of {topic} in the app and on its page of the website.',
+ feat_now: 'Starts now', feat_from: 'Starts on {d}', feat_pay: 'Pay {n} ⭐', feat_done: 'Done! Your listing is featured.', feat_free: 'Use my {n} free day(s) at the top of its topic', feat_on_home: '⭐ Home page until {d}', feat_on_topic: '⭐ Top of its topic until {d}', feat_soon: '⭐ Featured from {d}',
+ stats7: '{v} views, {c} clicks in 7 days', statsAll: '{v} views, {c} clicks in total',
+ inv_title: '👥 Invite your friends', inv_text: 'Each friend who publishes their first listing gives you 1 free day at the top of your topic.', inv_btn: 'Invite friends', inv_share: 'Discover GramPedia, the directory of Telegram channels, groups, bots and mini apps, and add yours for free!', inv_days: 'You have {n} free day(s) of featuring.', mod_stars: '{n} ⭐ of featuring in 30 days', mod: 'Moderation', mod_users: 'users', mod_live: 'published', mod_wait: 'waiting', mod_none: 'Nothing to review', mod_none_t: 'Every listing has been handled.', mod_ok: 'Publish', mod_no: 'Refuse', mod_by: 'Sent by {who}', edit: 'Edit', edit_title: 'Edit the listing', edit_save: 'Save the changes', edit_sent: 'Changes sent: they will be online after review.', edit_live: 'Changes saved.', editing: 'Changes in review', mod_edit: 'Change', photo_keep: 'Current picture', photo_new: 'New picture'
 };
 let T = EN, ME = null, TAB = 'explore';
 const S = { lang: '', type: '', topic: '', sort: 'top', q: '', items: [], total: 0, off: 0, byTopic: {}, byType: {} };
@@ -154,6 +163,7 @@ function go(tab) { TAB = tab; bar(); window.scrollTo(0, 0); ({ explore, add, min
 // ---------- Explore ----------
 async function fetchList(append) {
   const r = await api('list', { lang: S.lang, type: S.type, topic: S.topic, sort: S.sort, q: S.q, offset: append ? S.off : 0 });
+  if (!append) S.featured = r.featured || [];
   S.items = append ? S.items.concat(r.items || []) : (r.items || []); S.total = r.total || 0; S.off = S.items.length; S.byTopic = r.byTopic || {}; S.byType = r.byType || {};
   if (!S.type && !S.topic && !S.q) $('count').textContent = t('listings', { n: nf(S.total) });
 }
@@ -161,17 +171,18 @@ async function explore(keep) {
   if (!keep) { load(); await fetchList(); }
   const shelf = ME.topics.map((p) => `<button class="spine" style="background:${SPINE[p.k]};height:${190 + Math.min(30, (S.byTopic[p.k] || 0) * 3)}px" data-tp="${p.k}" aria-pressed="${S.topic === p.k}" aria-label="${esc(t('tp_' + p.k))}"><span class="e" aria-hidden="true">${p.e}</span><span class="n">${esc(t('tp_' + p.k))}</span><span class="c">${S.byTopic[p.k] || 0}</span></button>`).join('');
   const types = ['', 'channel', 'group', 'bot', 'app'].map((k) => `<button data-ty="${k}" aria-pressed="${S.type === k}">${esc(t(k ? 'ty_' + k : 'ty_all'))}</button>`).join('');
+  const frows = (S.featured || []).map((x) => `<button class="row feat" data-id="${x.id}">${thumb(x)}<span class="t"><b>${esc(x.name)}</b><span class="m"><span class="spons">⭐ ${esc(t('sponsored'))}</span> ${esc(metaOf(x))}</span><p>${esc(x.descr || '')}</p></span></button>`).join('');
   const rows = S.items.map((x, i) => `<button class="row" data-id="${x.id}">${S.sort === 'top' && !S.q ? `<span class="rank">${i + 1}</span>` : ''}${thumb(x)}<span class="t"><b>${esc(x.name)}</b><span class="m">${esc(metaOf(x))}</span><p>${esc(x.descr || '')}</p></span></button>`).join('');
   $('app').innerHTML = `<div class="shelf" role="group" aria-label="${esc(t('f_topic'))}">${shelf}</div><div class="types">${types}</div>
     <div class="sortr"><select id="lsel" class="lsel" aria-label="${esc(t('l_all'))}"><option value="">${esc(t('l_all'))}</option>${ME.langs.map((l) => `<option value="${l.k}"${S.lang === l.k ? ' selected' : ''}>${l.e} ${esc(t('lg_' + l.k))}</option>`).join('')}</select><button id="sortb">${esc(t(S.sort === 'top' ? 'sort_new' : 'sort_top'))}</button></div>
-    ${S.items.length ? `<div class="idx">${rows}</div>${S.items.length < S.total ? `<button class="more" id="more">${esc(t('more'))}</button>` : ''}` : `<div class="empty"><b>${esc(t('none_title'))}</b>${esc(t('none_text'))}<div style="margin-top:14px"><button class="btn dark" id="addm">${esc(t('none_btn'))}</button></div></div>`}`;
+    ${frows ? `<div class="idx" style="margin-bottom:12px">${frows}</div>` : ''}${S.items.length ? `<div class="idx">${rows}</div>${S.items.length < S.total ? `<button class="more" id="more">${esc(t('more'))}</button>` : ''}` : `<div class="empty"><b>${esc(t('none_title'))}</b>${esc(t('none_text'))}<div style="margin-top:14px"><button class="btn dark" id="addm">${esc(t('none_btn'))}</button></div></div>`}`;
   $('app').querySelectorAll('[data-tp]').forEach((b) => b.onclick = async () => { haptic(); S.topic = S.topic === b.dataset.tp ? '' : b.dataset.tp; await fetchList(); explore(true); });
   $('app').querySelectorAll('[data-ty]').forEach((b) => b.onclick = async () => { haptic(); S.type = b.dataset.ty; await fetchList(); explore(true); });
   $('lsel').onchange = async (e) => { S.lang = e.target.value; await fetchList(); explore(true); };
   $('sortb').onclick = async () => { S.sort = S.sort === 'top' ? 'new' : 'top'; await fetchList(); explore(true); };
   if ($('more')) $('more').onclick = async () => { $('more').disabled = true; await fetchList(true); explore(true); };
   if ($('addm')) $('addm').onclick = () => go('add');
-  $('app').querySelectorAll('[data-id]').forEach((b) => b.onclick = () => detail(S.items.find((x) => String(x.id) === b.dataset.id)));
+  $('app').querySelectorAll('[data-id]').forEach((b) => b.onclick = () => detail(S.items.concat(S.featured || []).find((x) => String(x.id) === b.dataset.id)));
 }
 function detail(x) {
   if (!x) return; haptic();
@@ -180,7 +191,7 @@ function detail(x) {
     <button class="btn main" id="dopen">${esc(t('open'))} ${x.uname ? '@' + esc(x.uname) : ''}</button>${ME.admin ? `<button class="btn" id="dedit" style="width:100%;margin-top:8px">✏️ ${esc(t('edit'))}</button>` : ''}${x.post ? `<button class="btn" id="dpost" style="width:100%;margin-top:8px">${esc(t('see_post'))}</button>` : ''}</div>`;
   document.body.appendChild(bg);
   bg.onclick = (e) => { if (e.target === bg) bg.remove(); };
-  bg.querySelector('#dopen').onclick = () => openLink(x.link);
+  bg.querySelector('#dopen').onclick = () => { api('click', { id: x.id }).catch(() => {}); openLink(x.link); };
   if (bg.querySelector('#dedit')) bg.querySelector('#dedit').onclick = () => editForm(x, 'explore');
   if (bg.querySelector('#dpost')) bg.querySelector('#dpost').onclick = () => openLink(x.post);
 }
@@ -299,13 +310,33 @@ function editForm(x, back, msg) {
   };
 }
 
+// ---------- Featuring ----------
+const dfmt = (iso) => new Date(iso).toLocaleDateString(ME && ME.lang === 'fr' ? 'fr-FR' : 'en-GB', { day: 'numeric', month: 'long' });
+async function feature(x) {
+  if (!x) return; load(); $('sbox').style.display = 'none';
+  const r = await api('feat_info', { id: x.id }); if (r.error) { toast(t('e_server')); return mine(); }
+  const startTxt = (ts) => (ts <= Date.now() + 120000 ? t('feat_now') : t('feat_from', { d: dfmt(new Date(ts).toISOString()) }));
+  $('app').innerHTML = `<h1>${esc(t('feat_title', { name: x.name }))}</h1><p class="sub">${esc(t('feat_sub'))}</p>
+    <div class="fopt"><b class="serif">⭐ ${esc(t('feat_home'))}</b><p>${esc(t('feat_home_d'))}</p><p class="hint">${esc(startTxt(r.home.start))}</p><button class="btn main" data-slot="home">${esc(t('feat_pay', { n: r.home.stars }))}</button></div>
+    <div class="fopt"><b class="serif">⭐ ${esc(t('feat_topic'))}</b><p>${esc(t('feat_topic_d', { topic: t('tp_' + r.topic.topic) }))}</p><p class="hint">${esc(startTxt(r.topic.start))}</p><button class="btn main" data-slot="topic">${esc(t('feat_pay', { n: r.topic.stars }))}</button>${r.freeDays ? `<button class="btn" id="ffree" style="width:100%;margin-top:8px">🎁 ${esc(t('feat_free', { n: Math.min(r.freeDays, r.days) }))}</button>` : ''}</div>`;
+  $('app').querySelectorAll('[data-slot]').forEach((b) => b.onclick = async () => {
+    b.disabled = true; const inv = await api('feat_buy', { id: x.id, slot: b.dataset.slot }); b.disabled = false; if (!inv.url) return toast(t('e_server'));
+    if (tgw && tgw.openInvoice) tgw.openInvoice(inv.url, (st) => { if (st === 'paid') { try { tgw.HapticFeedback.notificationOccurred('success'); } catch (e) {} toast(t('feat_done')); setTimeout(() => go('mine'), 1500); } });
+    else openLink(inv.url);
+  });
+  if ($('ffree')) $('ffree').onclick = async () => { $('ffree').disabled = true; const z = await api('feat_free', { id: x.id }); if (z.ok) { toast(t('feat_done')); go('mine'); } else { $('ffree').disabled = false; toast(t('e_server')); } };
+}
+
 // ---------- My listings ----------
 async function mine() {
-  load(); const r = await api('mine'); const xs = r.items || [];
-  $('app').innerHTML = `<h1>${esc(t('mine'))}</h1>` + (xs.length ? `<div class="idx">${xs.map((x) => `<div class="row" style="cursor:default">${thumb(x)}<span class="t"><b>${esc(x.name)}</b><span class="m">${esc(metaOf(x))}</span><div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap;align-items:center"><span class="pill ${x.status}">${esc(t('st_' + x.status))}</span>${x.editing ? `<span class="pill pending">${esc(t('editing'))}</span>` : ''}${['approved', 'pending'].includes(x.status) && !x.editing ? `<button class="btn small" data-ed="${x.id}">✏️ ${esc(t('edit'))}</button>` : ''}${x.post ? `<button class="btn small" data-open="${esc(x.post)}">${esc(t('see_post'))}</button>` : ''}${['approved', 'pending'].includes(x.status) ? `<button class="btn small" data-rm="${x.id}">${esc(t('remove'))}</button>` : ''}</div></span></div>`).join('')}</div>`
+  load(); $('sbox').style.display = 'none'; const r = await api('mine'); const xs = r.items || [];
+  $('app').innerHTML = `<h1>${esc(t('mine'))}</h1>` + (xs.length ? `<div class="idx">${xs.map((x) => `<div class="row" style="cursor:default">${thumb(x)}<span class="t"><b>${esc(x.name)}</b><span class="m">${esc(metaOf(x))}</span>${x.status === 'approved' && x.stats ? `<span class="m" style="display:block;margin-top:4px">📊 ${esc(t('stats7', { v: nf(x.stats.v7), c: nf(x.stats.c7) }))}</span>` : ''}${(x.feats || []).map((f) => `<span class="spons" style="display:inline-block;margin-top:4px">${esc(f.status === 'active' ? t(f.slot === 'home' ? 'feat_on_home' : 'feat_on_topic', { d: dfmt(f.ends_at) }) : t('feat_soon', { d: dfmt(f.starts_at) }))}</span>`).join(' ')}<div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap;align-items:center"><span class="pill ${x.status}">${esc(t('st_' + x.status))}</span>${x.editing ? `<span class="pill pending">${esc(t('editing'))}</span>` : ''}${['approved', 'pending'].includes(x.status) && !x.editing ? `<button class="btn small" data-ed="${x.id}">✏️ ${esc(t('edit'))}</button>` : ''}${x.status === 'approved' ? `<button class="btn small gold" data-ft="${x.id}">⭐ ${esc(t('feat_btn'))}</button>` : ''}${x.post ? `<button class="btn small" data-open="${esc(x.post)}">${esc(t('see_post'))}</button>` : ''}${['approved', 'pending'].includes(x.status) ? `<button class="btn small" data-rm="${x.id}">${esc(t('remove'))}</button>` : ''}</div></span></div>`).join('')}</div>`
     : `<div class="empty"><b>${esc(t('mine_empty_t'))}</b>${esc(t('mine_empty'))}<div style="margin-top:14px"><button class="btn dark" id="madd">${esc(t('none_btn'))}</button></div></div>`);
   if ($('madd')) $('madd').onclick = () => go('add');
   $('app').querySelectorAll('[data-ed]').forEach((b) => b.onclick = () => editForm(xs.find((x) => String(x.id) === b.dataset.ed), 'mine'));
+  $('app').querySelectorAll('[data-ft]').forEach((b) => b.onclick = () => feature(xs.find((x) => String(x.id) === b.dataset.ft)));
+  $('app').insertAdjacentHTML('beforeend', `<div class="idx" style="margin-top:16px;padding:16px"><b class="serif" style="font-size:18px">${esc(t('inv_title'))}</b><p class="hint" style="margin:6px 0 10px">${esc(t('inv_text'))}</p>${r.freeDays ? `<p style="margin:0 0 10px;font-weight:700">${esc(t('inv_days', { n: r.freeDays }))}</p>` : ''}<button class="btn dark" id="invb">${esc(t('inv_btn'))}</button></div>`);
+  $('invb').onclick = () => openLink('https://t.me/share/url?url=' + encodeURIComponent(r.refLink || '') + '&text=' + encodeURIComponent(t('inv_share')));
   $('app').querySelectorAll('[data-open]').forEach((b) => b.onclick = () => openLink(b.dataset.open));
   $('app').querySelectorAll('[data-rm]').forEach((b) => b.onclick = () => { const doIt = async (ok) => { if (!ok) return; await api('remove', { id: b.dataset.rm }); mine(); }; if (tgw && tgw.showConfirm) tgw.showConfirm(t('remove_q'), doIt); else doIt(confirm(t('remove_q'))); });
 }
@@ -313,7 +344,7 @@ async function mine() {
 // ---------- Moderation (owner only) ----------
 async function mod() {
   load(); const r = await api('mod'); const xs = r.items || [];
-  $('app').innerHTML = `<h1>${esc(t('mod'))}</h1><p class="sub">${nf(r.users)} ${esc(t('mod_users'))}, ${nf(r.live)} ${esc(t('mod_live'))}, ${nf(r.wait)} ${esc(t('mod_wait'))}</p>`
+  $('app').innerHTML = `<h1>${esc(t('mod'))}</h1><p class="sub">${nf(r.users)} ${esc(t('mod_users'))}, ${nf(r.live)} ${esc(t('mod_live'))}, ${nf(r.wait)} ${esc(t('mod_wait'))}<br>${esc(t('mod_stars', { n: nf(r.stars30 || 0) }))}</p>`
     + (xs.length ? xs.map((x) => `<div class="idx" style="margin-bottom:14px" id="m${x.id}">${x.img ? `<img src="${API + x.img}" alt="" style="width:100%;aspect-ratio:16/9;object-fit:contain;background:#e7ecf3;display:block">` : ''}<div style="padding:14px">${x.edit ? `<span class="pill pending" style="margin-bottom:8px">✏️ ${esc(t('mod_edit'))}</span><br>` : ''}<b class="serif" style="font-size:20px">${esc(x.edit ? x.edit.name : x.name)}</b><div class="hint" style="margin:4px 0 8px">${esc(metaOf(x.edit ? { ...x, ...x.edit } : x))}${x.uname ? ' · @' + esc(x.uname) : ''}${x.edit && x.edit.photo ? ' · 🖼️' : ''}</div><p style="margin:0 0 8px">${esc(x.edit ? x.edit.descr : x.descr || '')}</p>${x.edit && (x.edit.name !== x.name || x.edit.descr !== x.descr) ? `<p class="hint" style="margin:0 0 8px;text-decoration:line-through">${esc(x.name)}: ${esc(x.descr || '')}</p>` : ''}<p class="hint" style="margin:0 0 12px">${esc(t('mod_by', { who: x.by }))}</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><button class="btn main" data-ok="${x.id}" data-kind="${x.edit ? 'edit' : ''}">✅ ${esc(t('mod_ok'))}</button><button class="btn" data-no="${x.id}" data-kind="${x.edit ? 'edit' : ''}">❌ ${esc(t('mod_no'))}</button></div><button class="btn small" data-open="${esc(x.link)}" style="width:100%;margin-top:8px">🔗 ${esc(t('open'))} ${x.uname ? '@' + esc(x.uname) : ''}</button></div></div>`).join('')
       : `<div class="empty"><b>${esc(t('mod_none'))}</b>${esc(t('mod_none_t'))}</div>`);
