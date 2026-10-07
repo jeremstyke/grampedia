@@ -73,6 +73,7 @@ textarea.inp{min-height:110px;resize:vertical}
 .tgrid button[aria-pressed=true]{border-color:var(--ink);background:var(--ink);color:#fff}
 .found{display:flex;gap:12px;align-items:center;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:12px;margin-top:12px}
 .photo{display:flex;align-items:center;gap:12px}
+.bprev{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:14px;margin:0 0 10px;background:#e7ecf3}
 .photo img{width:64px;height:64px;border-radius:12px;object-fit:cover}
 /* mine */
 .pill{display:inline-block;font-size:12.5px;font-weight:700;padding:2px 9px;border-radius:999px;background:#e7ecf3}
@@ -82,7 +83,7 @@ textarea.inp{min-height:110px;resize:vertical}
 .sheet{background:#fff;width:100%;max-width:620px;border-radius:20px 20px 0 0;padding:10px 18px calc(18px + env(safe-area-inset-bottom));max-height:88vh;overflow:auto;animation:up .22s ease-out}
 @keyframes up{from{transform:translateY(40px);opacity:.4}}
 .grab{width:42px;height:5px;border-radius:3px;background:#d3dae5;margin:0 auto 12px}
-.sheet .hero{width:100%;aspect-ratio:16/9;object-fit:contain;border-radius:14px;background:#e7ecf3}
+.sheet .hero{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:14px;background:#e7ecf3}
 .sheet h3{font:800 24px/1.2 Fraunces,Georgia,serif;margin:14px 0 4px}
 .sheet .m{color:var(--muted);font-size:14px;font-weight:500}
 .sheet p{white-space:pre-wrap;color:#2b3547}
@@ -199,7 +200,7 @@ function add(msg) {
   <label class="f">${esc(t('f_topic'))}</label><div class="tgrid">${ME.topics.map((p) => `<button data-atp="${p.k}" aria-pressed="${A.topic === p.k}"><span aria-hidden="true">${p.e}</span>${esc(t('tp_' + p.k))}</button>`).join('')}</div>
   <label class="f" for="aname">${esc(t('f_name'))}</label><input class="inp" id="aname" maxlength="60" value="${esc(A.name)}">
   <label class="f" for="adesc">${esc(t('f_desc'))}</label><textarea class="inp" id="adesc" maxlength="500" placeholder="${esc(t('f_desc_ph'))}">${esc(A.descr)}</textarea><div class="drow"><p class="hint" id="acount">${esc(dcount(A.descr))}</p><button class="btn small" id="aai">${esc(t('ai_btn'))}</button></div>
-  <label class="f">${esc(t('f_photo'))}</label><div class="photo">${A.image ? `<img src="${A.image}" alt="">` : ''}<div>${!A.image && f.photo ? `<p class="hint" style="margin:0 0 8px">${esc(t('photo_auto'))}</p>` : ''}<label class="btn small">${esc(A.image || f.photo ? t('photo_pick') : t('photo_need'))}<input type="file" accept="image/*" id="afile" hidden></label></div></div>
+  <label class="f">${esc(t('f_photo'))}</label>${A.image ? `<img class="bprev" src="${A.image}" alt="">` : ''}<div>${!A.image && f.photo ? `<p class="hint" style="margin:0 0 8px">${esc(t('photo_auto'))}</p>` : ''}<label class="btn small">${esc(A.image || f.photo ? t('photo_pick') : t('photo_need'))}<input type="file" accept="image/*" id="afile" hidden></label></div>
   <div id="aout">${msg || ''}</div><div style="margin-top:20px"><button class="btn main" id="asend">${esc(t('send'))}</button></div>` : ''}`;
   $('alink').oninput = (e) => { A.link = e.target.value; };
   $('afind').onclick = find;
@@ -211,14 +212,14 @@ function add(msg) {
   $('aai').onclick = () => aiWrite(A, 'adesc', 'acount', 'aai');
   $('aname').oninput = (e) => { A.name = e.target.value; };
   $('adesc').oninput = (e) => { A.descr = e.target.value; $('acount').textContent = dcount(A.descr); };
-  $('afile').onchange = (e) => { const fl = e.target.files[0]; if (fl) shrink(fl).then((d) => { A.image = d; add(); }); };
+  $('afile').onchange = (e) => { const fl = e.target.files[0]; if (fl) shrinkBanner(fl).then((d) => { A.image = d; add(); }); };
   $('asend').onclick = send;
 }
 async function find() {
   if (!A.link.trim()) return;
   $('afind').disabled = true; $('afind').textContent = t('checking');
   const r = await api('check', { link: A.link });
-  if (r.ok) { haptic('medium'); Object.assign(A, { link: r.appLink ? r.link.replace('https://', '') : '@' + r.uname, found: r, type: r.type, langs: A.langs.length ? A.langs : (ME.lang === 'fr' ? ['fr'] : []), name: A.name || r.name || '', descr: A.descr || String(r.descr || '').slice(0, 500) }); return add(); }
+  if (r.ok) { haptic('medium'); if (r.photo && !A.image) { try { A.image = await banner(API + '/gp/chatphoto/' + r.uname); } catch (e) {} } Object.assign(A, { link: r.appLink ? r.link.replace('https://', '') : '@' + r.uname, found: r, type: r.type, langs: A.langs.length ? A.langs : (ME.lang === 'fr' ? ['fr'] : []), name: A.name || r.name || '', descr: A.descr || String(r.descr || '').slice(0, 500) }); return add(); }
   $('afind').disabled = false; $('afind').textContent = t('check');
   $('aerr').innerHTML = `<p class="err">${esc(t('e_' + (r.error || 'server')))}</p>`;
 }
@@ -229,6 +230,30 @@ async function aiWrite(F, taId, countId, btnId) {
   if (r.ok) { F.descr = r.text; $(taId).value = r.text; $(countId).textContent = dcount(r.text); haptic('medium'); toast(t('ai_note')); }
   else toast(t('e_' + (r.error || 'server')));
 }
+function banner(src) {
+  return new Promise((ok, ko) => {
+    const img = new Image(); img.crossOrigin = 'anonymous';
+    img.onload = () => {
+      const W = 1280, H = 720, c = document.createElement('canvas'); c.width = W; c.height = H; const g = c.getContext('2d');
+      const r = img.width / img.height;
+      if (r >= 1.55) { const s = Math.max(W / img.width, H / img.height); g.drawImage(img, (W - img.width * s) / 2, (H - img.height * s) / 2, img.width * s, img.height * s); return ok(c.toDataURL('image/jpeg', .88)); }
+      // background: the picture shrunk to a few pixels then stretched (a soft blur that works everywhere)
+      const t = document.createElement('canvas'); t.width = 24; t.height = 14; const tg2 = t.getContext('2d');
+      const s0 = Math.max(24 / img.width, 14 / img.height); tg2.drawImage(img, (24 - img.width * s0) / 2, (14 - img.height * s0) / 2, img.width * s0, img.height * s0);
+      g.imageSmoothingEnabled = true; g.imageSmoothingQuality = 'high'; g.drawImage(t, 0, 0, W, H);
+      g.fillStyle = 'rgba(19,33,58,.28)'; g.fillRect(0, 0, W, H);
+      // the picture itself, whole, centered, with rounded corners and a soft shadow
+      const max = r > 1.15 ? { w: 960, h: 560 } : { w: 520, h: 520 };
+      const s = Math.min(max.w / img.width, max.h / img.height), w = img.width * s, h = img.height * s, x = (W - w) / 2, y = (H - h) / 2, rad = Math.min(w, h) * .12;
+      const path = () => { g.beginPath(); g.moveTo(x + rad, y); g.arcTo(x + w, y, x + w, y + h, rad); g.arcTo(x + w, y + h, x, y + h, rad); g.arcTo(x, y + h, x, y, rad); g.arcTo(x, y, x + w, y, rad); g.closePath(); };
+      g.save(); g.shadowColor = 'rgba(0,0,0,.35)'; g.shadowBlur = 40; g.shadowOffsetY = 14; path(); g.fillStyle = '#fff'; g.fill(); g.restore();
+      g.save(); path(); g.clip(); g.drawImage(img, x, y, w, h); g.restore();
+      ok(c.toDataURL('image/jpeg', .88));
+    };
+    img.onerror = ko; img.src = src;
+  });
+}
+const shrinkBanner = (file) => banner(URL.createObjectURL(file));
 function shrink(file) { return new Promise((ok) => { const img = new Image(), u = URL.createObjectURL(file); img.onload = () => { const k = Math.min(1, 1280 / Math.max(img.width, img.height)); const c = document.createElement('canvas'); c.width = Math.round(img.width * k); c.height = Math.round(img.height * k); c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); URL.revokeObjectURL(u); ok(c.toDataURL('image/jpeg', .85)); }; img.src = u; }); }
 async function send() {
   const out = $('aout');
@@ -254,7 +279,7 @@ function editForm(x, back, msg) {
   <label class="f">${esc(t('f_topic'))}</label><div class="tgrid">${ME.topics.map((p) => `<button data-etp="${p.k}" aria-pressed="${f.topic === p.k}"><span aria-hidden="true">${p.e}</span>${esc(t('tp_' + p.k))}</button>`).join('')}</div>
   <label class="f" for="ename">${esc(t('f_name'))}</label><input class="inp" id="ename" maxlength="60" value="${esc(f.name)}">
   <label class="f" for="edesc">${esc(t('f_desc'))}</label><textarea class="inp" id="edesc" maxlength="500">${esc(f.descr)}</textarea><div class="drow"><p class="hint" id="ecount">${esc(dcount(f.descr))}</p><button class="btn small" id="eai">${esc(t('ai_btn'))}</button></div>
-  <label class="f">${esc(t('f_photo'))}</label><div class="photo">${f.image ? `<img src="${f.image}" alt="">` : f.img ? `<img src="${API + f.img}" alt="">` : ''}<div><p class="hint" style="margin:0 0 8px">${esc(t(f.image ? 'photo_new' : 'photo_keep'))}</p><label class="btn small">${esc(t('photo_pick'))}<input type="file" accept="image/*" id="efile" hidden></label></div></div>
+  <label class="f">${esc(t('f_photo'))}</label>${f.image ? `<img class="bprev" src="${f.image}" alt="">` : f.img ? `<img class="bprev" src="${API + f.img}" alt="">` : ''}<div><p class="hint" style="margin:0 0 8px">${esc(t(f.image ? 'photo_new' : 'photo_keep'))}</p><label class="btn small">${esc(t('photo_pick'))}<input type="file" accept="image/*" id="efile" hidden></label></div></div>
   <div id="eout">${msg || ''}</div><div style="margin-top:20px"><button class="btn main" id="esave">${esc(t('edit_save'))}</button></div>`;
   $('app').querySelectorAll('[data-ety]').forEach((b) => b.onclick = () => { f.type = b.dataset.ety; $('app').querySelectorAll('[data-ety]').forEach((n) => n.setAttribute('aria-pressed', n === b)); });
   $('app').querySelectorAll('[data-etp]').forEach((b) => b.onclick = () => { f.topic = b.dataset.etp; $('app').querySelectorAll('[data-etp]').forEach((n) => n.setAttribute('aria-pressed', n === b)); });
@@ -262,7 +287,7 @@ function editForm(x, back, msg) {
   $('eai').onclick = () => aiWrite(f, 'edesc', 'ecount', 'eai');
   $('ename').oninput = (e) => { f.name = e.target.value; };
   $('edesc').oninput = (e) => { f.descr = e.target.value; $('ecount').textContent = dcount(f.descr); };
-  $('efile').onchange = (e) => { const fl = e.target.files[0]; if (fl) shrink(fl).then((d) => { f.image = d; editForm(null); }); };
+  $('efile').onchange = (e) => { const fl = e.target.files[0]; if (fl) shrinkBanner(fl).then((d) => { f.image = d; editForm(null); }); };
   $('esave').onclick = async () => {
     if (f.name.trim().length < 2) return $('eout').innerHTML = `<p class="err">${esc(t('e_name'))}</p>`;
     if (!f.langs.length) return $('eout').innerHTML = `<p class="err">${esc(t('e_langs'))}</p>`;
