@@ -317,7 +317,7 @@ function editForm(x, back, msg) {
 }
 
 // ---------- Featuring ----------
-const dfmt = (iso) => new Date(iso).toLocaleDateString(ME && ME.lang === 'fr' ? 'fr-FR' : 'en-GB', { day: 'numeric', month: 'long' });
+const dfmt = (iso) => new Date(iso).toLocaleDateString((ME && ME.lang) || 'en', { day: 'numeric', month: 'long' });
 async function feature(x) {
   if (!x) return; load(); $('sbox').style.display = 'none';
   const r = await api('feat_info', { id: x.id }); if (r.error) { toast(t('e_server')); return mine(); }
@@ -342,7 +342,7 @@ async function notifs() {
   TAB = 'notifs'; bar(); $('sbox').style.display = 'none'; load();
   const r = await api('notifs'); const xs = r.items || [];
   $('bdot').hidden = true; api('notifs_seen').catch(() => {});
-  const when = (iso) => new Date(iso).toLocaleString(ME.lang === 'fr' ? 'fr-FR' : 'en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+  const when = (iso) => new Date(iso).toLocaleString((ME && ME.lang) || 'en', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
   $('app').innerHTML = `<h1>${esc(t('notifs'))}</h1>` + (xs.length ? `<div class="idx">${xs.map((n) => `<div class="nrow"><span class="hint">${n.all ? '📣 ' : ''}${esc(when(n.at))}</span><p>${esc(n.text)}</p></div>`).join('')}</div>` : `<div class="empty"><b>${esc(t('notifs_none'))}</b></div>`);
 }
 
@@ -400,7 +400,7 @@ document.addEventListener('focusout', () => setTimeout(() => { if (!/^(INPUT|TEX
   try {
     const src = (tgw.initDataUnsafe && tgw.initDataUnsafe.start_param) || '';
     ME = await api('me', { src: src || 'app' }); if (ME.error) throw new Error(ME.error);
-    T = { ...EN, ...(ME.t || {}) }; document.documentElement.lang = ME.lang || 'en'; if (ME.lang === 'ar') document.documentElement.dir = 'rtl';
+    T = { ...EN, ...(ME.t || {}) }; document.documentElement.lang = ME.lang || 'en'; if (['ar', 'fa'].includes(ME.lang)) document.documentElement.dir = 'rtl';
     $('q').placeholder = t('search_ph');
     if (ME.unread) { $('bdot').hidden = false; $('bdot').textContent = ME.unread > 9 ? '9+' : String(ME.unread); }
     if (ME.member === false) { bar(); return gate(); }
