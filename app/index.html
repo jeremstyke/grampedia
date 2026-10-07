@@ -54,6 +54,7 @@ h2{font:700 19px Fraunces,Georgia,serif;margin:22px 0 10px}
 .tiers{display:grid;gap:6px;margin:0 0 12px}.tier{display:flex;gap:10px;align-items:center;background:#f3f5f9;border-radius:10px;padding:8px 10px;font-size:14px}.tier b{width:28px;height:28px;border-radius:50%;background:#e1e7f0;display:flex;align-items:center;justify-content:center;flex:none}.tier.on{background:#dcf2e7}
 .bdot{position:absolute;top:-4px;right:-4px;background:#e11d48;color:#fff;font:700 11px 'DM Sans',sans-serif;min-width:18px;height:18px;border-radius:9px;display:flex;align-items:center;justify-content:center;padding:0 4px}.bdot[hidden]{display:none}
 .nrow{padding:12px 14px;border-bottom:1px solid var(--line)}.nrow:last-child{border-bottom:0}.nrow p{margin:4px 0 0;white-space:pre-wrap}
+.agx{display:block;background:#13213a;color:#fff;border-radius:16px;padding:16px;margin-top:16px;text-align:left;cursor:pointer}.agx b{display:block;font-size:19px;margin:8px 0 4px}.agx p{color:#c9d6ea;margin:0 0 12px;font-size:15px}.agx .agxb{background:#f2b632;color:#13213a;width:100%}.row.agxr{background:#f5f8ff}
 .more{display:block;width:100%;margin:14px 0;border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:12px;font-weight:700;cursor:pointer}
 .empty{text-align:center;color:var(--muted);padding:34px 10px}
 .empty b{display:block;color:var(--ink);font:700 19px Fraunces,Georgia,serif;margin-bottom:6px}
@@ -135,7 +136,7 @@ const EN = {
  feat_topic: 'Top of its topic', feat_topic_d: 'At the top of {topic} in the app and on its page of the website.',
  feat_now: 'Starts now', feat_from: 'Starts on {d}', feat_pay: 'Pay {n} ⭐', feat_done: 'Done! Your listing is featured.', feat_free: 'Use my {n} free day(s) at the top of its topic', feat_on_home: '⭐ Home page until {d}', feat_on_topic: '⭐ Top of its topic until {d}', feat_soon: '⭐ Featured from {d}',
  stats7: '{v} views, {c} clicks in 7 days', statsAll: '{v} views, {c} clicks in total',
- inv_title: '👥 Invite your friends', inv_text: 'Each friend who publishes their first listing gives you 1 free day at the top of your topic.', inv_btn: 'Invite friends', share: 'Share', share_app: 'Share GramPedia', notifs: 'Notifications', notifs_none: 'No notification yet', bc_title: 'Message to everyone', bc_sub: 'Sent by the bot to every user and shown in their notifications, translated into English and French.', bc_ph: 'Your message', bc_send: 'Send to everyone', bc_done: 'Sending to {n} users.', bc_confirm: 'Send this message to every GramPedia user?', lg_ja: 'Japanese', lg_ko: 'Korean', lg_vi: 'Vietnamese', lg_th: 'Thai', lg_pl: 'Polish', lg_nl: 'Dutch', lg_ro: 'Romanian', lg_bn: 'Bengali', lg_ur: 'Urdu', lg_ms: 'Malay', lg_he: 'Hebrew', lg_el: 'Greek', lg_sv: 'Swedish', lg_cs: 'Czech', lg_hu: 'Hungarian', lg_kk: 'Kazakh', lg_uz: 'Uzbek', lg_az: 'Azerbaijani', lg_sw: 'Swahili', lg_tl: 'Filipino', inv_share: 'Discover GramPedia, the directory of Telegram channels, groups, bots and mini apps, and add yours for free!', inv_days: 'You have {n} free day(s) of featuring.', mod_stars: '{n} ⭐ of featuring in 30 days', mod: 'Moderation', mod_users: 'users', mod_live: 'published', mod_wait: 'waiting', mod_none: 'Nothing to review', mod_none_t: 'Every listing has been handled.', mod_ok: 'Publish', mod_no: 'Refuse', mod_by: 'Sent by {who}', edit: 'Edit', edit_title: 'Edit the listing', edit_save: 'Save the changes', edit_sent: 'Changes sent: they will be online after review.', edit_live: 'Changes saved.', editing: 'Changes in review', mod_edit: 'Change', photo_keep: 'Current picture', photo_new: 'New picture'
+ inv_title: '👥 Invite your friends', inv_text: 'Each friend who publishes their first listing gives you 1 free day at the top of your topic.', inv_btn: 'Invite friends', partner: 'Partner', agx_title: '🚀 Get more subscribers', agx_after: 'While we review your listing, promote your channel, group, bot or mini app to real Telegram users with Ads Galaxy, our partner.', agx_mine: 'Want more views? Promote your projects with Ads Galaxy, our partner. You can also earn money by showing ads on your channel.', agx_card: 'Promote your channel, bot or mini app to real Telegram users, or earn money by showing ads on yours.', agx_btn: 'Discover Ads Galaxy', share: 'Share', share_app: 'Share GramPedia', notifs: 'Notifications', notifs_none: 'No notification yet', bc_title: 'Message to everyone', bc_sub: 'Sent by the bot to every user and shown in their notifications, translated into English and French.', bc_ph: 'Your message', bc_send: 'Send to everyone', bc_done: 'Sending to {n} users.', bc_confirm: 'Send this message to every GramPedia user?', lg_ja: 'Japanese', lg_ko: 'Korean', lg_vi: 'Vietnamese', lg_th: 'Thai', lg_pl: 'Polish', lg_nl: 'Dutch', lg_ro: 'Romanian', lg_bn: 'Bengali', lg_ur: 'Urdu', lg_ms: 'Malay', lg_he: 'Hebrew', lg_el: 'Greek', lg_sv: 'Swedish', lg_cs: 'Czech', lg_hu: 'Hungarian', lg_kk: 'Kazakh', lg_uz: 'Uzbek', lg_az: 'Azerbaijani', lg_sw: 'Swahili', lg_tl: 'Filipino', inv_share: 'Discover GramPedia, the directory of Telegram channels, groups, bots and mini apps, and add yours for free!', inv_days: 'You have {n} free day(s) of featuring.', mod_stars: '{n} ⭐ of featuring in 30 days', mod: 'Moderation', mod_users: 'users', mod_live: 'published', mod_wait: 'waiting', mod_none: 'Nothing to review', mod_none_t: 'Every listing has been handled.', mod_ok: 'Publish', mod_no: 'Refuse', mod_by: 'Sent by {who}', edit: 'Edit', edit_title: 'Edit the listing', edit_save: 'Save the changes', edit_sent: 'Changes sent: they will be online after review.', edit_live: 'Changes saved.', editing: 'Changes in review', mod_edit: 'Change', photo_keep: 'Current picture', photo_new: 'New picture'
 };
 let T = EN, ME = null, TAB = 'explore';
 const S = { lang: '', type: '', topic: '', sort: 'top', q: '', items: [], total: 0, off: 0, byTopic: {}, byType: {} };
@@ -184,6 +185,7 @@ async function explore(keep) {
   $('lsel').onchange = async (e) => { S.lang = e.target.value; await fetchList(); explore(true); };
   $('sortb').onclick = async () => { S.sort = S.sort === 'top' ? 'new' : 'top'; await fetchList(); explore(true); };
   if ($('more')) $('more').onclick = async () => { $('more').disabled = true; await fetchList(true); explore(true); };
+  { const rs = [...$('app').querySelectorAll('.idx .row:not(.feat)')]; for (let i = 9; i < rs.length; i += 10) rs[i].insertAdjacentHTML('afterend', agxRow()); if (rs.length && rs.length < 10) rs[rs.length - 1].insertAdjacentHTML('afterend', agxRow()); bindAgx(); }
   if ($('addm')) $('addm').onclick = () => go('add');
   $('app').insertAdjacentHTML('beforeend', `<button class="btn dark" id="shareg" style="width:100%;margin-top:14px">📤 ${esc(t('share_app'))}</button>`);
   $('shareg').onclick = shareApp;
@@ -278,8 +280,8 @@ async function send() {
   $('asend').disabled = true; $('asend').textContent = t('sending');
   let r; try { r = await api('add', { link: A.found.link || A.link, type: A.type, topic: A.topic, langs: A.langs, name: A.name, descr: A.descr, image: A.image }); } catch (e) { r = { error: 'server' }; }
   if (r.ok) { try { tgw.HapticFeedback.notificationOccurred('success'); } catch (e) {} Object.assign(A, { link: '', found: null, type: '', topic: '', name: '', descr: '', image: null, langs: [] });
-    $('app').innerHTML = `<div class="center"><div class="big" aria-hidden="true">📚</div><h1>${esc(t('sent_title'))}</h1><p class="sub">${esc(t('sent_text'))}</p><div style="display:grid;gap:8px"><button class="btn main" id="smine">${esc(t('sent_btn'))}</button><button class="btn" id="sagain">${esc(t('add_another'))}</button></div></div>`;
-    $('smine').onclick = () => go('mine'); $('sagain').onclick = () => add(); return; }
+    $('app').innerHTML = `<div class="center"><div class="big" aria-hidden="true">📚</div><h1>${esc(t('sent_title'))}</h1><p class="sub">${esc(t('sent_text'))}</p><div style="display:grid;gap:8px"><button class="btn main" id="smine">${esc(t('sent_btn'))}</button><button class="btn" id="sagain">${esc(t('add_another'))}</button></div>${agxCard('after')}</div>`;
+    $('smine').onclick = () => go('mine'); $('sagain').onclick = () => add(); bindAgx(); return; }
   $('asend').disabled = false; $('asend').textContent = t('send');
   out.innerHTML = `<p class="err">${esc(t('e_' + (r.error || 'server')))}</p>`;
 }
@@ -346,6 +348,12 @@ async function notifs() {
   $('app').innerHTML = `<h1>${esc(t('notifs'))}</h1>` + (xs.length ? `<div class="idx">${xs.map((n) => `<div class="nrow"><span class="hint">${n.all ? '📣 ' : ''}${esc(when(n.at))}</span><p>${esc(n.text)}</p></div>`).join('')}</div>` : `<div class="empty"><b>${esc(t('notifs_none'))}</b></div>`);
 }
 
+// ---------- Partner: Ads Galaxy (affiliate link) ----------
+const AGX = 'https://t.me/Ads_Galaxy_bot?start=AGX7057960224';
+function agxCard(place) { return `<div class="agx" data-agx="${place}"><span class="spons">${esc(t('partner'))}</span><b class="serif">${esc(t('agx_title'))}</b><p>${esc(t(place === 'after' ? 'agx_after' : 'agx_mine'))}</p><span class="btn agxb">${esc(t('agx_btn'))}</span></div>`; }
+function agxRow() { return `<button class="row agxr" data-agx="list"><div class="thumb">🚀</div><span class="t"><b>Ads Galaxy</b><span class="m"><span class="spons">${esc(t('partner'))}</span></span><p>${esc(t('agx_card'))}</p></span></button>`; }
+function bindAgx() { document.querySelectorAll('[data-agx]').forEach((el) => { if (el.dataset.bound) return; el.dataset.bound = '1'; el.onclick = () => { api('agx', { place: el.dataset.agx }).catch(() => {}); openLink(AGX); }; }); }
+
 // ---------- My listings ----------
 async function mine() {
   load(); $('sbox').style.display = 'none'; const r = await api('mine'); const xs = r.items || [];
@@ -354,6 +362,7 @@ async function mine() {
   if ($('madd')) $('madd').onclick = () => go('add');
   $('app').querySelectorAll('[data-ed]').forEach((b) => b.onclick = () => editForm(xs.find((x) => String(x.id) === b.dataset.ed), 'mine'));
   $('app').querySelectorAll('[data-sh]').forEach((b) => b.onclick = () => shareListing(xs.find((x) => String(x.id) === b.dataset.sh)));
+  if (xs.length) { $('app').insertAdjacentHTML('beforeend', agxCard('mine')); bindAgx(); }
   $('app').querySelectorAll('[data-ft]').forEach((b) => b.onclick = () => feature(xs.find((x) => String(x.id) === b.dataset.ft)));
 
   if ($('invb')) $('invb').onclick = () => openLink('https://t.me/share/url?url=' + encodeURIComponent(r.refLink || '') + '&text=' + encodeURIComponent(t('inv_share')));
