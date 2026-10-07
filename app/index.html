@@ -112,8 +112,8 @@ const EN = {
  sort_top: 'Most popular', sort_new: 'Newest', sorted_top: 'Sorted by audience', sorted_new: 'Newest first', members: '{n} subscribers', more: 'Show more',
  none_title: 'Nothing here yet', none_text: 'Be the first: add your channel, group or bot.', none_btn: 'Add mine', open: 'Open', see_post: 'See it on the channel',
  add_title: 'Add your channel, group or bot', add_sub: 'Free. Every listing is reviewed by a human before it appears in GramPedia, on our website and on our channel.',
- f_link: 'Its @username or t.me link', f_link_ph: '@yourchannel', check: 'Find', checking: 'Searching…', f_type: 'It is a', f_topic: 'Topic', f_name: 'Name', f_desc: 'Description', f_desc_ph: 'What will people find there? (10 to 300 characters)', f_photo: 'Picture', photo_auto: 'Its Telegram profile picture will be used.', photo_pick: 'Choose another picture', photo_need: 'Choose a picture', send: 'Send my listing', sending: 'Sending…',
- e_link: 'Enter a valid @username, for example @yourchannel.', e_notfound: 'We could not find it. Check that it is public and spelled correctly.', e_already: 'This one is already in GramPedia.', e_type: 'Choose what it is.', e_topic: 'Choose a topic.', e_name: 'Enter a name.', e_short: 'The description is too short.', e_image: 'Choose a picture.', e_toomany: 'You already have 5 listings waiting for review.', e_server: 'Something went wrong. Try again.',
+ f_link: 'Its @username or t.me link', f_link_ph: '@yourchannel', check: 'Find', checking: 'Searching…', f_type: 'It is a', f_topic: 'Topic', f_name: 'Name', f_desc: 'Description', f_desc_ph: 'What will people find there? Topics, rhythm of posts, what makes it different (80 to 500 characters).', f_photo: 'Picture', photo_auto: 'Its Telegram profile picture will be used.', photo_pick: 'Choose another picture', photo_need: 'Choose a picture', send: 'Send my listing', sending: 'Sending…',
+ e_link: 'Enter a valid @username, for example @yourchannel.', e_notfound: 'We could not find it. Check that it is public and spelled correctly.', e_already: 'This one is already in GramPedia.', e_type: 'Choose what it is.', e_topic: 'Choose a topic.', e_name: 'Enter a name.', e_short: 'The description is too short: write at least 80 characters.', desc_left: '{n} more characters needed', desc_ok: '{n}/500', e_image: 'Choose a picture.', e_toomany: 'You already have 5 listings waiting for review.', e_server: 'Something went wrong. Try again.',
  sent_title: 'Listing sent', sent_text: 'We review it soon. You will get a message from the bot as soon as it is published.', sent_btn: 'See my listings', add_another: 'Add another one',
  mine_empty_t: 'No listing yet', mine_empty: 'Add your channel, group or bot to GramPedia.', st_pending: 'In review', st_approved: 'Published', st_refused: 'Not accepted', st_unsub: 'Removed (left the channel)', remove: 'Remove', remove_q: 'Remove this listing from GramPedia?',
  gate_title: 'Join our channel to continue', gate_text: 'GramPedia is free for the subscribers of our channel, where new listings are published every day.', gate_join: 'Join the channel', gate_check: 'I joined', gate_not: 'Not yet: join the channel, then tap again.',
@@ -180,6 +180,7 @@ let sT = null;
 $('q').addEventListener('input', (e) => { clearTimeout(sT); sT = setTimeout(async () => { S.q = e.target.value.trim(); await fetchList(); explore(true); }, 350); });
 
 // ---------- Add ----------
+const dcount = (s) => { const n = String(s || '').trim().length; return n < 80 ? t('desc_left', { n: 80 - n }) : t('desc_ok', { n }); };
 const A = { link: '', found: null, type: '', topic: '', name: '', descr: '', image: null };
 function add(msg) {
   const f = A.found;
@@ -189,7 +190,7 @@ function add(msg) {
   <label class="f">${esc(t('f_type'))}</label><div class="types" style="margin:0">${['channel', 'group', 'bot'].map((k) => `<button data-aty="${k}" aria-pressed="${A.type === k}">${esc(t('one_' + k))}</button>`).join('')}</div>
   <label class="f">${esc(t('f_topic'))}</label><div class="tgrid">${ME.topics.map((p) => `<button data-atp="${p.k}" aria-pressed="${A.topic === p.k}"><span aria-hidden="true">${p.e}</span>${esc(t('tp_' + p.k))}</button>`).join('')}</div>
   <label class="f" for="aname">${esc(t('f_name'))}</label><input class="inp" id="aname" maxlength="60" value="${esc(A.name)}">
-  <label class="f" for="adesc">${esc(t('f_desc'))}</label><textarea class="inp" id="adesc" maxlength="300" placeholder="${esc(t('f_desc_ph'))}">${esc(A.descr)}</textarea><p class="hint" id="acount">${A.descr.length}/300</p>
+  <label class="f" for="adesc">${esc(t('f_desc'))}</label><textarea class="inp" id="adesc" maxlength="500" placeholder="${esc(t('f_desc_ph'))}">${esc(A.descr)}</textarea><p class="hint" id="acount">${esc(dcount(A.descr))}</p>
   <label class="f">${esc(t('f_photo'))}</label><div class="photo">${A.image ? `<img src="${A.image}" alt="">` : ''}<div>${!A.image && f.photo ? `<p class="hint" style="margin:0 0 8px">${esc(t('photo_auto'))}</p>` : ''}<label class="btn small">${esc(A.image || f.photo ? t('photo_pick') : t('photo_need'))}<input type="file" accept="image/*" id="afile" hidden></label></div></div>
   <div id="aout">${msg || ''}</div><div style="margin-top:20px"><button class="btn main" id="asend">${esc(t('send'))}</button></div>` : ''}`;
   $('alink').oninput = (e) => { A.link = e.target.value; };
@@ -199,7 +200,7 @@ function add(msg) {
   $('app').querySelectorAll('[data-aty]').forEach((b) => b.onclick = () => { haptic(); A.type = b.dataset.aty; add(); });
   $('app').querySelectorAll('[data-atp]').forEach((b) => b.onclick = () => { haptic(); A.topic = b.dataset.atp; $('app').querySelectorAll('[data-atp]').forEach((x) => x.setAttribute('aria-pressed', x === b)); });
   $('aname').oninput = (e) => { A.name = e.target.value; };
-  $('adesc').oninput = (e) => { A.descr = e.target.value; $('acount').textContent = A.descr.length + '/300'; };
+  $('adesc').oninput = (e) => { A.descr = e.target.value; $('acount').textContent = dcount(A.descr); };
   $('afile').onchange = (e) => { const fl = e.target.files[0]; if (fl) shrink(fl).then((d) => { A.image = d; add(); }); };
   $('asend').onclick = send;
 }
@@ -207,14 +208,14 @@ async function find() {
   if (!A.link.trim()) return;
   $('afind').disabled = true; $('afind').textContent = t('checking');
   const r = await api('check', { link: A.link });
-  if (r.ok) { haptic('medium'); Object.assign(A, { link: '@' + r.uname, found: r, type: r.type, name: A.name || r.name || '', descr: A.descr || String(r.descr || '').slice(0, 300) }); return add(); }
+  if (r.ok) { haptic('medium'); Object.assign(A, { link: '@' + r.uname, found: r, type: r.type, name: A.name || r.name || '', descr: A.descr || String(r.descr || '').slice(0, 500) }); return add(); }
   $('afind').disabled = false; $('afind').textContent = t('check');
   $('aerr').innerHTML = `<p class="err">${esc(t('e_' + (r.error || 'server')))}</p>`;
 }
 function shrink(file) { return new Promise((ok) => { const img = new Image(), u = URL.createObjectURL(file); img.onload = () => { const k = Math.min(1, 1280 / Math.max(img.width, img.height)); const c = document.createElement('canvas'); c.width = Math.round(img.width * k); c.height = Math.round(img.height * k); c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); URL.revokeObjectURL(u); ok(c.toDataURL('image/jpeg', .85)); }; img.src = u; }); }
 async function send() {
   const out = $('aout');
-  for (const [ok, e] of [[A.type, 'e_type'], [A.topic, 'e_topic'], [A.name.trim().length >= 2, 'e_name'], [A.descr.trim().length >= 10, 'e_short'], [A.image || A.found.photo, 'e_image']]) if (!ok) return out.innerHTML = `<p class="err">${esc(t(e))}</p>`;
+  for (const [ok, e] of [[A.type, 'e_type'], [A.topic, 'e_topic'], [A.name.trim().length >= 2, 'e_name'], [A.descr.trim().length >= 80, 'e_short'], [A.image || A.found.photo, 'e_image']]) if (!ok) return out.innerHTML = `<p class="err">${esc(t(e))}</p>`;
   $('asend').disabled = true; $('asend').textContent = t('sending');
   let r; try { r = await api('add', { link: A.link, type: A.type, topic: A.topic, name: A.name, descr: A.descr, image: A.image, lang: ME.lang }); } catch (e) { r = { error: 'server' }; }
   if (r.ok) { try { tgw.HapticFeedback.notificationOccurred('success'); } catch (e) {} Object.assign(A, { link: '', found: null, type: '', topic: '', name: '', descr: '', image: null });
@@ -234,17 +235,17 @@ function editForm(x, back, msg) {
   <label class="f">${esc(t('f_type'))}</label><div class="types" style="margin:0">${['channel', 'group', 'bot'].map((k) => `<button data-ety="${k}" aria-pressed="${f.type === k}">${esc(t('one_' + k))}</button>`).join('')}</div>
   <label class="f">${esc(t('f_topic'))}</label><div class="tgrid">${ME.topics.map((p) => `<button data-etp="${p.k}" aria-pressed="${f.topic === p.k}"><span aria-hidden="true">${p.e}</span>${esc(t('tp_' + p.k))}</button>`).join('')}</div>
   <label class="f" for="ename">${esc(t('f_name'))}</label><input class="inp" id="ename" maxlength="60" value="${esc(f.name)}">
-  <label class="f" for="edesc">${esc(t('f_desc'))}</label><textarea class="inp" id="edesc" maxlength="300">${esc(f.descr)}</textarea><p class="hint" id="ecount">${f.descr.length}/300</p>
+  <label class="f" for="edesc">${esc(t('f_desc'))}</label><textarea class="inp" id="edesc" maxlength="500">${esc(f.descr)}</textarea><p class="hint" id="ecount">${esc(dcount(f.descr))}</p>
   <label class="f">${esc(t('f_photo'))}</label><div class="photo">${f.image ? `<img src="${f.image}" alt="">` : f.img ? `<img src="${API + f.img}" alt="">` : ''}<div><p class="hint" style="margin:0 0 8px">${esc(t(f.image ? 'photo_new' : 'photo_keep'))}</p><label class="btn small">${esc(t('photo_pick'))}<input type="file" accept="image/*" id="efile" hidden></label></div></div>
   <div id="eout">${msg || ''}</div><div style="margin-top:20px"><button class="btn main" id="esave">${esc(t('edit_save'))}</button></div>`;
   $('app').querySelectorAll('[data-ety]').forEach((b) => b.onclick = () => { f.type = b.dataset.ety; $('app').querySelectorAll('[data-ety]').forEach((n) => n.setAttribute('aria-pressed', n === b)); });
   $('app').querySelectorAll('[data-etp]').forEach((b) => b.onclick = () => { f.topic = b.dataset.etp; $('app').querySelectorAll('[data-etp]').forEach((n) => n.setAttribute('aria-pressed', n === b)); });
   $('ename').oninput = (e) => { f.name = e.target.value; };
-  $('edesc').oninput = (e) => { f.descr = e.target.value; $('ecount').textContent = f.descr.length + '/300'; };
+  $('edesc').oninput = (e) => { f.descr = e.target.value; $('ecount').textContent = dcount(f.descr); };
   $('efile').onchange = (e) => { const fl = e.target.files[0]; if (fl) shrink(fl).then((d) => { f.image = d; editForm(null); }); };
   $('esave').onclick = async () => {
     if (f.name.trim().length < 2) return $('eout').innerHTML = `<p class="err">${esc(t('e_name'))}</p>`;
-    if (f.descr.trim().length < 10) return $('eout').innerHTML = `<p class="err">${esc(t('e_short'))}</p>`;
+    if (f.descr.trim().length < 80) return $('eout').innerHTML = `<p class="err">${esc(t('e_short'))}</p>`;
     $('esave').disabled = true;
     let r; try { r = await api('edit', { id: f.id, type: f.type, topic: f.topic, name: f.name, descr: f.descr, image: f.image }); } catch (e) { r = { error: 'server' }; }
     if (r.ok) { haptic('medium'); toast(t(r.live ? 'edit_live' : 'edit_sent')); E = null; return go(f.back || 'mine'); }
