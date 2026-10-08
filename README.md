@@ -53,7 +53,7 @@ Every listing is **checked by a human** before it goes live, with a clear descri
 2. Add yours and fill in the name, the description, the topic and the main languages
 3. A human reviews it, then it goes live in the mini app, on [the website](https://jeremstyke.github.io/grampedia/) (indexed by Google) and on [our channel](https://t.me/grampediadirectory)
 
-It is **100% free**. Once it is approved, you can also **boost it for 24 hours** to show it at the top of the directory, just by watching a short ad.
+It is **100% free**. Once it is approved, you can also **boost it for 12 hours** to show it at the top of its topic, just by watching a short ad. Or take the **👑 Premium** place, the only one at the top of the home page.
 
 <div align="center">
 
