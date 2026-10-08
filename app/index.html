@@ -192,7 +192,7 @@ async function explore(keep) {
   $('lsel').onchange = async (e) => { S.lang = e.target.value; await fetchList(); explore(true); };
   $('sortb').onclick = async () => { S.sort = S.sort === 'top' ? 'new' : 'top'; await fetchList(); explore(true); };
   if ($('more')) $('more').onclick = async () => { $('more').disabled = true; await fetchList(true); explore(true); };
-  { const rs = [...$('app').querySelectorAll('.idx .row:not(.feat)')]; for (let i = 9; i < rs.length; i += 10) rs[i].insertAdjacentHTML('afterend', agxRow()); if (rs.length && rs.length < 10) rs[rs.length - 1].insertAdjacentHTML('afterend', agxRow()); bindAgx(); }
+  { const rs = [...$('app').querySelectorAll('.idx .row:not(.feat)')]; const put = (k) => { for (const j of [k, k - 1, k + 1, k - 2]) { const r = rs[j], nx = r && r.nextElementSibling; if (r && !(nx && nx.classList.contains('feat'))) return r.insertAdjacentHTML('afterend', agxRow()); } }; for (let i = 9; i < rs.length; i += 10) put(i); if (rs.length && rs.length < 10) put(rs.length - 1); bindAgx(); }
   if ($('addm')) $('addm').onclick = () => go('add');
   $('app').insertAdjacentHTML('beforeend', `<button class="btn dark" id="shareg" style="width:100%;margin-top:14px">📤 ${esc(t('share_app'))}</button>`);
   $('shareg').onclick = shareApp;
