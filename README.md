@@ -50,10 +50,20 @@ Every listing is **checked by a human** before it goes live, with a clear descri
 ## 🚀 Add your channel, group, bot or mini app
 
 1. Open **[@Grampedia_bot](https://t.me/Grampedia_bot?start=src_github)** on Telegram
-2. Add yours and fill in the name, the description, the topic and the main languages
-3. A human reviews it, then it goes live in the mini app, on [the website](https://jeremstyke.github.io/grampedia/) (indexed by Google) and on [our channel](https://t.me/grampediadirectory)
+2. Add yours: name, description, **1 or 2 topics** and its main languages
+3. A human reviews it (within 7 days, usually much sooner), then it goes live in the mini app, on [the website](https://jeremstyke.github.io/grampedia/) (indexed by Google) and on [our channel](https://t.me/grampediadirectory)
 
-It is **100% free**. Once it is approved, you can also **boost it for 12 hours** to show it at the top of its topic, just by watching a short ad. Or take the **👑 Premium** place, the only one at the top of the home page.
+It is **100% free**.
+
+## 📈 Get seen more
+
+<table>
+<tr>
+<td width="33%" valign="top">⬆️ <b>Free boost, 12 hours</b><br><sub>In My listings, tap <b>Boost 12 h</b> and watch a short video. Your listing goes to the top of its topic for 12 hours, in turn with the other boosted listings. Boost again as soon as it ends.</sub></td>
+<td width="33%" valign="top">🎁 <b>Free boosts for friends</b><br><sub>Invite your friends: each friend who publishes their first listing gives you a free 12-hour boost, ready to use in My listings.</sub></td>
+<td width="33%" valign="top">👑 <b>Premium</b><br><sub>The only place at the top of the home page, with no rotation. Also at the top of its topics and of the website, and posted again on our channel when it starts. For 24 hours or 7 days.</sub></td>
+</tr>
+</table>
 
 <div align="center">
 
@@ -63,8 +73,9 @@ It is **100% free**. Once it is approved, you can also **boost it for 12 hours**
 
 ## 💡 Why GramPedia
 
-- 🌍 **85 languages**: each listing shows its main languages, and the app is translated into yours
-- 🔎 **Search and filters** by type and topic
+- 🌍 **85 languages**: each listing shows its main languages, and the app is translated into 12 languages
+- 🔎 **Search and filters** by type, topic and language
+- 🗂️ **2 topics per listing**: it shows up in both
 - 🧑‍⚖️ **Human review**: every listing is read before it goes live
 - 🏆 **Top listings** sorted by audience
 - 📤 **A page for each listing** on the website, easy to share on Telegram, WhatsApp or X
@@ -87,13 +98,31 @@ A mini app is a web app that opens directly inside Telegram, with nothing to ins
 <details>
 <summary><b>How long does the review take?</b></summary>
 <br>
-Listings are reviewed within 7 days, usually much sooner. If a change is needed, you get a message in your language explaining what to fix.
+Listings are reviewed within 7 days, usually much sooner. If a change is needed, you get a message in your language explaining what to fix, and you can edit it in one tap.
+</details>
+
+<details>
+<summary><b>How many languages and topics can I choose?</b></summary>
+<br>
+Only its main languages: up to 3 for a channel or group, 5 for a mini app and 10 for a bot. And 1 or 2 topics: the first one is the main one.
 </details>
 
 <details>
 <summary><b>Why was my listing refused?</b></summary>
 <br>
-The most common reasons: the description does not explain what people will find, it contains links or @mentions, it lists languages it does not really use, or the content is adult, illegal or misleading. You get the reason and can send it again.
+The most common reasons: the description does not explain what people will find (150 characters minimum), it contains links or @mentions, it has too many emojis (5 in the description, 2 in the name), it lists languages it does not really use, or the content is adult, illegal or misleading. You get the reason and can send it again.
+</details>
+
+<details>
+<summary><b>What is the difference between a boost and Premium?</b></summary>
+<br>
+The boost is free: watch a short video and your listing goes to the top of its topic for 12 hours, taking turns with the other boosted listings. Premium is paid with Telegram Stars: one single place, alone at the top of the home page and of its topics, with no rotation, for 24 hours or 7 days.
+</details>
+
+<details>
+<summary><b>What happens if I leave the channel?</b></summary>
+<br>
+GramPedia is reserved for the subscribers of its channel. If you leave it, your listings are paused and hidden. Join again and they come back automatically.
 </details>
 
 <br>
