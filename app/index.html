@@ -179,7 +179,8 @@ async function explore(keep) {
   const bst = (S.featured || []).filter((x) => x.boosted), top = (S.featured || []).filter((x) => !x.boosted).concat(bst.slice(0, 1)), more2 = bst.slice(1);
   const frow = (x) => `<button class="row feat" data-id="${x.id}">${thumb(x)}<span class="t"><b>${esc(x.name)}</b><span class="m"><span class="spons">${x.boosted ? '⬆️ ' + esc(t('boosted')) : '⭐ ' + esc(t('sponsored'))}</span> ${esc(metaOf(x))}</span><p>${esc(x.descr || '')}</p></span></button>`;
   const frows = top.map(frow).join('');
-  const rowsArr = S.items.map((x, i) => `<button class="row" data-id="${x.id}">${S.sort === 'top' && !S.q ? `<span class="rank">${i + 1}</span>` : ''}${thumb(x)}<span class="t"><b>${esc(x.name)}</b><span class="m">${esc(metaOf(x))}</span><p>${esc(x.descr || '')}</p></span></button>`);
+  const fids = new Set((S.featured || []).map((x) => x.id));
+  const rowsArr = S.items.filter((x) => !fids.has(x.id)).map((x, i) => `<button class="row" data-id="${x.id}">${S.sort === 'top' && !S.q ? `<span class="rank">${i + 1}</span>` : ''}${thumb(x)}<span class="t"><b>${esc(x.name)}</b><span class="m">${esc(metaOf(x))}</span><p>${esc(x.descr || '')}</p></span></button>`);
   // the other boosted listings: one every 5 listings
   more2.forEach((x, n) => { const at = (n + 1) * 5 + n; if (at <= rowsArr.length) rowsArr.splice(at, 0, frow(x)); else rowsArr.push(frow(x)); });
   const rows = rowsArr.join('');
