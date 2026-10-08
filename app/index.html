@@ -72,7 +72,7 @@ textarea.inp{min-height:110px;resize:vertical}
 .err{color:var(--bad);font-weight:700;margin:10px 0 0}
 .pickrow{display:flex;gap:8px}
 .pickrow .inp{flex:1;min-width:0}
-.lgrid{display:flex;flex-wrap:wrap;gap:6px}.lgrid button{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:6px 11px;font-size:13.5px;font-weight:700;cursor:pointer}.lgrid button[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.lgrid{display:flex;flex-wrap:wrap;gap:6px;max-height:230px;overflow-y:auto;padding:2px}.lgrid button{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:6px 11px;font-size:13.5px;font-weight:700;cursor:pointer}.lgrid button[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
 .drow{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:6px}.drow .hint{margin:0}
 .tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .tgrid button{border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:10px 4px;font-size:13px;font-weight:700;cursor:pointer;line-height:1.25}
@@ -142,6 +142,7 @@ let T = EN, ME = null, TAB = 'explore';
 const S = { lang: '', type: '', topic: '', sort: 'top', q: '', items: [], total: 0, off: 0, byTopic: {}, byType: {} };
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s == null ? '' : s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const lgName = (k) => { const v = t('lg_' + k); if (v !== 'lg_' + k) return v; try { const s = new Intl.DisplayNames([(ME && ME.lang) || 'en'], { type: 'language' }).of(k); return s ? s.charAt(0).toUpperCase() + s.slice(1) : k; } catch (e) { return k; } };
 const t = (k, v) => { let s = T[k] || EN[k] || k; if (v) for (const [a, b] of Object.entries(v)) s = s.split('{' + a + '}').join(b); return s; };
 const nf = (n) => Number(n || 0).toLocaleString(ME && ME.lang ? ME.lang : 'en');
 const haptic = (k) => { try { tgw.HapticFeedback.impactOccurred(k || 'light'); } catch (e) {} };
@@ -178,7 +179,7 @@ async function explore(keep) {
   const frows = (S.featured || []).map((x) => `<button class="row feat" data-id="${x.id}">${thumb(x)}<span class="t"><b>${esc(x.name)}</b><span class="m"><span class="spons">⭐ ${esc(t('sponsored'))}</span> ${esc(metaOf(x))}</span><p>${esc(x.descr || '')}</p></span></button>`).join('');
   const rows = S.items.map((x, i) => `<button class="row" data-id="${x.id}">${S.sort === 'top' && !S.q ? `<span class="rank">${i + 1}</span>` : ''}${thumb(x)}<span class="t"><b>${esc(x.name)}</b><span class="m">${esc(metaOf(x))}</span><p>${esc(x.descr || '')}</p></span></button>`).join('');
   $('app').innerHTML = `<div class="shelf" role="group" aria-label="${esc(t('f_topic'))}">${shelf}</div><div class="types">${types}</div>
-    <div class="sortr"><select id="lsel" class="lsel" aria-label="${esc(t('l_all'))}"><option value="">${esc(t('l_all'))}</option>${ME.langs.map((l) => `<option value="${l.k}"${S.lang === l.k ? ' selected' : ''}>${l.e} ${esc(t('lg_' + l.k))}</option>`).join('')}</select><button id="sortb">${esc(t(S.sort === 'top' ? 'sort_new' : 'sort_top'))}</button></div>
+    <div class="sortr"><select id="lsel" class="lsel" aria-label="${esc(t('l_all'))}"><option value="">${esc(t('l_all'))}</option>${ME.langs.map((l) => `<option value="${l.k}"${S.lang === l.k ? ' selected' : ''}>${l.e} ${esc(lgName(l.k))}</option>`).join('')}</select><button id="sortb">${esc(t(S.sort === 'top' ? 'sort_new' : 'sort_top'))}</button></div>
     ${frows ? `<div class="idx" style="margin-bottom:12px">${frows}</div>` : ''}${S.items.length ? `<div class="idx">${rows}</div>${S.items.length < S.total ? `<button class="more" id="more">${esc(t('more'))}</button>` : ''}` : `<div class="empty"><b>${esc(t('none_title'))}</b>${esc(t('none_text'))}<div style="margin-top:14px"><button class="btn dark" id="addm">${esc(t('none_btn'))}</button></div></div>`}`;
   $('app').querySelectorAll('[data-tp]').forEach((b) => b.onclick = async () => { haptic(); S.topic = S.topic === b.dataset.tp ? '' : b.dataset.tp; await fetchList(); explore(true); });
   $('app').querySelectorAll('[data-ty]').forEach((b) => b.onclick = async () => { haptic(); S.type = b.dataset.ty; await fetchList(); explore(true); });
@@ -216,7 +217,7 @@ function add(msg) {
   <label class="f" for="alink">${esc(t('f_link'))}</label><div class="pickrow"><input class="inp" id="alink" autocomplete="off" autocapitalize="off" placeholder="${esc(t('f_link_ph'))}" value="${esc(A.link)}"><button class="btn dark" id="afind">${esc(t('check'))}</button></div><div id="aerr"></div>
   ${f ? `
   <label class="f">${esc(t('f_type'))}</label><div class="types" style="margin:0">${['channel', 'group', 'bot', 'app'].map((k) => `<button data-aty="${k}" aria-pressed="${A.type === k}">${esc(t('one_' + k))}</button>`).join('')}</div>
-  <label class="f">${esc(t('f_langs'))}</label><div class="lgrid">${ME.langs.map((l) => `<button data-alg="${l.k}" aria-pressed="${A.langs.includes(l.k)}">${l.e} ${esc(t('lg_' + l.k))}</button>`).join('')}</div>
+  <label class="f">${esc(t('f_langs'))}</label><div class="lgrid">${ME.langs.map((l) => `<button data-alg="${l.k}" aria-pressed="${A.langs.includes(l.k)}">${l.e} ${esc(lgName(l.k))}</button>`).join('')}</div>
   <label class="f">${esc(t('f_topic'))}</label><div class="tgrid">${ME.topics.map((p) => `<button data-atp="${p.k}" aria-pressed="${A.topic === p.k}"><span aria-hidden="true">${p.e}</span>${esc(t('tp_' + p.k))}</button>`).join('')}</div>
   <label class="f" for="aname">${esc(t('f_name'))}</label><input class="inp" id="aname" maxlength="60" value="${esc(A.name)}">
   <label class="f" for="adesc">${esc(t('f_desc'))}</label><textarea class="inp" id="adesc" maxlength="500" placeholder="${esc(t('f_desc_ph'))}">${esc(A.descr)}</textarea><div class="drow"><p class="hint" id="acount">${esc(dcount(A.descr))}</p><button class="btn small" id="aai">${esc(t('ai_btn'))}</button></div>
@@ -295,7 +296,7 @@ function editForm(x, back, msg) {
   $('sbox').style.display = 'none'; window.scrollTo(0, 0);
   $('app').innerHTML = `<h1>${esc(t('edit_title'))}</h1>
   <label class="f">${esc(t('f_type'))}</label><div class="types" style="margin:0">${['channel', 'group', 'bot', 'app'].map((k) => `<button data-ety="${k}" aria-pressed="${f.type === k}">${esc(t('one_' + k))}</button>`).join('')}</div>
-  <label class="f">${esc(t('f_langs'))}</label><div class="lgrid">${ME.langs.map((l) => `<button data-elg="${l.k}" aria-pressed="${f.langs.includes(l.k)}">${l.e} ${esc(t('lg_' + l.k))}</button>`).join('')}</div>
+  <label class="f">${esc(t('f_langs'))}</label><div class="lgrid">${ME.langs.map((l) => `<button data-elg="${l.k}" aria-pressed="${f.langs.includes(l.k)}">${l.e} ${esc(lgName(l.k))}</button>`).join('')}</div>
   <label class="f">${esc(t('f_topic'))}</label><div class="tgrid">${ME.topics.map((p) => `<button data-etp="${p.k}" aria-pressed="${f.topic === p.k}"><span aria-hidden="true">${p.e}</span>${esc(t('tp_' + p.k))}</button>`).join('')}</div>
   <label class="f" for="ename">${esc(t('f_name'))}</label><input class="inp" id="ename" maxlength="60" value="${esc(f.name)}">
   <label class="f" for="edesc">${esc(t('f_desc'))}</label><textarea class="inp" id="edesc" maxlength="500">${esc(f.descr)}</textarea><div class="drow"><p class="hint" id="ecount">${esc(dcount(f.descr))}</p><button class="btn small" id="eai">${esc(t('ai_btn'))}</button></div>
