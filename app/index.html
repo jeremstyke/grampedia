@@ -179,10 +179,9 @@ async function explore(keep) {
   const bst = (S.featured || []).filter((x) => x.boosted), top = (S.featured || []).filter((x) => !x.boosted).concat(bst.slice(0, 1)), more2 = bst.slice(1);
   const frow = (x) => `<button class="row feat" data-id="${x.id}">${thumb(x)}<span class="t"><b>${esc(x.name)}</b><span class="m"><span class="spons">${x.boosted ? '⬆️ ' + esc(t('boosted')) : '⭐ ' + esc(t('sponsored'))}</span> ${esc(metaOf(x))}</span><p>${esc(x.descr || '')}</p></span></button>`;
   const frows = top.map(frow).join('');
-  const fids = new Set((S.featured || []).map((x) => x.id));
+  const fids = new Set(top.map((x) => x.id));
   const rowsArr = S.items.filter((x) => !fids.has(x.id)).map((x, i) => `<button class="row" data-id="${x.id}">${S.sort === 'top' && !S.q ? `<span class="rank">${i + 1}</span>` : ''}${thumb(x)}<span class="t"><b>${esc(x.name)}</b><span class="m">${esc(metaOf(x))}</span><p>${esc(x.descr || '')}</p></span></button>`);
-  // the other boosted listings: one every 5 listings
-  more2.forEach((x, n) => { const at = (n + 1) * 5 + n; if (at <= rowsArr.length) rowsArr.splice(at, 0, frow(x)); else rowsArr.push(frow(x)); });
+  // only one boosted listing, on top; it rotates (the server draws them at random on every visit)
   const rows = rowsArr.join('');
   $('app').innerHTML = `<div class="shelf" role="group" aria-label="${esc(t('f_topic'))}">${shelf}</div><div class="types">${types}</div>
     <div class="sortr"><select id="lsel" class="lsel" aria-label="${esc(t('l_all'))}"><option value="">${esc(t('l_all'))}</option>${ME.langs.map((l) => `<option value="${l.k}"${S.lang === l.k ? ' selected' : ''}>${l.e} ${esc(lgName(l.k))}</option>`).join('')}</select><button id="sortb">${esc(t(S.sort === 'top' ? 'sort_new' : 'sort_top'))}</button></div>
