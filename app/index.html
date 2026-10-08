@@ -213,7 +213,7 @@ let sT = null;
 $('q').addEventListener('input', (e) => { clearTimeout(sT); sT = setTimeout(async () => { S.q = e.target.value.trim(); await fetchList(); explore(true); }, 350); });
 
 // ---------- Add ----------
-const hasUrl = (s) => /(https?:\/\/|www\.|t(elegram)?\.me\/|\b[a-z0-9-]+\.(com|net|org|io|me|app|xyz|ru|fr|info|co|gg|ly|link|site|online|top|biz|club|pro|shop|store|tk|cc|in)\b)/i.test(String(s || ''));
+const hasUrl = (s) => /(@[A-Za-z0-9_]{3,}|https?:\/\/|www\.|t(elegram)?\.me\/|\b[a-z0-9-]+\.(com|net|org|io|me|app|xyz|ru|fr|info|co|gg|ly|link|site|online|top|biz|club|pro|shop|store|tk|cc|in)\b)/i.test(String(s || ''));
 const lmax = (ty) => (ty === 'channel' || ty === 'group' ? 3 : ty === 'app' ? 5 : 10);
 const emo = (s) => (String(s || '').match(/\p{Extended_Pictographic}/gu) || []).length;
 const dcount = (s) => { const n = String(s || '').trim().length, e = emo(s); if (e > 5) return t('emo_over', { n: e }); return n < 150 ? t('desc_left', { n: 150 - n }) : t('desc_ok', { n }); };
