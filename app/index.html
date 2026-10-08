@@ -167,7 +167,8 @@ function go(tab) { TAB = tab; bar(); window.scrollTo(0, 0); ({ explore, add, min
 
 // ---------- Explore ----------
 async function fetchList(append) {
-  const r = await api('list', { lang: S.lang, type: S.type, topic: S.topic, sort: S.sort, q: S.q, offset: append ? S.off : 0 });
+  const pre = !append && PRE ? await PRE : null; PRE = null;
+  const r = pre && !pre.error ? pre : await api('list', { lang: S.lang, type: S.type, topic: S.topic, sort: S.sort, q: S.q, offset: append ? S.off : 0 });
   if (!append) S.featured = r.featured || [];
   S.items = append ? S.items.concat(r.items || []) : (r.items || []); S.total = r.total || 0; S.off = S.items.length; S.byTopic = r.byTopic || {}; S.byType = r.byType || {};
   if (!S.type && !S.topic && !S.q) $('count').textContent = t('listings', { n: nf(S.total) });
@@ -475,11 +476,13 @@ function gate() {
 document.addEventListener('focusin', (e) => { if (/^(INPUT|TEXTAREA)$/.test(e.target.tagName) && e.target.type !== 'file') { document.body.classList.add('typing'); setTimeout(() => { try { e.target.scrollIntoView({ block: 'center', behavior: 'smooth' }); } catch (x) {} }, 300); } });
 document.addEventListener('focusout', () => setTimeout(() => { if (!/^(INPUT|TEXTAREA)$/.test((document.activeElement || {}).tagName || '')) document.body.classList.remove('typing'); }, 120));
 
+let PRE = null; // the first list, loaded at the same time as the profile
 (async () => {
   if (tgw) { try { tgw.ready(); tgw.expand(); tgw.disableVerticalSwipes && tgw.disableVerticalSwipes(); tgw.setHeaderColor && tgw.setHeaderColor('#13213a'); tgw.setBackgroundColor && tgw.setBackgroundColor('#f3f5f9'); } catch (e) {} }
   if (!INIT) { $('sbox').style.display = 'none'; $('app').innerHTML = `<div class="center"><div class="big">📚</div><h1>GramPedia</h1><p class="sub">${esc(t('open_tg'))}</p><a class="btn main" href="https://t.me/Grampedia_bot">Telegram</a></div>`; return; }
   try {
     const src = (tgw.initDataUnsafe && tgw.initDataUnsafe.start_param) || '';
+    PRE = api('list', { lang: S.lang, type: S.type, topic: S.topic, sort: S.sort, q: S.q, offset: 0 }).catch(() => null);
     ME = await api('me', { src: src || 'app' }); if (ME.error) throw new Error(ME.error);
     T = { ...EN, ...(ME.t || {}) }; document.documentElement.lang = ME.lang || 'en'; if (['ar', 'fa'].includes(ME.lang)) document.documentElement.dir = 'rtl';
     $('q').placeholder = t('search_ph');
