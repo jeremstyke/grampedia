@@ -155,7 +155,7 @@ async function api(action, data) {
 const load = () => { $('app').innerHTML = '<div class="load"><i></i></div>'; };
 const thumb = (x, cls) => x.img ? `<img class="${cls || 'thumb'}" src="${API + x.img}" alt="" loading="lazy">` : `<div class="${cls || 'thumb'}">${(ME.topics.find((p) => p.k === x.topic) || { e: '✨' }).e}</div>`;
 const flagsOf = (x) => (x.langs || []).map((l) => (ME.langs.find((y) => y.k === l) || { e: '' }).e).join(' ');
-const metaOf = (x) => [t('one_' + x.type), t('tp_' + x.topic), x.members ? t('members', { n: nf(x.members) }) : ''].filter(Boolean).join(', ') + (x.langs && x.langs.length ? '  ' + flagsOf(x) : '');
+const metaOf = (x) => [t('one_' + x.type), t('tp_' + x.topic) + (x.topic2 ? ' / ' + t('tp_' + x.topic2) : ''), x.members ? t('members', { n: nf(x.members) }) : ''].filter(Boolean).join(', ') + (x.langs && x.langs.length ? '  ' + flagsOf(x) : '');
 function bar() {
   const tabs = [['explore', '🔍'], ['add', '➕'], ['mine', '📋']].concat(ME && ME.admin ? [['mod', '🛡️']] : []);
   $('bar').style.gridTemplateColumns = `repeat(${tabs.length},1fr)`;
@@ -217,7 +217,9 @@ const hasUrl = (s) => /(@[A-Za-z0-9_]{3,}|https?:\/\/|www\.|t(elegram)?\.me\/|\b
 const lmax = (ty) => (ty === 'channel' || ty === 'group' ? 3 : ty === 'app' ? 5 : 10);
 const emo = (s) => (String(s || '').match(/\p{Extended_Pictographic}/gu) || []).length;
 const dcount = (s) => { const n = String(s || '').trim().length, e = emo(s); if (e > 5) return t('emo_over', { n: e }); return n < 150 ? t('desc_left', { n: 150 - n }) : t('desc_ok', { n }); };
-const A = { link: '', found: null, type: '', topic: '', name: '', descr: '', image: null, langs: [] };
+// up to 2 topics: the first one tapped is the main one, a third tap replaces the second
+function pick2(o, k) { if (o.topic === k) { o.topic = o.topic2 || ''; o.topic2 = ''; } else if (o.topic2 === k) o.topic2 = ''; else if (!o.topic) o.topic = k; else o.topic2 = k; }
+const A = { link: '', found: null, type: '', topic: '', topic2: '', name: '', descr: '', image: null, langs: [] };
 function add(msg) {
   const f = A.found;
   $('app').innerHTML = `<h1>${esc(t('add_title'))}</h1><p class="sub">${esc(t('add_sub'))}</p>
@@ -225,7 +227,7 @@ function add(msg) {
   ${f ? `
   <label class="f">${esc(t('f_type'))}</label><div class="types" style="margin:0">${['channel', 'group', 'bot', 'app'].map((k) => `<button data-aty="${k}" aria-pressed="${A.type === k}">${esc(t('one_' + k))}</button>`).join('')}</div>
   <label class="f">${esc(t('f_langs'))}</label><div class="lgrid">${ME.langs.map((l) => `<button data-alg="${l.k}" aria-pressed="${A.langs.includes(l.k)}">${l.e} ${esc(lgName(l.k))}</button>`).join('')}</div>
-  <label class="f">${esc(t('f_topic'))}</label><div class="tgrid">${ME.topics.map((p) => `<button data-atp="${p.k}" aria-pressed="${A.topic === p.k}"><span aria-hidden="true">${p.e}</span>${esc(t('tp_' + p.k))}</button>`).join('')}</div>
+  <label class="f">${esc(t('f_topic'))} <span style="font-weight:600;opacity:.6">(1-2)</span></label><div class="tgrid">${ME.topics.map((p) => `<button data-atp="${p.k}" aria-pressed="${A.topic === p.k || A.topic2 === p.k}"><span aria-hidden="true">${p.e}</span>${esc(t('tp_' + p.k))}</button>`).join('')}</div>
   <label class="f" for="aname">${esc(t('f_name'))}</label><input class="inp" id="aname" maxlength="60" value="${esc(A.name)}">
   <label class="f" for="adesc">${esc(t('f_desc'))}</label><textarea class="inp" id="adesc" maxlength="500" placeholder="${esc(t('f_desc_ph'))}">${esc(A.descr)}</textarea><div class="drow"><p class="hint" id="acount">${esc(dcount(A.descr))}</p><button class="btn small" id="aai">${esc(t('ai_btn'))}</button></div>
   <label class="f">${esc(t('f_photo'))}</label>${A.image ? `<img class="bprev" src="${A.image}" alt="">` : ''}<div>${!A.image && f.photo ? `<p class="hint" style="margin:0 0 8px">${esc(t('photo_auto'))}</p>` : ''}<label class="btn small">${esc(A.image || f.photo ? t('photo_pick') : t('photo_need'))}<input type="file" accept="image/*" id="afile" hidden></label></div>
@@ -235,7 +237,7 @@ function add(msg) {
   $('alink').onkeydown = (e) => { if (e.key === 'Enter') find(); };
   if (!f) return;
   $('app').querySelectorAll('[data-aty]').forEach((b) => b.onclick = () => { haptic(); A.type = b.dataset.aty; add(); });
-  $('app').querySelectorAll('[data-atp]').forEach((b) => b.onclick = () => { haptic(); A.topic = b.dataset.atp; $('app').querySelectorAll('[data-atp]').forEach((x) => x.setAttribute('aria-pressed', x === b)); });
+  $('app').querySelectorAll('[data-atp]').forEach((b) => b.onclick = () => { haptic(); pick2(A, b.dataset.atp); $('app').querySelectorAll('[data-atp]').forEach((x) => x.setAttribute('aria-pressed', x.dataset.atp === A.topic || x.dataset.atp === A.topic2)); });
   $('app').querySelectorAll('[data-alg]').forEach((b) => b.onclick = () => { const k = b.dataset.alg; if (A.langs.includes(k)) A.langs = A.langs.filter((x) => x !== k); else { if (A.langs.length >= lmax(A.type)) return toast(t('e_langmax')); A.langs.push(k); } haptic(); b.setAttribute('aria-pressed', A.langs.includes(k)); });
   $('aai').onclick = () => aiWrite(A, 'adesc', 'acount', 'aai');
   $('aname').oninput = (e) => { A.name = e.target.value; };
@@ -287,8 +289,8 @@ async function send() {
   const out = $('aout');
   for (const [ok, e] of [[A.type, 'e_type'], [A.topic, 'e_topic'], [A.langs.length, 'e_langs'], [A.name.trim().length >= 2, 'e_name'], [A.descr.trim().length >= 150, 'e_short'], [emo(A.descr) <= 5 && emo(A.name) <= 2, 'e_emoji'], [A.langs.length <= lmax(A.type), 'e_langmax'], [!hasUrl(A.descr), 'e_url'], [A.image || A.found.photo, 'e_image']]) if (!ok) return out.innerHTML = `<p class="err">${esc(t(e))}</p>`;
   $('asend').disabled = true; $('asend').textContent = t('sending');
-  let r; try { r = await api('add', { link: A.found.link || A.link, type: A.type, topic: A.topic, langs: A.langs, name: A.name, descr: A.descr, image: A.image }); } catch (e) { r = { error: 'server' }; }
-  if (r.ok) { try { tgw.HapticFeedback.notificationOccurred('success'); } catch (e) {} Object.assign(A, { link: '', found: null, type: '', topic: '', name: '', descr: '', image: null, langs: [] });
+  let r; try { r = await api('add', { link: A.found.link || A.link, type: A.type, topic: A.topic, topic2: A.topic2 || '', langs: A.langs, name: A.name, descr: A.descr, image: A.image }); } catch (e) { r = { error: 'server' }; }
+  if (r.ok) { try { tgw.HapticFeedback.notificationOccurred('success'); } catch (e) {} Object.assign(A, { link: '', found: null, type: '', topic: '', topic2: '', name: '', descr: '', image: null, langs: [] });
     $('app').innerHTML = `<div class="center"><div class="big" aria-hidden="true">📚</div><h1>${esc(t('sent_title'))}</h1><p class="sub">${esc(t('sent_text'))}</p>${false ? `<div class="idx" style="padding:14px;margin:0 0 14px;text-align:left"><b>⚡ ${esc(t('exp_title'))}</b><p class="hint" style="margin:6px 0 10px">${esc(t('exp_text'))}</p><button class="btn dark" id="sexp" style="width:100%">${esc(t('exp_btn'))}</button></div>` : ''}<div style="display:grid;gap:8px"><button class="btn main" id="smine">${esc(t('sent_btn'))}</button><button class="btn" id="sagain">${esc(t('add_another'))}</button></div>${agxCard('after')}</div>`;
     if ($('sexp')) $('sexp').onclick = (e) => buyExp(r.id, e.currentTarget); $('smine').onclick = () => go('mine'); $('sagain').onclick = () => add(); bindAgx(); return; }
   $('asend').disabled = false; $('asend').textContent = t('send');
@@ -298,19 +300,19 @@ async function send() {
 // ---------- Edit a listing ----------
 let E = null;
 function editForm(x, back, msg) {
-  if (x) E = { id: x.id, link: x.link, type: x.type, topic: x.topic, langs: (x.langs || []).slice(), name: x.name, descr: x.descr || '', img: x.img, image: null, back };
+  if (x) E = { id: x.id, link: x.link, type: x.type, topic: x.topic, topic2: x.topic2 || '', langs: (x.langs || []).slice(), name: x.name, descr: x.descr || '', img: x.img, image: null, back };
   const f = E; document.querySelectorAll('.sheet-bg').forEach((n) => n.remove());
   $('sbox').style.display = 'none'; window.scrollTo(0, 0);
   $('app').innerHTML = `<h1>${esc(t('edit_title'))}</h1>
   <label class="f">${esc(t('f_type'))}</label><div class="types" style="margin:0">${['channel', 'group', 'bot', 'app'].map((k) => `<button data-ety="${k}" aria-pressed="${f.type === k}">${esc(t('one_' + k))}</button>`).join('')}</div>
   <label class="f">${esc(t('f_langs'))}</label><div class="lgrid">${ME.langs.map((l) => `<button data-elg="${l.k}" aria-pressed="${f.langs.includes(l.k)}">${l.e} ${esc(lgName(l.k))}</button>`).join('')}</div>
-  <label class="f">${esc(t('f_topic'))}</label><div class="tgrid">${ME.topics.map((p) => `<button data-etp="${p.k}" aria-pressed="${f.topic === p.k}"><span aria-hidden="true">${p.e}</span>${esc(t('tp_' + p.k))}</button>`).join('')}</div>
+  <label class="f">${esc(t('f_topic'))} <span style="font-weight:600;opacity:.6">(1-2)</span></label><div class="tgrid">${ME.topics.map((p) => `<button data-etp="${p.k}" aria-pressed="${f.topic === p.k || f.topic2 === p.k}"><span aria-hidden="true">${p.e}</span>${esc(t('tp_' + p.k))}</button>`).join('')}</div>
   <label class="f" for="ename">${esc(t('f_name'))}</label><input class="inp" id="ename" maxlength="60" value="${esc(f.name)}">
   <label class="f" for="edesc">${esc(t('f_desc'))}</label><textarea class="inp" id="edesc" maxlength="500">${esc(f.descr)}</textarea><div class="drow"><p class="hint" id="ecount">${esc(dcount(f.descr))}</p><button class="btn small" id="eai">${esc(t('ai_btn'))}</button></div>
   <label class="f">${esc(t('f_photo'))}</label>${f.image ? `<img class="bprev" src="${f.image}" alt="">` : f.img ? `<img class="bprev" src="${API + f.img}" alt="">` : ''}<div><p class="hint" style="margin:0 0 8px">${esc(t(f.image ? 'photo_new' : 'photo_keep'))}</p><label class="btn small">${esc(t('photo_pick'))}<input type="file" accept="image/*" id="efile" hidden></label></div></div>
   <div id="eout">${msg || ''}</div><div style="margin-top:20px"><button class="btn main" id="esave">${esc(t('edit_save'))}</button></div>`;
   $('app').querySelectorAll('[data-ety]').forEach((b) => b.onclick = () => { f.type = b.dataset.ety; $('app').querySelectorAll('[data-ety]').forEach((n) => n.setAttribute('aria-pressed', n === b)); });
-  $('app').querySelectorAll('[data-etp]').forEach((b) => b.onclick = () => { f.topic = b.dataset.etp; $('app').querySelectorAll('[data-etp]').forEach((n) => n.setAttribute('aria-pressed', n === b)); });
+  $('app').querySelectorAll('[data-etp]').forEach((b) => b.onclick = () => { pick2(f, b.dataset.etp); $('app').querySelectorAll('[data-etp]').forEach((n) => n.setAttribute('aria-pressed', n.dataset.etp === f.topic || n.dataset.etp === f.topic2)); });
   $('app').querySelectorAll('[data-elg]').forEach((b) => b.onclick = () => { const k = b.dataset.elg; if (f.langs.includes(k)) f.langs = f.langs.filter((x) => x !== k); else { if (f.langs.length >= lmax(f.type)) return toast(t('e_langmax')); f.langs.push(k); } b.setAttribute('aria-pressed', f.langs.includes(k)); });
   $('eai').onclick = () => aiWrite(f, 'edesc', 'ecount', 'eai');
   $('ename').oninput = (e) => { f.name = e.target.value; };
@@ -324,7 +326,7 @@ function editForm(x, back, msg) {
     if (f.langs.length > lmax(f.type)) return $('eout').innerHTML = `<p class="err">${esc(t('e_langmax'))}</p>`;
     if (hasUrl(f.descr)) return $('eout').innerHTML = `<p class="err">${esc(t('e_url'))}</p>`;
     $('esave').disabled = true;
-    let r; try { r = await api('edit', { id: f.id, type: f.type, topic: f.topic, langs: f.langs, name: f.name, descr: f.descr, image: f.image }); } catch (e) { r = { error: 'server' }; }
+    let r; try { r = await api('edit', { id: f.id, type: f.type, topic: f.topic, topic2: f.topic2 || '', langs: f.langs, name: f.name, descr: f.descr, image: f.image }); } catch (e) { r = { error: 'server' }; }
     if (r.ok) { haptic('medium'); toast(t(r.live ? 'edit_live' : 'edit_sent')); E = null; return go(f.back || 'mine'); }
     $('esave').disabled = false; $('eout').innerHTML = `<p class="err">${esc(t('e_' + (r.error || 'server')))}</p>`;
   };
@@ -445,7 +447,7 @@ async function mod() {
     b.insertAdjacentHTML('afterend', `<div class="beau idx" style="margin-top:8px;padding:12px;text-align:left"><b>✨ ${esc(t('beau_new'))}</b><p style="margin:6px 0">${esc(r.text)}</p>${r.fr ? `<p class="hint" style="margin:0 0 8px">🇫🇷 ${esc(r.fr)}</p>` : ''}<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><button class="btn main" data-bok>${esc(t('beau_use'))}</button><button class="btn" data-bno>${esc(t('beau_cancel'))}</button></div></div>`);
     const box = card.querySelector('.beau');
     box.querySelector('[data-bno]').onclick = () => box.remove();
-    box.querySelector('[data-bok]').onclick = async (e) => { const bt = e.currentTarget; bt.disabled = true; let s; try { s = await api('edit', { id: x.id, type: x.type, topic: x.topic, langs: x.langs, name: x.name, descr: r.text }); } catch (er) { s = {}; } if (s.ok) { haptic('medium'); toast(t('edit_live')); mod(); } else { bt.disabled = false; toast(t('e_' + (s.error || 'server'))); } };
+    box.querySelector('[data-bok]').onclick = async (e) => { const bt = e.currentTarget; bt.disabled = true; let s; try { s = await api('edit', { id: x.id, type: x.type, topic: x.topic, topic2: x.topic2 || '', langs: x.langs, name: x.name, descr: r.text }); } catch (er) { s = {}; } if (s.ok) { haptic('medium'); toast(t('edit_live')); mod(); } else { bt.disabled = false; toast(t('e_' + (s.error || 'server'))); } };
   });
 }
 
