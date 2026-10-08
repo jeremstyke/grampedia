@@ -216,7 +216,7 @@ $('q').addEventListener('input', (e) => { clearTimeout(sT); sT = setTimeout(asyn
 const hasUrl = (s) => /(https?:\/\/|www\.|t(elegram)?\.me\/|\b[a-z0-9-]+\.(com|net|org|io|me|app|xyz|ru|fr|info|co|gg|ly|link|site|online|top|biz|club|pro|shop|store|tk|cc|in)\b)/i.test(String(s || ''));
 const lmax = (ty) => (ty === 'channel' || ty === 'group' ? 3 : ty === 'app' ? 5 : 10);
 const emo = (s) => (String(s || '').match(/\p{Extended_Pictographic}/gu) || []).length;
-const dcount = (s) => { const n = String(s || '').trim().length, e = emo(s); if (e > 5) return t('emo_over', { n: e }); return n < 80 ? t('desc_left', { n: 80 - n }) : t('desc_ok', { n }); };
+const dcount = (s) => { const n = String(s || '').trim().length, e = emo(s); if (e > 5) return t('emo_over', { n: e }); return n < 150 ? t('desc_left', { n: 150 - n }) : t('desc_ok', { n }); };
 const A = { link: '', found: null, type: '', topic: '', name: '', descr: '', image: null, langs: [] };
 function add(msg) {
   const f = A.found;
@@ -285,7 +285,7 @@ const shrinkBanner = (file) => banner(URL.createObjectURL(file));
 function shrink(file) { return new Promise((ok) => { const img = new Image(), u = URL.createObjectURL(file); img.onload = () => { const k = Math.min(1, 1280 / Math.max(img.width, img.height)); const c = document.createElement('canvas'); c.width = Math.round(img.width * k); c.height = Math.round(img.height * k); c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); URL.revokeObjectURL(u); ok(c.toDataURL('image/jpeg', .85)); }; img.src = u; }); }
 async function send() {
   const out = $('aout');
-  for (const [ok, e] of [[A.type, 'e_type'], [A.topic, 'e_topic'], [A.langs.length, 'e_langs'], [A.name.trim().length >= 2, 'e_name'], [A.descr.trim().length >= 80, 'e_short'], [emo(A.descr) <= 5 && emo(A.name) <= 2, 'e_emoji'], [A.langs.length <= lmax(A.type), 'e_langmax'], [!hasUrl(A.descr), 'e_url'], [A.image || A.found.photo, 'e_image']]) if (!ok) return out.innerHTML = `<p class="err">${esc(t(e))}</p>`;
+  for (const [ok, e] of [[A.type, 'e_type'], [A.topic, 'e_topic'], [A.langs.length, 'e_langs'], [A.name.trim().length >= 2, 'e_name'], [A.descr.trim().length >= 150, 'e_short'], [emo(A.descr) <= 5 && emo(A.name) <= 2, 'e_emoji'], [A.langs.length <= lmax(A.type), 'e_langmax'], [!hasUrl(A.descr), 'e_url'], [A.image || A.found.photo, 'e_image']]) if (!ok) return out.innerHTML = `<p class="err">${esc(t(e))}</p>`;
   $('asend').disabled = true; $('asend').textContent = t('sending');
   let r; try { r = await api('add', { link: A.found.link || A.link, type: A.type, topic: A.topic, langs: A.langs, name: A.name, descr: A.descr, image: A.image }); } catch (e) { r = { error: 'server' }; }
   if (r.ok) { try { tgw.HapticFeedback.notificationOccurred('success'); } catch (e) {} Object.assign(A, { link: '', found: null, type: '', topic: '', name: '', descr: '', image: null, langs: [] });
@@ -319,7 +319,7 @@ function editForm(x, back, msg) {
   $('esave').onclick = async () => {
     if (f.name.trim().length < 2) return $('eout').innerHTML = `<p class="err">${esc(t('e_name'))}</p>`;
     if (!f.langs.length) return $('eout').innerHTML = `<p class="err">${esc(t('e_langs'))}</p>`;
-    if (f.descr.trim().length < 80) return $('eout').innerHTML = `<p class="err">${esc(t('e_short'))}</p>`;
+    if (f.descr.trim().length < 150) return $('eout').innerHTML = `<p class="err">${esc(t('e_short'))}</p>`;
     if (emo(f.descr) > 5 || emo(f.name) > 2) return $('eout').innerHTML = `<p class="err">${esc(t('e_emoji'))}</p>`;
     if (f.langs.length > lmax(f.type)) return $('eout').innerHTML = `<p class="err">${esc(t('e_langmax'))}</p>`;
     if (hasUrl(f.descr)) return $('eout').innerHTML = `<p class="err">${esc(t('e_url'))}</p>`;
