@@ -102,9 +102,9 @@ Listings are reviewed within 7 days, usually much sooner. If a change is needed,
 </details>
 
 <details>
-<summary><b>How many languages and topics can I choose?</b></summary>
+<summary><b>Which languages and topics should I choose?</b></summary>
 <br>
-Only its main languages: up to 3 for a channel or group, 5 for a mini app and 10 for a bot. And 1 or 2 topics: the first one is the main one.
+Only the languages it really uses: a listing with languages it does not use can be refused. And 1 or 2 topics: the first one is the main one.
 </details>
 
 <details>
