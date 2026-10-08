@@ -192,16 +192,7 @@ async function explore(keep) {
   $('lsel').onchange = async (e) => { S.lang = e.target.value; await fetchList(); explore(true); };
   $('sortb').onclick = async () => { S.sort = S.sort === 'top' ? 'new' : 'top'; await fetchList(); explore(true); };
   if ($('more')) $('more').onclick = async () => { $('more').disabled = true; await fetchList(true); explore(true); };
-  { const rs = [...$('app').querySelectorAll('.idx .row:not(.feat)')]; for (let i = 9; i < rs.length; i += 10) rs[i].insertAdjacentHTML('afterend', agxRow()); if (rs.length && rs.length < 10) rs[rs.length - 1].insertAdjacentHTML('afterend', agxRow());
-    // never two promos next to each other (Ads Galaxy beside a boosted listing): move the Ads Galaxy card, or drop it
-    const P = (el) => !!el && (el.classList.contains('feat') || el.classList.contains('agxr'));
-    $('app').querySelectorAll('.idx .agxr').forEach((ag) => {
-      if (!P(ag.previousElementSibling) && !P(ag.nextElementSibling)) return;
-      const cands = [...ag.parentElement.children].filter((r) => r !== ag && !P(r) && !P(r.nextElementSibling));
-      const to = cands.find((r) => ag.compareDocumentPosition(r) & Node.DOCUMENT_POSITION_FOLLOWING) || cands[cands.length - 1];
-      if (to) to.insertAdjacentElement('afterend', ag); else ag.remove();
-    });
-    bindAgx(); }
+  { const rs = [...$('app').querySelectorAll('.idx .row:not(.feat)')]; for (let i = 9; i < rs.length; i += 10) rs[i].insertAdjacentHTML('afterend', agxRow()); if (rs.length && rs.length < 10) rs[rs.length - 1].insertAdjacentHTML('afterend', agxRow()); bindAgx(); }
   if ($('addm')) $('addm').onclick = () => go('add');
   $('app').insertAdjacentHTML('beforeend', `<button class="btn dark" id="shareg" style="width:100%;margin-top:14px">📤 ${esc(t('share_app'))}</button>`);
   $('shareg').onclick = shareApp;
