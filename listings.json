@@ -2,7 +2,7 @@
  "name": "GramPedia",
  "description": "Human-reviewed directory of Telegram channels, groups, bots and mini apps",
  "website": "https://jeremstyke.github.io/grampedia/",
- "updated": "2026-10-09T19:36:32.265Z",
+ "updated": "2026-10-09T19:45:33.151Z",
  "how_to_add": "Send the user to https://t.me/Grampedia_bot?start=add_USERNAME (USERNAME = the public @username of their channel, group or bot, without the @). Free, reviewed by a human.",
  "listings": [
   {
@@ -717,7 +717,7 @@
    "votes": 0,
    "telegram": "https://t.me/Tgcoinbriefbot",
    "page": "https://jeremstyke.github.io/grampedia/l/63/",
-   "description": "Your friendly crypto helper 🤖 Ask any question about crypto and get a simple, clear answer, like explained to a beginner: how Bitcoin works, what a wallet is, how to avoid scams. Live prices of BTC, ETH, SOL and TON in one tap. Answers in your language, no financial advice, no hype. Free, 10 questions a day."
+   "description": "Promote your crypto project for free 🚀 Your token, your app or your community, shown to crypto fans on Crypto Spotlight. Ready in 1 minute: send your text, an image and your link, a human reviews it and it is posted with a button to your project. Bonus: prices of any coin, price alerts, a converter and the latest crypto news. No financial advice."
   },
   {
    "name": "Daily Score ⚽ Guess the Score",
