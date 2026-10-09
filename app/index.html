@@ -117,7 +117,7 @@ const API = 'https://pote-ia-bot-en-production.up.railway.app';
 const tgw = window.Telegram && Telegram.WebApp, INIT = tgw ? tgw.initData : '';
 const SPINE = { crypto: '#9a6a12', earn: '#2e7d4f', games: '#6b3fa0', fun: '#c2410c', news: '#334155', edu: '#1e5aa8', tech: '#0f766e', biz: '#7c2d12', deals: '#be185d', sport: '#15803d', media: '#7e22ce', life: '#4d7c0f', other: '#64748b' };
 const EN = {
- explore: 'Explore', add: 'Add', mine: 'My listings', search_ph: 'Search channels, groups, bots and mini apps', listings: '{n} listings',
+ explore: 'Explore', add: 'Add', mine: 'My listings', ads: 'Advertise', search_ph: 'Search channels, groups, bots and mini apps', listings: '{n} listings',
  tp_crypto: 'Crypto & finance', tp_earn: 'Earn money', tp_games: 'Games', tp_fun: 'Fun & memes', tp_news: 'News', tp_edu: 'Education', tp_tech: 'Tech & AI', tp_biz: 'Business & marketing', tp_deals: 'Deals & shopping', tp_sport: 'Sports', tp_media: 'Music, movies & series', tp_life: 'Lifestyle & health', tp_other: 'Other',
  ty_all: 'All', ty_channel: 'Channels', ty_group: 'Groups', ty_bot: 'Bots', ty_app: 'Mini apps', one_channel: 'Channel', one_group: 'Group', one_bot: 'Bot', one_app: 'Mini app',
  l_all: '🌐 All languages', f_langs: 'Main languages (only those it really uses)', e_langs: 'Choose at least one language.', ai_btn: '✨ Write it with AI', ai_wait: 'Writing…', ai_note: 'You can edit the text before sending.', e_ailimit: 'You used the AI a lot today. Try again tomorrow.',
@@ -157,13 +157,13 @@ const thumb = (x, cls) => x.img ? `<img class="${cls || 'thumb'}" src="${API + x
 const flagsOf = (x) => (x.langs || []).map((l) => (ME.langs.find((y) => y.k === l) || { e: '' }).e).join(' ');
 const metaOf = (x) => [t('one_' + x.type), t('tp_' + x.topic) + (x.topic2 ? ' / ' + t('tp_' + x.topic2) : ''), x.members ? t('members', { n: nf(x.members) }) : ''].filter(Boolean).join(', ') + (x.langs && x.langs.length ? '  ' + flagsOf(x) : '');
 function bar() {
-  const tabs = [['explore', '🔍'], ['add', '➕'], ['mine', '📋']].concat(ME && ME.admin ? [['mod', '🛡️']] : []);
+  const tabs = [['explore', '🔍'], ['add', '➕'], ['mine', '📋'], ['ads', '📢']].concat(ME && ME.admin ? [['mod', '🛡️']] : []);
   $('bar').style.gridTemplateColumns = `repeat(${tabs.length},1fr)`;
   $('bar').innerHTML = tabs.map(([k, e]) => `<button data-tab="${k}"${k === TAB ? ' aria-current="page"' : ''}><span aria-hidden="true">${e}</span>${esc(t(k))}</button>`).join('');
   $('bar').querySelectorAll('button').forEach((b) => b.onclick = () => { haptic(); go(b.dataset.tab); });
   $('sbox').style.display = TAB === 'explore' ? '' : 'none';
 }
-function go(tab) { TAB = tab; bar(); window.scrollTo(0, 0); ({ explore, add, mine, help, mod, notifs })[tab](); }
+function go(tab) { TAB = tab; bar(); window.scrollTo(0, 0); ({ explore, add, mine, help, mod, notifs, ads })[tab](); }
 
 // ---------- Explore ----------
 async function fetchList(append) {
@@ -420,9 +420,108 @@ async function buyExp(id, b) {
   else openLink(inv.url);
 }
 
+// ---------- Advertise (a sponsored post on the channel) ----------
+const AD = { id: null, text: '', link: '', btn: '', topic: '', image: '', pay: 'stars', rids: [] };
+let ADI = null;
+const at = (k, v) => { let s = (ADI && ADI.t && ADI.t[k]) || k; if (v) for (const [a, b] of Object.entries(v)) s = s.split('{' + a + '}').join(b); return s; };
+const AD_PILL = { pending: 'pending', fix: 'pending', approved: 'approved', publishing: 'approved', published: 'approved', refused: 'refused' };
+const adReset = () => Object.assign(AD, { id: null, text: '', link: '', btn: '', topic: '', image: '', pay: 'stars', rids: [] });
+async function ads(keep) {
+  if (!keep || !ADI) { load(); try { ADI = await api('ad_info'); } catch (e) { ADI = { error: 1 }; } if (TAB !== 'ads') return; }
+  if (!ADI || ADI.error || !ADI.t) { $('app').innerHTML = `<div class="empty"><b>${esc(t('e_server'))}</b></div>`; return; }
+  const mine = ADI.mine || [], editing = AD.id != null, full = !editing && ADI.left <= 0;
+  if (AD.pay === 'ads' && ADI.freeAt) AD.pay = 'stars';
+  const opt = (k, title, d, dis) => `<button class="fopt" data-pay="${k}" ${dis ? 'disabled' : ''} style="display:block;width:100%;text-align:left;cursor:pointer;margin-bottom:8px;${AD.pay === k ? 'border-color:var(--ink);box-shadow:0 0 0 1.5px var(--ink) inset;' : ''}${dis ? 'opacity:.5;' : ''}"><b style="font-size:16px">${AD.pay === k ? '🔘' : '⚪'} ${esc(title)}</b><p class="hint" style="margin:4px 0 0;font-weight:600">${esc(d)}</p></button>`;
+  $('app').innerHTML = `<h1>${esc(at('tab_title'))}</h1><p class="sub">${esc(at('tab_sub', { n: ADI.members ? nf(ADI.members) : '?' }))}</p>`
+    + (mine.length ? `<label class="f">${esc(at('my_ads'))}</label>` + mine.map((a) => `<div class="idx" style="margin-bottom:10px;display:flex;gap:12px;padding:12px;align-items:flex-start">${a.img ? `<img src="${API + a.img}" alt="" style="width:74px;height:74px;object-fit:cover;border-radius:10px;flex:none">` : ''}<div style="min-width:0;flex:1"><span class="pill ${AD_PILL[a.status] || ''}">${esc(at('st_' + (a.status === 'publishing' ? 'approved' : a.status)))}</span> <span class="hint" style="font-weight:600">${esc(a.when || '')}</span><p style="margin:6px 0 0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical">${esc(a.text)}</p>${a.fix ? `<p class="hint" style="margin:6px 0 0;color:#7c4a03">✏️ ${esc(a.fix)}</p>` : ''}${a.why ? `<p class="hint" style="margin:6px 0 0;color:#7c2d12">${esc(at('n_why'))} ${esc(a.why)}</p>` : ''}<div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">${['fix', 'pending'].includes(a.status) ? `<button class="btn small" data-aded="${a.id}">${esc(at('edit'))}</button>` : ''}${a.post ? `<button class="btn small" data-adpost="${esc(a.post)}">${esc(at('see_post'))}</button>` : ''}</div></div></div>`).join('') : '')
+    + `<label class="f" style="font-size:20px;margin-top:24px">${esc(editing ? at('edit') : at('new_ad'))}</label>`
+    + (full ? `<div class="empty"><b>⏳</b>${esc(at('full_today'))}</div>` : `
+  ${editing ? '' : `<p class="hint" style="font-weight:700;color:var(--ink)">📅 ${esc(at('left', { n: ADI.left, m: ADI.day }))}</p>`}
+  <p class="hint" style="margin-top:6px">${esc(at('rules'))}</p>
+  <label class="f">${esc(at('f_image'))}</label>${AD.image ? `<img class="bprev" src="${AD.image}" alt="" style="object-fit:contain">` : ''}<label class="btn small">${esc(AD.image ? t('photo_pick') : at('f_image'))} 🖼️<input type="file" accept="image/*" id="adfile" hidden></label>
+  <label class="f" for="adtext">${esc(at('f_text'))}</label><textarea class="inp" id="adtext" maxlength="400" placeholder="${esc(at('f_text_ph'))}">${esc(AD.text)}</textarea><p class="hint" id="adcount">${AD.text.length}/400</p>
+  <label class="f" for="adlink">${esc(at('f_link'))}</label><input class="inp" id="adlink" autocomplete="off" autocapitalize="off" value="${esc(AD.link)}" placeholder="https://t.me/...">
+  <label class="f" for="adbtn">${esc(at('f_btn'))}</label><input class="inp" id="adbtn" maxlength="30" value="${esc(AD.btn)}" placeholder="${esc(at('f_btn_ph'))}">
+  <label class="f">${esc(at('f_topic'))}</label><div class="tgrid">${ME.topics.map((p) => `<button data-adtp="${p.k}" aria-pressed="${AD.topic === p.k}"><span aria-hidden="true">${p.e}</span>${esc(t('tp_' + p.k))}</button>`).join('')}</div>
+  ${editing ? '' : `<label class="f">${esc(at('f_pay'))}</label>${opt('stars', at('pay_stars', { n: ADI.stars }), at('pay_stars_d'))}${ADI.credit ? opt('credit', at('pay_credit'), at('pay_credit_d')) : ''}${opt('ads', at('pay_videos', { n: ADI.videos }) + (AD.rids.length ? ` (${AD.rids.length}/${ADI.videos})` : ''), ADI.freeAt ? at('e_free24', { d: ADI.freeTxt, n: ADI.stars }) : at('pay_videos_d'), !!ADI.freeAt)}`}
+  <div id="adout"></div><div style="margin-top:16px;display:grid;gap:8px"><button class="btn main" id="adsend">${esc(editing ? at('save') : at('send'))}</button>${editing ? `<button class="btn" id="adcancel">${esc(t('beau_cancel'))}</button>` : ''}</div>`);
+  $('app').querySelectorAll('[data-adpost]').forEach((b) => b.onclick = () => openLink(b.dataset.adpost));
+  $('app').querySelectorAll('[data-aded]').forEach((b) => b.onclick = () => { const a = mine.find((x) => String(x.id) === b.dataset.aded); if (!a) return; haptic(); Object.assign(AD, { id: a.id, text: a.text, link: a.link, btn: a.btn || '', topic: a.topic, image: '', rids: [] }); ads(true); setTimeout(() => { const l = $('adtext'); if (l) l.scrollIntoView({ block: 'center' }); }, 50); });
+  if (full) return;
+  $('adfile').onchange = (e) => { const fl = e.target.files[0]; if (fl) shrink(fl).then((d) => { AD.image = d; ads(true); }); };
+  $('adtext').oninput = (e) => { AD.text = e.target.value; $('adcount').textContent = AD.text.length + '/400'; };
+  $('adlink').oninput = (e) => { AD.link = e.target.value; };
+  $('adbtn').oninput = (e) => { AD.btn = e.target.value; };
+  $('app').querySelectorAll('[data-adtp]').forEach((b) => b.onclick = () => { haptic(); AD.topic = b.dataset.adtp; $('app').querySelectorAll('[data-adtp]').forEach((x) => x.setAttribute('aria-pressed', x.dataset.adtp === AD.topic)); });
+  $('app').querySelectorAll('[data-pay]').forEach((b) => b.onclick = () => { haptic(); AD.pay = b.dataset.pay; ads(true); });
+  if ($('adcancel')) $('adcancel').onclick = () => { adReset(); ads(true); };
+  $('adsend').onclick = adSend;
+}
+async function adSend() {
+  const out = (k, v) => { $('adout').innerHTML = `<p class="err">${esc(at(k, v))}</p>`; };
+  const b = $('adsend'), editing = AD.id != null;
+  if (!editing && !AD.image) return out('e_image');
+  if (AD.text.trim().length < 20) return out('e_text');
+  if (!AD.link.trim()) return out('e_link');
+  if (!AD.topic) return out('e_topic');
+  b.disabled = true;
+  try {
+    if (!editing && AD.pay === 'ads') {
+      await agxSdk();
+      while (AD.rids.length < ADI.videos) {
+        b.textContent = at('video_n', { i: AD.rids.length + 1, n: ADI.videos });
+        let res = null; try { res = await window.showAdsGalaxy({ miniappId: AGX_ID }); } catch (e) {}
+        if (!res || !res.reward_eligible || !res.request_id) { b.disabled = false; b.textContent = at('send'); return out('no_video'); }
+        AD.rids.push(res.request_id); haptic('light');
+      }
+      b.textContent = at('send');
+    }
+    const body = { text: AD.text, link: AD.link, btn: AD.btn, topic: AD.topic };
+    if (AD.image) body.image = AD.image;
+    const r = editing ? await api('ad_edit', { ...body, id: AD.id }) : await api('ad_new', { ...body, pay: AD.pay, rids: AD.rids });
+    if (r.error) { b.disabled = false; if (r.error === 'no_video') AD.rids = []; return out(r.error, { d: r.d || '', n: r.n || ADI.stars }); }
+    const done = () => { try { tgw.HapticFeedback.notificationOccurred('success'); } catch (e) {} toast(at(editing ? 'save' : 'sent_ok')); adReset(); ADI = null; ads(); };
+    if (r.url) {
+      b.disabled = false;
+      if (tgw && tgw.openInvoice) tgw.openInvoice(r.url, (st) => { if (st === 'paid') done(); }); else openLink(r.url);
+      return;
+    }
+    done();
+  } catch (e) { b.disabled = false; out('e_server'); }
+}
+
+// ---------- Ads to review (owner only) ----------
+async function modAds() {
+  let r; try { r = await api('ad_mod'); } catch (e) { return; }
+  const xs = (r && r.items) || []; if (!xs.length || TAB !== 'mod') return;
+  const box = document.createElement('div'); box.id = 'modads';
+  box.innerHTML = `<h2 class="serif" style="margin:6px 0 10px">📢 Pubs à valider (${xs.length})</h2>` + xs.map((a) => `<div class="idx" style="margin-bottom:14px" id="ma${a.id}">${a.img ? `<img src="${API + a.img}" alt="" style="width:100%;max-height:340px;object-fit:contain;background:#e7ecf3;display:block">` : ''}<div style="padding:14px"><span class="pill pending">${a.status === 'fix' ? '✏️ Modif demandée' : '⏳ À valider'}</span> <span class="pill">${a.pay === 'stars' ? '⭐ Payée' : a.pay === 'ads' ? '🎬 Vidéos' : '🎁 Crédit'}</span> <span class="pill">${esc(t('tp_' + a.topic))}</span><p style="margin:10px 0 6px;white-space:pre-wrap">${esc(a.text)}</p>${a.fr ? `<p class="hint" style="margin:0 0 6px">🇫🇷 ${esc(a.fr)}</p>` : ''}<p class="hint" style="margin:0 0 10px">🔗 ${esc(a.link)}${a.btn ? ' · bouton « ' + esc(a.btn) + ' »' : ''}</p><button class="btn small" data-adopen="${esc(a.link)}" style="margin-bottom:10px">🔗 Voir le lien</button>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><button class="btn main" data-adok="${a.id}">✅ Publier</button><button class="btn" data-adfix="${a.id}">✏️ Modif</button><button class="btn" data-adno="${a.id}">❌ Refuser</button><button class="btn" data-adban="${a.id}" style="color:#b91c1c">🚫 Interdit</button></div></div></div>`).join('');
+  $('app').prepend(box);
+  const done = (id, msg) => { haptic('medium'); toast(msg || ''); const c = $('ma' + id); if (c) c.remove(); if (!box.querySelector('[data-adok]')) box.remove(); };
+  box.querySelectorAll('[data-adopen]').forEach((b) => b.onclick = () => openLink(b.dataset.adopen));
+  box.querySelectorAll('[data-adok]').forEach((b) => b.onclick = async () => { b.disabled = true; const z = await api('ad_decide', { id: Number(b.dataset.adok), ok: true }); done(b.dataset.adok, z.msg); });
+  const ask = (b, mode) => {
+    const id = b.dataset.adfix || b.dataset.adno || b.dataset.adban, card = $('ma' + id), old = card.querySelector('.rz');
+    if (old) { const same = old.dataset.mode === mode; old.remove(); if (same) return; }
+    const lab = { fix: ['Qu\'est-ce qu\'il doit changer ?', 'Demander la modif'], no: ['Pourquoi c\'est refusé ?', 'Refuser'], ban: ['Pourquoi c\'est interdit ? (pas de remboursement, crédit perdu)', 'Interdire'] }[mode];
+    b.parentElement.insertAdjacentHTML('afterend', `<div class="rz" data-mode="${mode}" style="margin-top:12px"><b>${lab[0]}</b><textarea class="inp" maxlength="500" style="margin-top:8px;min-height:80px" placeholder="Écris en français, c'est traduit pour lui"></textarea><button class="btn main" data-rzgo style="margin-top:8px">${lab[1]}</button></div>`);
+    const rz = card.querySelector('.rz');
+    rz.querySelector('[data-rzgo]').onclick = async (e) => {
+      const note = rz.querySelector('textarea').value.trim(); if (mode === 'fix' && !note) return toast('Écris ce qu\'il doit changer');
+      e.currentTarget.disabled = true;
+      const z = await api('ad_decide', mode === 'fix' ? { id: Number(id), fix: note } : { id: Number(id), ok: false, why: note ? { codes: [], note } : null, abuse: mode === 'ban' });
+      done(id, z.msg);
+    };
+  };
+  box.querySelectorAll('[data-adfix]').forEach((b) => b.onclick = () => ask(b, 'fix'));
+  box.querySelectorAll('[data-adno]').forEach((b) => b.onclick = () => ask(b, 'no'));
+  box.querySelectorAll('[data-adban]').forEach((b) => b.onclick = () => ask(b, 'ban'));
+}
+
 // ---------- Moderation (owner only) ----------
 async function mod() {
-  load(); const r = await api('mod'); const xs = r.items || [];
+  load(); const [r] = await Promise.all([api('mod')]); const xs = r.items || []; setTimeout(modAds, 0);
   $('app').innerHTML = `<h1>${esc(t('mod'))}</h1><p class="sub">${nf(r.users)} ${esc(t('mod_users'))}, ${nf(r.live)} ${esc(t('mod_live'))}, ${nf(r.wait)} ${esc(t('mod_wait'))}</p>`
     + (xs.length ? xs.map((x) => `<div class="idx" style="margin-bottom:14px" id="m${x.id}">${x.img ? `<img src="${API + x.img}" alt="" style="width:100%;aspect-ratio:16/9;object-fit:contain;background:#e7ecf3;display:block">` : ''}<div style="padding:14px">${x.edit ? `<span class="pill pending" style="margin-bottom:8px">✏️ ${esc(t('mod_edit'))}</span><br>` : ''}${x.exp ? ((h) => `<span class="pill ${h < 6 ? 'unsub' : 'pending'}" style="margin-bottom:8px">⚡ ${esc(t('exp_left', { h: Math.max(0, h) }))}</span><br>`)(Math.floor((Date.parse(x.exp) + 864e5 - Date.now()) / 36e5)) : ''}<b class="serif" style="font-size:20px">${esc(x.edit ? x.edit.name : x.name)}</b><div class="hint" style="margin:4px 0 8px">${esc(metaOf(x.edit ? { ...x, ...x.edit } : x))}${x.uname ? ' · @' + esc(x.uname) : ''}${x.edit && x.edit.photo ? ' · 🖼️' : ''}</div>${x.fr ? `<p style="margin:0 0 8px">${esc(x.fr)}</p><details class="hint" style="margin:0 0 8px"><summary>${esc(t('mod_orig'))}</summary>${esc(x.edit ? x.edit.descr : x.descr || '')}</details>` : `<p style="margin:0 0 8px">${esc(x.edit ? x.edit.descr : x.descr || '')}</p>`}${x.edit && (x.edit.name !== x.name || x.edit.descr !== x.descr) ? `<p class="hint" style="margin:0 0 8px;text-decoration:line-through">${esc(x.name)}: ${esc(x.descr || '')}</p>` : ''}<p class="hint" style="margin:0 0 12px">${esc(t('mod_by', { who: x.by }))}${x.at ? ((d) => ` · <span style="${d >= 5 ? 'color:#c0392b;font-weight:700' : ''}">${esc(d < 1 ? t('mod_today') : t('mod_age', { d }))}</span>`)(Math.floor((Date.now() - Date.parse(x.at)) / 864e5)) : ''}</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><button class="btn main" data-ok="${x.id}" data-kind="${x.edit ? 'edit' : ''}">✅ ${esc(t('mod_ok'))}</button><button class="btn" data-no="${x.id}" data-kind="${x.edit ? 'edit' : ''}">❌ ${esc(t('mod_no'))}</button></div>${x.edit ? '' : `<button class="btn" data-fix="${x.id}" style="width:100%;margin-top:8px">✏️ ${esc(t('mod_fix'))}</button>`}${x.edit ? '' : `<button class="btn small" data-beau="${x.id}" style="width:100%;margin-top:8px">✨ ${esc(t('mod_beau'))}</button>`}${x.edit ? '' : `<button class="btn small" data-mded="${x.id}" style="width:100%;margin-top:8px">✏️ ${esc(t('edit'))}</button>`}<button class="btn small" data-open="${esc(x.link)}" style="width:100%;margin-top:8px">🔗 ${esc(t('open'))} ${x.uname ? '@' + esc(x.uname) : ''}</button></div></div>`).join('')
@@ -491,7 +590,7 @@ let PRE = null; // the first list, loaded at the same time as the profile
     const qs = new URLSearchParams(location.search), want = qs.get('tab');
     if (qs.get('id')) { go('explore'); const one = await api('one', { id: qs.get('id') }); if (one.item) detail(one.item); return; }
     if (want === 'add' && qs.get('link')) { A.link = qs.get('link'); go('add'); return find(); }
-    go(['add', 'mine', 'help', 'notifs'].includes(want) || (want === 'mod' && ME.admin) ? want : 'explore');
+    go(['add', 'mine', 'help', 'notifs', 'ads'].includes(want) || (want === 'mod' && ME.admin) ? want : 'explore');
   } catch (e) { $('app').innerHTML = `<div class="empty"><b>${esc(t('e_server'))}</b></div>`; }
 })();
 </script>
