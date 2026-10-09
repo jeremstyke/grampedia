@@ -1,0 +1,783 @@
+{
+ "name": "GramPedia",
+ "description": "Human-reviewed directory of Telegram channels, groups, bots and mini apps",
+ "website": "https://jeremstyke.github.io/grampedia/",
+ "updated": "2026-10-09T12:06:33.367Z",
+ "how_to_add": "Send the user to https://t.me/Grampedia_bot?start=add_USERNAME (USERNAME = the public @username of their channel, group or bot, without the @). Free, reviewed by a human.",
+ "listings": [
+  {
+   "name": "𝙉𝙚𝙭𝘽𝘿 𝙀𝙖𝙧𝙣",
+   "type": "channel",
+   "topics": [
+    "earn"
+   ],
+   "languages": [
+    "bn"
+   ],
+   "subscribers": 8571,
+   "votes": 1,
+   "telegram": "https://t.me/NexBD_Earn",
+   "page": "https://jeremstyke.github.io/grampedia/l/22/",
+   "description": "Learn • Earn • Grow\n\nLearn crypto trading, explore airdrops, free mining, bot referral programs, and online earning opportunities.\n\nDaily Giveaways for Our Community!\n\nJoin us to learn and grow together.\n\nIf you want to earn money for free, join now and don't miss out!"
+  },
+  {
+   "name": "𝗚𝗔𝗟𝗔𝗫𝗬 𝗘𝗠𝗣𝗜𝗥𝗘",
+   "type": "channel",
+   "topics": [
+    "earn"
+   ],
+   "languages": [
+    "en",
+    "hi"
+   ],
+   "subscribers": 2731,
+   "votes": 1,
+   "telegram": "https://t.me/glxyempire",
+   "page": "https://jeremstyke.github.io/grampedia/l/21/",
+   "description": "Discover how to create Telegram bots and generate passive income. This channel offers practical tutorials and monetization strategies tailored for both beginners and experienced developers. Join a community of over 2700 members passionate about digital entrepreneurship and automation. 💰"
+  },
+  {
+   "name": "LEGENDS UPDATES ZONE",
+   "type": "channel",
+   "topics": [
+    "crypto",
+    "earn"
+   ],
+   "languages": [
+    "en"
+   ],
+   "subscribers": 1378,
+   "votes": 1,
+   "telegram": "https://t.me/legendsupdateszone",
+   "page": "https://jeremstyke.github.io/grampedia/l/45/",
+   "description": "Stay updated on the latest developments in cryptocurrency and finance with timely, reliable information. This channel delivers news and updates relevant to crypto enthusiasts and investors looking to stay informed about market movements and industry changes. Join a growing community of 1,300+ members seeking trustworthy financial insights 📈"
+  },
+  {
+   "name": "QUORIN",
+   "type": "channel",
+   "topics": [
+    "crypto",
+    "earn"
+   ],
+   "languages": [
+    "en"
+   ],
+   "subscribers": 1028,
+   "votes": 1,
+   "telegram": "https://t.me/earn_academy1",
+   "page": "https://jeremstyke.github.io/grampedia/l/50/",
+   "description": "💰 QUORIN | Your shortcut to financial freedom starts here. We share the best e-books, guides & resources to help you build income online - from side hustles to full-time freedom. Save. Learn. Earn. 🚀"
+  },
+  {
+   "name": "Biroo Barnoota Oromiyaa",
+   "type": "channel",
+   "topics": [
+    "edu",
+    "news"
+   ],
+   "languages": [
+    "en"
+   ],
+   "subscribers": 857,
+   "votes": 1,
+   "telegram": "https://t.me/biroo_barnoota_Oromiya",
+   "page": "https://jeremstyke.github.io/grampedia/l/23/",
+   "description": "Join Biroo Barnoota Oromiyaa for comprehensive study materials including notes, tips, and practice questions designed to help you prepare effectively for exams. This channel provides regular updates on exam schedules and valuable learning strategies to boost your academic performance. Perfect for students seeking organized resources and practical guidance to study smarter and achieve better result"
+  },
+  {
+   "name": "𝗪𝗦 𝗘𝗔𝗥𝗡𝗜𝗡𝗚 𝗕𝗱 💰",
+   "type": "channel",
+   "topics": [
+    "earn"
+   ],
+   "languages": [
+    "bn",
+    "en"
+   ],
+   "subscribers": 714,
+   "votes": 1,
+   "telegram": "https://t.me/SNS_market_bd",
+   "page": "https://jeremstyke.github.io/grampedia/l/54/",
+   "description": "This channel offers earning opportunities and promotional services in Bangladesh. It's suitable for those interested in making money online or promoting their own business. You can contact the admins to avail promotional services."
+  },
+  {
+   "name": "WORLD BEST MOVIES FOR FREE 💯",
+   "type": "channel",
+   "topics": [
+    "media",
+    "other"
+   ],
+   "languages": [
+    "en"
+   ],
+   "subscribers": 577,
+   "votes": 1,
+   "telegram": "https://t.me/worldbestmovieschannel",
+   "page": "https://jeremstyke.github.io/grampedia/l/49/",
+   "description": "🎬 WORLD BEST MOVIES FOR FREE 🍿\nYour ultimate movie destination!\nDiscover amazing movies, trending films, action, romance, comedy, thrillers & more.\n🎥 New movie updates\n🔥 Trending entertainment\n🍿 Movie lovers welcome!\nWatch • Enjoy • Anytime"
+  },
+  {
+   "name": "👑 LEGENDZ P2P",
+   "type": "channel",
+   "topics": [
+    "crypto"
+   ],
+   "languages": [
+    "en"
+   ],
+   "subscribers": 544,
+   "votes": 1,
+   "telegram": "https://t.me/legendzp2p",
+   "page": "https://jeremstyke.github.io/grampedia/l/44/",
+   "description": "Join LEGENDZ P2P to buy, sell, and trade cryptocurrency through a fast and reliable peer-to-peer platform. Whether you're a beginner or experienced trader, you'll find secure transactions backed by trusted and transparent practices. Stay updated on crypto trading opportunities and connect with a community that values smart trading decisions 👑"
+  },
+  {
+   "name": "LEGEND FXT SIGNAL GROUP 📈",
+   "type": "channel",
+   "topics": [
+    "crypto",
+    "other"
+   ],
+   "languages": [
+    "en"
+   ],
+   "subscribers": 538,
+   "votes": 1,
+   "telegram": "https://t.me/legendfxtsignalchannel",
+   "page": "https://jeremstyke.github.io/grampedia/l/53/",
+   "description": "Join a community dedicated to forex and crypto trading signals with daily market analysis and practical trading setups. Members receive actionable trading tips and technical insights to help navigate volatile markets more effectively. Whether you're a beginner learning trading fundamentals or an experienced trader refining your strategy, this channel provides the educational content and signals ne"
+  },
+  {
+   "name": "🌍 Crypto News World",
+   "type": "channel",
+   "topics": [
+    "crypto",
+    "other"
+   ],
+   "languages": [
+    "en"
+   ],
+   "subscribers": 509,
+   "votes": 1,
+   "telegram": "https://t.me/allcryptonewsworld",
+   "page": "https://jeremstyke.github.io/grampedia/l/48/",
+   "description": "Stay updated with breaking cryptocurrency news, Bitcoin and altcoin movements, whale trading alerts, and regulatory developments. Perfect for crypto traders and investors who need real-time market information and institutional insights. This channel delivers timely updates on market-moving events and compliance changes affecting the crypto landscape. 🚨"
+  },
+  {
+   "name": "SS Crypto Lab",
+   "type": "channel",
+   "topics": [
+    "earn"
+   ],
+   "languages": [
+    "en"
+   ],
+   "subscribers": 476,
+   "votes": 1,
+   "telegram": "https://t.me/sscryptolab",
+   "page": "https://jeremstyke.github.io/grampedia/l/20/",
+   "description": "🚀 SS CRYPTO LAB 🧪\n\nWelcome to SS Crypto Lab - your hub for upcoming crypto projects, Web3 ideas & digital innovation."
+  },
+  {
+   "name": "𝙍𝙀𝘿 𝙋𝘼𝘾𝙆𝙀𝙏𝙎 🧧",
+   "type": "channel",
+   "topics": [
+    "crypto"
+   ],
+   "languages": [
+    "en",
+    "hi",
+    "ur"
+   ],
+   "subscribers": 357,
+   "votes": 1,
+   "telegram": "https://t.me/Packet_Red",
+   "page": "https://jeremstyke.github.io/grampedia/l/26/",
+   "description": "Get the latest Binance Red Packet updates and announcements here. Stay informed about new opportunities and promotions from one of the leading crypto platforms. Join a community of crypto enthusiasts sharing the fastest news and updates. 🧧"
+  },
+  {
+   "name": "اربح دلوقتي",
+   "type": "channel",
+   "topics": [
+    "earn"
+   ],
+   "languages": [
+    "ar"
+   ],
+   "subscribers": 342,
+   "votes": 1,
+   "telegram": "https://t.me/Earnnow2026",
+   "page": "https://jeremstyke.github.io/grampedia/l/19/",
+   "description": "Welcome to the Earn Now channel. The 'Earn Now' channel on YouTube is an Arabic channel specialized in making money from the internet."
+  },
+  {
+   "name": "App task",
+   "type": "channel",
+   "topics": [
+    "earn"
+   ],
+   "languages": [
+    "en",
+    "am"
+   ],
+   "subscribers": 270,
+   "votes": 1,
+   "telegram": "https://t.me/apptasket",
+   "page": "https://jeremstyke.github.io/grampedia/l/39/",
+   "description": "Join a community focused on accessible online work opportunities with quick payments. This channel shares tasks and jobs suitable for beginners looking to earn money from home. Get updates on payment methods and work options available to members. 💼"
+  },
+  {
+   "name": "FREE FUNDED ACCOUNTS",
+   "type": "channel",
+   "topics": [
+    "crypto"
+   ],
+   "languages": [
+    "en",
+    "ha",
+    "am"
+   ],
+   "subscribers": 242,
+   "votes": 1,
+   "telegram": "https://t.me/free_funded_accounts_giveaways",
+   "page": "https://jeremstyke.github.io/grampedia/l/35/",
+   "description": "🎁 FREE FUNDED ACCOUNT OPPORTUNITIES\n🏆 Giveaways & competitions\n💰 Free challenges & rewards\n📢 Opportunities posted regularly\nIf you need any help regarding dm @Jactrades"
+  },
+  {
+   "name": "💥THE TEAM OF WINNERS💥",
+   "type": "channel",
+   "topics": [
+    "earn"
+   ],
+   "languages": [
+    "fr",
+    "en",
+    "hi"
+   ],
+   "subscribers": 188,
+   "votes": 1,
+   "telegram": "https://t.me/THE_TEAM_OF_WINNERS",
+   "page": "https://jeremstyke.github.io/grampedia/l/40/",
+   "description": "Join this channel to discover methods to earn money online through websites and Telegram bots. Perfect if you want to generate income with your phone and an internet connection. A community dedicated to monetization opportunities accessible to everyone. 💰"
+  },
+  {
+   "name": "Earnhub by jad",
+   "type": "channel",
+   "topics": [
+    "earn",
+    "crypto"
+   ],
+   "languages": [
+    "bn",
+    "en",
+    "hi"
+   ],
+   "subscribers": 182,
+   "votes": 1,
+   "telegram": "https://t.me/jadsearningzone",
+   "page": "https://jeremstyke.github.io/grampedia/l/41/",
+   "description": "Discover legitimate free earning sites and paid opportunities all in one place. Get regular tips and updates about the latest ways to earn money online. Perfect for anyone looking to start making extra income without upfront costs."
+  },
+  {
+   "name": "MotivateMe Quotes",
+   "type": "channel",
+   "topics": [
+    "other"
+   ],
+   "languages": [
+    "en"
+   ],
+   "subscribers": 160,
+   "votes": 1,
+   "telegram": "https://t.me/motivatemequotes",
+   "page": "https://jeremstyke.github.io/grampedia/l/34/",
+   "description": "Join MotivateMe for your daily dose of inspiration and powerful quotes designed to fuel your motivation and positive mindset. Whether you're seeking encouragement to overcome challenges or need a boost of energy to tackle your goals, this channel delivers uplifting messages and wisdom every day. Perfect for anyone looking to cultivate a more positive perspective and stay inspired on their personal"
+  },
+  {
+   "name": "PR Earning Tips®",
+   "type": "channel",
+   "topics": [
+    "crypto",
+    "earn"
+   ],
+   "languages": [
+    "en",
+    "te"
+   ],
+   "subscribers": 126,
+   "votes": 1,
+   "telegram": "https://t.me/prearningtips",
+   "page": "https://jeremstyke.github.io/grampedia/l/42/",
+   "description": "Airdrops Crypto Web3 Online Tasks, Micro task based earnings & Work From Home Job Opportunities. Regular posts. Publish only genuine verified. Easy to understand information"
+  },
+  {
+   "name": "🎁 ℝ𝔼𝔻 𝔹𝕆𝕏 🎁",
+   "type": "channel",
+   "topics": [
+    "crypto"
+   ],
+   "languages": [
+    "ur",
+    "en",
+    "hi"
+   ],
+   "subscribers": 111,
+   "votes": 1,
+   "telegram": "https://t.me/RedBoxCode",
+   "page": "https://jeremstyke.github.io/grampedia/l/25/",
+   "description": "Join this channel for daily red packet codes and crypto updates. Members receive regular notifications about available rewards and Bitcoin-related content. Stay informed on the latest crypto opportunities and daily giveaways in one convenient place. 🎁"
+  },
+  {
+   "name": "Things We Never Say 🖤",
+   "type": "channel",
+   "topics": [
+    "edu",
+    "life"
+   ],
+   "languages": [
+    "en"
+   ],
+   "subscribers": 104,
+   "votes": 1,
+   "telegram": "https://t.me/ThingsWeNeverSay",
+   "page": "https://jeremstyke.github.io/grampedia/l/47/",
+   "description": "Short words for the feelings we never know how to explain.\n\nLove • Pain • Healing • Self-Respect\n\nSome posts will feel like they were written about you 👨‍💻"
+  },
+  {
+   "name": "TʜᴇOʀᴠɪX ⚡️",
+   "type": "channel",
+   "topics": [
+    "tech",
+    "edu"
+   ],
+   "languages": [
+    "en",
+    "hi"
+   ],
+   "subscribers": 89,
+   "votes": 1,
+   "telegram": "https://t.me/TheOrvix",
+   "page": "https://jeremstyke.github.io/grampedia/l/58/",
+   "description": "TheOrvix is a tech and AI channel delivering the latest innovations, industry insights, and practical knowledge for tech enthusiasts and professionals. Whether you're exploring artificial intelligence, software developments, or emerging technologies, you'll find curated updates and expert analysis here. Perfect for staying informed about rapid tech changes in an accessible way."
+  },
+  {
+   "name": "CRYPTO BOX 🎁",
+   "type": "channel",
+   "topics": [
+    "crypto"
+   ],
+   "languages": [
+    "en",
+    "ur",
+    "hi"
+   ],
+   "subscribers": 64,
+   "votes": 1,
+   "telegram": "https://t.me/CryptoBox_21",
+   "page": "https://jeremstyke.github.io/grampedia/l/27/",
+   "description": "Your all-in-one crypto hub for major updates, market insights, and finance news. Stay informed on cryptocurrency trends and opportunities in one convenient place. Perfect for traders and investors looking to consolidate their crypto knowledge. 📊"
+  },
+  {
+   "name": "ADS STACK",
+   "type": "channel",
+   "topics": [
+    "crypto",
+    "earn"
+   ],
+   "languages": [
+    "en"
+   ],
+   "subscribers": 63,
+   "votes": 1,
+   "telegram": "https://t.me/zea_linc",
+   "page": "https://jeremstyke.github.io/grampedia/l/52/",
+   "description": "Discover advertising opportunities in the crypto and finance space on this decentralized platform. Connect with projects, services, and communities looking to reach engaged audiences without traditional intermediaries. Perfect for marketers, crypto enthusiasts, and businesses seeking authentic peer-to-peer promotion channels."
+  },
+  {
+   "name": "GramPedia Channel",
+   "type": "channel",
+   "topics": [
+    "biz",
+    "edu"
+   ],
+   "languages": [
+    "en"
+   ],
+   "subscribers": 59,
+   "votes": 1,
+   "telegram": "https://t.me/grampediadirectory",
+   "page": "https://jeremstyke.github.io/grampedia/l/56/",
+   "description": "Discover GramPedia, your essential resource for finding quality Telegram channels, groups, bots and mini-apps organized by theme. Designed for entrepreneurs, marketers and Telegram enthusiasts, this directory updated daily makes it easy to explore and submit new resources for free. Whether you're looking to expand your network or promote your own project, GramPedia centralizes the curated content "
+  },
+  {
+   "name": "Red Packets",
+   "type": "group",
+   "topics": [
+    "crypto"
+   ],
+   "languages": [
+    "en",
+    "hi",
+    "ur"
+   ],
+   "subscribers": 40,
+   "votes": 1,
+   "telegram": "https://t.me/RedPackets_In",
+   "page": "https://jeremstyke.github.io/grampedia/l/29/",
+   "description": "Discover all Binance Red Packets in one place for major cryptocurrencies like BTC, BNB, SOL, ETH and USDT. This group centralizes the latest quick profit opportunities in crypto, ideal for active traders who don't want to miss distributions. Join to easily access all available Binance promotions. 🧧"
+  },
+  {
+   "name": "EarnIntel: Where Tasks Meet Opportunity",
+   "type": "channel",
+   "topics": [
+    "earn"
+   ],
+   "languages": [
+    "en",
+    "ru",
+    "ar"
+   ],
+   "subscribers": 31,
+   "votes": 1,
+   "telegram": "https://t.me/makuumoneyhub",
+   "page": "https://jeremstyke.github.io/grampedia/l/10/",
+   "description": "EarnIntel connects task seekers with opportunities to earn money through various online work options. The channel shares practical ways to generate income, making it ideal for those looking to supplement their earnings or find flexible work arrangements. Content is available in English, Russian, and Arabic, serving a diverse international audience interested in monetization methods."
+  },
+  {
+   "name": "DarK Online Service",
+   "type": "channel",
+   "topics": [
+    "earn"
+   ],
+   "languages": [
+    "en"
+   ],
+   "subscribers": 27,
+   "votes": 1,
+   "telegram": "https://t.me/darkonlineservice",
+   "page": "https://jeremstyke.github.io/grampedia/l/24/",
+   "description": "Discover legitimate ways to monetize your social media presence across Facebook, Instagram, and TikTok. This channel shares opportunities for account sponsorships, online payments, and app purchases to help you earn money from your existing followers. Perfect for content creators looking to diversify their income streams and maximize their social platforms. Join a growing community focused on prac"
+  },
+  {
+   "name": "ℂ𝕣𝕪𝕡𝕥𝕠 ℍ𝕦𝕓 🎁",
+   "type": "channel",
+   "topics": [
+    "crypto"
+   ],
+   "languages": [
+    "en",
+    "hi",
+    "ur"
+   ],
+   "subscribers": 14,
+   "votes": 1,
+   "telegram": "https://t.me/CryptoHubBox",
+   "page": "https://jeremstyke.github.io/grampedia/l/28/",
+   "description": "Follow the latest crypto packages and collect daily rewards on this channel dedicated to crypto enthusiasts. Discover regular opportunities and red boxes to open every day. Perfect for staying informed about market movements and quickly accessing exclusive community offers. 🎁"
+  },
+  {
+   "name": "CP Web Series [Hindi Dubbed]",
+   "type": "channel",
+   "topics": [
+    "media"
+   ],
+   "languages": [
+    "hi",
+    "ur",
+    "ne"
+   ],
+   "subscribers": 6,
+   "votes": 1,
+   "telegram": "https://t.me/CP_WebSeries",
+   "page": "https://jeremstyke.github.io/grampedia/l/30/",
+   "description": "World wide Web Series Available in Hindi dubbing. Latest Movie here Hindi dubbed"
+  },
+  {
+   "name": "Jeremstyke",
+   "type": "channel",
+   "topics": [
+    "biz"
+   ],
+   "languages": [
+    "en"
+   ],
+   "subscribers": 6,
+   "votes": 0,
+   "telegram": "https://t.me/jeremstyke",
+   "page": "https://jeremstyke.github.io/grampedia/l/11/",
+   "description": "Discover the latest creations from an independent developer specializing in AI bots for Telegram. This channel is the first place to share new projects and innovations before their launch. Ideal for entrepreneurs and developers interested in automation and artificial intelligence. 🤖"
+  },
+  {
+   "name": "Crypto INDIA News",
+   "type": "channel",
+   "topics": [
+    "news"
+   ],
+   "languages": [
+    "en",
+    "hi",
+    "ur"
+   ],
+   "subscribers": 5,
+   "votes": 1,
+   "telegram": "https://t.me/Crypto_IND_Official",
+   "page": "https://jeremstyke.github.io/grampedia/l/32/",
+   "description": "All Crypto Related News and Latest Updates 📰💰\n\nDaily Crypto Rewards and Boxes 🎁\nFrequently Giveaways and Airdrop 💸"
+  },
+  {
+   "name": "Shopping Kart 🛒",
+   "type": "channel",
+   "topics": [
+    "deals"
+   ],
+   "languages": [
+    "en",
+    "hi",
+    "ne"
+   ],
+   "subscribers": 3,
+   "votes": 0,
+   "telegram": "https://t.me/Shopping_Kart247",
+   "page": "https://jeremstyke.github.io/grampedia/l/59/",
+   "description": "🛒 Shopping Kart | Flipkart Deals\n\n🔥 Best Finds • Hot Offers • Big Savings\n💸 Shop Smart. Save More.\n\n⚡ Grab the deals before they're gone! Fast Hurry up 💙"
+  },
+  {
+   "name": "Robin-Hood",
+   "type": "channel",
+   "topics": [
+    "other"
+   ],
+   "languages": [
+    "en"
+   ],
+   "subscribers": 1,
+   "votes": 1,
+   "telegram": "https://t.me/robinhoodmusicapp",
+   "page": "https://jeremstyke.github.io/grampedia/l/55/",
+   "description": "RobinHood Music is a fast and lightweight open-source music streaming application designed for users who want freedom and control over their listening experience. Here you'll find APK releases, updates, and community discussions about this FOSS alternative to mainstream streaming platforms. Perfect for tech-savvy music lovers who value privacy and open-source software. Join the community to stay u"
+  },
+  {
+   "name": "ARRIX GAMING",
+   "type": "channel",
+   "topics": [
+    "games"
+   ],
+   "languages": [
+    "hi",
+    "en"
+   ],
+   "subscribers": 1,
+   "votes": 1,
+   "telegram": "https://t.me/arrixgaming",
+   "page": "https://jeremstyke.github.io/grampedia/l/57/",
+   "description": "Welcome to ARRIX GAMING\n\nHere you will find Free & Premium Gaming Hacks/Mods and latest updates for the gaming community! ⚡\n\n• Carrom Pool\n• 8 Ball Pool\n• BGMI\n• PUBG\n• Free Fire\n\nAnd tools & updates for more popular games\n🆓 FREE HACKS | 💎 PAID/PREMIUM HACKS\n📢 Regular Updates • New Releases • Gaming Content\n\n• ❤️ Join the Channel and get latest updates first!\n\nARRIX GAMING - PLAY • GRIND • WIN"
+  },
+  {
+   "name": "𝖬𝗂𝖼𝗄𝖾𝗒 | 𝖲𝖾𝖺𝗋𝖼𝗁 𝖡𝗈𝗍",
+   "type": "bot",
+   "topics": [
+    "media"
+   ],
+   "languages": [
+    "hi",
+    "ml",
+    "ta",
+    "te",
+    "kn",
+    "en"
+   ],
+   "subscribers": null,
+   "votes": 1,
+   "telegram": "https://t.me/mickeyogbot",
+   "page": "https://jeremstyke.github.io/grampedia/l/43/",
+   "description": "Find movies and series across multiple languages with Mickey Search Bot. Whether you're looking for Hollywood blockbusters, Indian cinema, or regional content in Malayalam, Tamil, Telugu, or Kannada, this bot delivers quick search results. Perfect for entertainment enthusiasts who want instant access to films and shows in their preferred language. 🎬"
+  },
+  {
+   "name": "Quorin",
+   "type": "bot",
+   "topics": [
+    "crypto",
+    "earn"
+   ],
+   "languages": [
+    "en"
+   ],
+   "subscribers": null,
+   "votes": 1,
+   "telegram": "https://t.me/zealincstorebot",
+   "page": "https://jeremstyke.github.io/grampedia/l/51/",
+   "description": "Quorin is your go-to crypto and finance bot for tracking market trends, analyzing digital assets, and managing your portfolio. Get real-time price data, set custom alerts, and access reliable financial information instantly. Whether you're new to crypto or an experienced trader, this bot keeps you informed and helps you make smarter investment decisions with data at your fingertips 💰"
+  },
+  {
+   "name": "CP Web Series [Hindi Dubbed]",
+   "type": "bot",
+   "topics": [
+    "media"
+   ],
+   "languages": [
+    "hi",
+    "ur",
+    "ne",
+    "en",
+    "bn",
+    "te",
+    "kn",
+    "pa",
+    "gu",
+    "ml"
+   ],
+   "subscribers": null,
+   "votes": 1,
+   "telegram": "https://t.me/CP_WebSeries_bot",
+   "page": "https://jeremstyke.github.io/grampedia/l/31/",
+   "description": "Watch Hindi dubbed web series and movies on demand through this bot. Access a diverse collection across multiple Indian languages including Bengali, Urdu, Kannada, Tamil, and more. Perfect for entertainment lovers seeking convenient streaming of popular series with dubbed audio options. Browse, search, and enjoy your favorite shows anytime 📺"
+  },
+  {
+   "name": "Daily Score ⚽ Guess the Score",
+   "type": "app",
+   "topics": [
+    "sport",
+    "games"
+   ],
+   "languages": [
+    "en",
+    "fr",
+    "es",
+    "pt",
+    "de",
+    "it",
+    "ar",
+    "tr",
+    "ru"
+   ],
+   "subscribers": null,
+   "votes": 1,
+   "telegram": "https://t.me/DailyScorefootbot?start=src_gp",
+   "page": "https://jeremstyke.github.io/grampedia/l/17/",
+   "description": "One big football match every day: guess the final score and climb the daily, weekly, monthly and all-time rankings, worldwide and in your country. Create leagues with your friends, keep your streak alive and get a reminder before kick-off. Free to play, in 9 languages."
+  },
+  {
+   "name": "Handi360",
+   "type": "bot",
+   "topics": [
+    "life"
+   ],
+   "languages": [
+    "fr"
+   ],
+   "subscribers": null,
+   "votes": 0,
+   "telegram": "https://t.me/Handi360Bot?start=src_gp",
+   "page": "https://jeremstyke.github.io/grampedia/l/14/",
+   "description": "The Handi360 assistant for people with disabilities and their loved ones: ask your questions about benefits and your rights (AAH, PCH, MDPH, carte mobilité inclusion…), chat freely and find professionals in the directory. Free, in French."
+  },
+  {
+   "name": "Who Knows Me Best? 💛",
+   "type": "app",
+   "topics": [
+    "fun",
+    "games"
+   ],
+   "languages": [
+    "en",
+    "fr"
+   ],
+   "subscribers": null,
+   "votes": 1,
+   "telegram": "https://t.me/Whoknowsmebestbot?start=src_gp",
+   "page": "https://jeremstyke.github.io/grampedia/l/13/",
+   "description": "Create a quiz about yourself in one minute, share it with your friends and discover who knows you best. Question of the day, duels about celebrities, couple test, mood and photo of the day. Free, fun and designed to play with friends on Telegram or on the web."
+  },
+  {
+   "name": "ChatPal",
+   "type": "bot",
+   "topics": [
+    "fun"
+   ],
+   "languages": [
+    "en",
+    "fr",
+    "es",
+    "pt",
+    "ru",
+    "ar",
+    "tr",
+    "id",
+    "fa"
+   ],
+   "subscribers": null,
+   "votes": 0,
+   "telegram": "https://t.me/mybestfriend_ai_en_bot?start=src_gp",
+   "page": "https://jeremstyke.github.io/grampedia/l/16/",
+   "description": "Bored? ChatPal is an AI friend you can talk to anytime, about anything. It remembers what you tell it, answers in your language, jokes with you and keeps the conversation going. Free messages every day, with optional plans if you want to chat more."
+  },
+  {
+   "name": "LifeSim - Game 👶👨👴",
+   "type": "app",
+   "topics": [
+    "games"
+   ],
+   "languages": [
+    "en",
+    "fr",
+    "es",
+    "pt",
+    "de",
+    "ru"
+   ],
+   "subscribers": null,
+   "votes": 0,
+   "telegram": "https://t.me/Lsimgamebot?start=src_gp",
+   "page": "https://jeremstyke.github.io/grampedia/l/15/",
+   "description": "Live a whole life in a few minutes. Study, find a job, fall in love, buy a house, make choices and face random events written by AI, from birth to old age. Every life is different, so every game is a new story. A free life simulation game right inside Telegram."
+  },
+  {
+   "name": "DIFFERENT ANGLE PHOTO",
+   "type": "bot",
+   "topics": [
+    "tech"
+   ],
+   "languages": [
+    "en",
+    "hi"
+   ],
+   "subscribers": null,
+   "votes": 1,
+   "telegram": "https://t.me/Differentanglephoto_bot",
+   "page": "https://jeremstyke.github.io/grampedia/l/37/",
+   "description": "This bot helps you explore photography from fresh perspectives and creative angles. Whether you're a beginner learning composition basics or an experienced photographer seeking inspiration, you'll discover techniques to transform ordinary scenes into compelling images. Get tips on lighting, framing, and visual storytelling across different styles and subjects. Perfect for anyone looking to improve"
+  },
+  {
+   "name": "𝖳𝖾𝗋𝖺𝖻𝗈𝗑 𝖣𝗈𝗐𝗇𝗅𝗈𝖺𝖽𝖾𝗋 🐦",
+   "type": "bot",
+   "topics": [
+    "other"
+   ],
+   "languages": [
+    "en"
+   ],
+   "subscribers": null,
+   "votes": 1,
+   "telegram": "https://t.me/TeraboxDwnnBoT",
+   "page": "https://jeremstyke.github.io/grampedia/l/46/",
+   "description": "A versatile downloading bot supporting 1000+ websites including Terabox and Diskwala. Perfect for users who need quick access to files from multiple platforms without visiting each site individually. Simply share a link and let the bot handle the download, saving time and simplifying file retrieval across various sources 🐦"
+  },
+  {
+   "name": "Money FEED",
+   "type": "app",
+   "topics": [
+    "earn"
+   ],
+   "languages": [
+    "en",
+    "ar",
+    "ru"
+   ],
+   "subscribers": null,
+   "votes": 1,
+   "telegram": "https://t.me/Feedcoinbot/app",
+   "page": "https://jeremstyke.github.io/grampedia/l/12/",
+   "description": "Money FEED is a mini app where you can earn rewards by completing simple tasks and viewing content. It's designed for users who want to make extra income in their spare time across multiple languages. The app offers straightforward earning opportunities with regular payouts, making it accessible for anyone looking to monetize their free time. 💰"
+  }
+ ]
+}
