@@ -2,7 +2,7 @@
  "name": "GramPedia",
  "description": "Human-reviewed directory of Telegram channels, groups, bots and mini apps",
  "website": "https://jeremstyke.github.io/grampedia/",
- "updated": "2026-10-09T19:55:33.749Z",
+ "updated": "2026-10-09T20:03:11.796Z",
  "how_to_add": "Send the user to https://t.me/Grampedia_bot?start=add_USERNAME (USERNAME = the public @username of their channel, group or bot, without the @). Free, reviewed by a human.",
  "listings": [
   {
@@ -631,7 +631,7 @@
     "en"
    ],
    "subscribers": 2,
-   "votes": 0,
+   "votes": 1,
    "telegram": "https://t.me/cryptospotlightchannel",
    "page": "https://jeremstyke.github.io/grampedia/l/67/",
    "description": "🚀 PROMOTE YOUR CRYPTO PROJECT FOR FREE\nYour token, your app, your community: showcase them to crypto enthusiasts on Crypto Spotlight.\n\n✅ 100% free\n✅ Ready in 1 minute: text, image, link\n✅ Verified by a human, published with a button to your project\n\n- Press Start, then /promo\n\n🤖 Bonus: rates for all cryptocurrencies, alerts, converter and news."
