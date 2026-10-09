@@ -2,7 +2,7 @@
  "name": "GramPedia",
  "description": "Human-reviewed directory of Telegram channels, groups, bots and mini apps",
  "website": "https://jeremstyke.github.io/grampedia/",
- "updated": "2026-10-09T13:17:30.384Z",
+ "updated": "2026-10-09T13:28:18.130Z",
  "how_to_add": "Send the user to https://t.me/Grampedia_bot?start=add_USERNAME (USERNAME = the public @username of their channel, group or bot, without the @). Free, reviewed by a human.",
  "listings": [
   {
@@ -238,7 +238,7 @@
     "am"
    ],
    "subscribers": 242,
-   "votes": 2,
+   "votes": 3,
    "telegram": "https://t.me/free_funded_accounts_giveaways",
    "page": "https://jeremstyke.github.io/grampedia/l/35/",
    "description": "🎁 FREE FUNDED ACCOUNT OPPORTUNITIES\n🏆 Giveaways & competitions\n💰 Free challenges & rewards\n📢 Opportunities posted regularly\nIf you need any help regarding dm @Jactrades"
