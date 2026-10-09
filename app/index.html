@@ -528,7 +528,7 @@ async function xwCard(where, req) {
   const box = $('app'), again = (q) => { haptic(); xwCard(where, q); };
   box.querySelectorAll('[data-xwj]').forEach((b) => b.onclick = () => { b.disabled = true; again({ id: b.dataset.xwj, op: 'join' }); });
   box.querySelectorAll('[data-xwck]').forEach((b) => b.onclick = () => { b.disabled = true; again({ id: b.dataset.xwck, op: 'check' }); });
-  box.querySelectorAll('[data-xwadd]').forEach((b) => b.onclick = () => openLink('https://t.me/' + r.bot + '?startchannel&admin=post_messages'));
+  box.querySelectorAll('[data-xwadd]').forEach((b) => b.onclick = () => { openLink('https://t.me/' + r.bot + '?startchannel&admin=post_messages'); setTimeout(() => { try { tgw.close(); } catch (e) {} }, 500); });
   box.querySelectorAll('[data-xwp]').forEach((b) => b.onclick = () => { b.disabled = true; again({ id: b.dataset.xwp, op: 'pause', v: b.dataset.v === '1' }); });
   box.querySelectorAll('[data-xwx]').forEach((sl) => sl.onchange = () => { if (sl.value) again({ id: sl.dataset.xwx, op: 'excl', target: sl.value }); });
   box.querySelectorAll('[data-xwl]').forEach((b) => b.onclick = () => { const go = () => again({ id: b.dataset.xwl, op: 'leave' }); try { tgw.showConfirm(T2.xw_leave + ' ?', (ok) => { if (ok) go(); }); } catch (e) { if (confirm(T2.xw_leave + ' ?')) go(); } });
