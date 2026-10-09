@@ -502,7 +502,7 @@ async function xwCard(where, req) {
     if (!c.yes) return `<div class="xwch"><b>${esc(c.name)}</b><button class="btn dark" data-xwj="${c.id}" style="width:100%;margin-top:8px">${esc(T2.xw_btn)}</button></div>`;
     let s = `<div class="xwch"><b>${esc(c.name)}</b>`;
     if (!c.approved) s += `<p class="hint" style="margin:4px 0 0">${esc(T2.xw_wait_ok)}</p>`;
-    else if (!c.admin) s += `<p class="hint" style="margin:4px 0 8px">${esc(fill(T2.xw_need_admin, { bot: '@' + r.bot, name: c.name }))}</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><button class="btn small" data-xwadd="1">${esc(T2.xw_add_btn)}</button><button class="btn small" data-xwck="${c.id}">${esc(T2.xw_check)}</button></div>`;
+    else if (!c.admin) s += `<p class="hint" style="margin:4px 0 8px">${esc(fill(T2.xw_need_admin, { bot: '@' + r.bot, name: c.name }))}</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><button class="btn small" data-xwadd="1">${esc(T2.xw_add_btn)}</button><button class="btn small" data-xwck="${c.id}">${esc(T2.xw_check)}</button></div><p class="hint" style="margin:8px 0 0;font-size:13px">${esc(fill(T2.xw_manual || '', { bot: '@' + r.bot }))}</p>`;
     else {
       s += `<p class="hint" style="margin:4px 0 0">${esc(c.paused ? T2.xw_paused : r.on ? T2.xw_active : T2.xw_soon)}</p><p class="hint" style="margin:4px 0 8px">${esc(fill(T2.xw_stats, { shows: c.shows, recv: c.recv, sent: c.sent }))}</p>`;
       s += `<button class="btn small" data-xwp="${c.id}" data-v="${c.paused ? 0 : 1}" style="width:100%;margin-bottom:8px">${esc(c.paused ? T2.xw_resume : T2.xw_pause)}</button>`;
