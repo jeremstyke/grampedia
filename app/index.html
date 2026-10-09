@@ -584,13 +584,14 @@ let PRE = null; // the first list, loaded at the same time as the profile
   try {
     const src = (tgw.initDataUnsafe && tgw.initDataUnsafe.start_param) || '';
     PRE = api('list', { lang: S.lang, type: S.type, topic: S.topic, sort: S.sort, q: S.q, offset: 0 }).catch(() => null);
-    ME = await api('me', { src: src || 'app' }); if (ME.error) throw new Error(ME.error);
+    ME = await api('me', { src: /^l_\d+$/.test(src) ? 'channel' : (src || 'app') }); if (ME.error) throw new Error(ME.error);
     T = { ...EN, ...(ME.t || {}) }; document.documentElement.lang = ME.lang || 'en'; if (['ar', 'fa'].includes(ME.lang)) document.documentElement.dir = 'rtl';
     $('q').placeholder = t('search_ph');
     if (ME.unread) { $('bdot').hidden = false; $('bdot').textContent = ME.unread > 9 ? '9+' : String(ME.unread); }
     if (ME.member === false) { bar(); return gate(); }
     const qs = new URLSearchParams(location.search), want = qs.get('tab');
-    if (qs.get('id')) { go('explore'); const one = await api('one', { id: qs.get('id') }); if (one.item) detail(one.item); return; }
+    const lid = qs.get('id') || (/^l_(\d+)$/.exec(src) || [])[1];
+    if (lid) { go('explore'); const one = await api('one', { id: lid }); if (one.item) detail(one.item); return; }
     if (want === 'add' && qs.get('link')) { A.link = qs.get('link'); go('add'); return find(); }
     go(['add', 'mine', 'help', 'notifs', 'ads'].includes(want) || (want === 'mod' && ME.admin) ? want : 'explore');
   } catch (e) { $('app').innerHTML = `<div class="empty"><b>${esc(t('e_server'))}</b></div>`; }
