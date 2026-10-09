@@ -494,13 +494,35 @@ async function adSend() {
 }
 
 // ---------- Visibility exchange between channels (coming soon): the waiting list ----------
-async function xwCard(where) {
-  const tab = TAB; let r; try { r = await api('xwait', {}); } catch (e) { return; }
-  if (!r || !r.t || !r.n || TAB !== tab || $('xwc')) return;
-  const T2 = r.t, html = `<div class="fopt" id="xwc" style="margin:${where === 'after' ? '14px 0 0' : '0 0 14px'};text-align:left"><b class="serif">${esc(T2.xw_title)}</b><p class="hint" style="margin:6px 0 10px">${esc(where === 'after' ? T2.xw_ask : T2.xw_text)}</p>${r.status === 'yes' ? `<p class="hint" style="margin:0">${esc(T2.xw_on)}</p>` : `<button class="btn dark" id="xwb" style="width:100%">${esc(T2.xw_btn)}</button>`}</div>`;
-  if (where === 'after') { const s = $('sagain'); if (!s) return; s.parentElement.insertAdjacentHTML('afterend', html); }
+async function xwCard(where, req) {
+  const tab = TAB; let r; try { r = await api('xwait', req || {}); } catch (e) { return; }
+  if (!r || !r.t || !r.n || TAB !== tab) return;
+  const T2 = r.t, chs = r.chans || [], fill = (s, o) => Object.keys(o).reduce((a, k) => a.split('{' + k + '}').join(String(o[k])), String(s || ''));
+  const one = (c) => {
+    if (!c.yes) return `<div class="xwch"><b>${esc(c.name)}</b><button class="btn dark" data-xwj="${c.id}" style="width:100%;margin-top:8px">${esc(T2.xw_btn)}</button></div>`;
+    let s = `<div class="xwch"><b>${esc(c.name)}</b>`;
+    if (!c.approved) s += `<p class="hint" style="margin:4px 0 0">${esc(T2.xw_wait_ok)}</p>`;
+    else if (!c.admin) s += `<p class="hint" style="margin:4px 0 8px">${esc(fill(T2.xw_need_admin, { bot: '@' + r.bot, name: c.name }))}</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><button class="btn small" data-xwadd="1">${esc(T2.xw_add_btn)}</button><button class="btn small" data-xwck="${c.id}">${esc(T2.xw_check)}</button></div>`;
+    else {
+      s += `<p class="hint" style="margin:4px 0 0">${esc(c.paused ? T2.xw_paused : r.on ? T2.xw_active : T2.xw_soon)}</p><p class="hint" style="margin:4px 0 8px">${esc(fill(T2.xw_stats, { shows: c.shows, recv: c.recv, sent: c.sent }))}</p>`;
+      s += `<button class="btn small" data-xwp="${c.id}" data-v="${c.paused ? 0 : 1}" style="width:100%;margin-bottom:8px">${esc(c.paused ? T2.xw_resume : T2.xw_pause)}</button>`;
+      if ((r.others || []).length) s += `<select class="inp" data-xwx="${c.id}" style="margin:0 0 4px"><option value="">${esc(T2.xw_excl)}${c.exclude.length ? ' (' + c.exclude.length + ')' : ''}</option>${r.others.map((o) => `<option value="${o.id}">${c.exclude.includes(o.id) ? '🚫 ' : ''}${esc(o.name)}</option>`).join('')}</select>`;
+    }
+    return s + `<button class="xwl" data-xwl="${c.id}">${esc(T2.xw_leave)}</button></div>`;
+  };
+  const html = `<div class="fopt" id="xwc" style="margin:${where === 'after' ? '14px 0 0' : '0 0 14px'};text-align:left"><style>#xwc .xwch{margin-top:12px;padding-top:12px;border-top:1px solid rgba(127,127,127,.25)}#xwc .xwl{background:none;border:0;padding:6px 0 0;font:inherit;font-size:13px;opacity:.6;text-decoration:underline;cursor:pointer;color:inherit}</style><b class="serif">${esc(T2.xw_title)}</b><p class="hint" style="margin:6px 0 0">${esc(where === 'after' && !chs.some((c) => c.yes) ? T2.xw_ask : T2.xw_text)}</p>${chs.map(one).join('')}</div>`;
+  const old = $('xwc');
+  if (old) old.outerHTML = html;
+  else if (where === 'after') { const s = $('sagain'); if (!s) return; s.parentElement.insertAdjacentHTML('afterend', html); }
   else { const h1 = $('app').querySelector('h1'); if (!h1) return; h1.insertAdjacentHTML('afterend', html); }
-  if ($('xwb')) $('xwb').onclick = async (e) => { const b = e.currentTarget; b.disabled = true; let z; try { z = await api('xwait', { set: true }); } catch (er) { z = {}; } if (z.status === 'yes') { try { tgw.HapticFeedback.notificationOccurred('success'); } catch (er) {} b.outerHTML = `<p class="hint" style="margin:0">${esc(T2.xw_on)}</p>`; } else { b.disabled = false; toast(t('e_server')); } };
+  if (req && req.op === 'check') { const c = chs.find((x) => String(x.id) === String(req.id)); if (c && !c.admin) toast(T2.xw_not_admin); }
+  const box = $('xwc'), again = (q) => { haptic(); xwCard(where, q); };
+  box.querySelectorAll('[data-xwj]').forEach((b) => b.onclick = () => { b.disabled = true; again({ id: b.dataset.xwj, op: 'join' }); });
+  box.querySelectorAll('[data-xwck]').forEach((b) => b.onclick = () => { b.disabled = true; again({ id: b.dataset.xwck, op: 'check' }); });
+  box.querySelectorAll('[data-xwadd]').forEach((b) => b.onclick = () => openLink('https://t.me/' + r.bot + '?startchannel&admin=post_messages'));
+  box.querySelectorAll('[data-xwp]').forEach((b) => b.onclick = () => { b.disabled = true; again({ id: b.dataset.xwp, op: 'pause', v: b.dataset.v === '1' }); });
+  box.querySelectorAll('[data-xwx]').forEach((sl) => sl.onchange = () => { if (sl.value) again({ id: sl.dataset.xwx, op: 'excl', target: sl.value }); });
+  box.querySelectorAll('[data-xwl]').forEach((b) => b.onclick = () => { const go = () => again({ id: b.dataset.xwl, op: 'leave' }); try { tgw.showConfirm(T2.xw_leave + ' ?', (ok) => { if (ok) go(); }); } catch (e) { if (confirm(T2.xw_leave + ' ?')) go(); } });
 }
 
 // ---------- Ads to review (owner only) ----------
