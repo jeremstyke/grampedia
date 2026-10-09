@@ -295,9 +295,9 @@ async function send() {
   for (const [ok, e] of [[A.type, 'e_type'], [A.topic, 'e_topic'], [A.langs.length, 'e_langs'], [A.name.trim().length >= 2, 'e_name'], [A.descr.trim().length >= 150, 'e_short'], [emo(A.descr) <= 5 && emo(A.name) <= 2, 'e_emoji'], [A.langs.length <= lmax(A.type), 'e_langmax'], [!hasUrl(A.descr), 'e_url'], [A.image || A.found.photo, 'e_image']]) if (!ok) return out.innerHTML = `<p class="err">${esc(t(e))}</p>`;
   $('asend').disabled = true; $('asend').textContent = t('sending');
   let r; try { r = await api('add', { link: A.found.link || A.link, type: A.type, topic: A.topic, topic2: A.topic2 || '', langs: A.langs, name: A.name, descr: A.descr, image: A.image }); } catch (e) { r = { error: 'server' }; }
-  if (r.ok) { try { tgw.HapticFeedback.notificationOccurred('success'); } catch (e) {} Object.assign(A, { link: '', found: null, type: '', topic: '', topic2: '', name: '', descr: '', image: null, langs: [] });
+  if (r.ok) { const wasCh = A.type === 'channel'; try { tgw.HapticFeedback.notificationOccurred('success'); } catch (e) {} Object.assign(A, { link: '', found: null, type: '', topic: '', topic2: '', name: '', descr: '', image: null, langs: [] });
     $('app').innerHTML = `<div class="center"><div class="big" aria-hidden="true">📚</div><h1>${esc(t('sent_title'))}</h1><p class="sub">${esc(t('sent_text'))}</p>${false ? `<div class="idx" style="padding:14px;margin:0 0 14px;text-align:left"><b>⚡ ${esc(t('exp_title'))}</b><p class="hint" style="margin:6px 0 10px">${esc(t('exp_text'))}</p><button class="btn dark" id="sexp" style="width:100%">${esc(t('exp_btn'))}</button></div>` : ''}<div style="display:grid;gap:8px"><button class="btn main" id="smine">${esc(t('sent_btn'))}</button><button class="btn" id="sagain">${esc(t('add_another'))}</button></div>${agxCard('after')}</div>`;
-    if ($('sexp')) $('sexp').onclick = (e) => buyExp(r.id, e.currentTarget); $('smine').onclick = () => go('mine'); $('sagain').onclick = () => add(); bindAgx(); return; }
+    if ($('sexp')) $('sexp').onclick = (e) => buyExp(r.id, e.currentTarget); $('smine').onclick = () => go('mine'); $('sagain').onclick = () => add(); bindAgx(); if (wasCh) xwCard('after'); return; }
   $('asend').disabled = false; $('asend').textContent = t('send');
   out.innerHTML = `<p class="err">${esc(t('e_' + (r.error || 'server')))}</p>`;
 }
@@ -386,6 +386,7 @@ async function mine() {
   $('app').querySelectorAll('[data-sh]').forEach((b) => b.onclick = () => shareListing(xs.find((x) => String(x.id) === b.dataset.sh)));
   $('app').querySelectorAll('[data-vt]').forEach((b) => b.onclick = () => { const x = xs.find((y) => String(y.id) === b.dataset.vt); if (!x) return; haptic(); openLink('https://t.me/share/url?url=' + encodeURIComponent(BOTU() + '?start=v_' + x.id) + '&text=' + encodeURIComponent(t('ask_votes_txt', { name: x.name }))); });
   if (xs.length) { $('app').insertAdjacentHTML('beforeend', agxCard('mine')); bindAgx(); }
+  if (xs.some((x) => x.type === 'channel' && ['approved', 'pending'].includes(x.status))) xwCard('mine');
   $('app').querySelectorAll('[data-ft]').forEach((b) => b.onclick = () => feature(xs.find((x) => String(x.id) === b.dataset.ft)));
 
   if ($('invb')) $('invb').onclick = () => openLink('https://t.me/share/url?url=' + encodeURIComponent(r.refLink || '') + '&text=' + encodeURIComponent(t('inv_share')));
@@ -490,6 +491,16 @@ async function adSend() {
     }
     done();
   } catch (e) { b.disabled = false; out('e_server'); }
+}
+
+// ---------- Visibility exchange between channels (coming soon): the waiting list ----------
+async function xwCard(where) {
+  const tab = TAB; let r; try { r = await api('xwait', {}); } catch (e) { return; }
+  if (!r || !r.t || !r.n || TAB !== tab || $('xwc')) return;
+  const T2 = r.t, html = `<div class="fopt" id="xwc" style="margin:${where === 'after' ? '14px 0 0' : '0 0 14px'};text-align:left"><b class="serif">${esc(T2.xw_title)}</b><p class="hint" style="margin:6px 0 10px">${esc(where === 'after' ? T2.xw_ask : T2.xw_text)}</p>${r.status === 'yes' ? `<p class="hint" style="margin:0">${esc(T2.xw_on)}</p>` : `<button class="btn dark" id="xwb" style="width:100%">${esc(T2.xw_btn)}</button>`}</div>`;
+  if (where === 'after') { const s = $('sagain'); if (!s) return; s.parentElement.insertAdjacentHTML('afterend', html); }
+  else { const h1 = $('app').querySelector('h1'); if (!h1) return; h1.insertAdjacentHTML('afterend', html); }
+  if ($('xwb')) $('xwb').onclick = async (e) => { const b = e.currentTarget; b.disabled = true; let z; try { z = await api('xwait', { set: true }); } catch (er) { z = {}; } if (z.status === 'yes') { try { tgw.HapticFeedback.notificationOccurred('success'); } catch (er) {} b.outerHTML = `<p class="hint" style="margin:0">${esc(T2.xw_on)}</p>`; } else { b.disabled = false; toast(t('e_server')); } };
 }
 
 // ---------- Ads to review (owner only) ----------
