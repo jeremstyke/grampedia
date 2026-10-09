@@ -2,7 +2,7 @@
  "name": "GramPedia",
  "description": "Human-reviewed directory of Telegram channels, groups, bots and mini apps",
  "website": "https://jeremstyke.github.io/grampedia/",
- "updated": "2026-10-09T21:27:45.358Z",
+ "updated": "2026-10-09T21:46:50.956Z",
  "how_to_add": "Send the user to https://t.me/Grampedia_bot?start=add_USERNAME (USERNAME = the public @username of their channel, group or bot, without the @). Free, reviewed by a human.",
  "listings": [
   {
@@ -763,7 +763,7 @@
    "votes": 0,
    "telegram": "https://t.me/Tgcoinbriefbot",
    "page": "https://jeremstyke.github.io/grampedia/l/63/",
-   "description": "Promote your crypto project for free 🚀 Your token, your app or your community, shown to crypto fans on Crypto Spotlight. Ready in 1 minute: send your text, an image and your link, a human reviews it and it is posted with a button to your project. Bonus: prices of any coin, price alerts, a converter and the latest crypto news. No financial advice."
+   "description": "📊 Your free crypto assistant on Telegram: live price of any coin, Top 10, biggest movers, Fear & Greed index, latest crypto news, converter and price alerts. Ask any crypto question and get a simple answer. Got a project? Promote it for free on Crypto Spotlight."
   },
   {
    "name": "Handi360",
