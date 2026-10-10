@@ -2,7 +2,7 @@
  "name": "GramPedia",
  "description": "Human-reviewed directory of Telegram channels, groups, bots and mini apps",
  "website": "https://jeremstyke.github.io/grampedia/",
- "updated": "2026-10-10T12:52:57.503Z",
+ "updated": "2026-10-10T12:55:30.129Z",
  "how_to_add": "Send the user to https://t.me/Grampedia_bot?start=add_USERNAME (USERNAME = the public @username of their channel, group or bot, without the @). Free, reviewed by a human.",
  "listings": [
   {
@@ -525,22 +525,6 @@
    "description": "All Crypto Related News and Latest Updates 📰💰\n\nDaily Crypto Rewards and Boxes 🎁\nFrequently Giveaways and Airdrop 💸"
   },
   {
-   "name": "CoinBrief 🇬🇧",
-   "type": "channel",
-   "topics": [
-    "crypto",
-    "news"
-   ],
-   "languages": [
-    "en"
-   ],
-   "subscribers": 3,
-   "votes": 0,
-   "telegram": "https://t.me/coinbriefen",
-   "page": "https://jeremstyke.github.io/grampedia/l/60/",
-   "description": "Crypto news in 1 minute a day 📰 Every morning a brief with prices and the Fear & Greed index, then the most important news explained simply at 11:00, 14:00 and 17:00, and an evening recap with the top gainers and losers. Short, neutral, no hype, no financial advice. Perfect to follow Bitcoin, Ethereum and the whole market without spending hours on it."
-  },
-  {
    "name": "Shopping Kart 🛒",
    "type": "channel",
    "topics": [
@@ -558,20 +542,20 @@
    "description": "🛒 Shopping Kart | Flipkart Deals\n\n🔥 Best Finds • Hot Offers • Big Savings\n💸 Shop Smart. Save More.\n\n⚡ Grab the deals before they're gone! Fast Hurry up 💙"
   },
   {
-   "name": "Crypto Spotlight 🚀",
+   "name": "CoinBrief 🇬🇧",
    "type": "channel",
    "topics": [
     "crypto",
-    "biz"
+    "news"
    ],
    "languages": [
     "en"
    ],
-   "subscribers": 2,
-   "votes": 1,
-   "telegram": "https://t.me/cryptospotlightchannel",
-   "page": "https://jeremstyke.github.io/grampedia/l/67/",
-   "description": "🚀 New crypto projects, every day. Tokens, apps and communities presented by their creators, each one reviewed by a human before it is published, with a button to the project. Want yours here? It is free: open @Tgcoinbriefbot and send /promo."
+   "subscribers": 3,
+   "votes": 0,
+   "telegram": "https://t.me/coinbriefen",
+   "page": "https://jeremstyke.github.io/grampedia/l/60/",
+   "description": "Crypto news in 1 minute a day 📰 Every morning a brief with prices and the Fear & Greed index, then the most important news explained simply at 11:00, 14:00 and 17:00, and an evening recap with the top gainers and losers. Short, neutral, no hype, no financial advice. Perfect to follow Bitcoin, Ethereum and the whole market without spending hours on it."
   },
   {
    "name": "AIBrief 🤖",
@@ -588,6 +572,22 @@
    "telegram": "https://t.me/aibrief_en",
    "page": "https://jeremstyke.github.io/grampedia/l/66/",
    "description": "Your daily dose of AI 🤖 ChatGPT, Claude, Gemini, Copilot and more: the news that matters, new features explained simply, and practical tips and prompts you can try right away. Short, clear, no hype."
+  },
+  {
+   "name": "Crypto Spotlight 🚀",
+   "type": "channel",
+   "topics": [
+    "crypto",
+    "biz"
+   ],
+   "languages": [
+    "en"
+   ],
+   "subscribers": 2,
+   "votes": 1,
+   "telegram": "https://t.me/cryptospotlightchannel",
+   "page": "https://jeremstyke.github.io/grampedia/l/67/",
+   "description": "🚀 New crypto projects, every day. Tokens, apps and communities presented by their creators, each one reviewed by a human before it is published, with a button to the project. Want yours here? It is free: open @Tgcoinbriefbot and send /promo."
   },
   {
    "name": "CoinBrief 🇷🇺",
@@ -622,19 +622,20 @@
    "description": "The official channel of Meme Coin Tycoon, the memecoin game on Telegram 🚀 New coins launched by players, the biggest pumps of the day and the top tycoons. Free game with virtual coins, no real money."
   },
   {
-   "name": "Robin-Hood",
+   "name": "LiveGoal ⚡",
    "type": "channel",
    "topics": [
-    "other"
+    "sport",
+    "news"
    ],
    "languages": [
     "en"
    ],
    "subscribers": 1,
    "votes": 1,
-   "telegram": "https://t.me/robinhoodmusicapp",
-   "page": "https://jeremstyke.github.io/grampedia/l/55/",
-   "description": "RobinHood Music is a fast and lightweight open-source music streaming application designed for users who want freedom and control over their listening experience. Here you'll find APK releases, updates, and community discussions about this FOSS alternative to mainstream streaming platforms. Perfect for tech-savvy music lovers who value privacy and open-source software. Join the community to stay u"
+   "telegram": "https://t.me/livescorefootchannel",
+   "page": "https://jeremstyke.github.io/grampedia/l/68/",
+   "description": "Live football scores ⚡ Champions League, Premier League, LaLiga, Serie A, Bundesliga, Ligue 1 and more. Every goal, every final whistle, a live scoreboard each matchday, polls before the big games and the league tables after. Free, automatic, no spam."
   },
   {
    "name": "ARRIX GAMING",
@@ -653,36 +654,19 @@
    "description": "Welcome to ARRIX GAMING\n\nHere you will find Free & Premium Gaming Hacks/Mods and latest updates for the gaming community! ⚡\n\n• Carrom Pool\n• 8 Ball Pool\n• BGMI\n• PUBG\n• Free Fire\n\nAnd tools & updates for more popular games\n🆓 FREE HACKS | 💎 PAID/PREMIUM HACKS\n📢 Regular Updates • New Releases • Gaming Content\n\n• ❤️ Join the Channel and get latest updates first!\n\nARRIX GAMING - PLAY • GRIND • WIN"
   },
   {
-   "name": "LiveGoal ⚡",
+   "name": "Robin-Hood",
    "type": "channel",
    "topics": [
-    "sport",
-    "news"
+    "other"
    ],
    "languages": [
     "en"
    ],
    "subscribers": 1,
    "votes": 1,
-   "telegram": "https://t.me/livescorefootchannel",
-   "page": "https://jeremstyke.github.io/grampedia/l/68/",
-   "description": "Live football scores ⚡ Champions League, Premier League, LaLiga, Serie A, Bundesliga, Ligue 1 and more. Every goal, every final whistle, a live scoreboard each matchday, polls before the big games and the league tables after. Free, automatic, no spam."
-  },
-  {
-   "name": "LiveGoal ⚡ Chat",
-   "type": "group",
-   "topics": [
-    "sport",
-    "news"
-   ],
-   "languages": [
-    "en"
-   ],
-   "subscribers": null,
-   "votes": 0,
-   "telegram": "https://t.me/livegoalchat",
-   "page": "https://jeremstyke.github.io/grampedia/l/71/",
-   "description": "💬 The chat of LiveGoal ⚡ Talk football live with fans from everywhere and react to every goal of the Champions League, Premier League, LaLiga, Serie A, Bundesliga and Ligue 1. Live scores on @livescorefootchannel. Respectful, no spam."
+   "telegram": "https://t.me/robinhoodmusicapp",
+   "page": "https://jeremstyke.github.io/grampedia/l/55/",
+   "description": "RobinHood Music is a fast and lightweight open-source music streaming application designed for users who want freedom and control over their listening experience. Here you'll find APK releases, updates, and community discussions about this FOSS alternative to mainstream streaming platforms. Perfect for tech-savvy music lovers who value privacy and open-source software. Join the community to stay u"
   },
   {
    "name": "Handi360",
@@ -739,20 +723,40 @@
    "description": "Bored? ChatPal is an AI friend you can talk to anytime, about anything. It remembers what you tell it, answers in your language, jokes with you and keeps the conversation going. Free messages every day, with optional plans if you want to chat more."
   },
   {
-   "name": "Quorin",
+   "name": "DIFFERENT ANGLE PHOTO",
    "type": "bot",
    "topics": [
-    "crypto",
-    "earn"
+    "tech"
    ],
    "languages": [
-    "en"
+    "en",
+    "hi"
    ],
    "subscribers": null,
    "votes": 1,
-   "telegram": "https://t.me/zealincstorebot",
-   "page": "https://jeremstyke.github.io/grampedia/l/51/",
-   "description": "Quorin is your go-to crypto and finance bot for tracking market trends, analyzing digital assets, and managing your portfolio. Get real-time price data, set custom alerts, and access reliable financial information instantly. Whether you're new to crypto or an experienced trader, this bot keeps you informed and helps you make smarter investment decisions with data at your fingertips 💰"
+   "telegram": "https://t.me/Differentanglephoto_bot",
+   "page": "https://jeremstyke.github.io/grampedia/l/37/",
+   "description": "This bot helps you explore photography from fresh perspectives and creative angles. Whether you're a beginner learning composition basics or an experienced photographer seeking inspiration, you'll discover techniques to transform ordinary scenes into compelling images. Get tips on lighting, framing, and visual storytelling across different styles and subjects. Perfect for anyone looking to improve"
+  },
+  {
+   "name": "LifeSim - Game 👶👨👴",
+   "type": "app",
+   "topics": [
+    "games"
+   ],
+   "languages": [
+    "en",
+    "fr",
+    "es",
+    "pt",
+    "de",
+    "ru"
+   ],
+   "subscribers": null,
+   "votes": 0,
+   "telegram": "https://t.me/Lsimgamebot?start=src_gp",
+   "page": "https://jeremstyke.github.io/grampedia/l/15/",
+   "description": "Live a whole life in a few minutes. Study, find a job, fall in love, buy a house, make choices and face random events written by AI, from birth to old age. Every life is different, so every game is a new story. A free life simulation game right inside Telegram."
   },
   {
    "name": "Who Knows Me Best? 💛",
@@ -831,26 +835,6 @@
    "description": "A versatile downloading bot supporting 1000+ websites including Terabox and Diskwala. Perfect for users who need quick access to files from multiple platforms without visiting each site individually. Simply share a link and let the bot handle the download, saving time and simplifying file retrieval across various sources 🐦"
   },
   {
-   "name": "LifeSim - Game 👶👨👴",
-   "type": "app",
-   "topics": [
-    "games"
-   ],
-   "languages": [
-    "en",
-    "fr",
-    "es",
-    "pt",
-    "de",
-    "ru"
-   ],
-   "subscribers": null,
-   "votes": 0,
-   "telegram": "https://t.me/Lsimgamebot?start=src_gp",
-   "page": "https://jeremstyke.github.io/grampedia/l/15/",
-   "description": "Live a whole life in a few minutes. Study, find a job, fall in love, buy a house, make choices and face random events written by AI, from birth to old age. Every life is different, so every game is a new story. A free life simulation game right inside Telegram."
-  },
-  {
    "name": "Money FEED",
    "type": "app",
    "topics": [
@@ -912,20 +896,20 @@
    "description": "📊 Your free crypto assistant on Telegram: live price of any coin, Top 10, biggest movers, Fear & Greed index, latest crypto news, converter and price alerts. Ask any crypto question and get a simple answer. Got a project? Promote it for free on Crypto Spotlight."
   },
   {
-   "name": "DIFFERENT ANGLE PHOTO",
+   "name": "Quorin",
    "type": "bot",
    "topics": [
-    "tech"
+    "crypto",
+    "earn"
    ],
    "languages": [
-    "en",
-    "hi"
+    "en"
    ],
    "subscribers": null,
    "votes": 1,
-   "telegram": "https://t.me/Differentanglephoto_bot",
-   "page": "https://jeremstyke.github.io/grampedia/l/37/",
-   "description": "This bot helps you explore photography from fresh perspectives and creative angles. Whether you're a beginner learning composition basics or an experienced photographer seeking inspiration, you'll discover techniques to transform ordinary scenes into compelling images. Get tips on lighting, framing, and visual storytelling across different styles and subjects. Perfect for anyone looking to improve"
+   "telegram": "https://t.me/zealincstorebot",
+   "page": "https://jeremstyke.github.io/grampedia/l/51/",
+   "description": "Quorin is your go-to crypto and finance bot for tracking market trends, analyzing digital assets, and managing your portfolio. Get real-time price data, set custom alerts, and access reliable financial information instantly. Whether you're new to crypto or an experienced trader, this bot keeps you informed and helps you make smarter investment decisions with data at your fingertips 💰"
   }
  ]
 }
