@@ -2,7 +2,7 @@
  "name": "GramPedia",
  "description": "Human-reviewed directory of Telegram channels, groups, bots and mini apps",
  "website": "https://jeremstyke.github.io/grampedia/",
- "updated": "2026-10-10T22:38:29.963Z",
+ "updated": "2026-10-10T22:47:29.934Z",
  "how_to_add": "Send the user to https://t.me/Grampedia_bot?start=add_USERNAME (USERNAME = the public @username of their channel, group or bot, without the @). Free, reviewed by a human.",
  "listings": [
   {
@@ -739,7 +739,7 @@
    "description": "📊 Your free crypto assistant on Telegram: live price of any coin, Top 10, biggest movers, Fear & Greed index, latest crypto news, converter and price alerts. Ask any crypto question and get a simple answer. Got a project? Promote it for free on Crypto Spotlight."
   },
   {
-   "name": "AdSpot 📢 Free ads",
+   "name": "AdSpot · Post your ad 📝",
    "type": "bot",
    "topics": [
     "biz",
@@ -759,7 +759,7 @@
    "description": "📢 Promote your Telegram channel, group, bot, mini app or website for free! 1 free ad every day on @adspotchannel, created in a mini app with a live preview. Write in your language: the AI translates and improves your ad. Every ad is checked by a human. 🤝 Got a channel? Become a partner in 1 click: show 1 to 3 ads a day and get free subscribers."
   },
   {
-   "name": "AdSpot 📢 Free ads",
+   "name": "AdSpot ⚡️",
    "type": "channel",
    "topics": [
     "biz",
