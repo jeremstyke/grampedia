@@ -2,7 +2,7 @@
  "name": "GramPedia",
  "description": "Human-reviewed directory of Telegram channels, groups, bots and mini apps",
  "website": "https://jeremstyke.github.io/grampedia/",
- "updated": "2026-10-10T21:12:05.154Z",
+ "updated": "2026-10-10T22:11:06.079Z",
  "how_to_add": "Send the user to https://t.me/Grampedia_bot?start=add_USERNAME (USERNAME = the public @username of their channel, group or bot, without the @). Free, reviewed by a human.",
  "listings": [
   {
@@ -558,22 +558,6 @@
    "description": "🛒 Shopping Kart | Flipkart Deals\n\n🔥 Best Finds • Hot Offers • Big Savings\n💸 Shop Smart. Save More.\n\n⚡ Grab the deals before they're gone! Fast Hurry up 💙"
   },
   {
-   "name": "Crypto Spotlight 🚀",
-   "type": "channel",
-   "topics": [
-    "crypto",
-    "biz"
-   ],
-   "languages": [
-    "en"
-   ],
-   "subscribers": 2,
-   "votes": 1,
-   "telegram": "https://t.me/cryptospotlightchannel",
-   "page": "https://jeremstyke.github.io/grampedia/l/67/",
-   "description": "🚀 New crypto projects, every day. Tokens, apps and communities presented by their creators, each one reviewed by a human before it is published, with a button to the project. Want yours here? It is free: open @Tgcoinbriefbot and send /promo."
-  },
-  {
    "name": "CoinBrief 🇷🇺",
    "type": "channel",
    "topics": [
@@ -606,20 +590,36 @@
    "description": "Your daily dose of AI 🤖 ChatGPT, Claude, Gemini, Copilot and more: the news that matters, new features explained simply, and practical tips and prompts you can try right away. Short, clear, no hype."
   },
   {
-   "name": "Meme Coin Tycoon News 📰",
+   "name": "Crypto Spotlight 🚀",
    "type": "channel",
    "topics": [
     "crypto",
-    "games"
+    "biz"
+   ],
+   "languages": [
+    "en"
+   ],
+   "subscribers": 2,
+   "votes": 1,
+   "telegram": "https://t.me/cryptospotlightchannel",
+   "page": "https://jeremstyke.github.io/grampedia/l/67/",
+   "description": "🚀 New crypto projects, every day. Tokens, apps and communities presented by their creators, each one reviewed by a human before it is published, with a button to the project. Want yours here? It is free: open @Tgcoinbriefbot and send /promo."
+  },
+  {
+   "name": "LiveGoal ⚡ Live Football Scores",
+   "type": "channel",
+   "topics": [
+    "sport",
+    "news"
    ],
    "languages": [
     "en"
    ],
    "subscribers": 1,
-   "votes": 0,
-   "telegram": "https://t.me/memecointycoon",
-   "page": "https://jeremstyke.github.io/grampedia/l/70/",
-   "description": "The official channel of Meme Coin Tycoon, the memecoin game on Telegram 🚀 New coins launched by players, the biggest pumps of the day and the top tycoons. Free game with virtual coins, no real money."
+   "votes": 1,
+   "telegram": "https://t.me/livescorefootchannel",
+   "page": "https://jeremstyke.github.io/grampedia/l/68/",
+   "description": "Live football scores ⚡ Champions League, Premier League, LaLiga, Serie A, Bundesliga, Ligue 1 and more. Every goal, every final whistle, a live scoreboard each matchday, polls before the big games and the league tables after. Free, automatic, no spam."
   },
   {
    "name": "Robin-Hood",
@@ -653,20 +653,251 @@
    "description": "Welcome to ARRIX GAMING\n\nHere you will find Free & Premium Gaming Hacks/Mods and latest updates for the gaming community! ⚡\n\n• Carrom Pool\n• 8 Ball Pool\n• BGMI\n• PUBG\n• Free Fire\n\nAnd tools & updates for more popular games\n🆓 FREE HACKS | 💎 PAID/PREMIUM HACKS\n📢 Regular Updates • New Releases • Gaming Content\n\n• ❤️ Join the Channel and get latest updates first!\n\nARRIX GAMING - PLAY • GRIND • WIN"
   },
   {
-   "name": "LiveGoal ⚡ Live Football Scores",
+   "name": "Meme Coin Tycoon News 📰",
    "type": "channel",
    "topics": [
-    "sport",
-    "news"
+    "crypto",
+    "games"
    ],
    "languages": [
     "en"
    ],
    "subscribers": 1,
+   "votes": 0,
+   "telegram": "https://t.me/memecointycoon",
+   "page": "https://jeremstyke.github.io/grampedia/l/70/",
+   "description": "The official channel of Meme Coin Tycoon, the memecoin game on Telegram 🚀 New coins launched by players, the biggest pumps of the day and the top tycoons. Free game with virtual coins, no real money."
+  },
+  {
+   "name": "ChatPal",
+   "type": "bot",
+   "topics": [
+    "fun"
+   ],
+   "languages": [
+    "en",
+    "fr",
+    "es",
+    "pt",
+    "ru",
+    "ar",
+    "tr",
+    "id",
+    "fa"
+   ],
+   "subscribers": null,
+   "votes": 0,
+   "telegram": "https://t.me/mybestfriend_ai_en_bot?start=src_gp",
+   "page": "https://jeremstyke.github.io/grampedia/l/16/",
+   "description": "Bored? ChatPal is an AI friend you can talk to anytime, about anything. It remembers what you tell it, answers in your language, jokes with you and keeps the conversation going. Free messages every day, with optional plans if you want to chat more."
+  },
+  {
+   "name": "Money FEED",
+   "type": "app",
+   "topics": [
+    "earn"
+   ],
+   "languages": [
+    "en",
+    "ar",
+    "ru"
+   ],
+   "subscribers": null,
    "votes": 1,
-   "telegram": "https://t.me/livescorefootchannel",
-   "page": "https://jeremstyke.github.io/grampedia/l/68/",
-   "description": "Live football scores ⚡ Champions League, Premier League, LaLiga, Serie A, Bundesliga, Ligue 1 and more. Every goal, every final whistle, a live scoreboard each matchday, polls before the big games and the league tables after. Free, automatic, no spam."
+   "telegram": "https://t.me/Feedcoinbot/app",
+   "page": "https://jeremstyke.github.io/grampedia/l/12/",
+   "description": "Money FEED is a mini app where you can earn rewards by completing simple tasks and viewing content. It's designed for users who want to make extra income in their spare time across multiple languages. The app offers straightforward earning opportunities with regular payouts, making it accessible for anyone looking to monetize their free time. 💰"
+  },
+  {
+   "name": "LifeSim - Game 👶👨👴",
+   "type": "app",
+   "topics": [
+    "games"
+   ],
+   "languages": [
+    "en",
+    "fr",
+    "es",
+    "pt",
+    "de",
+    "ru"
+   ],
+   "subscribers": null,
+   "votes": 0,
+   "telegram": "https://t.me/Lsimgamebot?start=src_gp",
+   "page": "https://jeremstyke.github.io/grampedia/l/15/",
+   "description": "Live a whole life in a few minutes. Study, find a job, fall in love, buy a house, make choices and face random events written by AI, from birth to old age. Every life is different, so every game is a new story. A free life simulation game right inside Telegram."
+  },
+  {
+   "name": "DIFFERENT ANGLE PHOTO",
+   "type": "bot",
+   "topics": [
+    "tech"
+   ],
+   "languages": [
+    "en",
+    "hi"
+   ],
+   "subscribers": null,
+   "votes": 1,
+   "telegram": "https://t.me/Differentanglephoto_bot",
+   "page": "https://jeremstyke.github.io/grampedia/l/37/",
+   "description": "This bot helps you explore photography from fresh perspectives and creative angles. Whether you're a beginner learning composition basics or an experienced photographer seeking inspiration, you'll discover techniques to transform ordinary scenes into compelling images. Get tips on lighting, framing, and visual storytelling across different styles and subjects. Perfect for anyone looking to improve"
+  },
+  {
+   "name": "AdSpot 📢 Free ads",
+   "type": "bot",
+   "topics": [
+    "biz",
+    "tech"
+   ],
+   "languages": [
+    "en",
+    "fr",
+    "es",
+    "pt",
+    "ru"
+   ],
+   "subscribers": null,
+   "votes": 0,
+   "telegram": "https://t.me/PostOnAdSpotBot?start=src_gp",
+   "page": "https://jeremstyke.github.io/grampedia/l/72/",
+   "description": "📢 Promote your Telegram channel, group, bot, mini app or website for free! 1 free ad every day on @adspotchannel, created in a mini app with a live preview. Write in your language: the AI translates and improves your ad. Every ad is checked by a human. 🤝 Got a channel? Become a partner in 1 click: show 1 to 3 ads a day and get free subscribers."
+  },
+  {
+   "name": "CP Web Series [Hindi Dubbed]",
+   "type": "bot",
+   "topics": [
+    "media"
+   ],
+   "languages": [
+    "hi",
+    "ur",
+    "ne",
+    "en",
+    "bn",
+    "te",
+    "kn",
+    "pa",
+    "gu",
+    "ml"
+   ],
+   "subscribers": null,
+   "votes": 1,
+   "telegram": "https://t.me/CP_WebSeries_bot",
+   "page": "https://jeremstyke.github.io/grampedia/l/31/",
+   "description": "Watch Hindi dubbed web series and movies on demand through this bot. Access a diverse collection across multiple Indian languages including Bengali, Urdu, Kannada, Tamil, and more. Perfect for entertainment lovers seeking convenient streaming of popular series with dubbed audio options. Browse, search, and enjoy your favorite shows anytime 📺"
+  },
+  {
+   "name": "CoinBrief Bot",
+   "type": "bot",
+   "topics": [
+    "crypto",
+    "edu"
+   ],
+   "languages": [
+    "en",
+    "ru",
+    "es",
+    "fr",
+    "pt"
+   ],
+   "subscribers": null,
+   "votes": 0,
+   "telegram": "https://t.me/Tgcoinbriefbot",
+   "page": "https://jeremstyke.github.io/grampedia/l/63/",
+   "description": "📊 Your free crypto assistant on Telegram: live price of any coin, Top 10, biggest movers, Fear & Greed index, latest crypto news, converter and price alerts. Ask any crypto question and get a simple answer. Got a project? Promote it for free on Crypto Spotlight."
+  },
+  {
+   "name": "𝖬𝗂𝖼𝗄𝖾𝗒 | 𝖲𝖾𝖺𝗋𝖼𝗁 𝖡𝗈𝗍",
+   "type": "bot",
+   "topics": [
+    "media"
+   ],
+   "languages": [
+    "hi",
+    "ml",
+    "ta",
+    "te",
+    "kn",
+    "en"
+   ],
+   "subscribers": null,
+   "votes": 1,
+   "telegram": "https://t.me/mickeyogbot",
+   "page": "https://jeremstyke.github.io/grampedia/l/43/",
+   "description": "Find movies and series across multiple languages with Mickey Search Bot. Whether you're looking for Hollywood blockbusters, Indian cinema, or regional content in Malayalam, Tamil, Telugu, or Kannada, this bot delivers quick search results. Perfect for entertainment enthusiasts who want instant access to films and shows in their preferred language. 🎬"
+  },
+  {
+   "name": "Who Knows Me Best? 💛",
+   "type": "app",
+   "topics": [
+    "fun",
+    "games"
+   ],
+   "languages": [
+    "en",
+    "fr"
+   ],
+   "subscribers": null,
+   "votes": 1,
+   "telegram": "https://t.me/Whoknowsmebestbot?start=src_gp",
+   "page": "https://jeremstyke.github.io/grampedia/l/13/",
+   "description": "Create a quiz about yourself in one minute, share it with your friends and discover who knows you best. Question of the day, duels about celebrities, couple test, mood and photo of the day. Free, fun and designed to play with friends on Telegram or on the web."
+  },
+  {
+   "name": "Daily Score ⚽ Guess the Score",
+   "type": "app",
+   "topics": [
+    "sport",
+    "games"
+   ],
+   "languages": [
+    "en",
+    "fr",
+    "es",
+    "pt",
+    "de",
+    "it",
+    "ar",
+    "tr",
+    "ru"
+   ],
+   "subscribers": null,
+   "votes": 1,
+   "telegram": "https://t.me/DailyScorefootbot?start=src_gp",
+   "page": "https://jeremstyke.github.io/grampedia/l/17/",
+   "description": "One big football match every day: guess the final score and climb the daily, weekly, monthly and all-time rankings, worldwide and in your country. Create leagues with your friends, keep your streak alive and get a reminder before kick-off. Free to play, in 9 languages."
+  },
+  {
+   "name": "𝖳𝖾𝗋𝖺𝖻𝗈𝗑 𝖣𝗈𝗐𝗇𝗅𝗈𝖺𝖽𝖾𝗋 🐦",
+   "type": "bot",
+   "topics": [
+    "other"
+   ],
+   "languages": [
+    "en"
+   ],
+   "subscribers": null,
+   "votes": 1,
+   "telegram": "https://t.me/TeraboxDwnnBoT",
+   "page": "https://jeremstyke.github.io/grampedia/l/46/",
+   "description": "A versatile downloading bot supporting 1000+ websites including Terabox and Diskwala. Perfect for users who need quick access to files from multiple platforms without visiting each site individually. Simply share a link and let the bot handle the download, saving time and simplifying file retrieval across various sources 🐦"
+  },
+  {
+   "name": "Handi360",
+   "type": "bot",
+   "topics": [
+    "life"
+   ],
+   "languages": [
+    "fr"
+   ],
+   "subscribers": null,
+   "votes": 0,
+   "telegram": "https://t.me/Handi360Bot?start=src_gp",
+   "page": "https://jeremstyke.github.io/grampedia/l/14/",
+   "description": "The Handi360 assistant for people with disabilities and their loved ones: ask your questions about benefits and your rights (AAH, PCH, MDPH, carte mobilité inclusion…), chat freely and find professionals in the directory. Free, in French."
   },
   {
    "name": "Meme Coin Tycoon 🚀",
@@ -699,217 +930,6 @@
    "telegram": "https://t.me/zealincstorebot",
    "page": "https://jeremstyke.github.io/grampedia/l/51/",
    "description": "Quorin is your go-to crypto and finance bot for tracking market trends, analyzing digital assets, and managing your portfolio. Get real-time price data, set custom alerts, and access reliable financial information instantly. Whether you're new to crypto or an experienced trader, this bot keeps you informed and helps you make smarter investment decisions with data at your fingertips 💰"
-  },
-  {
-   "name": "ChatPal",
-   "type": "bot",
-   "topics": [
-    "fun"
-   ],
-   "languages": [
-    "en",
-    "fr",
-    "es",
-    "pt",
-    "ru",
-    "ar",
-    "tr",
-    "id",
-    "fa"
-   ],
-   "subscribers": null,
-   "votes": 0,
-   "telegram": "https://t.me/mybestfriend_ai_en_bot?start=src_gp",
-   "page": "https://jeremstyke.github.io/grampedia/l/16/",
-   "description": "Bored? ChatPal is an AI friend you can talk to anytime, about anything. It remembers what you tell it, answers in your language, jokes with you and keeps the conversation going. Free messages every day, with optional plans if you want to chat more."
-  },
-  {
-   "name": "CoinBrief Bot",
-   "type": "bot",
-   "topics": [
-    "crypto",
-    "edu"
-   ],
-   "languages": [
-    "en",
-    "ru",
-    "es",
-    "fr",
-    "pt"
-   ],
-   "subscribers": null,
-   "votes": 0,
-   "telegram": "https://t.me/Tgcoinbriefbot",
-   "page": "https://jeremstyke.github.io/grampedia/l/63/",
-   "description": "📊 Your free crypto assistant on Telegram: live price of any coin, Top 10, biggest movers, Fear & Greed index, latest crypto news, converter and price alerts. Ask any crypto question and get a simple answer. Got a project? Promote it for free on Crypto Spotlight."
-  },
-  {
-   "name": "CP Web Series [Hindi Dubbed]",
-   "type": "bot",
-   "topics": [
-    "media"
-   ],
-   "languages": [
-    "hi",
-    "ur",
-    "ne",
-    "en",
-    "bn",
-    "te",
-    "kn",
-    "pa",
-    "gu",
-    "ml"
-   ],
-   "subscribers": null,
-   "votes": 1,
-   "telegram": "https://t.me/CP_WebSeries_bot",
-   "page": "https://jeremstyke.github.io/grampedia/l/31/",
-   "description": "Watch Hindi dubbed web series and movies on demand through this bot. Access a diverse collection across multiple Indian languages including Bengali, Urdu, Kannada, Tamil, and more. Perfect for entertainment lovers seeking convenient streaming of popular series with dubbed audio options. Browse, search, and enjoy your favorite shows anytime 📺"
-  },
-  {
-   "name": "DIFFERENT ANGLE PHOTO",
-   "type": "bot",
-   "topics": [
-    "tech"
-   ],
-   "languages": [
-    "en",
-    "hi"
-   ],
-   "subscribers": null,
-   "votes": 1,
-   "telegram": "https://t.me/Differentanglephoto_bot",
-   "page": "https://jeremstyke.github.io/grampedia/l/37/",
-   "description": "This bot helps you explore photography from fresh perspectives and creative angles. Whether you're a beginner learning composition basics or an experienced photographer seeking inspiration, you'll discover techniques to transform ordinary scenes into compelling images. Get tips on lighting, framing, and visual storytelling across different styles and subjects. Perfect for anyone looking to improve"
-  },
-  {
-   "name": "LifeSim - Game 👶👨👴",
-   "type": "app",
-   "topics": [
-    "games"
-   ],
-   "languages": [
-    "en",
-    "fr",
-    "es",
-    "pt",
-    "de",
-    "ru"
-   ],
-   "subscribers": null,
-   "votes": 0,
-   "telegram": "https://t.me/Lsimgamebot?start=src_gp",
-   "page": "https://jeremstyke.github.io/grampedia/l/15/",
-   "description": "Live a whole life in a few minutes. Study, find a job, fall in love, buy a house, make choices and face random events written by AI, from birth to old age. Every life is different, so every game is a new story. A free life simulation game right inside Telegram."
-  },
-  {
-   "name": "Daily Score ⚽ Guess the Score",
-   "type": "app",
-   "topics": [
-    "sport",
-    "games"
-   ],
-   "languages": [
-    "en",
-    "fr",
-    "es",
-    "pt",
-    "de",
-    "it",
-    "ar",
-    "tr",
-    "ru"
-   ],
-   "subscribers": null,
-   "votes": 1,
-   "telegram": "https://t.me/DailyScorefootbot?start=src_gp",
-   "page": "https://jeremstyke.github.io/grampedia/l/17/",
-   "description": "One big football match every day: guess the final score and climb the daily, weekly, monthly and all-time rankings, worldwide and in your country. Create leagues with your friends, keep your streak alive and get a reminder before kick-off. Free to play, in 9 languages."
-  },
-  {
-   "name": "Who Knows Me Best? 💛",
-   "type": "app",
-   "topics": [
-    "fun",
-    "games"
-   ],
-   "languages": [
-    "en",
-    "fr"
-   ],
-   "subscribers": null,
-   "votes": 1,
-   "telegram": "https://t.me/Whoknowsmebestbot?start=src_gp",
-   "page": "https://jeremstyke.github.io/grampedia/l/13/",
-   "description": "Create a quiz about yourself in one minute, share it with your friends and discover who knows you best. Question of the day, duels about celebrities, couple test, mood and photo of the day. Free, fun and designed to play with friends on Telegram or on the web."
-  },
-  {
-   "name": "𝖳𝖾𝗋𝖺𝖻𝗈𝗑 𝖣𝗈𝗐𝗇𝗅𝗈𝖺𝖽𝖾𝗋 🐦",
-   "type": "bot",
-   "topics": [
-    "other"
-   ],
-   "languages": [
-    "en"
-   ],
-   "subscribers": null,
-   "votes": 1,
-   "telegram": "https://t.me/TeraboxDwnnBoT",
-   "page": "https://jeremstyke.github.io/grampedia/l/46/",
-   "description": "A versatile downloading bot supporting 1000+ websites including Terabox and Diskwala. Perfect for users who need quick access to files from multiple platforms without visiting each site individually. Simply share a link and let the bot handle the download, saving time and simplifying file retrieval across various sources 🐦"
-  },
-  {
-   "name": "𝖬𝗂𝖼𝗄𝖾𝗒 | 𝖲𝖾𝖺𝗋𝖼𝗁 𝖡𝗈𝗍",
-   "type": "bot",
-   "topics": [
-    "media"
-   ],
-   "languages": [
-    "hi",
-    "ml",
-    "ta",
-    "te",
-    "kn",
-    "en"
-   ],
-   "subscribers": null,
-   "votes": 1,
-   "telegram": "https://t.me/mickeyogbot",
-   "page": "https://jeremstyke.github.io/grampedia/l/43/",
-   "description": "Find movies and series across multiple languages with Mickey Search Bot. Whether you're looking for Hollywood blockbusters, Indian cinema, or regional content in Malayalam, Tamil, Telugu, or Kannada, this bot delivers quick search results. Perfect for entertainment enthusiasts who want instant access to films and shows in their preferred language. 🎬"
-  },
-  {
-   "name": "Money FEED",
-   "type": "app",
-   "topics": [
-    "earn"
-   ],
-   "languages": [
-    "en",
-    "ar",
-    "ru"
-   ],
-   "subscribers": null,
-   "votes": 1,
-   "telegram": "https://t.me/Feedcoinbot/app",
-   "page": "https://jeremstyke.github.io/grampedia/l/12/",
-   "description": "Money FEED is a mini app where you can earn rewards by completing simple tasks and viewing content. It's designed for users who want to make extra income in their spare time across multiple languages. The app offers straightforward earning opportunities with regular payouts, making it accessible for anyone looking to monetize their free time. 💰"
-  },
-  {
-   "name": "Handi360",
-   "type": "bot",
-   "topics": [
-    "life"
-   ],
-   "languages": [
-    "fr"
-   ],
-   "subscribers": null,
-   "votes": 0,
-   "telegram": "https://t.me/Handi360Bot?start=src_gp",
-   "page": "https://jeremstyke.github.io/grampedia/l/14/",
-   "description": "The Handi360 assistant for people with disabilities and their loved ones: ask your questions about benefits and your rights (AAH, PCH, MDPH, carte mobilité inclusion…), chat freely and find professionals in the directory. Free, in French."
   }
  ]
 }
