@@ -424,6 +424,24 @@ async function buyExp(id, b) {
 }
 
 // ---------- Advertise (a sponsored post on the channel) ----------
+// free ad on AdSpot (@adspotchannel), posted through @PostOnAdSpotBot
+const AS_I18N = {
+  en: ['📢 Free ad on AdSpot', 'Also post your ad for free on @adspotchannel: channels, groups, bots, mini apps and websites. Write it in your language, it is translated into English.', 'Post my free ad'],
+  fr: ['📢 Pub gratuite sur AdSpot', 'Publiez aussi votre pub gratuitement sur @adspotchannel : chaînes, groupes, bots, mini apps et sites web. Écrivez-la dans votre langue, elle est traduite en anglais.', 'Publier ma pub gratuite'],
+  es: ['📢 Anuncio gratis en AdSpot', 'Publica también tu anuncio gratis en @adspotchannel: canales, grupos, bots, mini apps y sitios web. Escríbelo en tu idioma, se traduce al inglés.', 'Publicar mi anuncio gratis'],
+  pt: ['📢 Anúncio grátis no AdSpot', 'Publique também seu anúncio grátis no @adspotchannel: canais, grupos, bots, mini apps e sites. Escreva no seu idioma, ele é traduzido para o inglês.', 'Publicar meu anúncio grátis'],
+  ru: ['📢 Бесплатная реклама в AdSpot', 'Разместите объявление бесплатно в @adspotchannel: каналы, группы, боты, мини-приложения и сайты. Пишите на своём языке, мы переведём на английский.', 'Разместить бесплатно'],
+  uk: ['📢 Безкоштовна реклама в AdSpot', 'Розмістіть оголошення безкоштовно в @adspotchannel: канали, групи, боти, міні-застосунки та сайти. Пишіть своєю мовою, ми перекладемо англійською.', 'Розмістити безкоштовно'],
+  de: ['📢 Gratis-Werbung auf AdSpot', 'Veröffentliche deine Werbung auch kostenlos auf @adspotchannel: Kanäle, Gruppen, Bots, Mini-Apps und Websites. Schreib in deiner Sprache, sie wird ins Englische übersetzt.', 'Gratis-Werbung posten'],
+  it: ['📢 Pubblicità gratis su AdSpot', 'Pubblica anche il tuo annuncio gratis su @adspotchannel: canali, gruppi, bot, mini app e siti web. Scrivilo nella tua lingua, viene tradotto in inglese.', 'Pubblica il mio annuncio gratis'],
+  ar: ['📢 إعلان مجاني على AdSpot', 'انشر إعلانك مجانًا أيضًا على @adspotchannel: قنوات ومجموعات وبوتات وتطبيقات مصغّرة ومواقع. اكتبه بلغتك وسيُترجم إلى الإنجليزية.', 'انشر إعلاني مجانًا'],
+  fa: ['📢 تبلیغ رایگان در AdSpot', 'آگهی خود را رایگان در @adspotchannel هم منتشر کنید: کانال، گروه، ربات، مینی‌اپ و وب‌سایت. به زبان خودتان بنویسید، به انگلیسی ترجمه می‌شود.', 'ثبت رایگان آگهی'],
+  tr: ['📢 AdSpot\'ta ücretsiz reklam', 'Reklamını @adspotchannel kanalında da ücretsiz yayınla: kanallar, gruplar, botlar, mini uygulamalar ve web siteleri. Kendi dilinde yaz, İngilizceye çevrilir.', 'Ücretsiz reklam ver'],
+  id: ['📢 Iklan gratis di AdSpot', 'Pasang juga iklanmu gratis di @adspotchannel: channel, grup, bot, mini app, dan situs web. Tulis dalam bahasamu, akan diterjemahkan ke bahasa Inggris.', 'Pasang iklan gratis'],
+  hi: ['📢 AdSpot पर मुफ़्त विज्ञापन', '@adspotchannel पर भी अपना विज्ञापन मुफ़्त में डालें: चैनल, ग्रुप, बॉट, मिनी ऐप और वेबसाइट। अपनी भाषा में लिखें, इसका अंग्रेज़ी में अनुवाद होगा।', 'मुफ़्त विज्ञापन डालें'],
+};
+window.openAdSpot = () => openLink('https://t.me/PostOnAdSpotBot?start=src_gpapp');
+const adSpotCard = () => { const s = AS_I18N[document.documentElement.lang] || AS_I18N.en; return `<div class="idx" style="margin:14px 0 4px;padding:14px;border-radius:14px;background:linear-gradient(135deg,#ff5a36,#c2185b);color:#fff"><b style="font-size:17px">${esc(s[0])}</b><p style="margin:6px 0 10px;font-weight:600;opacity:.95">${esc(s[1])}</p><button class="btn small" onclick="openAdSpot()" style="background:#ffd23f;color:#3a0a1f;border:0">🚀 ${esc(s[2])}</button></div>`; };
 const AD = { id: null, text: '', link: '', btn: '', topic: '', image: '', pay: 'stars', rids: [] };
 let ADI = null;
 const at = (k, v) => { let s = (ADI && ADI.t && ADI.t[k]) || k; if (v) for (const [a, b] of Object.entries(v)) s = s.split('{' + a + '}').join(b); return s; };
@@ -435,7 +453,7 @@ async function ads(keep) {
   const mine = ADI.mine || [], editing = AD.id != null, full = !editing && ADI.left <= 0;
   if (AD.pay === 'ads' && ADI.freeAt) AD.pay = 'stars';
   const opt = (k, title, d, dis) => `<button class="fopt" data-pay="${k}" ${dis ? 'disabled' : ''} style="display:block;width:100%;text-align:left;cursor:pointer;margin-bottom:8px;${AD.pay === k ? 'border-color:var(--ink);box-shadow:0 0 0 1.5px var(--ink) inset;' : ''}${dis ? 'opacity:.5;' : ''}"><b style="font-size:16px">${AD.pay === k ? '🔘' : '⚪'} ${esc(title)}</b><p class="hint" style="margin:4px 0 0;font-weight:600">${esc(d)}</p></button>`;
-  $('app').innerHTML = `<h1>${esc(at('tab_title'))}</h1><p class="sub">${esc(at('tab_sub', { n: ADI.members ? nf(ADI.members) : '?' }))}</p>`
+  $('app').innerHTML = `<h1>${esc(at('tab_title'))}</h1><p class="sub">${esc(at('tab_sub', { n: ADI.members ? nf(ADI.members) : '?' }))}</p>` + adSpotCard()
     + (mine.length ? `<label class="f">${esc(at('my_ads'))}</label>` + mine.map((a) => `<div class="idx" style="margin-bottom:10px;display:flex;gap:12px;padding:12px;align-items:flex-start">${a.img ? `<img src="${API + a.img}" alt="" style="width:74px;height:74px;object-fit:cover;border-radius:10px;flex:none">` : ''}<div style="min-width:0;flex:1"><span class="pill ${AD_PILL[a.status] || ''}">${esc(at('st_' + (a.status === 'publishing' ? 'approved' : a.status)))}</span> <span class="hint" style="font-weight:600">${esc(a.when || '')}</span><p style="margin:6px 0 0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical">${esc(a.text)}</p>${a.fix ? `<p class="hint" style="margin:6px 0 0;color:#7c4a03">✏️ ${esc(a.fix)}</p>` : ''}${a.why ? `<p class="hint" style="margin:6px 0 0;color:#7c2d12">${esc(at('n_why'))} ${esc(a.why)}</p>` : ''}<div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">${['fix', 'pending'].includes(a.status) ? `<button class="btn small" data-aded="${a.id}">${esc(at('edit'))}</button>` : ''}${a.post ? `<button class="btn small" data-adpost="${esc(a.post)}">${esc(at('see_post'))}</button>` : ''}</div></div></div>`).join('') : '')
     + `<label class="f" style="font-size:20px;margin-top:24px">${esc(editing ? at('edit') : at('new_ad'))}</label>`
     + (full ? `<div class="empty"><b>⏳</b>${esc(at('full_today'))}</div>` : `
