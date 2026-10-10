@@ -2,7 +2,7 @@
  "name": "GramPedia",
  "description": "Human-reviewed directory of Telegram channels, groups, bots and mini apps",
  "website": "https://jeremstyke.github.io/grampedia/",
- "updated": "2026-10-10T06:24:57.434Z",
+ "updated": "2026-10-10T09:00:19.124Z",
  "how_to_add": "Send the user to https://t.me/Grampedia_bot?start=add_USERNAME (USERNAME = the public @username of their channel, group or bot, without the @). Free, reviewed by a human.",
  "listings": [
   {
@@ -322,7 +322,7 @@
     "hi"
    ],
    "subscribers": 111,
-   "votes": 1,
+   "votes": 2,
    "telegram": "https://t.me/RedBoxCode",
    "page": "https://jeremstyke.github.io/grampedia/l/25/",
    "description": "Join this channel for daily red packet codes and crypto updates. Members receive regular notifications about available rewards and Bitcoin-related content. Stay informed on the latest crypto opportunities and daily giveaways in one convenient place. 🎁"
