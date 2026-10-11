@@ -2,7 +2,7 @@
  "name": "GramPedia",
  "description": "Human-reviewed directory of Telegram channels, groups, bots and mini apps",
  "website": "https://jeremstyke.github.io/grampedia/",
- "updated": "2026-10-11T11:02:40.107Z",
+ "updated": "2026-10-11T11:12:39.882Z",
  "how_to_add": "Send the user to https://t.me/Grampedia_bot?start=add_USERNAME (USERNAME = the public @username of their channel, group or bot, without the @). Free, reviewed by a human.",
  "listings": [
   {
@@ -79,7 +79,7 @@
     "en"
    ],
    "subscribers": 857,
-   "votes": 1,
+   "votes": 2,
    "telegram": "https://t.me/biroo_barnoota_Oromiya",
    "page": "https://jeremstyke.github.io/grampedia/l/23/",
    "description": "Join Biroo Barnoota Oromiyaa for comprehensive study materials including notes, tips, and practice questions designed to help you prepare effectively for exams. This channel provides regular updates on exam schedules and valuable learning strategies to boost your academic performance. Perfect for students seeking organized resources and practical guidance to study smarter and achieve better result"
