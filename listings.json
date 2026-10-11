@@ -2,7 +2,7 @@
  "name": "GramPedia",
  "description": "Human-reviewed directory of Telegram channels, groups, bots and mini apps",
  "website": "https://jeremstyke.github.io/grampedia/",
- "updated": "2026-10-11T16:58:27.972Z",
+ "updated": "2026-10-11T17:08:26.377Z",
  "how_to_add": "Send the user to https://t.me/Grampedia_bot?start=add_USERNAME (USERNAME = the public @username of their channel, group or bot, without the @). Free, reviewed by a human.",
  "listings": [
   {
@@ -815,6 +815,26 @@
    "description": "Welcome to ARRIX GAMING\n\nHere you will find Free & Premium Gaming Hacks/Mods and latest updates for the gaming community! ⚡\n\n• Carrom Pool\n• 8 Ball Pool\n• BGMI\n• PUBG\n• Free Fire\n\nAnd tools & updates for more popular games\n🆓 FREE HACKS | 💎 PAID/PREMIUM HACKS\n📢 Regular Updates • New Releases • Gaming Content\n\n• ❤️ Join the Channel and get latest updates first!\n\nARRIX GAMING - PLAY • GRIND • WIN"
   },
   {
+   "name": "AdSpot · Post your ad 📝",
+   "type": "bot",
+   "topics": [
+    "biz",
+    "tech"
+   ],
+   "languages": [
+    "en",
+    "fr",
+    "es",
+    "pt",
+    "ru"
+   ],
+   "subscribers": null,
+   "votes": 1,
+   "telegram": "https://t.me/PostOnAdSpotBot?start=src_gp",
+   "page": "https://jeremstyke.github.io/grampedia/l/72/",
+   "description": "📢 Get your Telegram project seen, for free! 1 free ad every day on @adspotchannel + 1 partner channel of your choice. Channels, groups, bots, mini apps and websites are all welcome. Create your ad in the app with a live preview and write it in your language: the AI translates and polishes it. Every ad is checked by a human. 🤝 Own a channel? Become a partner in 1 click and get free subscribers."
+  },
+  {
    "name": "Who Knows Me Best? 💛",
    "type": "app",
    "topics": [
@@ -830,26 +850,6 @@
    "telegram": "https://t.me/Whoknowsmebestbot?start=src_gp",
    "page": "https://jeremstyke.github.io/grampedia/l/13/",
    "description": "Create a quiz about yourself in one minute, share it with your friends and discover who knows you best. Question of the day, duels about celebrities, couple test, mood and photo of the day. Free, fun and designed to play with friends on Telegram or on the web."
-  },
-  {
-   "name": "CoinBrief Bot",
-   "type": "bot",
-   "topics": [
-    "crypto",
-    "edu"
-   ],
-   "languages": [
-    "en",
-    "ru",
-    "es",
-    "fr",
-    "pt"
-   ],
-   "subscribers": null,
-   "votes": 0,
-   "telegram": "https://t.me/Tgcoinbriefbot",
-   "page": "https://jeremstyke.github.io/grampedia/l/63/",
-   "description": "📊 Your free crypto assistant on Telegram: live price of any coin, Top 10, biggest movers, Fear & Greed index, latest crypto news, converter and price alerts. Ask any crypto question and get a simple answer. Got a project? Promote it for free on Crypto Spotlight."
   },
   {
    "name": "CP Web Series [Hindi Dubbed]",
@@ -876,24 +876,24 @@
    "description": "Watch Hindi dubbed web series and movies on demand through this bot. Access a diverse collection across multiple Indian languages including Bengali, Urdu, Kannada, Tamil, and more. Perfect for entertainment lovers seeking convenient streaming of popular series with dubbed audio options. Browse, search, and enjoy your favorite shows anytime 📺"
   },
   {
-   "name": "AdSpot · Post your ad 📝",
+   "name": "CoinBrief Bot",
    "type": "bot",
    "topics": [
-    "biz",
-    "tech"
+    "crypto",
+    "edu"
    ],
    "languages": [
     "en",
-    "fr",
+    "ru",
     "es",
-    "pt",
-    "ru"
+    "fr",
+    "pt"
    ],
    "subscribers": null,
    "votes": 0,
-   "telegram": "https://t.me/PostOnAdSpotBot?start=src_gp",
-   "page": "https://jeremstyke.github.io/grampedia/l/72/",
-   "description": "📢 Get your Telegram project seen, for free! 1 free ad every day on @adspotchannel + 1 partner channel of your choice. Channels, groups, bots, mini apps and websites are all welcome. Create your ad in the app with a live preview and write it in your language: the AI translates and polishes it. Every ad is checked by a human. 🤝 Own a channel? Become a partner in 1 click and get free subscribers."
+   "telegram": "https://t.me/Tgcoinbriefbot",
+   "page": "https://jeremstyke.github.io/grampedia/l/63/",
+   "description": "📊 Your free crypto assistant on Telegram: live price of any coin, Top 10, biggest movers, Fear & Greed index, latest crypto news, converter and price alerts. Ask any crypto question and get a simple answer. Got a project? Promote it for free on Crypto Spotlight."
   },
   {
    "name": "Victor's Company",
