@@ -2,7 +2,7 @@
  "name": "GramPedia",
  "description": "Human-reviewed directory of Telegram channels, groups, bots and mini apps",
  "website": "https://jeremstyke.github.io/grampedia/",
- "updated": "2026-10-11T21:16:13.610Z",
+ "updated": "2026-10-11T22:00:19.028Z",
  "how_to_add": "Send the user to https://t.me/Grampedia_bot?start=add_USERNAME (USERNAME = the public @username of their channel, group or bot, without the @). Free, reviewed by a human.",
  "listings": [
   {
@@ -672,6 +672,21 @@
    "description": "Follow the latest crypto packages and collect daily rewards on this channel dedicated to crypto enthusiasts. Discover regular opportunities and red boxes to open every day. Perfect for staying informed about market movements and quickly accessing exclusive community offers. 🎁"
   },
   {
+   "name": "Jeremstyke",
+   "type": "channel",
+   "topics": [
+    "biz"
+   ],
+   "languages": [
+    "en"
+   ],
+   "subscribers": 6,
+   "votes": 0,
+   "telegram": "https://t.me/jeremstyke",
+   "page": "https://jeremstyke.github.io/grampedia/l/11/",
+   "description": "Discover the latest creations from an independent developer specializing in AI bots for Telegram. This channel is the first place to share new projects and innovations before their launch. Ideal for entrepreneurs and developers interested in automation and artificial intelligence. 🤖"
+  },
+  {
    "name": "CP Web Series [Hindi Dubbed]",
    "type": "channel",
    "topics": [
@@ -687,21 +702,6 @@
    "telegram": "https://t.me/CP_WebSeries",
    "page": "https://jeremstyke.github.io/grampedia/l/30/",
    "description": "World wide Web Series Available in Hindi dubbing. Latest Movie here Hindi dubbed"
-  },
-  {
-   "name": "Jeremstyke",
-   "type": "channel",
-   "topics": [
-    "biz"
-   ],
-   "languages": [
-    "en"
-   ],
-   "subscribers": 6,
-   "votes": 0,
-   "telegram": "https://t.me/jeremstyke",
-   "page": "https://jeremstyke.github.io/grampedia/l/11/",
-   "description": "Discover the latest creations from an independent developer specializing in AI bots for Telegram. This channel is the first place to share new projects and innovations before their launch. Ideal for entrepreneurs and developers interested in automation and artificial intelligence. 🤖"
   },
   {
    "name": "Crypto INDIA News",
@@ -721,6 +721,19 @@
    "description": "All Crypto Related News and Latest Updates 📰💰\n\nDaily Crypto Rewards and Boxes 🎁\nFrequently Giveaways and Airdrop 💸"
   },
   {
+   "name": "Setor Gmail Palzx",
+   "type": "channel",
+   "topics": [
+    "earn"
+   ],
+   "languages": [],
+   "subscribers": 3,
+   "votes": 0,
+   "telegram": "https://t.me/palzx66",
+   "page": "https://jeremstyke.github.io/grampedia/l/91/",
+   "description": "I really need email for 0.2$ With password sgsg1122 and free name and maximum number The number is 3"
+  },
+  {
    "name": "Shopping Kart 🛒",
    "type": "channel",
    "topics": [
@@ -738,19 +751,6 @@
    "description": "🛒 Shopping Kart | Flipkart Deals\n\n🔥 Best Finds • Hot Offers • Big Savings\n💸 Shop Smart. Save More.\n\n⚡ Grab the deals before they're gone! Fast Hurry up 💙"
   },
   {
-   "name": "Setor Gmail Palzx",
-   "type": "channel",
-   "topics": [
-    "earn"
-   ],
-   "languages": [],
-   "subscribers": 3,
-   "votes": 0,
-   "telegram": "https://t.me/palzx66",
-   "page": "https://jeremstyke.github.io/grampedia/l/91/",
-   "description": "I really need email for 0.2$ With password sgsg1122 and free name and maximum number The number is 3"
-  },
-  {
    "name": "Opportunity_X",
    "type": "channel",
    "topics": [
@@ -762,6 +762,22 @@
    "telegram": "https://t.me/opportunity_x",
    "page": "https://jeremstyke.github.io/grampedia/l/84/",
    "description": "🚀 Opportunity_X 💰 Discover new earning opportunities, crypto projects, referral programs, airdrops, apps, and online opportunities worth checking out. Stay updated. Explore. Earn. Repeat. 🚀"
+  },
+  {
+   "name": "ARRIX GAMING",
+   "type": "channel",
+   "topics": [
+    "games"
+   ],
+   "languages": [
+    "hi",
+    "en"
+   ],
+   "subscribers": 1,
+   "votes": 1,
+   "telegram": "https://t.me/arrixgaming",
+   "page": "https://jeremstyke.github.io/grampedia/l/57/",
+   "description": "Welcome to ARRIX GAMING\n\nHere you will find Free & Premium Gaming Hacks/Mods and latest updates for the gaming community! ⚡\n\n• Carrom Pool\n• 8 Ball Pool\n• BGMI\n• PUBG\n• Free Fire\n\nAnd tools & updates for more popular games\n🆓 FREE HACKS | 💎 PAID/PREMIUM HACKS\n📢 Regular Updates • New Releases • Gaming Content\n\n• ❤️ Join the Channel and get latest updates first!\n\nARRIX GAMING - PLAY • GRIND • WIN"
   },
   {
    "name": "Meme Coin Tycoon News 📰",
@@ -780,20 +796,49 @@
    "description": "The official channel of Meme Coin Tycoon, the memecoin game on Telegram 🚀 New coins launched by players, the biggest pumps of the day and the top tycoons. Free game with virtual coins, no real money."
   },
   {
-   "name": "ARRIX GAMING",
-   "type": "channel",
+   "name": "Money FEED",
+   "type": "app",
    "topics": [
-    "games"
+    "earn"
    ],
    "languages": [
-    "hi",
+    "en",
+    "ar",
+    "ru"
+   ],
+   "subscribers": null,
+   "votes": 1,
+   "telegram": "https://t.me/Feedcoinbot/app",
+   "page": "https://jeremstyke.github.io/grampedia/l/12/",
+   "description": "Money FEED is a mini app where you can earn rewards by completing simple tasks and viewing content. It's designed for users who want to make extra income in their spare time across multiple languages. The app offers straightforward earning opportunities with regular payouts, making it accessible for anyone looking to monetize their free time. 💰"
+  },
+  {
+   "name": "𝖳𝖾𝗋𝖺𝖻𝗈𝗑 𝖣𝗈𝗐𝗇𝗅𝗈𝖺𝖽𝖾𝗋 🐦",
+   "type": "bot",
+   "topics": [
+    "other"
+   ],
+   "languages": [
     "en"
    ],
-   "subscribers": 1,
+   "subscribers": null,
    "votes": 1,
-   "telegram": "https://t.me/arrixgaming",
-   "page": "https://jeremstyke.github.io/grampedia/l/57/",
-   "description": "Welcome to ARRIX GAMING\n\nHere you will find Free & Premium Gaming Hacks/Mods and latest updates for the gaming community! ⚡\n\n• Carrom Pool\n• 8 Ball Pool\n• BGMI\n• PUBG\n• Free Fire\n\nAnd tools & updates for more popular games\n🆓 FREE HACKS | 💎 PAID/PREMIUM HACKS\n📢 Regular Updates • New Releases • Gaming Content\n\n• ❤️ Join the Channel and get latest updates first!\n\nARRIX GAMING - PLAY • GRIND • WIN"
+   "telegram": "https://t.me/TeraboxDwnnBoT",
+   "page": "https://jeremstyke.github.io/grampedia/l/46/",
+   "description": "A versatile downloading bot supporting 1000+ websites including Terabox and Diskwala. Perfect for users who need quick access to files from multiple platforms without visiting each site individually. Simply share a link and let the bot handle the download, saving time and simplifying file retrieval across various sources 🐦"
+  },
+  {
+   "name": "Orange Dao Finance Official",
+   "type": "bot",
+   "topics": [
+    "crypto"
+   ],
+   "languages": [],
+   "subscribers": null,
+   "votes": 0,
+   "telegram": "https://t.me/OrangeDaoofficialbot",
+   "page": "https://jeremstyke.github.io/grampedia/l/89/",
+   "description": "Want your crypto working for you every single day? 🍊 Orange Dao lets you invest and earn daily returns 📈 Start with a simple setup through the official bot 🔒 Join a growing community of active investors Start the bot and begin earning today: https://t.me/OrangeDaoofficialbot?start=GF7435105364"
   },
   {
    "name": "ChatPal",
@@ -817,6 +862,121 @@
    "telegram": "https://t.me/mybestfriend_ai_en_bot?start=src_gp",
    "page": "https://jeremstyke.github.io/grampedia/l/16/",
    "description": "Bored? ChatPal is an AI friend you can talk to anytime, about anything. It remembers what you tell it, answers in your language, jokes with you and keeps the conversation going. Free messages every day, with optional plans if you want to chat more."
+  },
+  {
+   "name": "Nexilus Mine",
+   "type": "bot",
+   "topics": [
+    "earn"
+   ],
+   "languages": [],
+   "subscribers": null,
+   "votes": 0,
+   "telegram": "https://t.me/NexilusMineBot",
+   "page": "https://jeremstyke.github.io/grampedia/l/87/",
+   "description": "💎 Meet Nexilus Mine - A New Digital Mining Experience! ⛏️ Explore the futuristic dashboard, discover mining features, complete missions, and explore the Nexilus Coins reward system. 🚀 Ready to explore? 👉 Open Nexilus Mine: https://t.me/NexilusMineBot/mine?startapp=ref_8232711326 Follow @NexilusMi"
+  },
+  {
+   "name": "Daily Score ⚽ Guess the Score",
+   "type": "app",
+   "topics": [
+    "sport",
+    "games"
+   ],
+   "languages": [
+    "en",
+    "fr",
+    "es",
+    "pt",
+    "de",
+    "it",
+    "ar",
+    "tr",
+    "ru"
+   ],
+   "subscribers": null,
+   "votes": 2,
+   "telegram": "https://t.me/DailyScorefootbot?start=src_gp",
+   "page": "https://jeremstyke.github.io/grampedia/l/17/",
+   "description": "One big football match every day: guess the final score and climb the daily, weekly, monthly and all-time rankings, worldwide and in your country. Create leagues with your friends, keep your streak alive and get a reminder before kick-off. Free to play, in 9 languages."
+  },
+  {
+   "name": "Quorin",
+   "type": "bot",
+   "topics": [
+    "crypto",
+    "earn"
+   ],
+   "languages": [
+    "en"
+   ],
+   "subscribers": null,
+   "votes": 1,
+   "telegram": "https://t.me/zealincstorebot",
+   "page": "https://jeremstyke.github.io/grampedia/l/51/",
+   "description": "Quorin is your go-to crypto and finance bot for tracking market trends, analyzing digital assets, and managing your portfolio. Get real-time price data, set custom alerts, and access reliable financial information instantly. Whether you're new to crypto or an experienced trader, this bot keeps you informed and helps you make smarter investment decisions with data at your fingertips 💰"
+  },
+  {
+   "name": "Epsilon",
+   "type": "bot",
+   "topics": [
+    "crypto"
+   ],
+   "languages": [],
+   "subscribers": null,
+   "votes": 0,
+   "telegram": "https://t.me/Epsiloncrypto_bot",
+   "page": "https://jeremstyke.github.io/grampedia/l/95/",
+   "description": "Mine EPS tokens directly in Telegram and start earning rewards. Invite friends to boost your mining and unlock exclusive benefits. Join the next-generation crypto ecosystem today. 🚀💰"
+  },
+  {
+   "name": "Daily Earning USDT",
+   "type": "bot",
+   "topics": [
+    "crypto",
+    "earn"
+   ],
+   "languages": [
+    "en"
+   ],
+   "subscribers": null,
+   "votes": 0,
+   "telegram": "https://t.me/Smart_Earning420_Bot",
+   "page": "https://jeremstyke.github.io/grampedia/l/75/",
+   "description": "Earn passive income with Daily Earning USDT, a bot designed for cryptocurrency enthusiasts looking to grow their USDT holdings. Users can explore different earning strategies, track their daily returns, and manage their crypto portfolio efficiently. Perfect for crypto lovers seeking automated income generation and real-time financial insights. 💰"
+  },
+  {
+   "name": "Who Knows Me Best? 💛",
+   "type": "app",
+   "topics": [
+    "fun",
+    "games"
+   ],
+   "languages": [
+    "en",
+    "fr"
+   ],
+   "subscribers": null,
+   "votes": 1,
+   "telegram": "https://t.me/Whoknowsmebestbot?start=src_gp",
+   "page": "https://jeremstyke.github.io/grampedia/l/13/",
+   "description": "Create a quiz about yourself in one minute, share it with your friends and discover who knows you best. Question of the day, duels about celebrities, couple test, mood and photo of the day. Free, fun and designed to play with friends on Telegram or on the web."
+  },
+  {
+   "name": "AdSpot ⚡️",
+   "type": "channel",
+   "topics": [
+    "biz",
+    "tech"
+   ],
+   "languages": [
+    "en"
+   ],
+   "subscribers": null,
+   "votes": 0,
+   "telegram": "https://t.me/adspotchannel",
+   "page": "https://jeremstyke.github.io/grampedia/l/73/",
+   "description": "📢 Free ads for Telegram channels, groups, bots, mini apps and websites. New projects to discover every day, each ad checked by a human. Want yours here? Post it for free with @PostOnAdSpotBot."
   },
   {
    "name": "Victor's Company",
@@ -925,39 +1085,6 @@
    "description": "This bot helps you explore photography from fresh perspectives and creative angles. Whether you're a beginner learning composition basics or an experienced photographer seeking inspiration, you'll discover techniques to transform ordinary scenes into compelling images. Get tips on lighting, framing, and visual storytelling across different styles and subjects. Perfect for anyone looking to improve"
   },
   {
-   "name": "Who Knows Me Best? 💛",
-   "type": "app",
-   "topics": [
-    "fun",
-    "games"
-   ],
-   "languages": [
-    "en",
-    "fr"
-   ],
-   "subscribers": null,
-   "votes": 1,
-   "telegram": "https://t.me/Whoknowsmebestbot?start=src_gp",
-   "page": "https://jeremstyke.github.io/grampedia/l/13/",
-   "description": "Create a quiz about yourself in one minute, share it with your friends and discover who knows you best. Question of the day, duels about celebrities, couple test, mood and photo of the day. Free, fun and designed to play with friends on Telegram or on the web."
-  },
-  {
-   "name": "Daily Earning USDT",
-   "type": "bot",
-   "topics": [
-    "crypto",
-    "earn"
-   ],
-   "languages": [
-    "en"
-   ],
-   "subscribers": null,
-   "votes": 0,
-   "telegram": "https://t.me/Smart_Earning420_Bot",
-   "page": "https://jeremstyke.github.io/grampedia/l/75/",
-   "description": "Earn passive income with Daily Earning USDT, a bot designed for cryptocurrency enthusiasts looking to grow their USDT holdings. Users can explore different earning strategies, track their daily returns, and manage their crypto portfolio efficiently. Perfect for crypto lovers seeking automated income generation and real-time financial insights. 💰"
-  },
-  {
    "name": "𝖬𝗂𝖼𝗄𝖾𝗒 | 𝖲𝖾𝖺𝗋𝖼𝗁 𝖡𝗈𝗍",
    "type": "bot",
    "topics": [
@@ -996,120 +1123,6 @@
    "telegram": "https://t.me/PostOnAdSpotBot?start=src_gp",
    "page": "https://jeremstyke.github.io/grampedia/l/72/",
    "description": "📢 Get your Telegram project seen, for free! 1 free ad every day on @adspotchannel + 1 partner channel of your choice. Channels, groups, bots, mini apps and websites are all welcome. Create your ad in the app with a live preview and write it in your language: the AI translates and polishes it. Every ad is checked by a human. 🤝 Own a channel? Become a partner in 1 click and get free subscribers."
-  },
-  {
-   "name": "Quorin",
-   "type": "bot",
-   "topics": [
-    "crypto",
-    "earn"
-   ],
-   "languages": [
-    "en"
-   ],
-   "subscribers": null,
-   "votes": 1,
-   "telegram": "https://t.me/zealincstorebot",
-   "page": "https://jeremstyke.github.io/grampedia/l/51/",
-   "description": "Quorin is your go-to crypto and finance bot for tracking market trends, analyzing digital assets, and managing your portfolio. Get real-time price data, set custom alerts, and access reliable financial information instantly. Whether you're new to crypto or an experienced trader, this bot keeps you informed and helps you make smarter investment decisions with data at your fingertips 💰"
-  },
-  {
-   "name": "Daily Score ⚽ Guess the Score",
-   "type": "app",
-   "topics": [
-    "sport",
-    "games"
-   ],
-   "languages": [
-    "en",
-    "fr",
-    "es",
-    "pt",
-    "de",
-    "it",
-    "ar",
-    "tr",
-    "ru"
-   ],
-   "subscribers": null,
-   "votes": 2,
-   "telegram": "https://t.me/DailyScorefootbot?start=src_gp",
-   "page": "https://jeremstyke.github.io/grampedia/l/17/",
-   "description": "One big football match every day: guess the final score and climb the daily, weekly, monthly and all-time rankings, worldwide and in your country. Create leagues with your friends, keep your streak alive and get a reminder before kick-off. Free to play, in 9 languages."
-  },
-  {
-   "name": "Money FEED",
-   "type": "app",
-   "topics": [
-    "earn"
-   ],
-   "languages": [
-    "en",
-    "ar",
-    "ru"
-   ],
-   "subscribers": null,
-   "votes": 1,
-   "telegram": "https://t.me/Feedcoinbot/app",
-   "page": "https://jeremstyke.github.io/grampedia/l/12/",
-   "description": "Money FEED is a mini app where you can earn rewards by completing simple tasks and viewing content. It's designed for users who want to make extra income in their spare time across multiple languages. The app offers straightforward earning opportunities with regular payouts, making it accessible for anyone looking to monetize their free time. 💰"
-  },
-  {
-   "name": "𝖳𝖾𝗋𝖺𝖻𝗈𝗑 𝖣𝗈𝗐𝗇𝗅𝗈𝖺𝖽𝖾𝗋 🐦",
-   "type": "bot",
-   "topics": [
-    "other"
-   ],
-   "languages": [
-    "en"
-   ],
-   "subscribers": null,
-   "votes": 1,
-   "telegram": "https://t.me/TeraboxDwnnBoT",
-   "page": "https://jeremstyke.github.io/grampedia/l/46/",
-   "description": "A versatile downloading bot supporting 1000+ websites including Terabox and Diskwala. Perfect for users who need quick access to files from multiple platforms without visiting each site individually. Simply share a link and let the bot handle the download, saving time and simplifying file retrieval across various sources 🐦"
-  },
-  {
-   "name": "Orange Dao Finance Official",
-   "type": "bot",
-   "topics": [
-    "crypto"
-   ],
-   "languages": [],
-   "subscribers": null,
-   "votes": 0,
-   "telegram": "https://t.me/OrangeDaoofficialbot",
-   "page": "https://jeremstyke.github.io/grampedia/l/89/",
-   "description": "Want your crypto working for you every single day? 🍊 Orange Dao lets you invest and earn daily returns 📈 Start with a simple setup through the official bot 🔒 Join a growing community of active investors Start the bot and begin earning today: https://t.me/OrangeDaoofficialbot?start=GF7435105364"
-  },
-  {
-   "name": "Nexilus Mine",
-   "type": "bot",
-   "topics": [
-    "earn"
-   ],
-   "languages": [],
-   "subscribers": null,
-   "votes": 0,
-   "telegram": "https://t.me/NexilusMineBot",
-   "page": "https://jeremstyke.github.io/grampedia/l/87/",
-   "description": "💎 Meet Nexilus Mine - A New Digital Mining Experience! ⛏️ Explore the futuristic dashboard, discover mining features, complete missions, and explore the Nexilus Coins reward system. 🚀 Ready to explore? 👉 Open Nexilus Mine: https://t.me/NexilusMineBot/mine?startapp=ref_8232711326 Follow @NexilusMi"
-  },
-  {
-   "name": "AdSpot ⚡️",
-   "type": "channel",
-   "topics": [
-    "biz",
-    "tech"
-   ],
-   "languages": [
-    "en"
-   ],
-   "subscribers": null,
-   "votes": 0,
-   "telegram": "https://t.me/adspotchannel",
-   "page": "https://jeremstyke.github.io/grampedia/l/73/",
-   "description": "📢 Free ads for Telegram channels, groups, bots, mini apps and websites. New projects to discover every day, each ad checked by a human. Want yours here? Post it for free with @PostOnAdSpotBot."
   }
  ]
 }
