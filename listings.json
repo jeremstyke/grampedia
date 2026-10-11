@@ -2,7 +2,7 @@
  "name": "GramPedia",
  "description": "Human-reviewed directory of Telegram channels, groups, bots and mini apps",
  "website": "https://jeremstyke.github.io/grampedia/",
- "updated": "2026-10-11T16:28:26.744Z",
+ "updated": "2026-10-11T16:58:27.972Z",
  "how_to_add": "Send the user to https://t.me/Grampedia_bot?start=add_USERNAME (USERNAME = the public @username of their channel, group or bot, without the @). Free, reviewed by a human.",
  "listings": [
   {
@@ -80,6 +80,25 @@
    "telegram": "https://t.me/legendsupdateszone",
    "page": "https://jeremstyke.github.io/grampedia/l/45/",
    "description": "Stay updated on the latest developments in cryptocurrency and finance with timely, reliable information. This channel delivers news and updates relevant to crypto enthusiasts and investors looking to stay informed about market movements and industry changes. Join a growing community of 1,300+ members seeking trustworthy financial insights 📈"
+  },
+  {
+   "name": "Criptomonedas en cuba y todos los paises",
+   "type": "channel",
+   "topics": [
+    "crypto",
+    "earn"
+   ],
+   "languages": [
+    "es",
+    "ru",
+    "en",
+    "pt"
+   ],
+   "subscribers": 1285,
+   "votes": 0,
+   "telegram": "https://t.me/yudelisenamorado",
+   "page": "https://jeremstyke.github.io/grampedia/l/92/",
+   "description": "Channel dedicated to cryptocurrencies and digital finance with special focus on Cuba and other Latin American countries. Here you'll find news, market analysis and guidance on blockchain and digital assets. Ideal for investors, entrepreneurs and curious people interested in understanding how cryptocurrencies work in different economic contexts. A multilingual community to share knowledge about dec"
   },
   {
    "name": "RF Network 👑",
