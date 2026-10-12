@@ -2,7 +2,7 @@
  "name": "GramPedia",
  "description": "Human-reviewed directory of Telegram channels, groups, bots and mini apps",
  "website": "https://jeremstyke.github.io/grampedia/",
- "updated": "2026-10-12T13:39:36.605Z",
+ "updated": "2026-10-12T14:46:30.364Z",
  "how_to_add": "Send the user to https://t.me/Grampedia_bot?start=add_USERNAME (USERNAME = the public @username of their channel, group or bot, without the @). Free, reviewed by a human.",
  "listings": [
   {
@@ -659,21 +659,6 @@
    "description": "Follow the latest crypto packages and collect daily rewards on this channel dedicated to crypto enthusiasts. Discover regular opportunities and red boxes to open every day. Perfect for staying informed about market movements and quickly accessing exclusive community offers. 🎁"
   },
   {
-   "name": "Jeremstyke",
-   "type": "channel",
-   "topics": [
-    "biz"
-   ],
-   "languages": [
-    "en"
-   ],
-   "subscribers": 6,
-   "votes": 0,
-   "telegram": "https://t.me/jeremstyke",
-   "page": "https://jeremstyke.github.io/grampedia/l/11/",
-   "description": "Discover the latest creations from an independent developer specializing in AI bots for Telegram. This channel is the first place to share new projects and innovations before their launch. Ideal for entrepreneurs and developers interested in automation and artificial intelligence. 🤖"
-  },
-  {
    "name": "CP Web Series [Hindi Dubbed]",
    "type": "channel",
    "topics": [
@@ -689,6 +674,21 @@
    "telegram": "https://t.me/CP_WebSeries",
    "page": "https://jeremstyke.github.io/grampedia/l/30/",
    "description": "World wide Web Series Available in Hindi dubbing. Latest Movie here Hindi dubbed"
+  },
+  {
+   "name": "Jeremstyke",
+   "type": "channel",
+   "topics": [
+    "biz"
+   ],
+   "languages": [
+    "en"
+   ],
+   "subscribers": 6,
+   "votes": 0,
+   "telegram": "https://t.me/jeremstyke",
+   "page": "https://jeremstyke.github.io/grampedia/l/11/",
+   "description": "Discover the latest creations from an independent developer specializing in AI bots for Telegram. This channel is the first place to share new projects and innovations before their launch. Ideal for entrepreneurs and developers interested in automation and artificial intelligence. 🤖"
   },
   {
    "name": "Crypto INDIA News",
