@@ -2,7 +2,7 @@
  "name": "GramPedia",
  "description": "Human-reviewed directory of Telegram channels, groups, bots and mini apps",
  "website": "https://jeremstyke.github.io/grampedia/",
- "updated": "2026-10-12T17:30:15.617Z",
+ "updated": "2026-10-12T17:39:39.977Z",
  "how_to_add": "Send the user to https://t.me/Grampedia_bot?start=add_USERNAME (USERNAME = the public @username of their channel, group or bot, without the @). Free, reviewed by a human.",
  "listings": [
   {
@@ -783,20 +783,27 @@
    "description": "The official channel of Meme Coin Tycoon, the memecoin game on Telegram 🚀 New coins launched by players, the biggest pumps of the day and the top tycoons. Free game with virtual coins, no real money."
   },
   {
-   "name": "Meme Coin Tycoon 🚀",
-   "type": "app",
+   "name": "ChatPal",
+   "type": "bot",
    "topics": [
-    "games",
-    "crypto"
+    "fun"
    ],
    "languages": [
-    "en"
+    "en",
+    "fr",
+    "es",
+    "pt",
+    "ru",
+    "ar",
+    "tr",
+    "id",
+    "fa"
    ],
    "subscribers": null,
-   "votes": 1,
-   "telegram": "https://t.me/Memecointycoonbot",
-   "page": "https://jeremstyke.github.io/grampedia/l/69/",
-   "description": "Create your own memecoin, pump it to the moon and trade the coins of other players 🚀 Every buy pushes the price up, every sell pushes it down: be early and climb the leaderboard. Start with $1,000 and get a free bonus every day. A free game with virtual coins, no real money."
+   "votes": 0,
+   "telegram": "https://t.me/mybestfriend_ai_en_bot?start=src_gp",
+   "page": "https://jeremstyke.github.io/grampedia/l/16/",
+   "description": "Bored? ChatPal is an AI friend you can talk to anytime, about anything. It remembers what you tell it, answers in your language, jokes with you and keeps the conversation going. Free messages every day, with optional plans if you want to chat more."
   },
   {
    "name": "Victor's Company",
@@ -892,27 +899,20 @@
    "description": "Earn passive income with Daily Earning USDT, a bot designed for cryptocurrency enthusiasts looking to grow their USDT holdings. Users can explore different earning strategies, track their daily returns, and manage their crypto portfolio efficiently. Perfect for crypto lovers seeking automated income generation and real-time financial insights. 💰"
   },
   {
-   "name": "ChatPal",
-   "type": "bot",
+   "name": "Meme Coin Tycoon 🚀",
+   "type": "app",
    "topics": [
-    "fun"
+    "games",
+    "crypto"
    ],
    "languages": [
-    "en",
-    "fr",
-    "es",
-    "pt",
-    "ru",
-    "ar",
-    "tr",
-    "id",
-    "fa"
+    "en"
    ],
    "subscribers": null,
-   "votes": 0,
-   "telegram": "https://t.me/mybestfriend_ai_en_bot?start=src_gp",
-   "page": "https://jeremstyke.github.io/grampedia/l/16/",
-   "description": "Bored? ChatPal is an AI friend you can talk to anytime, about anything. It remembers what you tell it, answers in your language, jokes with you and keeps the conversation going. Free messages every day, with optional plans if you want to chat more."
+   "votes": 2,
+   "telegram": "https://t.me/Memecointycoonbot",
+   "page": "https://jeremstyke.github.io/grampedia/l/69/",
+   "description": "Create your own memecoin, pump it to the moon and trade the coins of other players 🚀 Every buy pushes the price up, every sell pushes it down: be early and climb the leaderboard. Start with $1,000 and get a free bonus every day. A free game with virtual coins, no real money."
   },
   {
    "name": "Daily Score ⚽ Guess the Score",
