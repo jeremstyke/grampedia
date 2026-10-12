@@ -2,7 +2,7 @@
  "name": "GramPedia",
  "description": "Human-reviewed directory of Telegram channels, groups, bots and mini apps",
  "website": "https://jeremstyke.github.io/grampedia/",
- "updated": "2026-10-12T17:48:49.171Z",
+ "updated": "2026-10-12T18:07:49.810Z",
  "how_to_add": "Send the user to https://t.me/Grampedia_bot?start=add_USERNAME (USERNAME = the public @username of their channel, group or bot, without the @). Free, reviewed by a human.",
  "listings": [
   {
@@ -732,7 +732,7 @@
     "ne"
    ],
    "subscribers": 3,
-   "votes": 1,
+   "votes": 2,
    "telegram": "https://t.me/Shopping_Kart247",
    "page": "https://jeremstyke.github.io/grampedia/l/59/",
    "description": "🛒 Shopping Kart | Flipkart Deals\n\n🔥 Best Finds • Hot Offers • Big Savings\n💸 Shop Smart. Save More.\n\n⚡ Grab the deals before they're gone! Fast Hurry up 💙"
