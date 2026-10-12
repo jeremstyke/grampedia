@@ -2,7 +2,7 @@
  "name": "GramPedia",
  "description": "Human-reviewed directory of Telegram channels, groups, bots and mini apps",
  "website": "https://jeremstyke.github.io/grampedia/",
- "updated": "2026-10-12T11:50:36.105Z",
+ "updated": "2026-10-12T11:59:37.995Z",
  "how_to_add": "Send the user to https://t.me/Grampedia_bot?start=add_USERNAME (USERNAME = the public @username of their channel, group or bot, without the @). Free, reviewed by a human.",
  "listings": [
   {
@@ -455,6 +455,19 @@
    "description": "Space dedicated to environmental awareness and planet protection. Here you will find content about animal conservation, forests and ecosystems, aiming to inspire positive actions toward a more sustainable world. Ideal for people committed to environmental care who want to learn and share ecological initiatives. 🌍"
   },
   {
+   "name": "*AUTOPILOTS ASSETS UPDATE*",
+   "type": "channel",
+   "topics": [
+    "crypto"
+   ],
+   "languages": [],
+   "subscribers": 116,
+   "votes": 0,
+   "telegram": "https://t.me/YQjIJFdVjZViNjc0",
+   "page": "https://jeremstyke.github.io/grampedia/l/97/",
+   "description": "Stay updated on autopilot strategies and asset management. Join our community to access latest updates and insights. Get ahead with proven crypto earning approaches and exclusive content."
+  },
+  {
    "name": "🎁 ℝ𝔼𝔻 𝔹𝕆𝕏 🎁",
    "type": "channel",
    "topics": [
@@ -725,22 +738,6 @@
    "description": "🛒 Shopping Kart | Flipkart Deals\n\n🔥 Best Finds • Hot Offers • Big Savings\n💸 Shop Smart. Save More.\n\n⚡ Grab the deals before they're gone! Fast Hurry up 💙"
   },
   {
-   "name": "ARRIX GAMING",
-   "type": "channel",
-   "topics": [
-    "games"
-   ],
-   "languages": [
-    "hi",
-    "en"
-   ],
-   "subscribers": 1,
-   "votes": 1,
-   "telegram": "https://t.me/arrixgaming",
-   "page": "https://jeremstyke.github.io/grampedia/l/57/",
-   "description": "Welcome to ARRIX GAMING\n\nHere you will find Free & Premium Gaming Hacks/Mods and latest updates for the gaming community! ⚡\n\n• Carrom Pool\n• 8 Ball Pool\n• BGMI\n• PUBG\n• Free Fire\n\nAnd tools & updates for more popular games\n🆓 FREE HACKS | 💎 PAID/PREMIUM HACKS\n📢 Regular Updates • New Releases • Gaming Content\n\n• ❤️ Join the Channel and get latest updates first!\n\nARRIX GAMING - PLAY • GRIND • WIN"
-  },
-  {
    "name": "Meme Coin Tycoon News 📰",
    "type": "channel",
    "topics": [
@@ -757,27 +754,20 @@
    "description": "The official channel of Meme Coin Tycoon, the memecoin game on Telegram 🚀 New coins launched by players, the biggest pumps of the day and the top tycoons. Free game with virtual coins, no real money."
   },
   {
-   "name": "ChatPal",
-   "type": "bot",
+   "name": "ARRIX GAMING",
+   "type": "channel",
    "topics": [
-    "fun"
+    "games"
    ],
    "languages": [
-    "en",
-    "fr",
-    "es",
-    "pt",
-    "ru",
-    "ar",
-    "tr",
-    "id",
-    "fa"
+    "hi",
+    "en"
    ],
-   "subscribers": null,
-   "votes": 0,
-   "telegram": "https://t.me/mybestfriend_ai_en_bot?start=src_gp",
-   "page": "https://jeremstyke.github.io/grampedia/l/16/",
-   "description": "Bored? ChatPal is an AI friend you can talk to anytime, about anything. It remembers what you tell it, answers in your language, jokes with you and keeps the conversation going. Free messages every day, with optional plans if you want to chat more."
+   "subscribers": 1,
+   "votes": 1,
+   "telegram": "https://t.me/arrixgaming",
+   "page": "https://jeremstyke.github.io/grampedia/l/57/",
+   "description": "Welcome to ARRIX GAMING\n\nHere you will find Free & Premium Gaming Hacks/Mods and latest updates for the gaming community! ⚡\n\n• Carrom Pool\n• 8 Ball Pool\n• BGMI\n• PUBG\n• Free Fire\n\nAnd tools & updates for more popular games\n🆓 FREE HACKS | 💎 PAID/PREMIUM HACKS\n📢 Regular Updates • New Releases • Gaming Content\n\n• ❤️ Join the Channel and get latest updates first!\n\nARRIX GAMING - PLAY • GRIND • WIN"
   },
   {
    "name": "Meme Coin Tycoon 🚀",
@@ -957,21 +947,6 @@
    "description": "Want your crypto working for you every single day? 🍊 Orange Dao lets you invest and earn daily returns 📈 Start with a simple setup through the official bot 🔒 Join a growing community of active investors Start the bot and begin earning today: https://t.me/OrangeDaoofficialbot?start=GF7435105364"
   },
   {
-   "name": "𝖳𝖾𝗋𝖺𝖻𝗈𝗑 𝖣𝗈𝗐𝗇𝗅𝗈𝖺𝖽𝖾𝗋 🐦",
-   "type": "bot",
-   "topics": [
-    "other"
-   ],
-   "languages": [
-    "en"
-   ],
-   "subscribers": null,
-   "votes": 2,
-   "telegram": "https://t.me/TeraboxDwnnBoT",
-   "page": "https://jeremstyke.github.io/grampedia/l/46/",
-   "description": "A versatile downloading bot supporting 1000+ websites including Terabox and Diskwala. Perfect for users who need quick access to files from multiple platforms without visiting each site individually. Simply share a link and let the bot handle the download, saving time and simplifying file retrieval across various sources 🐦"
-  },
-  {
    "name": "Epsilon",
    "type": "bot",
    "topics": [
@@ -985,17 +960,19 @@
    "description": "Mine EPS tokens directly in Telegram and start earning rewards. Invite friends to boost your mining and unlock exclusive benefits. Join the next-generation crypto ecosystem today. 🚀💰"
   },
   {
-   "name": "Nexilus Mine",
+   "name": "𝖳𝖾𝗋𝖺𝖻𝗈𝗑 𝖣𝗈𝗐𝗇𝗅𝗈𝖺𝖽𝖾𝗋 🐦",
    "type": "bot",
    "topics": [
-    "earn"
+    "other"
    ],
-   "languages": [],
+   "languages": [
+    "en"
+   ],
    "subscribers": null,
-   "votes": 0,
-   "telegram": "https://t.me/NexilusMineBot",
-   "page": "https://jeremstyke.github.io/grampedia/l/87/",
-   "description": "💎 Meet Nexilus Mine - A New Digital Mining Experience! ⛏️ Explore the futuristic dashboard, discover mining features, complete missions, and explore the Nexilus Coins reward system. 🚀 Ready to explore? 👉 Open Nexilus Mine: https://t.me/NexilusMineBot/mine?startapp=ref_8232711326 Follow @NexilusMi"
+   "votes": 2,
+   "telegram": "https://t.me/TeraboxDwnnBoT",
+   "page": "https://jeremstyke.github.io/grampedia/l/46/",
+   "description": "A versatile downloading bot supporting 1000+ websites including Terabox and Diskwala. Perfect for users who need quick access to files from multiple platforms without visiting each site individually. Simply share a link and let the bot handle the download, saving time and simplifying file retrieval across various sources 🐦"
   },
   {
    "name": "Quorin",
@@ -1012,6 +989,19 @@
    "telegram": "https://t.me/zealincstorebot",
    "page": "https://jeremstyke.github.io/grampedia/l/51/",
    "description": "Quorin is your go-to crypto and finance bot for tracking market trends, analyzing digital assets, and managing your portfolio. Get real-time price data, set custom alerts, and access reliable financial information instantly. Whether you're new to crypto or an experienced trader, this bot keeps you informed and helps you make smarter investment decisions with data at your fingertips 💰"
+  },
+  {
+   "name": "Nexilus Mine",
+   "type": "bot",
+   "topics": [
+    "earn"
+   ],
+   "languages": [],
+   "subscribers": null,
+   "votes": 0,
+   "telegram": "https://t.me/NexilusMineBot",
+   "page": "https://jeremstyke.github.io/grampedia/l/87/",
+   "description": "💎 Meet Nexilus Mine - A New Digital Mining Experience! ⛏️ Explore the futuristic dashboard, discover mining features, complete missions, and explore the Nexilus Coins reward system. 🚀 Ready to explore? 👉 Open Nexilus Mine: https://t.me/NexilusMineBot/mine?startapp=ref_8232711326 Follow @NexilusMi"
   },
   {
    "name": "Daily Earning USDT",
@@ -1084,6 +1074,29 @@
    "telegram": "https://t.me/Whoknowsmebestbot?start=src_gp",
    "page": "https://jeremstyke.github.io/grampedia/l/13/",
    "description": "Create a quiz about yourself in one minute, share it with your friends and discover who knows you best. Question of the day, duels about celebrities, couple test, mood and photo of the day. Free, fun and designed to play with friends on Telegram or on the web."
+  },
+  {
+   "name": "ChatPal",
+   "type": "bot",
+   "topics": [
+    "fun"
+   ],
+   "languages": [
+    "en",
+    "fr",
+    "es",
+    "pt",
+    "ru",
+    "ar",
+    "tr",
+    "id",
+    "fa"
+   ],
+   "subscribers": null,
+   "votes": 0,
+   "telegram": "https://t.me/mybestfriend_ai_en_bot?start=src_gp",
+   "page": "https://jeremstyke.github.io/grampedia/l/16/",
+   "description": "Bored? ChatPal is an AI friend you can talk to anytime, about anything. It remembers what you tell it, answers in your language, jokes with you and keeps the conversation going. Free messages every day, with optional plans if you want to chat more."
   }
  ]
 }
