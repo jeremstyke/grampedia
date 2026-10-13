@@ -2,7 +2,7 @@
  "name": "GramPedia",
  "description": "Human-reviewed directory of Telegram channels, groups, bots and mini apps",
  "website": "https://jeremstyke.github.io/grampedia/",
- "updated": "2026-10-13T19:18:57.457Z",
+ "updated": "2026-10-13T19:39:06.178Z",
  "how_to_add": "Send the user to https://t.me/Grampedia_bot?start=add_USERNAME (USERNAME = the public @username of their channel, group or bot, without the @). Free, reviewed by a human.",
  "listings": [
   {
@@ -917,26 +917,6 @@
    "telegram": "https://t.me/Smart_Earning420_Bot",
    "page": "https://jeremstyke.github.io/grampedia/l/75/",
    "description": "Earn passive income with Daily Earning USDT, a bot designed for cryptocurrency enthusiasts looking to grow their USDT holdings. Users can explore different earning strategies, track their daily returns, and manage their crypto portfolio efficiently. Perfect for crypto lovers seeking automated income generation and real-time financial insights. 💰"
-  },
-  {
-   "name": "LifeSim - Game 👶👨👴",
-   "type": "app",
-   "topics": [
-    "games"
-   ],
-   "languages": [
-    "en",
-    "fr",
-    "es",
-    "pt",
-    "de",
-    "ru"
-   ],
-   "subscribers": null,
-   "votes": 0,
-   "telegram": "https://t.me/Lsimgamebot?start=src_gp",
-   "page": "https://jeremstyke.github.io/grampedia/l/15/",
-   "description": "Live a whole life in a few minutes. Study, find a job, fall in love, buy a house, make choices and face random events written by AI, from birth to old age. Every life is different, so every game is a new story. A free life simulation game right inside Telegram."
   },
   {
    "name": "Handi360",
