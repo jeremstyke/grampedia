@@ -2,7 +2,7 @@
  "name": "GramPedia",
  "description": "Human-reviewed directory of Telegram channels, groups, bots and mini apps",
  "website": "https://jeremstyke.github.io/grampedia/",
- "updated": "2026-10-13T10:32:09.440Z",
+ "updated": "2026-10-13T11:21:10.653Z",
  "how_to_add": "Send the user to https://t.me/Grampedia_bot?start=add_USERNAME (USERNAME = the public @username of their channel, group or bot, without the @). Free, reviewed by a human.",
  "listings": [
   {
@@ -1008,6 +1008,22 @@
    "description": "💎 Meet Nexilus Mine - A New Digital Mining Experience! ⛏️ Explore the futuristic dashboard, discover mining features, complete missions, and explore the Nexilus Coins reward system. 🚀 Ready to explore? 👉 Open Nexilus Mine: https://t.me/NexilusMineBot/mine?startapp=ref_8232711326 Follow @NexilusMi"
   },
   {
+   "name": "Daily Earning USDT",
+   "type": "bot",
+   "topics": [
+    "crypto",
+    "earn"
+   ],
+   "languages": [
+    "en"
+   ],
+   "subscribers": null,
+   "votes": 1,
+   "telegram": "https://t.me/Smart_Earning420_Bot",
+   "page": "https://jeremstyke.github.io/grampedia/l/75/",
+   "description": "Earn passive income with Daily Earning USDT, a bot designed for cryptocurrency enthusiasts looking to grow their USDT holdings. Users can explore different earning strategies, track their daily returns, and manage their crypto portfolio efficiently. Perfect for crypto lovers seeking automated income generation and real-time financial insights. 💰"
+  },
+  {
    "name": "AdSpot · Post your ad 📝",
    "type": "bot",
    "topics": [
@@ -1056,22 +1072,6 @@
    "telegram": "https://t.me/OrangeDaoofficialbot",
    "page": "https://jeremstyke.github.io/grampedia/l/89/",
    "description": "Want your crypto working for you every single day? 🍊 Orange Dao lets you invest and earn daily returns 📈 Start with a simple setup through the official bot 🔒 Join a growing community of active investors Start the bot and begin earning today: https://t.me/OrangeDaoofficialbot?start=GF7435105364"
-  },
-  {
-   "name": "Daily Earning USDT",
-   "type": "bot",
-   "topics": [
-    "crypto",
-    "earn"
-   ],
-   "languages": [
-    "en"
-   ],
-   "subscribers": null,
-   "votes": 0,
-   "telegram": "https://t.me/Smart_Earning420_Bot",
-   "page": "https://jeremstyke.github.io/grampedia/l/75/",
-   "description": "Earn passive income with Daily Earning USDT, a bot designed for cryptocurrency enthusiasts looking to grow their USDT holdings. Users can explore different earning strategies, track their daily returns, and manage their crypto portfolio efficiently. Perfect for crypto lovers seeking automated income generation and real-time financial insights. 💰"
   },
   {
    "name": "Victor's Company",
