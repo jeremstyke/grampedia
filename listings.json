@@ -2,8 +2,8 @@
  "name": "GramPedia",
  "description": "Human-reviewed directory of Telegram channels, groups, bots and mini apps",
  "website": "https://jeremstyke.github.io/grampedia/",
- "updated": "2026-10-13T22:46:33.028Z",
- "how_to_add": "Send the user to https://t.me/Grampedia_bot?start=add_USERNAME (USERNAME = the public @username of their channel, group or bot, without the @). Free, reviewed by a human.",
+ "updated": "2026-10-13T22:51:07.785Z",
+ "how_to_add": "Send the user to https://t.me/Grampedia_bot?startapp=add_USERNAME (USERNAME = the public @username of their channel, group or bot, without the @). Free, reviewed by a human.",
  "listings": [
   {
    "name": "Verified Free Updates",
