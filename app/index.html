@@ -157,7 +157,7 @@ const thumb = (x, cls) => x.img ? `<img class="${cls || 'thumb'}" src="${API + x
 const flagsOf = (x) => (x.langs || []).map((l) => (ME.langs.find((y) => y.k === l) || { e: '' }).e).join(' ');
 const metaOf = (x) => [t('one_' + x.type), t('tp_' + x.topic) + (x.topic2 ? ' / ' + t('tp_' + x.topic2) : ''), x.members ? t('members', { n: nf(x.members) }) : '', x.votes >= 3 ? '👍 ' + nf(x.votes) : ''].filter(Boolean).join(', ') + (x.langs && x.langs.length ? '  ' + flagsOf(x) : '');
 function bar() {
-  const tabs = [['explore', '🔍'], ['add', '➕'], ['mine', '📋'], ['ads', '📢']].concat(ME && ME.admin ? [['mod', '🛡️']] : []);
+  const tabs = [['explore', '🔍'], ['add', '➕'], ['mine', '📋']].concat(ME && ME.admin ? [['mod', '🛡️']] : []);
   $('bar').style.gridTemplateColumns = `repeat(${tabs.length},1fr)`;
   $('bar').innerHTML = tabs.map(([k, e]) => `<button data-tab="${k}"${k === TAB ? ' aria-current="page"' : ''}><span aria-hidden="true">${e}</span>${esc(t(k))}</button>`).join('');
   $('bar').querySelectorAll('button').forEach((b) => b.onclick = () => { haptic(); go(b.dataset.tab); });
@@ -670,7 +670,7 @@ let PRE = null; // the first list, loaded at the same time as the profile
     const lid = qs.get('id') || (/^l_(\d+)$/.exec(src) || [])[1];
     if (lid) { go('explore'); const one = await api('one', { id: lid }); if (one.item) detail(one.item); return; }
     if (want === 'add' && qs.get('link')) { A.link = qs.get('link'); go('add'); return find(); }
-    go(['add', 'mine', 'help', 'notifs', 'ads'].includes(want) || (want === 'mod' && ME.admin) ? want : 'explore');
+    go(['add', 'mine', 'help', 'notifs'].includes(want) || (want === 'mod' && ME.admin) ? want : 'explore');
   } catch (e) { $('app').innerHTML = `<div class="empty"><b>${esc(t('e_server'))}</b></div>`; }
 })();
 </script>
