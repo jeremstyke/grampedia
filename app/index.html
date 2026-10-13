@@ -197,7 +197,7 @@ async function explore(keep) {
   $('lsel').onchange = async (e) => { S.lang = e.target.value; await fetchList(); explore(true); };
   $('sortb').onchange = async (e) => { haptic(); S.sort = e.target.value; await fetchList(); explore(true); };
   if ($('more')) $('more').onclick = async () => { $('more').disabled = true; await fetchList(true); explore(true); };
-  { const rs = [...$('app').querySelectorAll('.idx .row:not(.feat)')]; const put = (k) => { for (const j of [k, k - 1, k + 1, k - 2]) { const r = rs[j], nx = r && r.nextElementSibling; if (r && !(nx && nx.classList.contains('feat'))) return; } }; /* 14 oct 2026: no partner row inside the lists any more (one card only, in My listings) */ for (let i = 9; i < rs.length; i += 10) put(i); if (rs.length && rs.length < 10) put(rs.length - 1); bindAgx(); }
+  { const rs = [...$('app').querySelectorAll('.idx .row:not(.feat)')]; const put = (k) => { for (const j of [k, k - 1, k + 1, k - 2]) { const r = rs[j], nx = r && r.nextElementSibling; if (r && !(nx && nx.classList.contains('feat'))) return r.insertAdjacentHTML('afterend', agxRow()); } }; /* 14 oct 2026: one Ads Galaxy banner in the middle of the list */ if (rs.length >= 2) put(Math.floor(rs.length / 2) - 1); bindAgx(); }
   if ($('addm')) $('addm').onclick = () => go('add');
   $('app').insertAdjacentHTML('beforeend', `<button class="btn dark" id="shareg" style="width:100%;margin-top:14px">📤 ${esc(t('share_app'))}</button>`);
   $('shareg').onclick = shareApp;
