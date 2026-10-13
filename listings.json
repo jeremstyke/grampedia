@@ -2,7 +2,7 @@
  "name": "GramPedia",
  "description": "Human-reviewed directory of Telegram channels, groups, bots and mini apps",
  "website": "https://jeremstyke.github.io/grampedia/",
- "updated": "2026-10-13T05:45:42.449Z",
+ "updated": "2026-10-13T06:14:43.094Z",
  "how_to_add": "Send the user to https://t.me/Grampedia_bot?start=add_USERNAME (USERNAME = the public @username of their channel, group or bot, without the @). Free, reviewed by a human.",
  "listings": [
   {
@@ -738,22 +738,6 @@
    "description": "🚀 Opportunity_X 💰 Discover new earning opportunities, crypto projects, referral programs, airdrops, apps, and online opportunities worth checking out. Stay updated. Explore. Earn. Repeat. 🚀"
   },
   {
-   "name": "Meme Coin Tycoon News 📰",
-   "type": "channel",
-   "topics": [
-    "crypto",
-    "games"
-   ],
-   "languages": [
-    "en"
-   ],
-   "subscribers": 1,
-   "votes": 1,
-   "telegram": "https://t.me/memecointycoon",
-   "page": "https://jeremstyke.github.io/grampedia/l/70/",
-   "description": "The official channel of Meme Coin Tycoon, the memecoin game on Telegram 🚀 New coins launched by players, the biggest pumps of the day and the top tycoons. Free game with virtual coins, no real money."
-  },
-  {
    "name": "ARRIX GAMING",
    "type": "channel",
    "topics": [
@@ -770,27 +754,20 @@
    "description": "Welcome to ARRIX GAMING\n\nHere you will find Free & Premium Gaming Hacks/Mods and latest updates for the gaming community! ⚡\n\n• Carrom Pool\n• 8 Ball Pool\n• BGMI\n• PUBG\n• Free Fire\n\nAnd tools & updates for more popular games\n🆓 FREE HACKS | 💎 PAID/PREMIUM HACKS\n📢 Regular Updates • New Releases • Gaming Content\n\n• ❤️ Join the Channel and get latest updates first!\n\nARRIX GAMING - PLAY • GRIND • WIN"
   },
   {
-   "name": "ChatPal",
-   "type": "bot",
+   "name": "Meme Coin Tycoon News 📰",
+   "type": "channel",
    "topics": [
-    "fun"
+    "crypto",
+    "games"
    ],
    "languages": [
-    "en",
-    "fr",
-    "es",
-    "pt",
-    "ru",
-    "ar",
-    "tr",
-    "id",
-    "fa"
+    "en"
    ],
-   "subscribers": null,
-   "votes": 0,
-   "telegram": "https://t.me/mybestfriend_ai_en_bot?start=src_gp",
-   "page": "https://jeremstyke.github.io/grampedia/l/16/",
-   "description": "Bored? ChatPal is an AI friend you can talk to anytime, about anything. It remembers what you tell it, answers in your language, jokes with you and keeps the conversation going. Free messages every day, with optional plans if you want to chat more."
+   "subscribers": 1,
+   "votes": 1,
+   "telegram": "https://t.me/memecointycoon",
+   "page": "https://jeremstyke.github.io/grampedia/l/70/",
+   "description": "The official channel of Meme Coin Tycoon, the memecoin game on Telegram 🚀 New coins launched by players, the biggest pumps of the day and the top tycoons. Free game with virtual coins, no real money."
   },
   {
    "name": "LifeSim - Game 👶👨👴",
@@ -842,6 +819,22 @@
    "telegram": "https://t.me/Differentanglephoto_bot",
    "page": "https://jeremstyke.github.io/grampedia/l/37/",
    "description": "This bot helps you explore photography from fresh perspectives and creative angles. Whether you're a beginner learning composition basics or an experienced photographer seeking inspiration, you'll discover techniques to transform ordinary scenes into compelling images. Get tips on lighting, framing, and visual storytelling across different styles and subjects. Perfect for anyone looking to improve"
+  },
+  {
+   "name": "Meme Coin Tycoon 🚀",
+   "type": "app",
+   "topics": [
+    "games",
+    "crypto"
+   ],
+   "languages": [
+    "en"
+   ],
+   "subscribers": null,
+   "votes": 3,
+   "telegram": "https://t.me/Memecointycoonbot",
+   "page": "https://jeremstyke.github.io/grampedia/l/69/",
+   "description": "Create your own memecoin, pump it to the moon and trade the coins of other players 🚀 Every buy pushes the price up, every sell pushes it down: be early and climb the leaderboard. Start with $1,000 and get a free bonus every day. A free game with virtual coins, no real money."
   },
   {
    "name": "AdSpot ⚡️",
@@ -1096,20 +1089,27 @@
    "description": "Mine free VIC coins in this mini app and build your balance toward the 1000 token withdrawal threshold. Once you reach it, transfer your earnings directly to your TON wallet or convert to USDT. A straightforward way to earn cryptocurrency through regular mining activity 💰"
   },
   {
-   "name": "Meme Coin Tycoon 🚀",
-   "type": "app",
+   "name": "ChatPal",
+   "type": "bot",
    "topics": [
-    "games",
-    "crypto"
+    "fun"
    ],
    "languages": [
-    "en"
+    "en",
+    "fr",
+    "es",
+    "pt",
+    "ru",
+    "ar",
+    "tr",
+    "id",
+    "fa"
    ],
    "subscribers": null,
-   "votes": 2,
-   "telegram": "https://t.me/Memecointycoonbot",
-   "page": "https://jeremstyke.github.io/grampedia/l/69/",
-   "description": "Create your own memecoin, pump it to the moon and trade the coins of other players 🚀 Every buy pushes the price up, every sell pushes it down: be early and climb the leaderboard. Start with $1,000 and get a free bonus every day. A free game with virtual coins, no real money."
+   "votes": 0,
+   "telegram": "https://t.me/mybestfriend_ai_en_bot?start=src_gp",
+   "page": "https://jeremstyke.github.io/grampedia/l/16/",
+   "description": "Bored? ChatPal is an AI friend you can talk to anytime, about anything. It remembers what you tell it, answers in your language, jokes with you and keeps the conversation going. Free messages every day, with optional plans if you want to chat more."
   }
  ]
 }
