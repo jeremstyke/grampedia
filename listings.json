@@ -2,7 +2,7 @@
  "name": "GramPedia",
  "description": "Human-reviewed directory of Telegram channels, groups, bots and mini apps",
  "website": "https://jeremstyke.github.io/grampedia/",
- "updated": "2026-10-13T11:47:45.937Z",
+ "updated": "2026-10-13T13:16:46.745Z",
  "how_to_add": "Send the user to https://t.me/Grampedia_bot?start=add_USERNAME (USERNAME = the public @username of their channel, group or bot, without the @). Free, reviewed by a human.",
  "listings": [
   {
@@ -159,7 +159,7 @@
     "en"
    ],
    "subscribers": 669,
-   "votes": 0,
+   "votes": 1,
    "telegram": "https://t.me/socialtaskh",
    "page": "https://jeremstyke.github.io/grampedia/l/76/",
    "description": "💎 Social Tasks | GRAM • TON • USDT\n\nEarn by doing simple tasks\nFollow, Like, Comment & Join\n💰 Get paid in GRAM / TON / GOMINE\n✅ Daily new tasks + instant proofs\n\nStart earning now\n📩 For ads/promo:\n\n#Earn #GRAM"
