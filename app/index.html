@@ -675,6 +675,7 @@ let PRE = null; // the first list, loaded at the same time as the profile
     if (ME.member === false) { bar(); gate(); if (lid) { const one = await api('one', { id: lid }).catch(() => ({})); if (one && one.item) detail(one.item); } return; }
     if (lid) { go('explore'); const one = await api('one', { id: lid }); if (one.item) detail(one.item); return; }
     if (want === 'add' && qs.get('link')) { A.link = qs.get('link'); go('add'); return find(); }
+    const am = /^add_([A-Za-z0-9_]{3,64})$/.exec(src); if (am) { A.link = '@' + am[1]; go('add'); return find(); } // 14 oct 2026: "add my channel" links open the form directly (?startapp=add_<username>)
     go(['add', 'mine', 'help', 'notifs'].includes(want) || (want === 'mod' && ME.admin) ? want : 'explore');
   } catch (e) { $('app').innerHTML = `<div class="empty"><b>${esc(t('e_server'))}</b></div>`; }
 })();
