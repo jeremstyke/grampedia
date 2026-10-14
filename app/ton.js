@@ -78,5 +78,7 @@
   place();
   // a link that opens the app on the TON page (?startapp=ton)
   const sp = String((tgw && tgw.initDataUnsafe && tgw.initDataUnsafe.start_param) || '');
+  // 14 oct 2026: ?startapp=add opens the "add my listing" tab (link from Earn by Jeremstyke)
+  if (sp === 'add') { const w1 = setInterval(() => { if (ME && TAB === 'explore') { clearInterval(w1); go('add'); } }, 300); setTimeout(() => clearInterval(w1), 15000); }
   if (sp === 'ton') { const w0 = setInterval(() => { if (ME) { clearInterval(w0); page(); } }, 300); setTimeout(() => clearInterval(w0), 15000); }
 })();
