@@ -2,7 +2,7 @@
  "name": "GramPedia",
  "description": "Human-reviewed directory of Telegram channels, groups, bots and mini apps",
  "website": "https://jeremstyke.github.io/grampedia/",
- "updated": "2026-10-14T08:46:07.296Z",
+ "updated": "2026-10-14T12:55:08.272Z",
  "how_to_add": "Send the user to https://t.me/Grampedia_bot?startapp=add_USERNAME (USERNAME = the public @username of their channel, group or bot, without the @). Free, reviewed by a human.",
  "listings": [
   {
@@ -646,21 +646,6 @@
    "description": "Follow the latest crypto packages and collect daily rewards on this channel dedicated to crypto enthusiasts. Discover regular opportunities and red boxes to open every day. Perfect for staying informed about market movements and quickly accessing exclusive community offers. 🎁"
   },
   {
-   "name": "Jeremstyke",
-   "type": "channel",
-   "topics": [
-    "biz"
-   ],
-   "languages": [
-    "en"
-   ],
-   "subscribers": 6,
-   "votes": 0,
-   "telegram": "https://t.me/jeremstyke",
-   "page": "https://jeremstyke.github.io/grampedia/l/11/",
-   "description": "Discover the latest creations from an independent developer specializing in AI bots for Telegram. This channel is the first place to share new projects and innovations before their launch. Ideal for entrepreneurs and developers interested in automation and artificial intelligence. 🤖"
-  },
-  {
    "name": "CP Web Series [Hindi Dubbed]",
    "type": "channel",
    "topics": [
@@ -676,6 +661,21 @@
    "telegram": "https://t.me/CP_WebSeries",
    "page": "https://jeremstyke.github.io/grampedia/l/30/",
    "description": "World wide Web Series Available in Hindi dubbing. Latest Movie here Hindi dubbed"
+  },
+  {
+   "name": "Jeremstyke",
+   "type": "channel",
+   "topics": [
+    "biz"
+   ],
+   "languages": [
+    "en"
+   ],
+   "subscribers": 6,
+   "votes": 0,
+   "telegram": "https://t.me/jeremstyke",
+   "page": "https://jeremstyke.github.io/grampedia/l/11/",
+   "description": "Discover the latest creations from an independent developer specializing in AI bots for Telegram. This channel is the first place to share new projects and innovations before their launch. Ideal for entrepreneurs and developers interested in automation and artificial intelligence. 🤖"
   },
   {
    "name": "Crypto INDIA News",
@@ -695,6 +695,19 @@
    "description": "All Crypto Related News and Latest Updates 📰💰\n\nDaily Crypto Rewards and Boxes 🎁\nFrequently Giveaways and Airdrop 💸"
   },
   {
+   "name": "Setor Gmail Palzx",
+   "type": "channel",
+   "topics": [
+    "earn"
+   ],
+   "languages": [],
+   "subscribers": 3,
+   "votes": 0,
+   "telegram": "https://t.me/palzx66",
+   "page": "https://jeremstyke.github.io/grampedia/l/91/",
+   "description": "I really need email for 0.2$ With password sgsg1122 and free name and maximum number The number is 3"
+  },
+  {
    "name": "Shopping Kart 🛒",
    "type": "channel",
    "topics": [
@@ -712,19 +725,6 @@
    "description": "🛒 Shopping Kart | Flipkart Deals\n\n🔥 Best Finds • Hot Offers • Big Savings\n💸 Shop Smart. Save More.\n\n⚡ Grab the deals before they're gone! Fast Hurry up 💙"
   },
   {
-   "name": "Setor Gmail Palzx",
-   "type": "channel",
-   "topics": [
-    "earn"
-   ],
-   "languages": [],
-   "subscribers": 3,
-   "votes": 0,
-   "telegram": "https://t.me/palzx66",
-   "page": "https://jeremstyke.github.io/grampedia/l/91/",
-   "description": "I really need email for 0.2$ With password sgsg1122 and free name and maximum number The number is 3"
-  },
-  {
    "name": "Opportunity_X",
    "type": "channel",
    "topics": [
@@ -736,22 +736,6 @@
    "telegram": "https://t.me/opportunity_x",
    "page": "https://jeremstyke.github.io/grampedia/l/84/",
    "description": "🚀 Opportunity_X 💰 Discover new earning opportunities, crypto projects, referral programs, airdrops, apps, and online opportunities worth checking out. Stay updated. Explore. Earn. Repeat. 🚀"
-  },
-  {
-   "name": "Meme Coin Tycoon News 📰",
-   "type": "channel",
-   "topics": [
-    "crypto",
-    "games"
-   ],
-   "languages": [
-    "en"
-   ],
-   "subscribers": 1,
-   "votes": 1,
-   "telegram": "https://t.me/memecointycoon",
-   "page": "https://jeremstyke.github.io/grampedia/l/70/",
-   "description": "The official channel of Meme Coin Tycoon, the memecoin game on Telegram 🚀 New coins launched by players, the biggest pumps of the day and the top tycoons. Free game with virtual coins, no real money."
   },
   {
    "name": "ARRIX GAMING",
@@ -768,6 +752,22 @@
    "telegram": "https://t.me/arrixgaming",
    "page": "https://jeremstyke.github.io/grampedia/l/57/",
    "description": "Welcome to ARRIX GAMING\n\nHere you will find Free & Premium Gaming Hacks/Mods and latest updates for the gaming community! ⚡\n\n• Carrom Pool\n• 8 Ball Pool\n• BGMI\n• PUBG\n• Free Fire\n\nAnd tools & updates for more popular games\n🆓 FREE HACKS | 💎 PAID/PREMIUM HACKS\n📢 Regular Updates • New Releases • Gaming Content\n\n• ❤️ Join the Channel and get latest updates first!\n\nARRIX GAMING - PLAY • GRIND • WIN"
+  },
+  {
+   "name": "Meme Coin Tycoon News 📰",
+   "type": "channel",
+   "topics": [
+    "crypto",
+    "games"
+   ],
+   "languages": [
+    "en"
+   ],
+   "subscribers": 1,
+   "votes": 1,
+   "telegram": "https://t.me/memecointycoon",
+   "page": "https://jeremstyke.github.io/grampedia/l/70/",
+   "description": "The official channel of Meme Coin Tycoon, the memecoin game on Telegram 🚀 New coins launched by players, the biggest pumps of the day and the top tycoons. Free game with virtual coins, no real money."
   },
   {
    "name": "MRG Mining",
