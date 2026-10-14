@@ -669,7 +669,7 @@ let PRE = null; // the first list, loaded at the same time as the profile
   if (tgw) { try { tgw.ready(); tgw.expand(); tgw.disableVerticalSwipes && tgw.disableVerticalSwipes(); tgw.setHeaderColor && tgw.setHeaderColor('#13213a'); tgw.setBackgroundColor && tgw.setBackgroundColor('#f3f5f9'); } catch (e) {} }
   if (!INIT) { $('sbox').style.display = 'none'; $('app').innerHTML = `<div class="center"><div class="big">📚</div><h1>GramPedia</h1><p class="sub">${esc(t('open_tg'))}</p><a class="btn main" href="https://t.me/Grampedia_bot">Telegram</a></div>`; return; }
   // 14 oct 2026: an InsideAds video when the app opens: once a day (first visit included), after the app has loaded
-  setTimeout(async () => { try { const d = new Date().toDateString(); try { if (localStorage.getItem('gp_open_ad3') === d) return; localStorage.setItem('gp_open_ad3', d); } catch (e) { return; } if (document.querySelector('.sheet-bg')) return; await agxSdk(); await adNote(t('ad_open'), 1600); await window.showAdsGalaxy({ miniappId: AGX_ID }); } catch (e) {} }, 1500);
+  setTimeout(async () => { try { const d = new Date().toDateString(); try { if (localStorage.getItem('gp_open_ad3') === d) return; localStorage.setItem('gp_open_ad3', d); } catch (e) { return; } if (document.querySelector('.sheet-bg')) return; await agxSdk(); await window.showAdsGalaxy({ miniappId: AGX_ID }); } catch (e) {} }, 1500);
   try {
     const src = (tgw.initDataUnsafe && tgw.initDataUnsafe.start_param) || '';
     PRE = api('list', { lang: S.lang, type: S.type, topic: S.topic, sort: S.sort, q: S.q, offset: 0 }).catch(() => null);
