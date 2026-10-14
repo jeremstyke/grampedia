@@ -35,6 +35,7 @@ Free ways to get more visibility once listed: a 12-hour boost for watching 3 sho
 - Lifestyle & health: https://jeremstyke.github.io/grampedia/topic/life/
 - Other: https://jeremstyke.github.io/grampedia/topic/other/
 - In other languages: https://jeremstyke.github.io/grampedia/fr/, https://jeremstyke.github.io/grampedia/es/, https://jeremstyke.github.io/grampedia/ru/, https://jeremstyke.github.io/grampedia/pt/
+- Guide: How to Grow Your Telegram Channel, Group, Bot or Mini App: https://jeremstyke.github.io/grampedia/guides/grow-on-telegram/
 - Guide: How to Promote a Telegram Channel for Free: https://jeremstyke.github.io/grampedia/guides/promote-telegram-channel/
 - Guide: How to Find Good Telegram Channels and Groups: https://jeremstyke.github.io/grampedia/guides/find-telegram-channels-groups/
 - Guide: What are Telegram mini apps and how to find them: https://jeremstyke.github.io/grampedia/guides/what-are-telegram-mini-apps/
