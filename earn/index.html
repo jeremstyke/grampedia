@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>How much can your Telegram project earn?</title>
+<meta name="description" content="Free calculator: estimate how much your Telegram channel, group, bot or mini app can earn per month with ads.">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+:root {
+  --bg: #f4f6fb; --card: #ffffff; --ink: #14182b; --mute: #6b7290; --line: #e3e7f2;
+  --acc: #1f9d55; --acc2: #2d6cdf; --gold: #f2b705;
+  --r: 16px;
+}
+@media (prefers-color-scheme: dark) { :root { --bg: #0f1220; --card: #181c30; --ink: #eef0fa; --mute: #9aa1bf; --line: #2a3050; } }
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--ink); font: 16px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-tap-highlight-color: transparent; }
+.wrap { max-width: 520px; margin: 0 auto; padding: 18px 16px 40px; display: grid; gap: 14px; }
+h1 { font-size: 26px; line-height: 1.15; margin: 4px 0 0; text-wrap: balance; }
+.sub { color: var(--mute); margin: 0; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 16px; display: grid; gap: 14px; }
+label { display: grid; gap: 6px; font-weight: 600; font-size: 14px; }
+label small { font-weight: 400; color: var(--mute); }
+input, select { width: 100%; font: inherit; padding: 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); }
+input:focus, select:focus { outline: 2px solid var(--acc2); outline-offset: 1px; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.seg { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.seg button { font: inherit; font-size: 13px; padding: 10px 4px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); cursor: pointer; }
+.seg button[aria-pressed="true"] { border-color: var(--acc2); background: color-mix(in srgb, var(--acc2) 14%, var(--bg)); font-weight: 700; }
+.btn { font: inherit; font-weight: 700; border: 0; border-radius: 14px; padding: 15px; cursor: pointer; text-align: center; text-decoration: none; display: block; }
+.go { background: var(--acc2); color: #fff; font-size: 17px; }
+.res { text-align: center; gap: 8px; }
+.res .lbl { color: var(--mute); font-size: 14px; }
+.res .big { font-size: 40px; font-weight: 800; color: var(--acc); font-variant-numeric: tabular-nums; line-height: 1.1; }
+.res .yr { color: var(--mute); font-size: 14px; }
+.tips { margin: 0; padding-left: 18px; display: grid; gap: 6px; font-size: 14px; }
+.earn { background: var(--acc); color: #fff; }
+.grow { background: var(--card); color: var(--ink); border: 1px solid var(--line); }
+.share { background: var(--gold); color: #1d1600; }
+.how { font-size: 13px; color: var(--mute); }
+.how summary { cursor: pointer; font-weight: 600; color: var(--ink); }
+.foot { text-align: center; font-size: 12px; color: var(--mute); }
+.foot a { color: var(--mute); }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div>
+    <h1>💰 How much can your Telegram project earn?</h1>
+    <p class="sub">Enter a few numbers, get a monthly estimate in 10 seconds. Free, no sign-up.</p>
+  </div>
+
+  <form class="card" id="f">
+    <label>Project name <small>(optional, for your result card)</small>
+      <input id="name" maxlength="40" placeholder="@mychannel" autocomplete="off">
+    </label>
+    <div>
+      <label style="margin-bottom:6px">Type</label>
+      <div class="seg" role="group" id="type">
+        <button type="button" data-v="channel" aria-pressed="true">📣 Channel</button>
+        <button type="button" data-v="group" aria-pressed="false">👥 Group</button>
+        <button type="button" data-v="bot" aria-pressed="false">🤖 Bot</button>
+        <button type="button" data-v="app" aria-pressed="false">🚀 Mini app</button>
+      </div>
+    </div>
+    <div class="row">
+      <label>Topic
+        <select id="niche">
+          <option value="crypto">Crypto & trading</option>
+          <option value="finance">Finance & business</option>
+          <option value="earn">Earn money online</option>
+          <option value="tech">Tech & AI</option>
+          <option value="edu">Education</option>
+          <option value="games">Games</option>
+          <option value="news">News</option>
+          <option value="fun">Fun & entertainment</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
+      <label>Main audience
+        <select id="geo">
+          <option value="t1">USA, UK, Canada, Australia</option>
+          <option value="eu">Western Europe</option>
+          <option value="cis">Russia & CIS</option>
+          <option value="mena">Middle East & Turkey</option>
+          <option value="latam">Latin America, Spain, Portugal</option>
+          <option value="asia">South & Southeast Asia</option>
+          <option value="africa">Africa</option>
+          <option value="mix">Mixed / worldwide</option>
+        </select>
+      </label>
+    </div>
+    <div class="row">
+      <label id="l1">Subscribers
+        <input id="subs" type="number" inputmode="numeric" min="0" value="5000">
+      </label>
+      <label id="l2">Average views per post
+        <input id="views" type="number" inputmode="numeric" min="0" value="1500">
+      </label>
+    </div>
+    <label>Ads you would accept per day
+      <select id="ads">
+        <option value="1">1 ad a day</option>
+        <option value="2" selected>2 ads a day</option>
+        <option value="3">3 ads a day</option>
+      </select>
+    </label>
+    <button class="btn go" type="submit">Estimate my earnings</button>
+  </form>
+
+  <div class="card res" id="out" hidden>
+    <div class="lbl" id="who">Your project could earn about</div>
+    <div class="big" id="range">$0 - $0</div>
+    <div class="yr" id="yr">per month</div>
+  </div>
+
+  <div class="card" id="next" hidden>
+    <b>🚀 Earn more, faster</b>
+    <ul class="tips" id="tips"></ul>
+    <a class="btn earn" id="ia" href="https://t.me/InsideAds_bot/open?startapp=r_7057960224" target="_blank" rel="noopener">💰 Start earning with InsideAds</a>
+    <a class="btn grow" href="https://t.me/Grampedia_bot?startapp=src_calc" target="_blank" rel="noopener">📚 Get more views: list it free on GramPedia</a>
+    <a class="btn share" id="share" href="#" target="_blank" rel="noopener">📤 Share my result</a>
+    <details class="how">
+      <summary>How we calculate</summary>
+      <p id="howtxt"></p>
+      <p>This is a rough estimate, not a promise. Real earnings depend on your audience quality, how many ads you actually sell and the prices you negotiate. The InsideAds link is an affiliate link: it costs you nothing.</p>
+    </details>
+  </div>
+
+  <p class="foot">Made by <a href="https://t.me/monetize_telegram" target="_blank" rel="noopener">Monetize Telegram</a> · daily tips to earn with your channel</p>
+</div>
+
+<script>
+const tg = window.Telegram && Telegram.WebApp;
+try { tg.ready(); tg.expand(); } catch (e) {}
+const $ = (s) => document.querySelector(s);
+// Price for 1,000 ad views (USD), low and high, by topic, before the audience factor. Rough market ranges, kept on the cautious side.
+const CPM = { crypto: [3, 8], finance: [3, 7], earn: [2, 5], tech: [2, 5], edu: [1.5, 4], games: [1, 3], news: [1, 3], fun: [0.5, 2], other: [1, 3] };
+const GEO = { t1: 1, eu: 0.8, cis: 0.45, mena: 0.45, latam: 0.35, asia: 0.25, africa: 0.2, mix: 0.5 };
+let TYPE = 'channel';
+document.querySelectorAll('#type button').forEach((b) => b.onclick = () => {
+  TYPE = b.dataset.v; document.querySelectorAll('#type button').forEach((x) => x.setAttribute('aria-pressed', x === b));
+  const bot = TYPE === 'bot' || TYPE === 'app';
+  $('#l1').firstChild.nodeValue = bot ? 'Monthly users ' : TYPE === 'group' ? 'Members ' : 'Subscribers ';
+  $('#l2').firstChild.nodeValue = bot ? 'Daily active users ' : TYPE === 'group' ? 'Daily active members ' : 'Average views per post ';
+  $('#ads').parentElement.hidden = bot;
+});
+const money = (v) => '$' + (v >= 1000 ? Math.round(v).toLocaleString('en-US') : v >= 10 ? Math.round(v) : v.toFixed(2));
+$('#f').onsubmit = (e) => {
+  e.preventDefault();
+  const subs = Math.max(0, +$('#subs').value || 0), v = Math.max(0, +$('#views').value || 0);
+  const [lo, hi] = CPM[$('#niche').value], g = GEO[$('#geo').value], ads = +$('#ads').value;
+  let low, high, how;
+  if (TYPE === 'bot' || TYPE === 'app') {
+    // rewarded or banner ads shown to daily active users: about 1 to 3 ad views per user per day
+    const eLo = lo * g * 0.6, eHi = hi * g * 0.9;
+    low = v * 1 * 30 * eLo / 1000; high = v * 3 * 30 * eHi / 1000;
+    how = `We take your ${v.toLocaleString('en-US')} daily users, 1 to 3 ad views per user per day, 30 days, and a price of ${money(eLo)} to ${money(eHi)} per 1,000 ad views for this topic and audience.`;
+  } else {
+    // sold ad posts: each ad gets about your usual views; you sell 40% to 80% of your slots
+    const reach = TYPE === 'group' ? v * 0.5 : v, cLo = lo * g, cHi = hi * g;
+    low = reach * ads * 30 * 0.4 * cLo / 1000; high = reach * ads * 30 * 0.8 * cHi / 1000;
+    how = `We take ${reach.toLocaleString('en-US')} views per ad, ${ads} ad${ads > 1 ? 's' : ''} a day, 30 days, 40% to 80% of ad slots sold, and a price of ${money(cLo)} to ${money(cHi)} per 1,000 views for this topic and audience.`;
+  }
+  const name = $('#name').value.trim();
+  $('#who').textContent = name ? `${name} could earn about` : 'Your project could earn about';
+  $('#range').textContent = `${money(low)} - ${money(high)}`;
+  $('#yr').textContent = `per month · ${money(low * 12)} - ${money(high * 12)} per year`;
+  const T = [];
+  if (subs > 0 && v / subs < 0.15 && TYPE === 'channel') T.push('Your views are low compared to your subscribers. More views = higher ad prices: post better, not more.');
+  if (v < 1000) T.push('Under 1,000 views per post, advertisers are rare. Focus on growth first: ad exchanges and directories are free.');
+  if (g < 0.5) T.push('Your audience pays lower ad prices. A bot or mini app with rewarded ads can earn more per user.');
+  T.push('Sell your ad slots without hunting advertisers: ad networks bring them to you.');
+  $('#tips').innerHTML = T.slice(0, 3).map((t) => `<li>${t}</li>`).join('');
+  $('#howtxt').textContent = how;
+  const msg = `${name || 'My Telegram project'} could earn ${money(low)} - ${money(high)} per month 💰 How much can yours earn?`;
+  $('#share').href = 'https://t.me/share/url?url=' + encodeURIComponent('https://jeremstyke.github.io/grampedia/earn/') + '&text=' + encodeURIComponent(msg);
+  $('#out').hidden = false; $('#next').hidden = false;
+  $('#out').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  try { tg.HapticFeedback.notificationOccurred('success'); } catch (x) {}
+};
+document.querySelectorAll('a[target=_blank]').forEach((a) => a.addEventListener('click', (e) => {
+  if (!tg || !tg.openTelegramLink || !/^https:\/\/t\.me\//.test(a.href)) return;
+  e.preventDefault(); try { tg.openTelegramLink(a.href); } catch (x) { location.href = a.href; }
+}));
+</script>
+</body>
+</html>
