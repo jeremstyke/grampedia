@@ -38,7 +38,7 @@
     }
     let s; try { s = await call({}); } catch (e) { return; }
     if (!s || !s.ok || TAB !== 'ton') return;
-    const w = s.wallet, ed = edit || !w, bal = Number(s.balance), mn = Number(s.min), pct = Math.min(100, Math.round(bal / mn * 100));
+    const w = s.wallet, ed = edit || !w, bal = Number(s.total != null ? s.total : s.balance), mn = Number(s.min), pct = Math.min(100, Math.round(bal / mn * 100));
     a.innerHTML = `<div class="gton"><button class="btn small" id="gtbk">${T.back}</button><h1>${T.h}</h1><p class="sub">${T.s(f2(s.usd))}</p>`
       + `<div class="hero"><small>${T.b}</small><div class="big">${m$(bal)}</div><div class="bar"><i style="width:${pct}%"></i></div>`
       + `<small class="note">${bal >= mn ? (w ? T.ready : T.nowal) : T.togo(f2(mn - bal)) + ' · ' + T.mn(f2(mn))}</small></div>`
