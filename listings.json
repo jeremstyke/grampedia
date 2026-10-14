@@ -2,7 +2,7 @@
  "name": "GramPedia",
  "description": "Human-reviewed directory of Telegram channels, groups, bots and mini apps",
  "website": "https://jeremstyke.github.io/grampedia/",
- "updated": "2026-10-14T18:18:55.892Z",
+ "updated": "2026-10-14T19:38:56.183Z",
  "how_to_add": "Send the user to https://t.me/Grampedia_bot?startapp=add_USERNAME (USERNAME = the public @username of their channel, group or bot, without the @). Free, reviewed by a human.",
  "listings": [
   {
@@ -591,7 +591,7 @@
    ],
    "languages": [],
    "subscribers": 37,
-   "votes": 0,
+   "votes": 1,
    "telegram": "https://t.me/seedcripto",
    "page": "https://jeremstyke.github.io/grampedia/l/94/",
    "description": "Airdrops • Mining • Bots • Apps • Web3 We find, test and share crypto opportunities."
@@ -646,21 +646,6 @@
    "description": "Follow the latest crypto packages and collect daily rewards on this channel dedicated to crypto enthusiasts. Discover regular opportunities and red boxes to open every day. Perfect for staying informed about market movements and quickly accessing exclusive community offers. 🎁"
   },
   {
-   "name": "Jeremstyke",
-   "type": "channel",
-   "topics": [
-    "biz"
-   ],
-   "languages": [
-    "en"
-   ],
-   "subscribers": 6,
-   "votes": 0,
-   "telegram": "https://t.me/jeremstyke",
-   "page": "https://jeremstyke.github.io/grampedia/l/11/",
-   "description": "Discover the latest creations from an independent developer specializing in AI bots for Telegram. This channel is the first place to share new projects and innovations before their launch. Ideal for entrepreneurs and developers interested in automation and artificial intelligence. 🤖"
-  },
-  {
    "name": "CP Web Series [Hindi Dubbed]",
    "type": "channel",
    "topics": [
@@ -676,6 +661,21 @@
    "telegram": "https://t.me/CP_WebSeries",
    "page": "https://jeremstyke.github.io/grampedia/l/30/",
    "description": "World wide Web Series Available in Hindi dubbing. Latest Movie here Hindi dubbed"
+  },
+  {
+   "name": "Jeremstyke",
+   "type": "channel",
+   "topics": [
+    "biz"
+   ],
+   "languages": [
+    "en"
+   ],
+   "subscribers": 6,
+   "votes": 0,
+   "telegram": "https://t.me/jeremstyke",
+   "page": "https://jeremstyke.github.io/grampedia/l/11/",
+   "description": "Discover the latest creations from an independent developer specializing in AI bots for Telegram. This channel is the first place to share new projects and innovations before their launch. Ideal for entrepreneurs and developers interested in automation and artificial intelligence. 🤖"
   },
   {
    "name": "Crypto INDIA News",
@@ -695,6 +695,19 @@
    "description": "All Crypto Related News and Latest Updates 📰💰\n\nDaily Crypto Rewards and Boxes 🎁\nFrequently Giveaways and Airdrop 💸"
   },
   {
+   "name": "Setor Gmail Palzx",
+   "type": "channel",
+   "topics": [
+    "earn"
+   ],
+   "languages": [],
+   "subscribers": 3,
+   "votes": 1,
+   "telegram": "https://t.me/palzx66",
+   "page": "https://jeremstyke.github.io/grampedia/l/91/",
+   "description": "I really need email for 0.2$ With password sgsg1122 and free name and maximum number The number is 3"
+  },
+  {
    "name": "Shopping Kart 🛒",
    "type": "channel",
    "topics": [
@@ -710,19 +723,6 @@
    "telegram": "https://t.me/Shopping_Kart247",
    "page": "https://jeremstyke.github.io/grampedia/l/59/",
    "description": "🛒 Shopping Kart | Flipkart Deals\n\n🔥 Best Finds • Hot Offers • Big Savings\n💸 Shop Smart. Save More.\n\n⚡ Grab the deals before they're gone! Fast Hurry up 💙"
-  },
-  {
-   "name": "Setor Gmail Palzx",
-   "type": "channel",
-   "topics": [
-    "earn"
-   ],
-   "languages": [],
-   "subscribers": 3,
-   "votes": 1,
-   "telegram": "https://t.me/palzx66",
-   "page": "https://jeremstyke.github.io/grampedia/l/91/",
-   "description": "I really need email for 0.2$ With password sgsg1122 and free name and maximum number The number is 3"
   },
   {
    "name": "Opportunity_X",
@@ -770,7 +770,7 @@
    "description": "The official channel of Meme Coin Tycoon, the memecoin game on Telegram 🚀 New coins launched by players, the biggest pumps of the day and the top tycoons. Free game with virtual coins, no real money."
   },
   {
-   "name": "Orange Dao Finance Official",
+   "name": "MRG Mining",
    "type": "bot",
    "topics": [
     "crypto"
@@ -778,41 +778,49 @@
    "languages": [],
    "subscribers": null,
    "votes": 0,
-   "telegram": "https://t.me/OrangeDaoofficialbot",
-   "page": "https://jeremstyke.github.io/grampedia/l/89/",
-   "description": "Want your crypto working for you every single day? 🍊 Orange Dao lets you invest and earn daily returns 📈 Start with a simple setup through the official bot 🔒 Join a growing community of active investors Start the bot and begin earning today: https://t.me/OrangeDaoofficialbot?start=GF7435105364"
+   "telegram": "https://t.me/mrgminerbot",
+   "page": "https://jeremstyke.github.io/grampedia/l/98/",
+   "description": "MRG Mining: a mining game in a Telegram mini app. Mine MRG tokens, upgrade your mining speed level after level and invite friends to mine together."
   },
   {
-   "name": "Crypto Mining",
-   "type": "bot",
-   "topics": [
-    "earn"
-   ],
-   "languages": [
-    "hi"
-   ],
-   "subscribers": null,
-   "votes": 0,
-   "telegram": "https://t.me/Crypto_mining1010_bot",
-   "page": "https://jeremstyke.github.io/grampedia/l/100/",
-   "description": "A bot designed to help you explore cryptocurrency mining opportunities and learn about different mining strategies. Whether you're a beginner curious about the basics or an experienced miner looking for optimization tips, this bot provides information and resources to guide your mining journey. Connect with others interested in crypto mining and stay updated on market trends and technical developm"
-  },
-  {
-   "name": "Money FEED",
+   "name": "Daily Score ⚽ Guess the Score",
    "type": "app",
    "topics": [
-    "earn"
+    "sport",
+    "games"
    ],
    "languages": [
     "en",
+    "fr",
+    "es",
+    "pt",
+    "de",
+    "it",
     "ar",
+    "tr",
     "ru"
    ],
    "subscribers": null,
+   "votes": 2,
+   "telegram": "https://t.me/DailyScorefootbot?start=src_gp",
+   "page": "https://jeremstyke.github.io/grampedia/l/17/",
+   "description": "One big football match every day: guess the final score and climb the daily, weekly, monthly and all-time rankings, worldwide and in your country. Create leagues with your friends, keep your streak alive and get a reminder before kick-off. Free to play, in 9 languages."
+  },
+  {
+   "name": "DIFFERENT ANGLE PHOTO",
+   "type": "bot",
+   "topics": [
+    "tech"
+   ],
+   "languages": [
+    "en",
+    "hi"
+   ],
+   "subscribers": null,
    "votes": 1,
-   "telegram": "https://t.me/Feedcoinbot/app",
-   "page": "https://jeremstyke.github.io/grampedia/l/12/",
-   "description": "Money FEED is a mini app where you can earn rewards by completing simple tasks and viewing content. It's designed for users who want to make extra income in their spare time across multiple languages. The app offers straightforward earning opportunities with regular payouts, making it accessible for anyone looking to monetize their free time. 💰"
+   "telegram": "https://t.me/Differentanglephoto_bot",
+   "page": "https://jeremstyke.github.io/grampedia/l/37/",
+   "description": "This bot helps you explore photography from fresh perspectives and creative angles. Whether you're a beginner learning composition basics or an experienced photographer seeking inspiration, you'll discover techniques to transform ordinary scenes into compelling images. Get tips on lighting, framing, and visual storytelling across different styles and subjects. Perfect for anyone looking to improve"
   },
   {
    "name": "Victor's Company",
@@ -875,44 +883,36 @@
    "description": "Earn passive income with Daily Earning USDT, a bot designed for cryptocurrency enthusiasts looking to grow their USDT holdings. Users can explore different earning strategies, track their daily returns, and manage their crypto portfolio efficiently. Perfect for crypto lovers seeking automated income generation and real-time financial insights. 💰"
   },
   {
-   "name": "DIFFERENT ANGLE PHOTO",
+   "name": "Earn by Jeremstyke",
    "type": "bot",
    "topics": [
-    "tech"
+    "earn",
+    "crypto"
    ],
    "languages": [
     "en",
+    "fr"
+   ],
+   "subscribers": null,
+   "votes": 0,
+   "telegram": "https://t.me/earnbyjeremstykebot",
+   "page": "https://jeremstyke.github.io/grampedia/l/101/",
+   "description": "Earn real TON on Telegram with simple affiliate programs, all in one mini app: $0.05 in TON for every friend who plays Meme Coin Tycoon or lists his project on GramPedia, and 10% for life with InsideAds. Your own links ready to share, your friends and balance in real time, paid to your TON wallet within 7 days."
+  },
+  {
+   "name": "Crypto Mining",
+   "type": "bot",
+   "topics": [
+    "earn"
+   ],
+   "languages": [
     "hi"
    ],
    "subscribers": null,
-   "votes": 1,
-   "telegram": "https://t.me/Differentanglephoto_bot",
-   "page": "https://jeremstyke.github.io/grampedia/l/37/",
-   "description": "This bot helps you explore photography from fresh perspectives and creative angles. Whether you're a beginner learning composition basics or an experienced photographer seeking inspiration, you'll discover techniques to transform ordinary scenes into compelling images. Get tips on lighting, framing, and visual storytelling across different styles and subjects. Perfect for anyone looking to improve"
-  },
-  {
-   "name": "Daily Score ⚽ Guess the Score",
-   "type": "app",
-   "topics": [
-    "sport",
-    "games"
-   ],
-   "languages": [
-    "en",
-    "fr",
-    "es",
-    "pt",
-    "de",
-    "it",
-    "ar",
-    "tr",
-    "ru"
-   ],
-   "subscribers": null,
-   "votes": 2,
-   "telegram": "https://t.me/DailyScorefootbot?start=src_gp",
-   "page": "https://jeremstyke.github.io/grampedia/l/17/",
-   "description": "One big football match every day: guess the final score and climb the daily, weekly, monthly and all-time rankings, worldwide and in your country. Create leagues with your friends, keep your streak alive and get a reminder before kick-off. Free to play, in 9 languages."
+   "votes": 0,
+   "telegram": "https://t.me/Crypto_mining1010_bot",
+   "page": "https://jeremstyke.github.io/grampedia/l/100/",
+   "description": "A bot designed to help you explore cryptocurrency mining opportunities and learn about different mining strategies. Whether you're a beginner curious about the basics or an experienced miner looking for optimization tips, this bot provides information and resources to guide your mining journey. Connect with others interested in crypto mining and stay updated on market trends and technical developm"
   },
   {
    "name": "Handi360",
@@ -946,7 +946,24 @@
    "description": "Create your own memecoin, pump it to the moon and trade the coins of other players 🚀 Every buy pushes the price up, every sell pushes it down: be early and climb the leaderboard. Start with $1,000 and get a free bonus every day. A free game with virtual coins, no real money."
   },
   {
-   "name": "MRG Mining",
+   "name": "Money FEED",
+   "type": "app",
+   "topics": [
+    "earn"
+   ],
+   "languages": [
+    "en",
+    "ar",
+    "ru"
+   ],
+   "subscribers": null,
+   "votes": 1,
+   "telegram": "https://t.me/Feedcoinbot/app",
+   "page": "https://jeremstyke.github.io/grampedia/l/12/",
+   "description": "Money FEED is a mini app where you can earn rewards by completing simple tasks and viewing content. It's designed for users who want to make extra income in their spare time across multiple languages. The app offers straightforward earning opportunities with regular payouts, making it accessible for anyone looking to monetize their free time. 💰"
+  },
+  {
+   "name": "Orange Dao Finance Official",
    "type": "bot",
    "topics": [
     "crypto"
@@ -954,9 +971,9 @@
    "languages": [],
    "subscribers": null,
    "votes": 0,
-   "telegram": "https://t.me/mrgminerbot",
-   "page": "https://jeremstyke.github.io/grampedia/l/98/",
-   "description": "MRG Mining: a mining game in a Telegram mini app. Mine MRG tokens, upgrade your mining speed level after level and invite friends to mine together."
+   "telegram": "https://t.me/OrangeDaoofficialbot",
+   "page": "https://jeremstyke.github.io/grampedia/l/89/",
+   "description": "Want your crypto working for you every single day? 🍊 Orange Dao lets you invest and earn daily returns 📈 Start with a simple setup through the official bot 🔒 Join a growing community of active investors Start the bot and begin earning today: https://t.me/OrangeDaoofficialbot?start=GF7435105364"
   },
   {
    "name": "CP Web Series [Hindi Dubbed]",
