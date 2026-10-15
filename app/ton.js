@@ -51,12 +51,12 @@
       + (ed ? `<div class="wal"><input id="gta" placeholder="${T.ph}" value="${esc(w || '')}" autocomplete="off" spellcheck="false"><button class="btn dark" id="gts">${T.save}</button></div>`
         : `<div class="addr"><span>${esc(w)}</span><button class="btn small" id="gtc">${T.chg}</button></div>`)
       + (Number(s.budget_left) < Number(s.usd) ? `<p class="hint">${T.off}</p>` : '')
-      + `<button class="btn full" id="gtearn" style="margin:12px 0 4px">💰 ${fr() ? 'Tous mes programmes et mes gains : Earn by Jeremstyke' : 'All my programs and earnings: Earn by Jeremstyke'}</button>` // 15 oct 2026: tracked link to Earn (source gp)
+      + `<div style="margin:12px 0 4px;padding:12px;border-radius:14px;border:1px solid rgba(255,200,60,.5);background:rgba(255,200,60,.1)"><b style="display:block;font-size:15px;margin-bottom:4px">🏆 ${fr() ? 'Concours de la semaine' : 'Weekly contest'}</b><span style="font-size:13px;line-height:1.4">${fr() ? 'Tes amis invités ici comptent pour le concours d\'Earn by Jeremstyke, l\'app où se trouvent ton solde et tes paiements. Chaque lundi, le top 3 gagne 1 $, 0,50 $ et 0,25 $ en TON, en plus de tes gains.' : 'The friends you invite here count in the Earn by Jeremstyke contest, the app where your balance and payouts are. Every Monday the top 3 win $1, $0.50 and $0.25 in TON, on top of your earnings.'}</span><button class="btn full" id="gtearn" style="margin:10px 0 0">🏆 ${fr() ? 'Voir le concours et mes gains' : 'See the contest and my earnings'}</button></div>` // 15 oct 2026: contest box, link to Earn (source gp)
       + `<h2>${T.how}</h2>` + T.st(f2(s.usd), f2(s.min), s.delay).map((x, i) => `<div class="step"><i>${i + 1}</i><span>${x}</span></div>`).join('')
       + `<p class="hint">${T.rule}</p></div>`;
     $('gtbk').onclick = () => { haptic(); back(); };
     $('gti').onclick = invite;
-    $('gtearn').onclick = () => { haptic(); openLink('https://t.me/earnbyjeremstykebot?startapp=gp'); };
+    $('gtearn').onclick = () => { haptic(); openLink('https://t.me/earnbyjeremstykebot?startapp=contest_gp'); };
     $('gtcp').onclick = async () => {
       haptic(); const v = (ME && ME.refLink) || BOTU(); let ok = false;
       try { await navigator.clipboard.writeText(v); ok = true; } catch (e) {}
