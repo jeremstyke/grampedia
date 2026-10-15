@@ -73,6 +73,31 @@ function outCopy(v, ok) {
   try { toast(ok); } catch (x) {}
 }
 function outWa(msg) { const u = 'https://wa.me/?text=' + encodeURIComponent(msg); try { (window.Telegram && Telegram.WebApp && Telegram.WebApp.initData ? Telegram.WebApp.openLink(u) : window.open(u, '_blank')); } catch (x) { window.open(u, '_blank'); } }
+  // 15 oct 2026 (v2): GramPedia shows only its own program: its earnings, its friends waiting, and the TON wallet, added right here
+  // (one wallet per person, shared by all the apps). The other referral programs are in Earn by Jeremstyke.
+  function gameDet(s, D) {
+    const a = s.all || {}, P = a.pending || {}, fl = (P.friends || []).filter((f) => f.app === 'gp'), pn = Number(s.pending || 0), M = m$;
+    const t = fr() ? { mine: 'Mes gains GramPedia', pend: 'En attente', need: (n) => n + (n > 1 ? ' amis doivent' : ' ami doit') + ' encore ajouter leur projet', paid: 'Déjà reçu', wait: 'En cours de paiement', pay: (m) => 'Payé chaque lundi sur ton portefeuille TON, dès ' + m + ' (avec tes autres gains TON)', ok: '✅ Portefeuille ajouté', chg: 'Changer', add: '👛 Ajouter mon portefeuille', ph: 'Colle ton adresse TON (UQ... ou EQ...)', h1: 'Pas d\'adresse TON ? C\'est gratuit et ça prend 1 minute :', h2: 'Ouvre <b>@wallet</b> dans Telegram', h3: 'Touche <b>Recevoir</b>, puis <b>TON</b>', h4: 'Copie l\'adresse et colle-la ici', ow: 'Ouvrir @wallet', sync: 'Un seul portefeuille pour toutes les apps (Meme Coin Tycoon, Daily Score, Earn…).' }
+      : { mine: 'My GramPedia earnings', pend: 'Pending', need: (n) => n + (n > 1 ? ' friends' : ' friend') + ' still to add their project', paid: 'Already received', wait: 'Being paid', pay: (m) => 'Paid every Monday to your TON wallet, from ' + m + ' (with your other TON earnings)', ok: '✅ Wallet added', chg: 'Change', add: '👛 Add my wallet', ph: 'Paste your TON address (UQ... or EQ...)', h1: 'No TON address? It\'s free and takes 1 minute:', h2: 'Open <b>@wallet</b> in Telegram', h3: 'Tap <b>Receive</b>, then <b>TON</b>', h4: 'Copy the address and paste it here', ow: 'Open @wallet', sync: 'One wallet for all the apps (Meme Coin Tycoon, Daily Score, Earn…).' };
+    let h = `<small style="display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;opacity:.7">${t.mine}</small><div style="font-size:34px;font-weight:900;line-height:1.15;margin:2px 0 6px">${M(s.balance)}</div>`;
+    h += tonPendHtml({ n: pn, usd: pn * Number(s.usd || 0), friends: fl }, t.pend, t.need, M);
+    if (Number(s.paid) || Number(s.waiting)) h += `<small style="display:block;margin-top:8px;opacity:.75">${Number(s.paid) ? '💸 ' + t.paid + ' ' + M(s.paid) : ''}${Number(s.paid) && Number(s.waiting) ? ' · ' : ''}${Number(s.waiting) ? '⏳ ' + t.wait + ' ' + M(s.waiting) : ''}</small>`;
+    h += `<small style="display:block;margin-top:8px;opacity:.75">${t.pay(M(a.min || s.min))}</small>`;
+    h += a.wallet ? `<div style="margin-top:8px;font-size:14px;font-weight:700">${t.ok} <a href="#" onclick="gpWalShow();return false" style="font-weight:400;opacity:.7;text-decoration:underline;color:inherit;margin-left:6px">${t.chg}</a></div>`
+      : `<button class="btn main full" onclick="gpWalShow()" style="margin-top:10px">${t.add}</button>`;
+    h += `<div id="gamewf" style="display:none;margin-top:10px"><div style="display:flex;gap:8px"><input id="gamewa" placeholder="${t.ph}" autocomplete="off" spellcheck="false" style="flex:1;min-width:0;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:inherit;font-size:14px"><button class="btn main" onclick="gpWalSave()" style="margin:0;padding:12px 16px">OK</button></div>`
+      + `<div style="margin-top:8px;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.06);font-size:13px;line-height:1.5"><b>${t.h1}</b><br>1. ${t.h2}<br>2. ${t.h3}<br>3. ${t.h4}<button class="btn full" onclick="gpOpenW()" style="margin-top:8px">👛 ${t.ow}</button></div><small style="display:block;margin-top:6px;opacity:.7">${t.sync}</small></div>`;
+    return h;
+  }
+  const gameWalOpen = () => { const f = document.getElementById('gamewf'); return !!(f && f.style.display !== 'none'); };
+  window.gpWalShow = () => { const f = document.getElementById('gamewf'); if (!f) return; f.style.display = ''; const i = document.getElementById('gamewa'); if (i) { i.scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(() => { try { i.focus(); } catch (e) {} }, 400); } };
+  window.gpOpenW = () => { haptic(); openLink('https://t.me/wallet'); };
+  window.gpWalSave = async () => {
+    const i = document.getElementById('gamewa'), v = ((i && i.value) || '').trim(); if (!v) return;
+    haptic(); let r; try { r = await call({ action: 'wallet', addr: v }); } catch (e) { r = null; }
+    if (!r || !r.ok) { toast(fr() ? 'Adresse TON invalide' : 'Invalid TON address'); return; }
+    toast(fr() ? 'Portefeuille enregistré ✅' : 'Wallet saved ✅'); page();
+  };
   let LIVE = null;
   async function page() {
     if (!INIT || !ME) return;
@@ -84,21 +109,21 @@ function outWa(msg) { const u = 'https://wa.me/?text=' + encodeURIComponent(msg)
     d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.6);display:flex;align-items:flex-end;justify-content:center';
     const link = (ME && ME.refLink) || BOTU();
     d.innerHTML = `<div style="width:100%;max-width:520px;max-height:88vh;overflow:auto;background:#151a23;color:#fff;border-radius:20px 20px 0 0;padding:18px 16px 24px;box-sizing:border-box"><b style="display:block;font-size:18px;margin-bottom:4px">${T.h}</b><p style="margin:0 0 12px;font-size:15px;font-weight:700">${T.s(f2(s.usd))}</p>`
-      + `<div id="gtdet" style="margin:0 0 12px;padding:14px;border-radius:16px;border:1px solid rgba(46,230,255,.45);background:rgba(46,230,255,.08)">${det(s.all, D)}</div>`
+      + `<div id="gtdet" style="margin:0 0 12px;padding:14px;border-radius:16px;border:1px solid rgba(46,230,255,.45);background:rgba(46,230,255,.08)">${gameDet(s, D)}</div>`
       + `<div id="gttl" style="display:flex;gap:6px;margin:0 0 14px">${tiles(s, T)}</div>`
       + '<details style="margin:0 0 10px"><summary style="cursor:pointer;font-size:14px;font-weight:700;margin-bottom:8px">' + T.how + ' ▾</summary>' + T.st(f2(s.usd), f2(s.min), s.delay).map((x, i) => `<div style="display:flex;gap:10px;align-items:flex-start;margin:0 0 8px"><span style="flex:none;width:24px;height:24px;border-radius:50%;background:#2ee6ff;color:#062a33;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:13px">${i + 1}</span><span style="font-size:14px">${x}</span></div>`).join('') + '</details>'
       + (Number(s.budget_left) < Number(s.usd) ? `<p style="font-size:13px;opacity:.75">${T.off}</p>` : '')
-      + `<div style="margin:6px 0 6px;font-size:13px;color:#ffd43b">${D.c}</div><div style="margin:0 0 12px;font-size:13px;opacity:.75">${D.n}</div>`
+
       + `<button class="btn main full" id="gti">${T.inv}</button>`
       + `<div style="display:flex;gap:8px;align-items:center;margin:10px 0 0;padding:8px 10px;border-radius:12px;background:rgba(255,255,255,.07)"><span style="flex:1;min-width:0;font-size:12px;word-break:break-all">${esc(link)}</span><button class="btn small" id="gtcp">${D.cp}</button></div>`
       + `<button class="btn full" id="gtwa" style="margin-top:8px">📲 WhatsApp</button>`
-      + `<button class="btn full" id="gtearn" style="margin-top:10px">${D.my}</button><div id="gtsc" style="cursor:pointer;text-decoration:underline;text-align:center;margin-top:12px;opacity:.75">${D.close}</div></div>`;
+      + `<button class="btn full" id="gtearn" style="margin-top:10px">🔗 ${fr() ? 'Autres programmes de parrainage (Earn)' : 'More referral programs (Earn)'}</button><div id="gtsc" style="cursor:pointer;text-decoration:underline;text-align:center;margin-top:12px;opacity:.75">${D.close}</div></div>`;
     document.body.appendChild(d);
     const close = () => { d.remove(); clearInterval(LIVE); };
     d.onclick = (e) => { if (e.target === d || e.target.id === 'gtsc') close(); };
     d.querySelector('#gti').onclick = () => { close(); invite(); };
     d.querySelector('#gtwa').onclick = () => { haptic(); outWa(T.share + ' 👉 ' + link + (fr() ? '\n\n(Pas encore Telegram ? Installe-le, puis reclique sur ce lien.)' : '\n\n(No Telegram yet? Install it, then tap this link again.)')); };
-    d.querySelector('#gtearn').onclick = () => { haptic(); openLink('https://t.me/earnbyjeremstykebot?startapp=gp'); };
+    d.querySelector('#gtearn').onclick = () => { haptic(); openLink('https://t.me/earnbyjeremstykebot?startapp=progs_gp'); };
     d.querySelector('#gtcp').onclick = async () => {
       haptic(); let ok = false;
       try { await navigator.clipboard.writeText(link); ok = true; } catch (e) {}
@@ -112,7 +137,7 @@ function outWa(msg) { const u = 'https://wa.me/?text=' + encodeURIComponent(msg)
       let x; try { x = await call({}); } catch (e) { return; }
       if (!x || !x.ok) return;
       const a = document.getElementById('gtdet'), t = document.getElementById('gttl');
-      if (a) a.innerHTML = det(x.all, D); if (t) t.innerHTML = tiles(x, T);
+      if (gameWalOpen()) return; if (a) a.innerHTML = gameDet(x, D); if (t) t.innerHTML = tiles(x, T);
     }, 20000);
   }
   window.gpTonPage = page;
