@@ -3,8 +3,8 @@
 (() => {
   const F = 'https://txvrlvcxfnylnrpdrxtt.supabase.co/functions/v1/mct-ton';
   const TX = {
-    en: { h: '💎 Earn real TON', s: (u) => '$' + u + ' in TON for every friend who adds his channel, group or bot to GramPedia', v: 'Valid friends', p: 'Pending', r: 'Received', b: 'Balance', mn: (m) => 'paid from $' + m, togo: (x) => '$' + x + ' to go before your payment', ready: 'Ready: paid within 7 days 🎉', wait: 'being paid', w: 'Your TON wallet', ph: 'Paste your TON address (UQ... or EQ...)', save: 'Save', ok: 'Wallet saved ✅', bad: 'Invalid TON address', chg: 'Change', nowal: 'Add your wallet to get paid 👇', inv: '👥 Invite my friends', how: 'How it works', st: (u, m, d) => ['👥 Invite your friends with your link', '📚 They add their channel, group, bot or mini app to GramPedia, and it gets approved', '💎 You earn $' + u + ' in real TON per friend', '👛 Paid to your TON wallet from $' + m + ', within ' + d + ' days'], rule: 'Fake accounts and listings that are not theirs are never paid.', off: 'Budget of the month reached: TON rewards are back next month.', back: '← Back', bh: '💎 Earn real TON with your friends', bs: '$0.05 in TON per friend who lists his project · tap here', share: '📚 GramPedia: the directory of Telegram channels, groups, bots and mini apps. Add yours for free!' },
-    fr: { h: '💎 Gagne de vrais TON', s: (u) => u + ' $ en TON par ami qui ajoute sa chaîne, son groupe ou son bot sur GramPedia', v: 'Amis validés', p: 'En attente', r: 'Reçu', b: 'Solde', mn: (m) => 'paiement dès ' + m + ' $', togo: (x) => 'Encore ' + x + ' $ avant ton paiement', ready: 'Prêt : paiement sous 7 jours 🎉', wait: 'en cours de paiement', w: 'Ton portefeuille TON', ph: 'Colle ton adresse TON (UQ... ou EQ...)', save: 'OK', ok: 'Portefeuille enregistré ✅', bad: 'Adresse TON invalide', chg: 'Changer', nowal: 'Ajoute ton portefeuille pour être payé 👇', inv: '👥 Inviter mes amis', how: 'Comment ça marche', st: (u, m, d) => ['👥 Invite tes amis avec ton lien', '📚 Ils ajoutent leur chaîne, groupe, bot ou mini app sur GramPedia, et elle est approuvée', '💎 Tu gagnes ' + u + ' $ en vrais TON par ami', '👛 Paiement sur ton portefeuille TON dès ' + m + ' $, sous ' + d + ' jours'], rule: 'Les faux comptes et les fiches qui ne sont pas les leurs ne sont jamais payés.', off: 'Budget du mois atteint : les gains en TON reprennent le mois prochain.', back: '← Retour', bh: '💎 Gagne de vrais TON avec tes amis', bs: '0,05 $ en TON par ami qui ajoute son projet · appuie ici', share: '📚 GramPedia : l\'annuaire des chaînes, groupes, bots et mini apps Telegram. Ajoute le tien gratuitement !' },
+    en: { h: '💎 Earn real TON', s: (u) => '$' + u + ' in TON per listing added and approved: invite your friends to add their channel, group or bot to GramPedia', v: 'Approved listings', p: 'Pending', r: 'Received', b: 'Balance', mn: (m) => 'paid from $' + m, togo: (x) => '$' + x + ' to go before your payment', ready: 'Ready: paid within 7 days 🎉', wait: 'being paid', w: 'Your TON wallet', ph: 'Paste your TON address (UQ... or EQ...)', save: 'Save', ok: 'Wallet saved ✅', bad: 'Invalid TON address', chg: 'Change', nowal: 'Add your wallet to get paid 👇', inv: '👥 Invite my friends', how: 'How it works', st: (u, m, d) => ['👥 Invite your friends with your link', '📚 They add their channel, group, bot or mini app to GramPedia, and it gets approved', '💎 You earn $' + u + ' in real TON per friend', '👛 Paid to your TON wallet from $' + m + ', within ' + d + ' days'], rule: 'Fake accounts and listings that are not theirs are never paid.', off: 'Budget of the month reached: TON rewards are back next month.', back: '← Back', bh: '💎 Earn real TON with your friends', bs: '$0.05 in TON per listing added and approved · tap here', share: '📚 GramPedia: the directory of Telegram channels, groups, bots and mini apps. Add yours for free!' },
+    fr: { h: '💎 Gagne de vrais TON', s: (u) => u + ' $ en TON par fiche ajoutée et validée : invite tes amis à ajouter leur chaîne, leur groupe ou leur bot sur GramPedia', v: 'Fiches validées', p: 'En attente', r: 'Reçu', b: 'Solde', mn: (m) => 'paiement dès ' + m + ' $', togo: (x) => 'Encore ' + x + ' $ avant ton paiement', ready: 'Prêt : paiement sous 7 jours 🎉', wait: 'en cours de paiement', w: 'Ton portefeuille TON', ph: 'Colle ton adresse TON (UQ... ou EQ...)', save: 'OK', ok: 'Portefeuille enregistré ✅', bad: 'Adresse TON invalide', chg: 'Changer', nowal: 'Ajoute ton portefeuille pour être payé 👇', inv: '👥 Inviter mes amis', how: 'Comment ça marche', st: (u, m, d) => ['👥 Invite tes amis avec ton lien', '📚 Ils ajoutent leur chaîne, groupe, bot ou mini app sur GramPedia, et elle est approuvée', '💎 Tu gagnes ' + u + ' $ en vrais TON par ami', '👛 Paiement sur ton portefeuille TON dès ' + m + ' $, sous ' + d + ' jours'], rule: 'Les faux comptes et les fiches qui ne sont pas les leurs ne sont jamais payés.', off: 'Budget du mois atteint : les gains en TON reprennent le mois prochain.', back: '← Retour', bh: '💎 Gagne de vrais TON avec tes amis', bs: '0,05 $ en TON par fiche ajoutée et validée · appuie ici', share: '📚 GramPedia : l\'annuaire des chaînes, groupes, bots et mini apps Telegram. Ajoute le tien gratuitement !' },
   };
   const css = document.createElement('style');
   css.textContent = '.gtonb{display:flex;gap:12px;align-items:center;width:100%;text-align:left;margin:4px 0 12px;padding:12px 14px;border:2px solid #2ec4e6;border-radius:16px;background:linear-gradient(135deg,#e9fbff,#f3f0ff);cursor:pointer;color:var(--ink)}'
@@ -62,7 +62,7 @@ function tonPendIn(h, x) { const i = h.indexOf('</div>') + 6; return i > 5 ? h.s
   const det0 = det;
   det = (a, D) => tonPendIn(det0(a, D), a ? tonPendHtml(a.pending, fr() ? 'En attente' : 'Pending', (n) => fr() ? n + (n > 1 ? ' amis doivent' : ' ami doit') + ' encore jouer' : n + (n > 1 ? ' friends' : ' friend') + ' still to play', m$) : '');
   const tiles = (s, T) => {
-    const tile = (b, l) => `<div style="flex:1;min-width:0;padding:8px 4px;border-radius:12px;background:rgba(255,255,255,.07);text-align:center"><b style="display:block;font-size:17px">${b}</b><small style="display:block;font-size:11px;opacity:.7">${l}</small></div>`;
+    const tile = (b, l) => `<div><b>${b}</b><small>${l}</small></div>`;
     return tile('✅ ' + Number(s.valid || 0), T.v) + tile('⏳ ' + Number(s.pending || 0), T.p);
   };
 // 15 oct 2026: share outside Telegram (WhatsApp, Messenger, SMS...): the friend still opens the game in Telegram
@@ -99,6 +99,29 @@ function outWa(msg) { const u = 'https://wa.me/?text=' + encodeURIComponent(msg)
     toast(fr() ? 'Portefeuille enregistré ✅' : 'Wallet saved ✅'); page();
   };
   let LIVE = null;
+  // 15 oct 2026: the look of the TON sheet (same as Meme Coin Tycoon)
+  const tsx = document.createElement('style');
+  tsx.textContent = '.tsx{width:100%;max-width:520px;max-height:90vh;overflow:auto;background:linear-gradient(180deg,#1d2142 0%,#121522 40%);color:#fff;border-radius:24px 24px 0 0;padding:10px 16px 26px;box-sizing:border-box;box-shadow:0 -10px 40px rgba(0,0,0,.5);animation:tsxUp .25s ease-out;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}'
+    + '@keyframes tsxUp{from{transform:translateY(40px);opacity:.4}to{transform:none;opacity:1}}'
+    + '.tsx .grab{width:42px;height:5px;border-radius:9px;background:rgba(255,255,255,.25);margin:0 auto 14px}'
+    + '.tsx .hero{display:flex;gap:12px;align-items:center;margin:0 0 10px}'
+    + '.tsx .hero .ic{flex:none;width:54px;height:54px;border-radius:18px;display:grid;place-items:center;font-size:30px;background:radial-gradient(circle at 30% 25%,#bff6ff,#2ee6ff 55%,#0b6c80);box-shadow:0 6px 22px rgba(46,230,255,.4)}'
+    + '.tsx .hero b{display:block;font-size:21px;font-weight:900;letter-spacing:-.01em}'
+    + '.tsx .hero span{display:inline-block;margin-top:4px;font-size:12px;font-weight:800;color:#062a33;background:linear-gradient(90deg,#2ee6ff,#4ff0b7);padding:3px 10px;border-radius:999px}'
+    + '.tsx .sub{font-size:13px;opacity:.75;margin:0 0 14px;line-height:1.45}'
+    + '.tsx .earn{margin:0 0 14px;padding:16px;border-radius:20px;background:linear-gradient(145deg,rgba(46,230,255,.16),rgba(124,92,255,.14));border:1px solid rgba(46,230,255,.35);box-shadow:0 10px 30px rgba(46,230,255,.12)}'
+    + '.tsx .cta{display:block;width:100%;border:0;border-radius:16px;padding:15px;font-weight:900;font-size:16px;color:#062a33;background:linear-gradient(90deg,#2ee6ff,#4ff0b7);box-shadow:0 6px 0 #0b8f86;cursor:pointer}'
+    + '.tsx .cta:active{transform:translateY(3px);box-shadow:0 3px 0 #0b8f86}'
+    + '.tsx .row{display:flex;gap:8px;margin:12px 0 16px}'
+    + '.tsx .sec{flex:1;border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:11px 6px;font-weight:700;font-size:14px;color:#fff;background:rgba(255,255,255,.06);cursor:pointer}'
+    + '.tsx .tiles{display:flex;gap:8px;margin:0 0 14px}'
+    + '.tsx .tiles>div{flex:1;padding:12px 6px;border-radius:16px;background:rgba(255,255,255,.06);text-align:center}'
+    + '.tsx .tiles b{display:block;font-size:22px;font-weight:900}.tsx .tiles small{font-size:11px;opacity:.7}'
+    + '.tsx details.how{margin:0 0 10px;padding:12px 14px;border-radius:16px;background:rgba(255,255,255,.04)}'
+    + '.tsx details.how summary{cursor:pointer;font-weight:800;font-size:14px;list-style:none}.tsx details.how summary::-webkit-details-marker{display:none}'
+    + '.tsx .more{display:block;width:100%;border:0;background:none;color:#9fe9ff;font-weight:700;font-size:14px;padding:12px;cursor:pointer}'
+    + '.tsx .close{text-align:center;opacity:.6;font-size:13px;cursor:pointer;padding:4px}';
+  document.head.appendChild(tsx);
   async function page() {
     if (!INIT || !ME) return;
     const T = L(), D = TOND[fr() ? 'fr' : 'en'];
@@ -108,16 +131,15 @@ function outWa(msg) { const u = 'https://wa.me/?text=' + encodeURIComponent(msg)
     const d = document.createElement('div'); d.id = 'gtsheet';
     d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.6);display:flex;align-items:flex-end;justify-content:center';
     const link = (ME && ME.refLink) || BOTU();
-    d.innerHTML = `<div style="width:100%;max-width:520px;max-height:88vh;overflow:auto;background:#151a23;color:#fff;border-radius:20px 20px 0 0;padding:18px 16px 24px;box-sizing:border-box"><b style="display:block;font-size:18px;margin-bottom:4px">${T.h}</b><p style="margin:0 0 12px;font-size:15px;font-weight:700">${T.s(f2(s.usd))}</p>`
-      + `<div id="gtdet" style="margin:0 0 12px;padding:14px;border-radius:16px;border:1px solid rgba(46,230,255,.45);background:rgba(46,230,255,.08)">${gameDet(s, D)}</div>`
-      + `<div id="gttl" style="display:flex;gap:6px;margin:0 0 14px">${tiles(s, T)}</div>`
-      + '<details style="margin:0 0 10px"><summary style="cursor:pointer;font-size:14px;font-weight:700;margin-bottom:8px">' + T.how + ' ▾</summary>' + T.st(f2(s.usd), f2(s.min), s.delay).map((x, i) => `<div style="display:flex;gap:10px;align-items:flex-start;margin:0 0 8px"><span style="flex:none;width:24px;height:24px;border-radius:50%;background:#2ee6ff;color:#062a33;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:13px">${i + 1}</span><span style="font-size:14px">${x}</span></div>`).join('') + '</details>'
+    d.innerHTML = `<div class="tsx"><div class="grab"></div>`
+      + `<div class="hero"><div class="ic">📚</div><div><b>${T.h.replace(/^💎 /, '')}</b><span>${fr() ? f2(s.usd) + ' $ / fiche validée' : '$' + f2(s.usd) + ' / approved listing'}</span></div></div>`
+      + `<p class="sub">${T.s(f2(s.usd))}</p>`
+      + `<div class="earn" id="gtdet">${gameDet(s, D)}</div>`
+      + `<button class="cta" id="gti">${T.inv}</button><div class="row"><button class="sec" id="gtwa">📲 WhatsApp</button><button class="sec" id="gtcp">📋 ${fr() ? 'Copier mon lien' : 'Copy my link'}</button></div>`
+      + `<div class="tiles" id="gttl">${tiles(s, T)}</div>`
       + (Number(s.budget_left) < Number(s.usd) ? `<p style="font-size:13px;opacity:.75">${T.off}</p>` : '')
-
-      + `<button class="btn main full" id="gti">${T.inv}</button>`
-      + `<div style="display:flex;gap:8px;align-items:center;margin:10px 0 0;padding:8px 10px;border-radius:12px;background:rgba(255,255,255,.07)"><span style="flex:1;min-width:0;font-size:12px;word-break:break-all">${esc(link)}</span><button class="btn small" id="gtcp">${D.cp}</button></div>`
-      + `<button class="btn full" id="gtwa" style="margin-top:8px">📲 WhatsApp</button>`
-      + `<button class="btn full" id="gtearn" style="margin-top:10px">🔗 ${fr() ? 'Autres programmes de parrainage (Earn)' : 'More referral programs (Earn)'}</button><div id="gtsc" style="cursor:pointer;text-decoration:underline;text-align:center;margin-top:12px;opacity:.75">${D.close}</div></div>`;
+      + `<details class="how"><summary>📖 ${T.how} ▾</summary><div style="margin-top:10px">` + T.st(f2(s.usd), f2(s.min), s.delay).map((x, i) => `<div style="display:flex;gap:10px;align-items:flex-start;margin:0 0 8px"><span style="flex:none;width:24px;height:24px;border-radius:50%;background:#2ee6ff;color:#062a33;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:13px">${i + 1}</span><span style="font-size:14px">${x}</span></div>`).join('') + `</div></details>`
+      + `<button class="more" id="gtearn">🔗 ${fr() ? 'Autres programmes de parrainage (Earn)' : 'More referral programs (Earn)'}</button><div class="close" id="gtsc">${D.close}</div></div>`;
     document.body.appendChild(d);
     const close = () => { d.remove(); clearInterval(LIVE); };
     d.onclick = (e) => { if (e.target === d || e.target.id === 'gtsc') close(); };
