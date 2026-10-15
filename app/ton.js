@@ -60,7 +60,7 @@ function tonPendHtml(p, pend, need, M) {
 // puts the waiting block right after the total (the first closing div of the balance card)
 function tonPendIn(h, x) { const i = h.indexOf('</div>') + 6; return i > 5 ? h.slice(0, i) + x + h.slice(i) : h + x; }
   const det0 = det;
-  det = (a, D) => tonPendIn(det0(a, D), a ? tonPendHtml(a.pending, fr() ? 'En attente' : 'Pending', (n) => fr() ? n + (n > 1 ? ' amis doivent' : ' ami doit') + ' encore jouer' : n + (n > 1 ? ' friends' : ' friend') + ' still to play', m$) : ''));
+  det = (a, D) => tonPendIn(det0(a, D), a ? tonPendHtml(a.pending, fr() ? 'En attente' : 'Pending', (n) => fr() ? n + (n > 1 ? ' amis doivent' : ' ami doit') + ' encore jouer' : n + (n > 1 ? ' friends' : ' friend') + ' still to play', m$) : '');
   const tiles = (s, T) => {
     const tile = (b, l) => `<div style="flex:1;min-width:0;padding:8px 4px;border-radius:12px;background:rgba(255,255,255,.07);text-align:center"><b style="display:block;font-size:17px">${b}</b><small style="display:block;font-size:11px;opacity:.7">${l}</small></div>`;
     return tile('✅ ' + Number(s.valid || 0), T.v) + tile('⏳ ' + Number(s.pending || 0), T.p);
