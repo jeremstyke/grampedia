@@ -65,6 +65,14 @@ function tonPendIn(h, x) { const i = h.indexOf('</div>') + 6; return i > 5 ? h.s
     const tile = (b, l) => `<div style="flex:1;min-width:0;padding:8px 4px;border-radius:12px;background:rgba(255,255,255,.07);text-align:center"><b style="display:block;font-size:17px">${b}</b><small style="display:block;font-size:11px;opacity:.7">${l}</small></div>`;
     return tile('✅ ' + Number(s.valid || 0), T.v) + tile('⏳ ' + Number(s.pending || 0), T.p);
   };
+// 15 oct 2026: share outside Telegram (WhatsApp, Messenger, SMS...): the friend still opens the game in Telegram
+function outCopy(v, ok) {
+  let done = false;
+  try { navigator.clipboard.writeText(v); done = true; } catch (x) {}
+  if (!done) { try { const t = document.createElement('textarea'); t.value = v; document.body.appendChild(t); t.select(); document.execCommand('copy'); t.remove(); } catch (x) {} }
+  try { toast(ok); } catch (x) {}
+}
+function outWa(msg) { const u = 'https://wa.me/?text=' + encodeURIComponent(msg); try { (window.Telegram && Telegram.WebApp && Telegram.WebApp.initData ? Telegram.WebApp.openLink(u) : window.open(u, '_blank')); } catch (x) { window.open(u, '_blank'); } }
   let LIVE = null;
   async function page() {
     if (!INIT || !ME) return;
@@ -83,11 +91,13 @@ function tonPendIn(h, x) { const i = h.indexOf('</div>') + 6; return i > 5 ? h.s
       + `<div style="margin:6px 0 6px;font-size:13px;color:#ffd43b">${D.c}</div><div style="margin:0 0 12px;font-size:13px;opacity:.75">${D.n}</div>`
       + `<button class="btn main full" id="gti">${T.inv}</button>`
       + `<div style="display:flex;gap:8px;align-items:center;margin:10px 0 0;padding:8px 10px;border-radius:12px;background:rgba(255,255,255,.07)"><span style="flex:1;min-width:0;font-size:12px;word-break:break-all">${esc(link)}</span><button class="btn small" id="gtcp">${D.cp}</button></div>`
+      + `<button class="btn full" id="gtwa" style="margin-top:8px">📲 WhatsApp</button>`
       + `<button class="btn full" id="gtearn" style="margin-top:10px">${D.my}</button><div id="gtsc" style="cursor:pointer;text-decoration:underline;text-align:center;margin-top:12px;opacity:.75">${D.close}</div></div>`;
     document.body.appendChild(d);
     const close = () => { d.remove(); clearInterval(LIVE); };
     d.onclick = (e) => { if (e.target === d || e.target.id === 'gtsc') close(); };
     d.querySelector('#gti').onclick = () => { close(); invite(); };
+    d.querySelector('#gtwa').onclick = () => { haptic(); outWa(T.share + ' 👉 ' + link + (fr() ? '\n\n(Pas encore Telegram ? Installe-le, puis reclique sur ce lien.)' : '\n\n(No Telegram yet? Install it, then tap this link again.)')); };
     d.querySelector('#gtearn').onclick = () => { haptic(); openLink('https://t.me/earnbyjeremstykebot?startapp=gp'); };
     d.querySelector('#gtcp').onclick = async () => {
       haptic(); let ok = false;
