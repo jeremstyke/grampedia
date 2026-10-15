@@ -36,7 +36,7 @@
   };
   function det(a, D) {
     if (!a) return '';
-    const dd = a.detail || {}, keys = ['mct', 'gp', 'ds', 'earn', 'tap'].concat(['other'].filter((k) => Number(dd[k]) > 0));
+    const dd = a.detail || {}, keys = ['mct', 'gp', 'ds', 'earn', 'tap'].concat(['other'].filter((k) => Number(dd[k]) > 0)).sort((x, y) => Number(dd[y] || 0) - Number(dd[x] || 0)); // 15 oct 2026: biggest first
     const row = (k) => `<div style="display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-top:1px solid rgba(255,255,255,.08);font-size:14px${k === 'gp' ? ';font-weight:700' : ''}"><span>${D[k]}${k === 'gp' ? ' <small style="opacity:.6">(' + D.here + ')</small>' : ''}</span><b>${k === 'tap' && Number(dd[k]) > 0 && Number(dd[k]) < 0.01 ? (fr() ? Number(dd[k]).toFixed(4).replace('.', ',') + ' $' : '$' + Number(dd[k]).toFixed(4)) : m$(dd[k] || 0)}</b></div>`;
     return `<small style="display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;opacity:.7">${D.tot}</small><div style="font-size:34px;font-weight:900;line-height:1.15;margin:2px 0 8px">${m$(a.total)}</div>`
       + keys.map(row).join('')
