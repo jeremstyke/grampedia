@@ -668,11 +668,7 @@ let PRE = null; // the first list, loaded at the same time as the profile
 (async () => {
   if (tgw) { try { tgw.ready(); tgw.expand(); tgw.disableVerticalSwipes && tgw.disableVerticalSwipes(); tgw.setHeaderColor && tgw.setHeaderColor('#13213a'); tgw.setBackgroundColor && tgw.setBackgroundColor('#f3f5f9'); } catch (e) {} }
   if (!INIT) { $('sbox').style.display = 'none'; $('app').innerHTML = `<div class="center"><div class="big">📚</div><h1>GramPedia</h1><p class="sub">${esc(t('open_tg'))}</p><a class="btn main" href="https://t.me/Grampedia_bot">Telegram</a></div>`; return; }
-  // 15 oct 2026: an Ads Galaxy video at every opening, after the app has loaded, except on the player's very first visit
-  // (a player who opened the app before this change, gp_open_ad3 set, is not a first visit)
-  setTimeout(async () => { try { let first = false; try { first = !localStorage.getItem('gp_seen') && !localStorage.getItem('gp_open_ad3'); localStorage.setItem('gp_seen', '1'); } catch (e) { return; } if (first) return;
-    // 15 oct 2026: at most one opening video every 30 minutes
-    try { const last = Number(localStorage.getItem('gp_open_at') || 0); if (Date.now() - last < 30 * 60000) return; localStorage.setItem('gp_open_at', String(Date.now())); } catch (e) { return; } if (document.querySelector('.sheet-bg')) return; await agxSdk(); await window.showAdsGalaxy({ miniappId: AGX_ID }); } catch (e) {} }, 1500);
+  // 15 oct 2026 (16:30): no video at opening any more (it got in the way of people who come to search or add a listing); videos only for boosts
   try {
     const src = (tgw.initDataUnsafe && tgw.initDataUnsafe.start_param) || '';
     PRE = api('list', { lang: S.lang, type: S.type, topic: S.topic, sort: S.sort, q: S.q, offset: 0 }).catch(() => null);
