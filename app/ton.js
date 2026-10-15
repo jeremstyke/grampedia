@@ -51,10 +51,12 @@
       + (ed ? `<div class="wal"><input id="gta" placeholder="${T.ph}" value="${esc(w || '')}" autocomplete="off" spellcheck="false"><button class="btn dark" id="gts">${T.save}</button></div>`
         : `<div class="addr"><span>${esc(w)}</span><button class="btn small" id="gtc">${T.chg}</button></div>`)
       + (Number(s.budget_left) < Number(s.usd) ? `<p class="hint">${T.off}</p>` : '')
+      + `<button class="btn full" id="gtearn" style="margin:12px 0 4px">💰 ${fr() ? 'Tous mes programmes et mes gains : Earn by Jeremstyke' : 'All my programs and earnings: Earn by Jeremstyke'}</button>` // 15 oct 2026: tracked link to Earn (source gp)
       + `<h2>${T.how}</h2>` + T.st(f2(s.usd), f2(s.min), s.delay).map((x, i) => `<div class="step"><i>${i + 1}</i><span>${x}</span></div>`).join('')
       + `<p class="hint">${T.rule}</p></div>`;
     $('gtbk').onclick = () => { haptic(); back(); };
     $('gti').onclick = invite;
+    $('gtearn').onclick = () => { haptic(); openLink('https://t.me/earnbyjeremstykebot?startapp=gp'); };
     $('gtcp').onclick = async () => {
       haptic(); const v = (ME && ME.refLink) || BOTU(); let ok = false;
       try { await navigator.clipboard.writeText(v); ok = true; } catch (e) {}
