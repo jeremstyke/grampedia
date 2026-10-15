@@ -365,6 +365,8 @@ async function feature(x) {
 const BOTU = () => 'https://t.me/' + ((ME && ME.bot) || 'Grampedia_bot');
 // 15 oct 2026: every shared link carries the sharer's id (_r_<id>): a friend who joins through it counts as his invite (TON commission)
 const RSUF = () => { try { const i = tgw.initDataUnsafe.user.id; return i ? '_r_' + i : ''; } catch (e) { return ''; } };
+// 15 oct 2026: after any share, the player is told what it earns him
+openLink = ((orig) => function (u) { const r = orig.apply(this, arguments); if (/t\.me\/share\/url/.test(String(u || ''))) setTimeout(() => { try { toast(ME && ME.lang === 'fr' ? '💎 Chaque ami qui rejoint avec ton lien et ajoute son projet te rapporte 0,05 $ en TON' : '💎 Every friend who joins through your link and lists his project earns you $0.05 in TON'); } catch (e) {} }, 1200); return r; })(openLink);
 function shareListing(x) { if (!x) return; haptic(); openLink('https://t.me/share/url?url=' + encodeURIComponent(BOTU() + '?startapp=l_' + x.id + RSUF()) + '&text=' + encodeURIComponent('📚 ' + x.name + (x.descr ? '\n' + String(x.descr).slice(0, 140) : ''))); }
 function shareApp() { haptic(); openLink('https://t.me/share/url?url=' + encodeURIComponent(BOTU() + '?startapp=src_share') + '&text=' + encodeURIComponent(t('inv_share'))); }
 async function notifs() {
