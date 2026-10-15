@@ -151,7 +151,7 @@ const lgName = (k) => { const v = t('lg_' + k); if (v !== 'lg_' + k) return v; t
 const t = (k, v) => { let s = T[k] || EN[k] || k; if (v) for (const [a, b] of Object.entries(v)) s = s.split('{' + a + '}').join(b); return s; };
 const nf = (n) => Number(n || 0).toLocaleString(ME && ME.lang ? ME.lang : 'en');
 const haptic = (k) => { try { tgw.HapticFeedback.impactOccurred(k || 'light'); } catch (e) {} };
-const openLink = (u) => { if (!u) return; if (tgw && /^https:\/\/t\.me\//.test(u)) tgw.openTelegramLink(u); else if (tgw) tgw.openLink(u); else window.open(u, '_blank'); };
+let openLink = (u) => { if (!u) return; if (tgw && /^https:\/\/t\.me\//.test(u)) tgw.openTelegramLink(u); else if (tgw) tgw.openLink(u); else window.open(u, '_blank'); };
 const toast = (m) => { const d = document.createElement('div'); d.className = 'toast'; d.textContent = m; document.body.appendChild(d); setTimeout(() => d.remove(), 2600); };
 async function api(action, data) {
   const r = await fetch(API + '/gp/api', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ initData: INIT, action, ...(data || {}) }) });
