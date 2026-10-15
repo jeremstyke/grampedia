@@ -28,44 +28,64 @@
   const on = () => { if (!ON) ON = call({}).then((s) => !!(s && s.ok && s.on)).catch(() => { ON = null; return false; }); return ON; };
   function back() { try { tgw.BackButton.hide(); tgw.BackButton.offClick(back); } catch (e) {} if (TAB === 'ton') go('explore'); }
   function invite() { haptic(); openLink('https://t.me/share/url?url=' + encodeURIComponent((ME && ME.refLink) || BOTU()) + '&text=' + encodeURIComponent(L().share)); }
-  async function page(edit) {
+  // 15 oct 2026: like Daily Score, a sheet instead of a separate page, with the same live total balance in every app (Meme Coin Tycoon,
+  // GramPedia, Daily Score) and its detail per program. The wallet and the payouts are in Earn by Jeremstyke.
+  const TOND = {
+    fr: { tot: 'Mon solde total', mct: '🪙 Meme Coin Tycoon', gp: '📚 GramPedia', ds: '⚽ Daily Score', earn: '💰 Bonus Earn', tap: '💎 Diamant', other: '🏆 Concours et bonus', here: 'ici', paid: 'Déjà reçu', wait: 'En cours de paiement', pay: (m) => 'Payé chaque lundi dès ' + m + ' sur ton portefeuille TON', nowal: '👛 Ajoute ton portefeuille dans Earn pour être payé', wal: '✅ Portefeuille ajouté', c: '🏆 Tes amis comptent aussi pour le concours de la semaine sur Earn by Jeremstyke : 1 $, 0,50 $ et 0,25 $ en TON pour le top 3 chaque lundi, en plus de tes gains.', n: 'Ton portefeuille et tes paiements sont dans Earn by Jeremstyke.', my: '💰 Mes gains TON', close: 'Plus tard', lk: '🔗 Ton lien à partager', cp: 'Copier', cpd: 'Lien copié ✅' },
+    en: { tot: 'My total balance', mct: '🪙 Meme Coin Tycoon', gp: '📚 GramPedia', ds: '⚽ Daily Score', earn: '💰 Earn bonus', tap: '💎 Diamond', other: '🏆 Contest and bonuses', here: 'here', paid: 'Already received', wait: 'Being paid', pay: (m) => 'Paid every Monday from ' + m + ' to your TON wallet', nowal: '👛 Add your wallet in Earn to get paid', wal: '✅ Wallet added', c: '🏆 Your friends also count in the weekly contest on Earn by Jeremstyke: $1, $0.50 and $0.25 in TON for the top 3 every Monday, on top of your earnings.', n: 'Your wallet and your payouts are in Earn by Jeremstyke.', my: '💰 My TON earnings', close: 'Later', lk: '🔗 Your link to share', cp: 'Copy', cpd: 'Link copied ✅' }
+  };
+  function det(a, D) {
+    if (!a) return '';
+    const dd = a.detail || {}, keys = ['mct', 'gp', 'ds'].concat(['earn', 'tap', 'other'].filter((k) => Number(dd[k]) > 0));
+    const row = (k) => `<div style="display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-top:1px solid rgba(255,255,255,.08);font-size:14px${k === 'gp' ? ';font-weight:700' : ''}"><span>${D[k]}${k === 'gp' ? ' <small style="opacity:.6">(' + D.here + ')</small>' : ''}</span><b>${m$(dd[k] || 0)}</b></div>`;
+    return `<small style="display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;opacity:.7">${D.tot}</small><div style="font-size:34px;font-weight:900;line-height:1.15;margin:2px 0 8px">${m$(a.total)}</div>`
+      + keys.map(row).join('')
+      + (Number(a.paid) || Number(a.waiting) ? `<small style="display:block;margin-top:8px;opacity:.75">${Number(a.paid) ? '💸 ' + D.paid + ' ' + m$(a.paid) : ''}${Number(a.paid) && Number(a.waiting) ? ' · ' : ''}${Number(a.waiting) ? '⏳ ' + D.wait + ' ' + m$(a.waiting) : ''}</small>` : '')
+      + `<small style="display:block;margin-top:8px;opacity:.75">${D.pay(m$(a.min))}</small><small style="display:block;margin-top:4px;font-weight:600">${a.wallet ? D.wal : D.nowal}</small>`;
+  }
+  const tiles = (s, T) => {
+    const tile = (b, l) => `<div style="flex:1;min-width:0;padding:8px 4px;border-radius:12px;background:rgba(255,255,255,.07);text-align:center"><b style="display:block;font-size:17px">${b}</b><small style="display:block;font-size:11px;opacity:.7">${l}</small></div>`;
+    return tile('✅ ' + Number(s.valid || 0), T.v) + tile('⏳ ' + Number(s.pending || 0), T.p);
+  };
+  let LIVE = null;
+  async function page() {
     if (!INIT || !ME) return;
-    const T = L(), a = $('app');
-    if (TAB !== 'ton') {
-      TAB = 'ton'; try { bar(); } catch (e) {} window.scrollTo(0, 0);
-      try { tgw.BackButton.show(); tgw.BackButton.onClick(back); } catch (e) {}
-      a.innerHTML = '<div class="load"><i></i></div>';
-    }
+    const T = L(), D = TOND[fr() ? 'fr' : 'en'];
     let s; try { s = await call({}); } catch (e) { return; }
-    if (!s || !s.ok || TAB !== 'ton') return;
-    const w = s.wallet, ed = edit || !w, bal = Number(s.total != null ? s.total : s.balance), mn = Number(s.min), pct = Math.min(100, Math.round(bal / mn * 100));
-    a.innerHTML = `<div class="gton"><button class="btn small" id="gtbk">${T.back}</button><h1>${T.h}</h1><p class="sub">${T.s(f2(s.usd))}</p>`
-      // 15 oct 2026: the app shows its own gains; the total balance, the TON wallet and the payouts are in Earn by Jeremstyke (one place for the money)
-      + `<div class="tiles"><div class="tile"><b>${s.valid}</b><small>✅ ${T.v}</small></div><div class="tile"><b>${s.pending}</b><small>⏳ ${T.p}</small></div>`
-      + `<div class="tile wide"><b>${m$(s.balance)}</b><small>💰 ${fr() ? 'Solde GramPedia' : 'Balance from GramPedia'}${Number(s.paid) ? ' · ' + T.r + ' ' + m$(s.paid) : ''}</small></div></div>`
+    if (!s || !s.ok) return;
+    const old = document.getElementById('gtsheet'); if (old) old.remove();
+    const d = document.createElement('div'); d.id = 'gtsheet';
+    d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.6);display:flex;align-items:flex-end;justify-content:center';
+    const link = (ME && ME.refLink) || BOTU();
+    d.innerHTML = `<div style="width:100%;max-width:520px;max-height:88vh;overflow:auto;background:#151a23;color:#fff;border-radius:20px 20px 0 0;padding:18px 16px 24px;box-sizing:border-box"><b style="display:block;font-size:18px;margin-bottom:4px">${T.h}</b><p style="margin:0 0 12px;font-size:15px;font-weight:700">${T.s(f2(s.usd))}</p>`
+      + `<div id="gtdet" style="margin:0 0 12px;padding:14px;border-radius:16px;border:1px solid rgba(46,230,255,.45);background:rgba(46,230,255,.08)">${det(s.all, D)}</div>`
+      + `<div id="gttl" style="display:flex;gap:6px;margin:0 0 14px">${tiles(s, T)}</div>`
+      + T.st(f2(s.usd), f2(s.min), s.delay).map((x, i) => `<div style="display:flex;gap:10px;align-items:flex-start;margin:0 0 8px"><span style="flex:none;width:24px;height:24px;border-radius:50%;background:#2ee6ff;color:#062a33;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:13px">${i + 1}</span><span style="font-size:14px">${x}</span></div>`).join('')
+      + (Number(s.budget_left) < Number(s.usd) ? `<p style="font-size:13px;opacity:.75">${T.off}</p>` : '')
+      + `<div style="margin:6px 0 6px;font-size:13px;color:#ffd43b">${D.c}</div><div style="margin:0 0 12px;font-size:13px;opacity:.75">${D.n}</div>`
       + `<button class="btn main full" id="gti">${T.inv}</button>`
-      + `<h2>🔗 ${fr() ? 'Ton lien à partager' : 'Your link to share'}</h2><div class="addr"><span id="gtlk">${esc((ME && ME.refLink) || BOTU())}</span><button class="btn small" id="gtcp">${fr() ? 'Copier' : 'Copy'}</button></div>`
-      + (Number(s.budget_left) < Number(s.usd) ? `<p class="hint">${T.off}</p>` : '')
-      + `<div style="margin:14px 0 4px;padding:12px;border-radius:14px;border:1px solid rgba(255,200,60,.5);background:rgba(255,200,60,.1)"><b style="display:block;font-size:15px;margin-bottom:6px">💰 Earn by Jeremstyke</b><span style="display:block;font-size:13px;line-height:1.45">${fr() ? '👛 Ton solde total (toutes les apps), ton portefeuille TON et tes paiements sont dans Earn.<br>🏆 Tes amis invités ici comptent pour le concours de la semaine : chaque lundi, le top 3 gagne 1 $, 0,50 $ et 0,25 $ en TON, en plus de tes gains.' : '👛 Your total balance (all apps), your TON wallet and your payouts are in Earn.<br>🏆 The friends you invite here count in the weekly contest: every Monday the top 3 win $1, $0.50 and $0.25 in TON, on top of your earnings.'}</span><button class="btn full" id="gtearn" style="margin:10px 0 0">💰 ${fr() ? 'Ouvrir Earn : solde, portefeuille, concours' : 'Open Earn: balance, wallet, contest'}</button></div>`
-      + `<h2>${T.how}</h2>` + T.st(f2(s.usd), f2(s.min), s.delay).map((x, i) => `<div class="step"><i>${i + 1}</i><span>${x}</span></div>`).join('')
-      + `<p class="hint">${T.rule}</p></div>`;
-    $('gtbk').onclick = () => { haptic(); back(); };
-    $('gti').onclick = invite;
-    $('gtearn').onclick = () => { haptic(); openLink('https://t.me/earnbyjeremstykebot?startapp=gp'); };
-    $('gtcp').onclick = async () => {
-      haptic(); const v = (ME && ME.refLink) || BOTU(); let ok = false;
-      try { await navigator.clipboard.writeText(v); ok = true; } catch (e) {}
-      if (!ok) { try { const t = document.createElement('textarea'); t.value = v; document.body.appendChild(t); t.select(); ok = document.execCommand('copy'); t.remove(); } catch (e) {} }
-      toast(ok ? (fr() ? 'Lien copié ✅' : 'Link copied ✅') : v);
+      + `<div style="display:flex;gap:8px;align-items:center;margin:10px 0 0;padding:8px 10px;border-radius:12px;background:rgba(255,255,255,.07)"><span style="flex:1;min-width:0;font-size:12px;word-break:break-all">${esc(link)}</span><button class="btn small" id="gtcp">${D.cp}</button></div>`
+      + `<button class="btn full" id="gtearn" style="margin-top:10px">${D.my}</button><div id="gtsc" style="cursor:pointer;text-decoration:underline;text-align:center;margin-top:12px;opacity:.75">${D.close}</div></div>`;
+    document.body.appendChild(d);
+    const close = () => { d.remove(); clearInterval(LIVE); };
+    d.onclick = (e) => { if (e.target === d || e.target.id === 'gtsc') close(); };
+    d.querySelector('#gti').onclick = () => { close(); invite(); };
+    d.querySelector('#gtearn').onclick = () => { haptic(); openLink('https://t.me/earnbyjeremstykebot?startapp=gp'); };
+    d.querySelector('#gtcp').onclick = async () => {
+      haptic(); let ok = false;
+      try { await navigator.clipboard.writeText(link); ok = true; } catch (e) {}
+      if (!ok) { try { const t = document.createElement('textarea'); t.value = link; document.body.appendChild(t); t.select(); ok = document.execCommand('copy'); t.remove(); } catch (e) {} }
+      toast(ok ? D.cpd : link);
     };
-    if ($('gtc')) $('gtc').onclick = () => { haptic(); page(true); };
-    if ($('gts')) $('gts').onclick = async () => {
-      const v = ($('gta').value || '').trim(); if (!v) return;
-      haptic(); $('gts').disabled = true;
-      let r; try { r = await call({ action: 'wallet', addr: v }); } catch (e) { r = null; }
-      if (!r || !r.ok) { toast(T.bad); if ($('gts')) $('gts').disabled = false; return; }
-      toast(T.ok); page(false);
-    };
+    // live: the balance is refreshed every 20 s while the sheet is open
+    clearInterval(LIVE);
+    LIVE = setInterval(async () => {
+      if (!document.getElementById('gtsheet')) { clearInterval(LIVE); return; }
+      let x; try { x = await call({}); } catch (e) { return; }
+      if (!x || !x.ok) return;
+      const a = document.getElementById('gtdet'), t = document.getElementById('gttl');
+      if (a) a.innerHTML = det(x.all, D); if (t) t.innerHTML = tiles(x, T);
+    }, 20000);
   }
   window.gpTonPage = page;
   // the banner at the top of Explore (the list is rebuilt often: put it back each time)
