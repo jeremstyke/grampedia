@@ -43,7 +43,7 @@
     return `<small style="display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;opacity:.7">${D.tot}</small><div style="font-size:34px;font-weight:900;line-height:1.15;margin:2px 0 8px">${m$(a.total)}</div>`
       + keys.map(row).join('')
       + (Number(a.paid) || Number(a.waiting) ? `<small style="display:block;margin-top:8px;opacity:.75">${Number(a.paid) ? '💸 ' + D.paid + ' ' + m$(a.paid) : ''}${Number(a.paid) && Number(a.waiting) ? ' · ' : ''}${Number(a.waiting) ? '⏳ ' + D.wait + ' ' + m$(a.waiting) : ''}</small>` : '')
-      + `<small style="display:block;margin-top:8px;opacity:.75">${D.pay(m$(a.min))}</small>${a.wallet ? '<small style="display:block;margin-top:4px;font-weight:600">' + D.wal + '</small>' : '<button class="btn main full" onclick="gpGoWal()" style="margin-top:10px">' + D.addw + '</button>'}`;
+      + `<small style="display:block;margin-top:8px;opacity:.75">${D.pay(m$(a.min))}</small>${a.wallet ? '<small style="display:block;margin-top:4px;font-weight:600">' + D.wal + ' <a href="#" onclick="gpGoWal();return false" style="font-weight:400;opacity:.7;text-decoration:underline;color:inherit;margin-left:6px">' + (fr() ? 'Changer' : 'Change') + '</a></small>' : '<button class="btn main full" onclick="gpGoWal()" style="margin-top:10px">' + D.addw + '</button>'}`;
   }
 // 15 oct 2026: the money waiting: friends who still have to play, with their progress (Meme Coin Tycoon: days /3 and trades /5,
 // Daily Score: predictions /4, GramPedia: listing)
