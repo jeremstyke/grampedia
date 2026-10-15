@@ -40,23 +40,18 @@
     if (!s || !s.ok || TAB !== 'ton') return;
     const w = s.wallet, ed = edit || !w, bal = Number(s.total != null ? s.total : s.balance), mn = Number(s.min), pct = Math.min(100, Math.round(bal / mn * 100));
     a.innerHTML = `<div class="gton"><button class="btn small" id="gtbk">${T.back}</button><h1>${T.h}</h1><p class="sub">${T.s(f2(s.usd))}</p>`
-      + `<div class="hero"><small>${T.b}</small><div class="big">${m$(bal)}</div><div class="bar"><i style="width:${pct}%"></i></div>`
-      + `<small class="note">${bal >= mn ? (w ? T.ready : T.nowal) : T.togo(f2(mn - bal)) + ' · ' + T.mn(f2(mn))}</small></div>`
+      // 15 oct 2026: the app shows its own gains; the total balance, the TON wallet and the payouts are in Earn by Jeremstyke (one place for the money)
       + `<div class="tiles"><div class="tile"><b>${s.valid}</b><small>✅ ${T.v}</small></div><div class="tile"><b>${s.pending}</b><small>⏳ ${T.p}</small></div>`
-      + `<div class="tile wide"><b>${m$(s.paid)}</b><small>💸 ${T.r}${Number(s.waiting) ? ' · ' + T.wait + ' ' + m$(s.waiting) : ''}</small></div></div>`
+      + `<div class="tile wide"><b>${m$(s.balance)}</b><small>💰 ${fr() ? 'Solde GramPedia' : 'Balance from GramPedia'}${Number(s.paid) ? ' · ' + T.r + ' ' + m$(s.paid) : ''}</small></div></div>`
       + `<button class="btn main full" id="gti">${T.inv}</button>`
-      // 15 oct 2026: the player's own invite link, visible, with a copy button (to paste it anywhere, not only through the share sheet)
       + `<h2>🔗 ${fr() ? 'Ton lien à partager' : 'Your link to share'}</h2><div class="addr"><span id="gtlk">${esc((ME && ME.refLink) || BOTU())}</span><button class="btn small" id="gtcp">${fr() ? 'Copier' : 'Copy'}</button></div>`
-      + `<h2>👛 ${T.w}</h2>`
-      + (ed ? `<div class="wal"><input id="gta" placeholder="${T.ph}" value="${esc(w || '')}" autocomplete="off" spellcheck="false"><button class="btn dark" id="gts">${T.save}</button></div>`
-        : `<div class="addr"><span>${esc(w)}</span><button class="btn small" id="gtc">${T.chg}</button></div>`)
       + (Number(s.budget_left) < Number(s.usd) ? `<p class="hint">${T.off}</p>` : '')
-      + `<div style="margin:12px 0 4px;padding:12px;border-radius:14px;border:1px solid rgba(255,200,60,.5);background:rgba(255,200,60,.1)"><b style="display:block;font-size:15px;margin-bottom:4px">🏆 ${fr() ? 'Concours de la semaine' : 'Weekly contest'}</b><span style="font-size:13px;line-height:1.4">${fr() ? 'Tes amis invités ici comptent pour le concours d\'Earn by Jeremstyke, l\'app où se trouvent ton solde et tes paiements. Chaque lundi, le top 3 gagne 1 $, 0,50 $ et 0,25 $ en TON, en plus de tes gains.' : 'The friends you invite here count in the Earn by Jeremstyke contest, the app where your balance and payouts are. Every Monday the top 3 win $1, $0.50 and $0.25 in TON, on top of your earnings.'}</span><button class="btn full" id="gtearn" style="margin:10px 0 0">🏆 ${fr() ? 'Voir le concours et mes gains' : 'See the contest and my earnings'}</button></div>` // 15 oct 2026: contest box, link to Earn (source gp)
+      + `<div style="margin:14px 0 4px;padding:12px;border-radius:14px;border:1px solid rgba(255,200,60,.5);background:rgba(255,200,60,.1)"><b style="display:block;font-size:15px;margin-bottom:6px">💰 Earn by Jeremstyke</b><span style="display:block;font-size:13px;line-height:1.45">${fr() ? '👛 Ton solde total (toutes les apps), ton portefeuille TON et tes paiements sont dans Earn.<br>🏆 Tes amis invités ici comptent pour le concours de la semaine : chaque lundi, le top 3 gagne 1 $, 0,50 $ et 0,25 $ en TON, en plus de tes gains.' : '👛 Your total balance (all apps), your TON wallet and your payouts are in Earn.<br>🏆 The friends you invite here count in the weekly contest: every Monday the top 3 win $1, $0.50 and $0.25 in TON, on top of your earnings.'}</span><button class="btn full" id="gtearn" style="margin:10px 0 0">💰 ${fr() ? 'Ouvrir Earn : solde, portefeuille, concours' : 'Open Earn: balance, wallet, contest'}</button></div>`
       + `<h2>${T.how}</h2>` + T.st(f2(s.usd), f2(s.min), s.delay).map((x, i) => `<div class="step"><i>${i + 1}</i><span>${x}</span></div>`).join('')
       + `<p class="hint">${T.rule}</p></div>`;
     $('gtbk').onclick = () => { haptic(); back(); };
     $('gti').onclick = invite;
-    $('gtearn').onclick = () => { haptic(); openLink('https://t.me/earnbyjeremstykebot?startapp=contest_gp'); };
+    $('gtearn').onclick = () => { haptic(); openLink('https://t.me/earnbyjeremstykebot?startapp=gp'); };
     $('gtcp').onclick = async () => {
       haptic(); const v = (ME && ME.refLink) || BOTU(); let ok = false;
       try { await navigator.clipboard.writeText(v); ok = true; } catch (e) {}
