@@ -2,7 +2,7 @@
  "name": "GramPedia",
  "description": "Human-reviewed directory of Telegram channels, groups, bots and mini apps",
  "website": "https://jeremstyke.github.io/grampedia/",
- "updated": "2026-10-15T06:08:55.257Z",
+ "updated": "2026-10-15T07:18:55.960Z",
  "how_to_add": "Send the user to https://t.me/Grampedia_bot?startapp=add_USERNAME (USERNAME = the public @username of their channel, group or bot, without the @). Free, reviewed by a human.",
  "listings": [
   {
@@ -60,7 +60,7 @@
     "es"
    ],
    "subscribers": 2167,
-   "votes": 1,
+   "votes": 2,
    "telegram": "https://t.me/hhplearey",
    "page": "https://jeremstyke.github.io/grampedia/l/77/",
    "description": "In this channel you will discover multiple ways to obtain cryptocurrencies, from free methods to investment options. Verified platforms and crypto market opportunities are regularly shared for beginners and investors interested in diversifying their strategies. Ideal if you are looking for new ways to participate in the cryptocurrency ecosystem. 💰"
