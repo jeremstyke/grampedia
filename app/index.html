@@ -363,7 +363,9 @@ async function feature(x) {
 
 // ---------- Sharing and notifications ----------
 const BOTU = () => 'https://t.me/' + ((ME && ME.bot) || 'Grampedia_bot');
-function shareListing(x) { if (!x) return; haptic(); openLink('https://t.me/share/url?url=' + encodeURIComponent(BOTU() + '?startapp=l_' + x.id) + '&text=' + encodeURIComponent('📚 ' + x.name + (x.descr ? '\n' + String(x.descr).slice(0, 140) : ''))); }
+// 15 oct 2026: every shared link carries the sharer's id (_r_<id>): a friend who joins through it counts as his invite (TON commission)
+const RSUF = () => { try { const i = tgw.initDataUnsafe.user.id; return i ? '_r_' + i : ''; } catch (e) { return ''; } };
+function shareListing(x) { if (!x) return; haptic(); openLink('https://t.me/share/url?url=' + encodeURIComponent(BOTU() + '?startapp=l_' + x.id + RSUF()) + '&text=' + encodeURIComponent('📚 ' + x.name + (x.descr ? '\n' + String(x.descr).slice(0, 140) : ''))); }
 function shareApp() { haptic(); openLink('https://t.me/share/url?url=' + encodeURIComponent(BOTU() + '?startapp=src_share') + '&text=' + encodeURIComponent(t('inv_share'))); }
 async function notifs() {
   TAB = 'notifs'; bar(); $('sbox').style.display = 'none'; load();
@@ -392,7 +394,7 @@ async function mine() {
   $('app').querySelectorAll('[data-free]').forEach((b) => b.onclick = async () => { b.disabled = true; const z = await api('feat_free', { id: Number(b.dataset.free) }); if (z.ok) { toast(t('boost_done')); mine(); } else { b.disabled = false; toast(t('e_server')); } });
   $('app').querySelectorAll('[data-ed]').forEach((b) => b.onclick = () => editForm(xs.find((x) => String(x.id) === b.dataset.ed), 'mine'));
   $('app').querySelectorAll('[data-sh]').forEach((b) => b.onclick = () => shareListing(xs.find((x) => String(x.id) === b.dataset.sh)));
-  $('app').querySelectorAll('[data-vt]').forEach((b) => b.onclick = () => { const x = xs.find((y) => String(y.id) === b.dataset.vt); if (!x) return; haptic(); openLink('https://t.me/share/url?url=' + encodeURIComponent(BOTU() + '?startapp=v_' + x.id) + '&text=' + encodeURIComponent(t('ask_votes_txt', { name: x.name }))); });
+  $('app').querySelectorAll('[data-vt]').forEach((b) => b.onclick = () => { const x = xs.find((y) => String(y.id) === b.dataset.vt); if (!x) return; haptic(); openLink('https://t.me/share/url?url=' + encodeURIComponent(BOTU() + '?startapp=v_' + x.id + RSUF()) + '&text=' + encodeURIComponent(t('ask_votes_txt', { name: x.name }))); });
   if (xs.length) { $('app').insertAdjacentHTML('beforeend', agxCard('mine')); bindAgx(); }
   if (xs.some((x) => x.type === 'channel' && ['approved', 'pending'].includes(x.status))) xwCard('mine');
   $('app').querySelectorAll('[data-ft]').forEach((b) => b.onclick = () => feature(xs.find((x) => String(x.id) === b.dataset.ft)));
@@ -672,12 +674,12 @@ let PRE = null; // the first list, loaded at the same time as the profile
   try {
     const src = (tgw.initDataUnsafe && tgw.initDataUnsafe.start_param) || '';
     PRE = api('list', { lang: S.lang, type: S.type, topic: S.topic, sort: S.sort, q: S.q, offset: 0 }).catch(() => null);
-    ME = await api('me', { src: /^l_\d+$/.test(src) ? 'share' : /^v_\d+$/.test(src) ? 'vote' : (src || 'app') }); if (ME.error) throw new Error(ME.error);
+    ME = await api('me', { src: /_r_\d+$/.test(src) ? src : /^l_\d+$/.test(src) ? 'share' : /^v_\d+$/.test(src) ? 'vote' : (src || 'app') }); if (ME.error) throw new Error(ME.error);
     T = { ...EN, ...(ME.t || {}) }; document.documentElement.lang = ME.lang || 'en'; if (['ar', 'fa'].includes(ME.lang)) document.documentElement.dir = 'rtl';
     $('q').placeholder = t('search_ph');
     if (ME.unread) { $('bdot').hidden = false; $('bdot').textContent = ME.unread > 9 ? '9+' : String(ME.unread); }
     const qs = new URLSearchParams(location.search), want = qs.get('tab');
-    const lid = qs.get('id') || (/^[lv]_(\d+)$/.exec(src) || [])[1]; // 13 oct 2026: shared listing and vote links open straight in the mini app (?startapp=l_<id> / v_<id>)
+    const lid = qs.get('id') || (/^[lv]_(\d+)(?:_r_\d+)?$/.exec(src) || [])[1]; // 13 oct 2026: shared listing and vote links open straight in the mini app (?startapp=l_<id> / v_<id>)
     if (ME.member === false) { bar(); gate(); if (lid) { const one = await api('one', { id: lid }).catch(() => ({})); if (one && one.item) detail(one.item); } return; }
     if (lid) { go('explore'); const one = await api('one', { id: lid }); if (one.item) detail(one.item); return; }
     if (want === 'add' && qs.get('link')) { A.link = qs.get('link'); go('add'); return find(); }
