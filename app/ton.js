@@ -25,7 +25,9 @@
   const m$ = (n) => fr() ? f2(n) + ' $' : '$' + f2(n);
   const call = (body) => fetch(F, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ app: 'gp', initData: INIT, ...body }) }).then((r) => r.json());
   let ON = null;
-  const on = () => { if (!ON) ON = call({}).then((s) => !!(s && s.ok && s.on)).catch(() => { ON = null; return false; }); return ON; };
+  let LAST = null; // 15 oct 2026: the last status, for the amounts shown on the Explore banner
+  const on = () => { if (!ON) ON = call({}).then((s) => { LAST = s; return !!(s && s.ok && s.on); }).catch(() => { ON = null; return false; }); return ON; };
+  const mini = (s) => '✅ ' + m$(s.balance) + (fr() ? ' validé' : ' validated') + ' · ⏳ ' + m$(Number(s.pending || 0) * Number(s.usd || 0)) + (fr() ? ' en attente' : ' pending') + ' · 💸 ' + m$(Number(s.paid || 0) + Number(s.waiting || 0)) + (fr() ? ' payé' : ' paid');
   function back() { try { tgw.BackButton.hide(); tgw.BackButton.offClick(back); } catch (e) {} if (TAB === 'ton') go('explore'); }
   function invite() { haptic(); openLink('https://t.me/share/url?url=' + encodeURIComponent((ME && ME.refLink) || BOTU()) + '&text=' + encodeURIComponent(L().share)); }
   // 15 oct 2026: like Daily Score, a sheet instead of a separate page, with the same live total balance in every app (Meme Coin Tycoon,
@@ -173,7 +175,7 @@ function outWa(msg) { const u = 'https://wa.me/?text=' + encodeURIComponent(msg)
     if (TAB !== 'explore' || document.getElementById('gtonb') || !a.firstElementChild || a.querySelector('.load')) return;
     const T = L(), b = document.createElement('button');
     b.id = 'gtonb'; b.className = 'gtonb';
-    b.innerHTML = `<span class="e">💎</span><span><b>${T.bh}</b><small>${T.bs}</small></span><span class="chip">TON</span>`;
+    b.innerHTML = `<span class="e">💎</span><span><b>${T.bh}</b><small>${LAST && LAST.ok ? mini(LAST) : T.bs}</small></span><span class="chip">TON</span>`;
     b.onclick = () => { haptic(); page(); };
     a.insertBefore(b, a.firstElementChild);
   }
