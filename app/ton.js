@@ -45,6 +45,8 @@
       + `<div class="tiles"><div class="tile"><b>${s.valid}</b><small>✅ ${T.v}</small></div><div class="tile"><b>${s.pending}</b><small>⏳ ${T.p}</small></div>`
       + `<div class="tile wide"><b>${m$(s.paid)}</b><small>💸 ${T.r}${Number(s.waiting) ? ' · ' + T.wait + ' ' + m$(s.waiting) : ''}</small></div></div>`
       + `<button class="btn main full" id="gti">${T.inv}</button>`
+      // 15 oct 2026: the player's own invite link, visible, with a copy button (to paste it anywhere, not only through the share sheet)
+      + `<h2>🔗 ${fr() ? 'Ton lien à partager' : 'Your link to share'}</h2><div class="addr"><span id="gtlk">${esc((ME && ME.refLink) || BOTU())}</span><button class="btn small" id="gtcp">${fr() ? 'Copier' : 'Copy'}</button></div>`
       + `<h2>👛 ${T.w}</h2>`
       + (ed ? `<div class="wal"><input id="gta" placeholder="${T.ph}" value="${esc(w || '')}" autocomplete="off" spellcheck="false"><button class="btn dark" id="gts">${T.save}</button></div>`
         : `<div class="addr"><span>${esc(w)}</span><button class="btn small" id="gtc">${T.chg}</button></div>`)
@@ -53,6 +55,12 @@
       + `<p class="hint">${T.rule}</p></div>`;
     $('gtbk').onclick = () => { haptic(); back(); };
     $('gti').onclick = invite;
+    $('gtcp').onclick = async () => {
+      haptic(); const v = (ME && ME.refLink) || BOTU(); let ok = false;
+      try { await navigator.clipboard.writeText(v); ok = true; } catch (e) {}
+      if (!ok) { try { const t = document.createElement('textarea'); t.value = v; document.body.appendChild(t); t.select(); ok = document.execCommand('copy'); t.remove(); } catch (e) {} }
+      toast(ok ? (fr() ? 'Lien copié ✅' : 'Link copied ✅') : v);
+    };
     if ($('gtc')) $('gtc').onclick = () => { haptic(); page(true); };
     if ($('gts')) $('gts').onclick = async () => {
       const v = ($('gta').value || '').trim(); if (!v) return;
