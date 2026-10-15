@@ -417,9 +417,9 @@ async function boostIt(id, b) {
     const c = await api('boost', { id, check: true });
     if (!c.ok) { b.disabled = false; return toast(t(c.error === 'boosted' ? 'boost_already' : 'e_server')); }
     await agxSdk();
-    // 14 oct 2026: a boost costs 3 InsideAds videos in a row
+    // 15 oct 2026: a boost costs 1 Ads Galaxy video (was 3)
     const lbl = b.textContent; let res = null;
-    for (let i = 1; i <= 3; i++) { b.textContent = '▶️ ' + i + '/3'; await adNote((i > 1 ? '✅ ' + (i - 1) + '/3 · ' : '') + t('ad_n', { i, n: 3 })); try { res = await window.showAdsGalaxy({ miniappId: AGX_ID }); } catch (e) { res = null; } if (!res || !res.reward_eligible) { b.disabled = false; b.textContent = lbl; return toast(t('boost_noad')); } }
+    for (let i = 1; i <= 1; i++) { b.textContent = '▶️'; await adNote(t('ad_n', { i, n: 1 })); try { res = await window.showAdsGalaxy({ miniappId: AGX_ID }); } catch (e) { res = null; } if (!res || !res.reward_eligible) { b.disabled = false; b.textContent = lbl; return toast(t('boost_noad')); } }
     b.textContent = lbl;
     const r = await api('boost', { id, request_id: res.request_id });
     if (r.ok) { try { tgw.HapticFeedback.notificationOccurred('success'); } catch (e) {} toast(t('boost_done')); askDM(); return mine(); }
@@ -670,7 +670,9 @@ let PRE = null; // the first list, loaded at the same time as the profile
   if (!INIT) { $('sbox').style.display = 'none'; $('app').innerHTML = `<div class="center"><div class="big">📚</div><h1>GramPedia</h1><p class="sub">${esc(t('open_tg'))}</p><a class="btn main" href="https://t.me/Grampedia_bot">Telegram</a></div>`; return; }
   // 15 oct 2026: an Ads Galaxy video at every opening, after the app has loaded, except on the player's very first visit
   // (a player who opened the app before this change, gp_open_ad3 set, is not a first visit)
-  setTimeout(async () => { try { let first = false; try { first = !localStorage.getItem('gp_seen') && !localStorage.getItem('gp_open_ad3'); localStorage.setItem('gp_seen', '1'); } catch (e) { return; } if (first) return; if (document.querySelector('.sheet-bg')) return; await agxSdk(); await window.showAdsGalaxy({ miniappId: AGX_ID }); } catch (e) {} }, 1500);
+  setTimeout(async () => { try { let first = false; try { first = !localStorage.getItem('gp_seen') && !localStorage.getItem('gp_open_ad3'); localStorage.setItem('gp_seen', '1'); } catch (e) { return; } if (first) return;
+    // 15 oct 2026: at most one opening video every 30 minutes
+    try { const last = Number(localStorage.getItem('gp_open_at') || 0); if (Date.now() - last < 30 * 60000) return; localStorage.setItem('gp_open_at', String(Date.now())); } catch (e) { return; } if (document.querySelector('.sheet-bg')) return; await agxSdk(); await window.showAdsGalaxy({ miniappId: AGX_ID }); } catch (e) {} }, 1500);
   try {
     const src = (tgw.initDataUnsafe && tgw.initDataUnsafe.start_param) || '';
     PRE = api('list', { lang: S.lang, type: S.type, topic: S.topic, sort: S.sort, q: S.q, offset: 0 }).catch(() => null);
