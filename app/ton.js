@@ -185,8 +185,17 @@ function outWa(msg) { const u = 'https://wa.me/?text=' + encodeURIComponent(msg)
   // the banner at the top of Explore (the list is rebuilt often: put it back each time)
   async function place() {
     const a = $('app'); if (!a || TAB !== 'explore' || !ME || !INIT || document.getElementById('gtonb')) return;
-    if (!(await on())) return;
+    // 16 oct 2026 (Jeremy): the GramPedia TON program is stopped, so the home shows a small card to Earn by Jeremstyke (tap the diamond) instead
+    const prog = await on();
     if (TAB !== 'explore' || document.getElementById('gtonb') || !a.firstElementChild || a.querySelector('.load')) return;
+    if (!prog) {
+      const F = fr(), e = document.createElement('button');
+      e.id = 'gtonb'; e.className = 'gtonb';
+      e.innerHTML = `<span class="e">💎</span><span><b>${F ? 'Tape le diamant, gagne de l\'argent' : 'Tap the diamond, earn money'}</b><small>${F ? 'Gratuit, payé en vrai TON chaque lundi.' : 'Free, paid in real TON every Monday.'}</small></span><span class="chip">Earn</span>`;
+      e.onclick = () => { haptic(); openLink('https://t.me/earnbyjeremstykebot?startapp=tap_gpapp'); };
+      a.insertBefore(e, a.firstElementChild);
+      return;
+    }
     const T = L(), b = document.createElement('button');
     b.id = 'gtonb'; b.className = 'gtonb';
     b.innerHTML = `<span class="e">💎</span><span><b>${T.bh}</b><small>${LAST && LAST.ok ? mini(LAST) : T.bs}</small></span><span class="chip">TON</span>`;
