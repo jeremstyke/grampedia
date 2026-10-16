@@ -77,6 +77,19 @@ function outCopy(v, ok) {
 function outWa(msg) { const u = 'https://wa.me/?text=' + encodeURIComponent(msg); try { (window.Telegram && Telegram.WebApp && Telegram.WebApp.initData ? Telegram.WebApp.openLink(u) : window.open(u, '_blank')); } catch (x) { window.open(u, '_blank'); } }
   // 15 oct 2026 (v2): GramPedia shows only its own program: its earnings, its friends waiting, and the TON wallet, added right here
   // (one wallet per person, shared by all the apps). The other referral programs are in Earn by Jeremstyke.
+  // 16 oct 2026: live countdown to the end of the weekly contest (Sunday 23:59, Paris time)
+  function cdTxt(end, dl) { const t = Math.max(0, Math.floor((Date.parse(end) - Date.now()) / 1000)), d = Math.floor(t / 86400), p = (n) => String(n).padStart(2, '0'); return (d ? d + dl + ' ' : '') + p(Math.floor(t % 86400 / 3600)) + ':' + p(Math.floor(t % 3600 / 60)) + ':' + p(t % 60); }
+  function cdBox(end, fr) { return `<div style="margin:6px 0 8px;padding:8px 10px;border-radius:10px;background:rgba(0,0,0,.28);text-align:center"><div style="font-size:12px;opacity:.75">⏳ ${fr ? 'Fin du concours dans' : 'Contest ends in'}</div><div style="font-size:22px;font-weight:900;font-variant-numeric:tabular-nums" data-cdend="${end}" data-cdl="${fr ? 'j' : 'd'}">${cdTxt(end, fr ? 'j' : 'd')}</div><div style="font-size:11px;opacity:.6">${fr ? 'Dimanche 23h59, heure de Paris' : 'Sunday 23:59, Paris time'}</div></div>`; }
+  setInterval(() => { document.querySelectorAll('[data-cdend]').forEach((e) => { e.textContent = cdTxt(e.dataset.cdend, e.dataset.cdl || 'd'); }); }, 1000);
+  // 16 oct 2026: the weekly GramPedia contest (most listings approved through your link), with its live countdown
+  function gpContestHtml(c) {
+    if (!c || !c.on) return '';
+    const F = fr(), md = ['🥇', '🥈', '🥉'], pz = c.prizes || [], mn = Number(c.min) || 1, M = (n) => F ? f2(n) + ' $' : '$' + f2(n);
+    const rows = (c.top || []).slice(0, 3).map((x, i) => `<div style="display:flex;justify-content:space-between;gap:8px;padding:5px 0;font-size:13px;border-top:1px solid rgba(255,255,255,.08)${x.me ? ';color:#2ee6ff;font-weight:700' : ''}"><span>${md[i]} ${esc(x.name)}</span><span>${x.n} ${F ? 'fiche' + (x.n > 1 ? 's' : '') : 'listing' + (x.n > 1 ? 's' : '')}${pz[i] && x.n >= mn ? ' · ' + M(pz[i]) : ''}</span></div>`).join('')
+      || `<div style="font-size:13px;opacity:.8">${F ? 'Personne pour l\'instant : sois le premier !' : 'Nobody yet: be the first!'}</div>`;
+    const me = c.me && c.me.rank ? `<div style="font-size:13px;margin-top:6px">${F ? 'Ta place' : 'Your rank'} : <b>#${c.me.rank}</b> · ${c.me.n} ${F ? 'fiche(s)' : 'listing(s)'}</div>` : '';
+    return `<div style="margin:6px 0 12px;padding:12px;border-radius:14px;border:1px solid rgba(46,230,255,.45);background:rgba(46,230,255,.08)"><b style="display:block;font-size:15px;margin-bottom:4px">🏆 ${F ? 'Concours de la semaine' : 'Contest of the week'}</b><div style="font-size:13px;opacity:.85;margin-bottom:6px">${F ? 'Les 3 qui font valider le plus de fiches via leur lien gagnent ' : 'The 3 who get the most listings approved through their link win '}<b>${pz.map((x) => M(x)).join(' / ')}</b> ${F ? 'en TON lundi, dès ' + mn + ' fiches.' : 'in TON on Monday, from ' + mn + ' listings.'}</div>${cdBox(c.ends, F)}${rows}${me}</div>`;
+  }
   function gameDet(s, D) {
     const a = s.all || {}, P = a.pending || {}, fl = (P.friends || []).filter((f) => f.app === 'gp'), pn = Number(s.pending || 0), M = m$;
     const t = fr() ? { mine: 'Mes gains GramPedia', pend: 'En attente', need: (n) => n + (n > 1 ? ' amis doivent' : ' ami doit') + ' encore ajouter leur projet', paid: 'Déjà reçu', wait: 'En cours de paiement', pay: (m) => 'Payé chaque lundi sur ton portefeuille TON, dès ' + m + ' (avec tes autres gains TON)', ok: '✅ Portefeuille ajouté', chg: 'Changer', add: '👛 Ajouter mon portefeuille', ph: 'Colle ton adresse TON (UQ... ou EQ...)', h1: 'Pas d\'adresse TON ? C\'est gratuit et ça prend 1 minute :', h2: 'Ouvre <b>@wallet</b> dans Telegram', h3: 'Touche <b>Recevoir</b>, puis <b>TON</b>', h4: 'Copie l\'adresse et colle-la ici', ow: 'Ouvrir @wallet', sync: 'Un seul portefeuille pour toutes les apps (Meme Coin Tycoon, Daily Score, Earn…).' }
@@ -142,6 +155,7 @@ function outWa(msg) { const u = 'https://wa.me/?text=' + encodeURIComponent(msg)
       + `<div class="earn" id="gtdet">${gameDet(s, D)}</div>`
       + `<button class="cta" id="gti">${T.inv}</button><div class="row"><button class="sec" id="gtwa">📲 WhatsApp</button><button class="sec" id="gtcp">📋 ${fr() ? 'Copier mon lien' : 'Copy my link'}</button></div>`
       + `<div class="tiles" id="gttl">${tiles(s, T)}</div>`
+      + gpContestHtml(s.contest)
       + (Number(s.budget_left) < Number(s.usd) ? `<p style="font-size:13px;opacity:.75">${T.off}</p>` : '')
       + `<details class="how"><summary>📖 ${T.how} ▾</summary><div style="margin-top:10px">` + T.st(f2(s.usd), f2(s.min), s.delay).map((x, i) => `<div style="display:flex;gap:10px;align-items:flex-start;margin:0 0 8px"><span style="flex:none;width:24px;height:24px;border-radius:50%;background:#2ee6ff;color:#062a33;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:13px">${i + 1}</span><span style="font-size:14px">${x}</span></div>`).join('') + `</div></details>`
       + `<button class="more" id="gtearn">💰 ${fr() ? 'Gagne plus de TON' : 'Earn more TON'}</button><div class="close" id="gtsc">${D.close}</div></div>`;
