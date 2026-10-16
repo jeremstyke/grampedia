@@ -144,7 +144,7 @@ function outWa(msg) { const u = 'https://wa.me/?text=' + encodeURIComponent(msg)
       + `<div class="tiles" id="gttl">${tiles(s, T)}</div>`
       + (Number(s.budget_left) < Number(s.usd) ? `<p style="font-size:13px;opacity:.75">${T.off}</p>` : '')
       + `<details class="how"><summary>📖 ${T.how} ▾</summary><div style="margin-top:10px">` + T.st(f2(s.usd), f2(s.min), s.delay).map((x, i) => `<div style="display:flex;gap:10px;align-items:flex-start;margin:0 0 8px"><span style="flex:none;width:24px;height:24px;border-radius:50%;background:#2ee6ff;color:#062a33;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:13px">${i + 1}</span><span style="font-size:14px">${x}</span></div>`).join('') + `</div></details>`
-      + `<button class="more" id="gtearn">🔗 ${fr() ? 'Autres programmes de parrainage (Earn)' : 'More referral programs (Earn)'}</button><div class="close" id="gtsc">${D.close}</div></div>`;
+      + `<button class="more" id="gtearn">💰 ${fr() ? 'Gagne plus de TON' : 'Earn more TON'}</button><div class="close" id="gtsc">${D.close}</div></div>`;
     document.body.appendChild(d);
     const close = () => { d.remove(); clearInterval(LIVE); };
     d.onclick = (e) => { if (e.target === d || e.target.id === 'gtsc') close(); };
