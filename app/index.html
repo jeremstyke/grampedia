@@ -680,7 +680,7 @@ let PRE = null; // the first list, loaded at the same time as the profile
     T = { ...EN, ...(ME.t || {}) }; document.documentElement.lang = ME.lang || 'en'; if (['ar', 'fa'].includes(ME.lang)) document.documentElement.dir = 'rtl';
     $('q').placeholder = t('search_ph');
     if (ME.unread) { $('bdot').hidden = false; $('bdot').textContent = ME.unread > 9 ? '9+' : String(ME.unread); }
-    const qs = new URLSearchParams(location.search), want = qs.get('tab');
+    const qs = new URLSearchParams(location.search), want = qs.get('tab') || (src === 'add' ? 'add' : null); // 16 oct 2026: ?startapp=add opens the add form (Earn task)
     const lid = qs.get('id') || (/^[lv]_(\d+)(?:_r_\d+)?$/.exec(src) || [])[1]; // 13 oct 2026: shared listing and vote links open straight in the mini app (?startapp=l_<id> / v_<id>)
     if (ME.member === false) { bar(); gate(); if (lid) { const one = await api('one', { id: lid }).catch(() => ({})); if (one && one.item) detail(one.item); } return; }
     if (lid) { go('explore'); const one = await api('one', { id: lid }); if (one.item) detail(one.item); return; }
